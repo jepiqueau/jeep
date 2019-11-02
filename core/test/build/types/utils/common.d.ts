@@ -1,0 +1,10 @@
+export declare function debounce(context: any, func: Function, wait: number, immediate: boolean): () => void;
+export declare const getValueFromCss: (data: string, type: string) => Promise<number>;
+export declare const cssVar: (elem: any, name: string, value?: string) => string;
+export declare const getDim: (css: string, wind: number, pad: string) => number;
+export declare const convertCSSNumber: (css: string) => number;
+export declare const convertCSSBoolean: (css: string) => boolean;
+export declare const getInstanceCSSProperties: (parent: Element | HTMLElement, instanceId: string) => Promise<any>;
+export declare const getCssPropertyFromInnerHTML: (innerHTML: string, instanceId: string) => any;
+export declare const getCssPropertyFromString: (cstyle: string) => any;
+export declare const evaluateString: (s: string) => number;

@@ -1,6 +1,6 @@
 {
   "name": "@jeepq/core",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "Jeep Stencil Web Component Library",
   "keywords": [
     "jeep",
@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
+    "start": "stencil build --dev  && http-server ./test -c-1",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"

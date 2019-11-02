@@ -1,0 +1,15 @@
+{
+  "entries": [
+    "components/jeep-colorpicker/jeep-colorpicker.js",
+    "components/jeep-svgmorph/jeep-svgmorph.js",
+    "components/jeep-colorpicker/jeep-cpicker/jeep-cpicker.js",
+    "components/jeep-linechart/jeep-linechart.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.7.5",
+    "typescriptVersion": "3.6.3"
+  },
+  "collections": [],
+  "bundles": []
+}

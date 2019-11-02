@@ -5,7 +5,10 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader'
+      esmLoaderPath: '../loader',
+      copy: [
+        { src: '../dist', dest: '../../test/build' }
+      ]
     },
     {
       type: 'docs-readme'

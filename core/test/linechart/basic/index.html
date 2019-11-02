@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stencil Starter App</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#16161d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script nomodule src="../../build/jeep/jeep.js"></script>
+  <script type="module" src="../../build/jeep/jeep.esm.js"></script>   
+  <style>
+    :root {
+        --chart-width: 100%;
+        --chart-height: 400px;
+        --chart-top: 0px;
+        --chart-left: 0px;
+        --chart-background-color: #ffffff;
+        --chart-axis-color: #000000;   
+        --chart-font-family: Verdana;  
+        --chart-label-font-size: 10px;
+        --chart-title-color: #000000;
+        --chart-title-font-size: 25px;
+        --chart-subtitle-color: #000000;
+        --chart-subtitle-font-size: 20px;
+        --chart-axis-title-color: #000000;
+        --chart-axis-title-font-size: 15px;
+        --chart-line-color: #4ba96e;
+        --chart-label-color:#000000;
+        --chart-tick-x-length: 5px;
+        --chart-tick-y-length: 4px;
+        --chart-grid-x: false;
+        --chart-animation-duration: 1s;
+        --chart-legend-font-size: 12px;
+        --chart-legend-top: true;
+        --chart-border-color: #000000;
+        --chart-border-width: 4;   
+    }
+  </style>
+</head>
+<body style="margin: 0px; font-family: sans-serif; overflow: hidden; position: fixed;">
+    <jeep-linechart ctitle="Basic Line Chart" subtitle="test sub-title" xtitle="test for x axis" ytitle="test for y axis" 
+    data='{
+      "color": "#425cef",
+      "name": "Line 1",
+    "dataPoints":[
+    { "x": 14, "y": 450 },
+    { "x": 20, "y": 414 },
+    { "x": 30, "y": 520 },
+    { "x": 40, "y": 460 },
+    { "x": 50, "y": 450 },
+    { "x": 60, "y": 500 },
+    { "x": 70, "y": 480 },
+    { "x": 80, "y": 480 },
+    { "x": 90, "y": 410 },
+    { "x": 100, "y": 500 },
+    { "x": 110, "y": 480 },
+    { "x": 120, "y": 510 }]}'
+    animation cborder>
+  </jeep-linechart>
+</body>
+</html>
