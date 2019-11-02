@@ -1,0 +1,7 @@
+.app-colorpicker{
+  padding: 10px;
+}
+#button-color
+{
+  --color: black;  
+}

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, d as getElement } from './core-d4051af9.js';
+import { r as registerInstance, c as createEvent, h, H as Host, d as getElement } from './core-9cd05fb9.js';
 
 const JeepColorpicker = class {
     constructor(hostRef) {

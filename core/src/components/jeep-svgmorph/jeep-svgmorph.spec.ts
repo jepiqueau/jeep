@@ -1,7 +1,7 @@
 import { newSpecPage} from '@stencil/core/testing';
 import { JeepSvgmorph } from './jeep-svgmorph';
-import { StateProperties } from '../../global/interfaces';
-import { CubicBezier}  from '../../utils/interfaces';
+import { StateProperties } from '../../global/interfaces/jeep-svgmorph';
+import { CubicBezier}  from '../../global/interfaces/svggeom';
 
 const path1: string = "M100,100 H400 V400 H 100 V 100";
 const path2: string = "M 250,100 L 300,200 400,250 300,300 250,400 200,300 100,250 200,200 250,100"; 

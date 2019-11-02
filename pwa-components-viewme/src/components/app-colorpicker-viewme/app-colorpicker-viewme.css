@@ -1,0 +1,41 @@
+jeep-colorpicker {
+    --colorpicker-background-color: #242424;
+    --colorpicker-top: 20vh;
+    --colorpicker-left: 15vw;
+    --colorpicker-width: 80vmin;
+    --colorpicker-height: 60vmin;
+    --colorpicker-button-margin-top: 5vh;
+    --colorpicker-button-margin-left: 15vw;
+
+}
+:root {
+    --gcolorpicker-button-font-size: 24px;
+}
+ion-grid{
+    font-size: 24px;
+}
+
+@media screen and (max-width: 815px) {
+    :root {
+        --gcolorpicker-button-font-size: 20px;
+    }
+        ion-grid{
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    :root {
+        --gcolorpicker-button-font-size: 12px;
+    }
+    ion-grid{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 340px) {
+    :root {
+        --gcolorpicker-button-font-size: 10px;
+    }
+    ion-grid{
+        font-size: 10px;
+    }
+}

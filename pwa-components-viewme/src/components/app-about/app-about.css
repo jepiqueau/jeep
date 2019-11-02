@@ -1,0 +1,30 @@
+#about-div {
+    margin:auto;
+    width: 100%;
+    padding: 5% 1% 0;
+}
+.about-card {
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 1.rem;
+}
+.about-card-title {
+    --color: var(--theme-c2);
+    white-space: normal;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    
+}
+.about-card-subtitle {
+    white-space: normal;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    font-size: 1.2rem;
+
+}

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, d as getElement } from './core-d4051af9.js';
+import { r as registerInstance, h, H as Host, d as getElement } from './core-9cd05fb9.js';
 import { d as debounce, g as getCssPropertyFromString, a as getDim, c as convertCSSNumber, b as convertCSSBoolean } from './common-95557d02.js';
 
 const windowSize = (window) => {

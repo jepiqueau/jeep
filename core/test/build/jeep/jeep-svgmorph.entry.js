@@ -1,4 +1,4 @@
-import { r as registerInstance, h, d as getElement } from './core-d4051af9.js';
+import { r as registerInstance, h, d as getElement } from './core-9cd05fb9.js';
 
 class Point {
     constructor(x = 0, y = 0) {
