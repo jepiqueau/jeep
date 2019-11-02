@@ -11,13 +11,13 @@ This is a library of Stencil Web Components
 ### Script tag
 
 - [Publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages)
-- Put a script tag similar to this ```<script type="module" src="https://cdn.jsdelivr.net/npm/@jeep/component-library@0.0.1-alpha.1/dist/jeep/jeep.esm.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/@jeep/core@0.0.1/dist/jeep/jeep.js"></script>```
+- Put a script tag similar to this ```<script type="module" src="https://cdn.jsdelivr.net/npm/@jeepq/core@0.0.1-alpha.1/dist/jeep/jeep.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@jeepq/core@0.0.1-alpha.1/dist/jeep/jeep.js"></script>```
  in the head of your index.html
 - Then you can use the web component library anywhere in your template, JSX, html etc
 
 
 ### In a stencil-starter app
-- Run `npm install @jeep/core --save`
-- Add an import to the npm packages `import @jeep/core;`
+- Run `npm install @jeepq/core --save`
+- Add an import to the npm packages `import @jeepq/core;`
 - Then you can use the web component library anywhere in your template, JSX, html etc

@@ -1,6 +1,6 @@
 {
-  "name": "@jepiqueau/jeep-core",
-  "version": "0.0.1",
+  "name": "@jeepq/core",
+  "version": "0.0.1-alpha.0",
   "description": "Jeep Stencil Web Component Library",
   "keywords": [
     "jeep",
