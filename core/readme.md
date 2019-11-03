@@ -3,9 +3,9 @@
 # Jeep Stencil Components Library
 
 This is a library of Stencil Web Components including
- - jeep-colorpicker  select a color from a picker
- - jeep-linechart    draw a line chart
- - jeep-svgmorph     svg paths morphing
+ - `jeep-colorpicker`  select a color from a picker
+ - `jeep-linechart  `  draw a line chart
+ - `jeep-svgmorph   `  svg paths morphing
 
 
 ## Jeep Components Viewme
@@ -33,6 +33,7 @@ This is a library of Stencil Web Components including
 
 
 ### In a stencil-starter app
+
 - Run `npm install @jeepq/core --save`
 - Add an import to the npm packages `import @jeepq/core;`
 - Then you can use the web component library anywhere in your template, JSX, html etc
