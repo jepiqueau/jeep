@@ -1,7 +1,7 @@
 {
   "name": "@jeepq/react",
   "sideEffects": false,
-  "version": "0.0.1-alpha.1.4",
+  "version": "0.0.1-alpha.6",
   "description": "React specific wrapper for @jeepq/core",
   "repository": {
     "type": "git",
@@ -11,8 +11,7 @@
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf dist",
     "compile": "npm run tsc",
-    "tsc": "tsc -p .",
-    "rollup": "rollup -c"
+    "tsc": "tsc -p ."
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -31,7 +30,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@jeepq/core": "0.0.1-alpha.4"
+    "@jeepq/core": "0.0.1-alpha.6"
   },
   "peerDependencies": {
     "react": "^16.11.0",

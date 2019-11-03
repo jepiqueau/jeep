@@ -1,0 +1,44 @@
+{
+  "name": "react-colorpicker-app",
+  "version": "0.0.1-alpha.6",
+  "private": true,
+  "dependencies": {
+    "@jeepq/react": "0.0.1-alpha.6",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "^3.2.0"
+  },
+  "keywords": [
+    "React",
+    "stencil",
+    "web component",
+    "color",
+    "color picker"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "fsevents": "^2.1.0",
+    "lodash": "^4.17.15",
+    "typescript": "~3.6.4"
+  }
+}

@@ -5,7 +5,7 @@ export const config: Config = {
   namespace: 'Jeep',
   outputTargets: [
     reactOutputTarget({
-      componentCorePackage: '../../../core',
+      componentCorePackage: '@jeepq/core',
       proxiesFile: '../packages/react/src/components.ts',
     }),
     {
