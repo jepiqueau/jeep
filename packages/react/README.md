@@ -1,16 +1,23 @@
-# stencil-ds-react-template
+# Jeep React Component Library
 
-This is an example repo of building plugins.
+This is a library of React Web Component built on top of the Jeep Stencil Components library.
 
-## Step 1.
+The library includes the following React components:
 
-- Update the `package.json` to have the correct package name for this repo.
-- Replace `component-library` under `dependencies` with your core stencil package name.
+ - JeepColorpicker
+ - JeepLinechart
+ - JeepSvgmorph
 
-## Step 2.
 
-- Build your core stencil package.
+## Usage
+In your React project install @jeepq/react.
 
-## Step 3.
+```
+npm install --save @jeepq/react
+``` 
 
-- Run build on this package.
+and import the React Components you would like to use
+
+```
+import { JeepColorpicker, JeepLinechart, ... } from "@jeepq/react";
+```
