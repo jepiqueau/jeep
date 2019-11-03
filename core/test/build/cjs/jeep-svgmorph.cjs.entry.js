@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const core = require('./core-2a74ea97.js');
+const core = require('./core-0c8b2391.js');
 
 class Point {
     constructor(x = 0, y = 0) {
@@ -98,113 +98,6 @@ class Point {
     atDistancePoint(pt, distance) {
         let distPt = this.distance(pt).multNumber(distance);
         return this.addPoint(distPt);
-    }
-}
-class CubicBezierCurve {
-    constructor(p1 = new Point(), p2 = new Point(), p3 = new Point(), p4 = new Point()) {
-        this.P1 = p1;
-        this.P2 = p2;
-        this.P3 = p3;
-        this.P4 = p4;
-    }
-    onCurvePointAtTpos(t) {
-        let ret = new Point();
-        if (t < 0)
-            return null;
-        if (t > 1)
-            return null;
-        ret = this.P1.multNumber(Math.pow(1.0 - t, 3))
-            .addPoint(this.P2.multNumber(3 * t * Math.pow(1 - t, 2))
-            .addPoint(this.P3.multNumber(3 * (1.0 - t) * Math.pow(t, 2))
-            .addPoint(this.P4.multNumber(Math.pow(t, 3)))));
-        return ret;
-    }
-    getSegmentBox(pt0, pt1, pt2, pt3) {
-        let ret = {};
-        ret.bBox = {};
-        ret.bBox.minBox = new Point();
-        ret.bBox.maxBox = new Point();
-        ret.bPoints = [];
-        ret.bTValues = [];
-        let tvalues = new Array();
-        let bounds = [new Array(), new Array()];
-        let points = new Array();
-        let a;
-        let b;
-        let c;
-        let t;
-        let t1;
-        let t2;
-        let b2ac;
-        let sqrtb2ac;
-        for (let i = 0; i < 2; i++) {
-            if (i == 0) {
-                b = 6 * pt0.x - 12 * pt1.x + 6 * pt2.x;
-                a = -3 * pt0.x + 9 * pt1.x - 9 * pt2.x + 3 * pt3.x;
-                c = 3 * pt1.x - 3 * pt0.x;
-            }
-            else {
-                b = 6 * pt0.y - 12 * pt1.y + 6 * pt2.y;
-                a = -3 * pt0.y + 9 * pt1.y - 9 * pt2.y + 3 * pt3.y;
-                c = 3 * pt1.y - 3 * pt0.y;
-            }
-            if (Math.abs(a) < 1e-12) {
-                if (Math.abs(b) < 1e-12) {
-                    continue;
-                }
-                t = -c / b;
-                if (0 < t && t < 1) {
-                    tvalues.push(t);
-                }
-                continue;
-            }
-            b2ac = b * b - 4 * c * a;
-            sqrtb2ac = Math.sqrt(b2ac);
-            if (b2ac < 0) {
-                continue;
-            }
-            t1 = (-b + sqrtb2ac) / (2 * a);
-            if (0 < t1 && t1 < 1) {
-                tvalues.push(t1);
-            }
-            t2 = (-b - sqrtb2ac) / (2 * a);
-            if (0 < t2 && t2 < 1) {
-                tvalues.push(t2);
-            }
-        }
-        let x;
-        let y;
-        let j = tvalues.length;
-        let jlen = j;
-        let mt;
-        while (j--) {
-            t = tvalues[j];
-            mt = 1 - t;
-            x = (mt * mt * mt * pt0.x) + (3 * mt * mt * t * pt1.x) + (3 * mt * t * t * pt2.x) + (t * t * t * pt3.x);
-            bounds[0][j] = x;
-            y = (mt * mt * mt * pt0.y) + (3 * mt * mt * t * pt1.y) + (3 * mt * t * t * pt2.y) + (t * t * t * pt3.y);
-            bounds[1][j] = y;
-            let point = new Point();
-            point.x = x;
-            point.y = y;
-            points[j] = point;
-        }
-        tvalues[jlen] = 0;
-        tvalues[jlen + 1] = 1;
-        points[jlen] = pt0;
-        points[jlen + 1] = pt3;
-        bounds[0][jlen] = pt0.x;
-        bounds[1][jlen] = pt0.y;
-        bounds[0][jlen + 1] = pt3.x;
-        bounds[1][jlen + 1] = pt3.y;
-        tvalues.length = bounds[0].length = bounds[1].length = points.length = jlen + 2;
-        ret.bBox.minBox.x = Math.min.apply(null, bounds[0]);
-        ret.bBox.minBox.y = Math.min.apply(null, bounds[1]);
-        ret.bBox.maxBox.x = Math.max.apply(null, bounds[0]);
-        ret.bBox.maxBox.y = Math.max.apply(null, bounds[1]);
-        ret.bPoints = points;
-        ret.bTValues = tvalues;
-        return ret;
     }
 }
 class Matrix {
@@ -444,13 +337,6 @@ const maxSegmentPath = (cBPaths) => {
         }
     }
     return { idx: idMax, segMax: segMax };
-};
-const isRegularShape = (shape) => {
-    let ret = false;
-    let sideLength = Math.max(...shape.cLength);
-    if (Math.abs(sideLength * shape.cLength.length - shape.tLength) < 0.01)
-        ret = true;
-    return ret;
 };
 const splitCubicBezier = (cB, z) => {
     // check if cB are all on a line 
@@ -1118,7 +1004,6 @@ const JeepSvgmorph = class {
             animPath.setAttribute("keySplines", this.innerKeysplines);
         if (this._fillColor.length > 1 && !this._isUniqueColor) {
             let animFill = this._path.querySelector('#animFill');
-            ;
             // fill animation set values
             this._valuesFill = "";
             for (let i = 0; i < this._fillColor.length; i++) {
@@ -1179,7 +1064,7 @@ const JeepSvgmorph = class {
         "keysplines": ["parseKeysplinesProp"],
         "fill": ["parseFillProp"]
     }; }
-    static get style() { return ":host {\n    --height:500px;\n    --width:500px;\n    --top:30px;\n    --left:10px;\n}\n#morph-container {\n    position:relative;\n    left:0px;\n    top:0px;\n    width: 100%;\n    height:calc(var(--height) + var(--top));\n}\n#morph-svg-container {\n    position:relative;\n    left:var(--left);\n    top:var(--top);\n    width:var(--width);\n    height:var(--height);\n}\nsvg {\n    width: 100%;\n    height: 100%;\n}"; }
+    static get style() { return ":host{--height:500px;--width:500px;--top:30px;--left:10px}#morph-container{position:relative;left:0;top:0;width:100%;height:calc(var(--height) + var(--top))}#morph-svg-container{position:relative;left:var(--left);top:var(--top);width:var(--width);height:var(--height)}svg{width:100%;height:100%}"; }
 };
 
 exports.jeep_svgmorph = JeepSvgmorph;

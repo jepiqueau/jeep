@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host, d as getElement } from './core-783c3b4e.js';
-import { d as debounce, g as getCssPropertyFromString, a as getDim, c as convertCSSNumber, b as convertCSSBoolean } from './common-95557d02.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './core-fa39fbc1.js';
+import { d as debounce, g as getCssPropertyFromString, a as getDim, c as convertCSSNumber, b as convertCSSBoolean } from './common-b6b7dc41.js';
 
 const windowSize = (window) => {
     return {
@@ -50,24 +50,6 @@ const updateLine = (svg, id, pos1, pos2) => {
     lineEl.setAttributeNS(null, "x2", pos2.x.toString());
     lineEl.setAttributeNS(null, "y2", pos2.y.toString());
     return lineEl;
-};
-const createRect = (g, rect, options) => {
-    let opt = getSVGOptions(options);
-    let rectEl = createSVGElement("rect", g);
-    rectEl.setAttributeNS(null, "x", rect.left.toString());
-    rectEl.setAttributeNS(null, "y", rect.top.toString());
-    rectEl.setAttributeNS(null, "width", rect.width.toString());
-    rectEl.setAttributeNS(null, "height", rect.height.toString());
-    elementSVGOptions(opt, rectEl);
-    return rectEl;
-};
-const updateRect = (svg, id, rect) => {
-    let rectEl = svg.querySelector('#' + id);
-    rectEl.setAttributeNS(null, "x", rect.left.toString());
-    rectEl.setAttributeNS(null, "y", rect.top.toString());
-    rectEl.setAttributeNS(null, "width", rect.width.toString());
-    rectEl.setAttributeNS(null, "height", rect.height.toString());
-    return rectEl;
 };
 const createPolyline = (g, points, options) => {
     let opt = getSVGOptions(options);
@@ -178,7 +160,6 @@ const measureLegend = (svg, winWidth, names, colors, thicknesses, optLg) => {
     createLegendLines(gEl, names, colors, thicknesses, dLegend, winWidth, ypos, optLg);
     // calculate the legend lines BoundingClientRect
     dLegend.bBox = gEl.getBoundingClientRect();
-    ;
     // remove the legend lines   
     svg.removeChild(gEl);
     return dLegend;
@@ -416,7 +397,6 @@ const axisRange = (arr, axis, interval, zero) => {
             }
             else {
                 lenAxis.bottom = axisGetNumber(minAxis, interval, false, true);
-                ;
                 lenAxis.interval = axisGetNumber(maxAxis - minAxis, interval, true, false);
             }
             lenAxis.length = lenAxis.top - lenAxis.bottom;
@@ -781,7 +761,6 @@ const JeepLinechart = class {
             let textEl;
             if (!this._update) {
                 g = createSVGElement('g', this.svg);
-                ;
                 g.setAttributeNS(null, "id", "linechart-title");
             }
             else {
@@ -834,7 +813,6 @@ const JeepLinechart = class {
         let g;
         if (!this._update) {
             g = createSVGElement('g', this.svg);
-            ;
             g.setAttributeNS(this._xmlns, "id", "linechart-axes");
         }
         else {
@@ -1118,7 +1096,6 @@ const JeepLinechart = class {
         this._chartRect.height -= Math.floor(dLegend.bBox.height) + 10;
         if (!this._update) {
             g = createSVGElement('g', this.svg);
-            ;
             g.setAttributeNS(null, "id", "linechart-legend");
             createLegendLines(g, this._legendNames, this._legendColors, this._legendThicknesses, dLegend, this.w_width, rect.top, optLg);
         }
@@ -1141,7 +1118,6 @@ const JeepLinechart = class {
             let textEl;
             if (!this._update) {
                 g = createSVGElement('g', this.svg);
-                ;
                 g.setAttributeNS(null, "id", "linechart-ytitle");
             }
             else {
@@ -1179,7 +1155,6 @@ const JeepLinechart = class {
             let g;
             if (!this._update) {
                 g = createSVGElement('g', this.svg);
-                ;
                 g.setAttributeNS(null, "id", "linechart-xtitle");
             }
             else {
@@ -1440,8 +1415,7 @@ const JeepLinechart = class {
         "cborder": ["parseBorderProp"],
         "delay": ["parseDelayProp"]
     }; }
-    static get style() { return ":host {\n    --height:200px;\n    --width:300px;\n    --top:30px;\n    --left:10px;\n    --backgroundcolor: rgb(255, 255, 255);\n}\n#div-linechart-container {\n    position:relative;\n    left:0px;\n    top:0px;\n    width:100%;\n    height:calc(var(--height) + var(--top));\n    z-index: 1;\n\n}\n#div-linechart-chart {\n    position:relative;\n    left:var(--left);\n    top:var(--top);\n    width:var(--width);\n    height:var(--height);\n    background-color:var(--backgroundcolor);\n    z-index: 1;\n}\n.hidden {\n    visibility: hidden;\n}\n#div-error-message{\n    background-color:#f89393;\n    position: absolute;\n    top: 0;\n    left: 0;\n    margin: 0 auto;\n    width: 100%;\n    height:60px;\n    line-height:60px;\n    text-align:left;\n    padding-left:10px;\n    font-size:15px;\n    font-family:Verdana;\n}\n#p-error-message {\n    display:inline-block;\n    vertical-align:middle;\n    line-height:normal;        \n}"; }
+    static get style() { return ":host{--height:200px;--width:300px;--top:30px;--left:10px;--backgroundcolor:#fff}#div-linechart-container{position:relative;left:0;top:0;width:100%;height:calc(var(--height) + var(--top));z-index:1}#div-linechart-chart{position:relative;left:var(--left);top:var(--top);width:var(--width);height:var(--height);background-color:var(--backgroundcolor);z-index:1}.hidden{visibility:hidden}#div-error-message{background-color:#f89393;position:absolute;top:0;left:0;margin:0 auto;width:100%;height:60px;line-height:60px;text-align:left;padding-left:10px;font-size:15px;font-family:Verdana}#p-error-message{display:inline-block;vertical-align:middle;line-height:normal}"; }
 };
-;
 
 export { JeepLinechart as jeep_linechart };

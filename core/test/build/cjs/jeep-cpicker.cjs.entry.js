@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const core = require('./core-2a74ea97.js');
-const common = require('./common-022584c7.js');
+const core = require('./core-0c8b2391.js');
+const common = require('./common-dae654dd.js');
 
 // Color utility functions
 const initSelectedColor = (currentColor, currentOpacity) => {
@@ -275,40 +275,6 @@ const fillColor = (value) => {
         color.hsb = hextoHSB(color.hex.hex, color.opacity.toString());
     }
     return color;
-};
-const printColor = () => {
-    let color = undefined.initSelectedColor();
-    console.log('hex %s rgb %s hsb %s hsl %s', color.hex.hexa, color.rgb.rgba, color.hsb.hsba, color.hsl.hsla);
-};
-const randomColor = () => {
-    var start = 40;
-    var end = 255;
-    var color = "#";
-    for (var i = 0; i < 3; i++) {
-        let a = (Math.floor(Math.random() * (end - start + 1)) + start).toString(16);
-        if (a.length < 2)
-            a = `0${a}`;
-        color += a;
-    }
-    return color;
-};
-const randomHexColor = (start, end) => {
-    let hsb = {};
-    hsb.h = randomHue(start, end);
-    hsb.s = randomSB();
-    hsb.b = randomSB();
-    hsb.hsb = "HSB(" + hsb.h.toFixed(0) + "," + hsb.s.toFixed(0) + "%," + hsb.b.toFixed(0) + "%)";
-    let rgb = HSBtoRGB(hsb);
-    let hex = RGBtoHEX(rgb);
-    return hex.hex;
-};
-const randomHue = (start, end) => {
-    return Math.floor(Math.random() * (end - start + 1)) + start;
-};
-const randomSB = () => {
-    let start = 50;
-    let end = 100;
-    return Math.floor(Math.random() * (end - start + 1)) + start;
 };
 
 const JeepCpicker = class {
@@ -899,7 +865,7 @@ const JeepCpicker = class {
         "hideheader": ["parseHideHeaderProp"],
         "hideopacity": ["parseHideOpacityProp"]
     }; }
-    static get style() { return "/**\n *Local custom CSS variables\n */\n :host {\n  --cpicker-top: 10vh;\n  --cpicker-left: 10vw;\n  --cpicker-width: 70vmin;\n  --cpicker-height: 50vmin;\n  --cpicker-background-color: #242424;\n}\n\n.cpicker-container {\n  position: absolute; \n  top: 0; \n  bottom: 0; \n  right: 0; \n  left: 0; \n  overflow: hidden;\n}\n.cpicker-wrapper {\n  margin: 0;\n  padding: 0;\n  position: relative;\n  z-index: 1000;        \n}    \n#cpickerBackground {\nfill: var(--cpicker-background-color);\n}\n#cpickerWhite, #cpickerSliderWhite {\nfill: #dddddd;\nfill-opacity: 0.4;\n}\n.pattern-cube {\nfill: #022460;  \nfill-opacity: 0.4;\n}\n\n\n\n\n\n\n/*\n#cpickerSliderOpacity {\nfill: url(#opacitySliderGradient);\n}\n#cpickerSliderHueColor {\nfill: url(#colorSliderGradient);\n}\n#cpickerTransparency, #cpickerTransparencySlider {\nfill: url(#pattern-transparency);\n}\n#cpickerGradientS {\nfill: url(#cpickerHue);\n}\n#cpickerGradientB {\nfill: url(#cpickerBrightness);\n}\n*/"; }
+    static get style() { return ":host{--cpicker-top:10vh;--cpicker-left:10vw;--cpicker-width:70vmin;--cpicker-height:50vmin;--cpicker-background-color:#242424}.cpicker-container{position:absolute;top:0;bottom:0;right:0;left:0;overflow:hidden}.cpicker-wrapper{margin:0;padding:0;position:relative;z-index:1000}#cpickerBackground{fill:var(--cpicker-background-color)}#cpickerSliderWhite,#cpickerWhite{fill:#ddd;fill-opacity:.4}.pattern-cube{fill:#022460;fill-opacity:.4}"; }
 };
 
 exports.jeep_cpicker = JeepCpicker;
