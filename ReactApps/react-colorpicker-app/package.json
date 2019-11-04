@@ -1,9 +1,9 @@
 {
   "name": "react-colorpicker-app",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.8",
   "private": true,
   "dependencies": {
-    "@jeepq/react": "0.0.1-alpha.7",
+    "@jeepq/react": "0.0.1-alpha.8",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "^3.2.0"
@@ -16,6 +16,7 @@
     "color picker"
   ],
   "scripts": {
+    "update": "npm install --save @jeepq/react@latest",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

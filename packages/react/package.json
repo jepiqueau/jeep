@@ -1,13 +1,21 @@
 {
   "name": "@jeepq/react",
   "sideEffects": false,
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "React specific wrapper for @jeepq/core",
+  "keywords": [
+    "jeep",
+    "react",
+    "web component",
+    "web component library"
+  ],
   "scripts": {
+    "update": "npm install --save @jeepq/core@latest",
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf dist",
     "compile": "npm run tsc",
-    "tsc": "tsc -p ."
+    "tsc": "tsc -p .",
+    "deploy": "npm run build && npm publish --access public"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -26,7 +34,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@jeepq/core": "0.0.1-alpha.7"
+    "@jeepq/core": "0.0.1-alpha.8"
   },
   "peerDependencies": {
     "react": "^16.11.0",

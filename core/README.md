@@ -3,9 +3,9 @@
 # Jeep Stencil Components Library
 
 This is a library of Stencil Web Components including
- - `jeep-colorpicker`  select a color from a picker
- - `jeep-linechart  `  draw a line chart
- - `jeep-svgmorph   `  svg paths morphing
+ - [jeep-colorpicker](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-colorpicker/readme.md)
+ - [jeep-linechart  ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-linechart/readme.md)
+ - [jeep-svgmorph   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-svgmorph/readme.md)
 
 
 ## Jeep Components Viewme
