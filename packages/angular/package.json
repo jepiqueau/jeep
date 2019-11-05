@@ -2,6 +2,12 @@
   "name": "@jeepq/angular",
   "version": "0.0.1-alpha.10",
   "description": "Angular specific wrapper for @jeepq/core",
+  "keywords": [
+    "jeep",
+    "angular",
+    "web component",
+    "web component library"
+  ],
   "scripts": {
     "update": "npm install --save @jeepq/core@latest",
     "build": "npm run build.ng",

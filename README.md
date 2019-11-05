@@ -2,9 +2,11 @@
 
 `Jeep` is an open source development repository including:
 
- - a Stencil Web components library
- - a ViewMe PWA demonstrating each component of the library
- - applications in several frameworks (Ionic, React, Vue) helping in the usage of the library in those frameworks
+ - a Stencil Web components library ```@jeepq/core```
+ - an Angular Web components library ```@jeepq/angular``` wrapped from ```@jeep/core```
+ - a React Web components Library ```@jeepq/react``` wrapped from ```@jeep/core```
+ - a ViewMe PWA demonstrating each component of the ```@jeepq/core``` library
+ - applications in several frameworks (Ionic, React, Vue) helping in the usage of these libraries in those frameworks
 
 
 ### Packages
