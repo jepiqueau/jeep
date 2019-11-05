@@ -57,4 +57,4 @@ Go to the different application examples
 
 #### PWA app
 
-- [Jeep Viewme App](https://github.com/jepiqueau/jeep/tree/master/pwa-components-app)
+- [Jeep Viewme App] (https://github.com/jepiqueau/jeep/tree/master/pwa-components-app)

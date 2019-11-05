@@ -40,4 +40,4 @@ Applications will come in future releases.
 
 #### PWA app
 
-- [Jeep Viewme App](https://github.com/jepiqueau/jeep/tree/master/pwa-components-app)
+- [Jeep Viewme App] (https://github.com/jepiqueau/jeep/tree/master/pwa-components-app)
