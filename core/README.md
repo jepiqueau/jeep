@@ -37,3 +37,24 @@ This is a library of Stencil Web Components including
 - Run `npm install @jeepq/core --save`
 - Add an import to the npm packages `import @jeepq/core;`
 - Then you can use the web component library anywhere in your template, JSX, html etc
+
+### For other Frameworks
+Go to the different application examples
+
+#### @Ionic/Angular app
+- [test-angular-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicAngularApps/test-angular-component-lib)
+
+
+#### @Ionic/React app
+
+- [test-react-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicReactApps/test-react-component-lib)
+
+#### Vue app
+
+#### React app
+
+- [react-colorpicker-app] (https://github.com/jepiqueau/jeep/tree/master/ReactApps/react-colorpicker-app)
+
+#### PWA app
+
+- [Jeep Viewme App](https://github.com/jepiqueau/jeep/tree/master/pwa-components-app)

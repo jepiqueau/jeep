@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Color-Picker Test
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <jeep-colorpicker color={{propColor}} opacity={{propOpacity}} buttons="[Color,V,X]"></jeep-colorpicker>
+    <ng-template [ngIf]="isColor">
+      <ion-grid>
+        <ion-row>
+          <div style="width:50px;height:30px;border:1px solid black" [style.background-color]=color.hex.hex [style.opacity]=color.opacity></div>     
+        </ion-row>
+        <ion-row>
+          <ion-col col-5>{{color.hex.hex}}</ion-col>
+          <ion-col col-7>{{color.opacity}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-5>{{color.rgb.rgb}}</ion-col>
+          <ion-col col-7>{{color.rgb.rgba}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-5>{{color.hsl.hsl}}</ion-col>
+          <ion-col col-7>{{color.hsl.hsla}}</ion-col>
+        </ion-row>        
+      </ion-grid>
+    </ng-template>
+
+</ion-content>
+
+

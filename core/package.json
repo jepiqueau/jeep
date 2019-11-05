@@ -1,6 +1,6 @@
 {
   "name": "@jeepq/core",
-  "version": "0.0.1-alpha.8",
+  "version": "0.0.1-alpha.10",
   "description": "Jeep Stencil Web Component Library",
   "keywords": [
     "jeep",
@@ -28,6 +28,7 @@
     "deploy": "npm run build && npm publish --access public"
   },
   "devDependencies": {
+    "@stencil/angular-output-target": "0.0.1",
     "@stencil/core": "^1.7.5",
     "@stencil/react-output-target": "0.0.1",
     "@types/jest": "24.0.21",
