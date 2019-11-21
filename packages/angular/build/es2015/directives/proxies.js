@@ -140,6 +140,39 @@ if (false) {
 }
 proxyMethods(JeepCpicker, ['init', 'getStateProperties', 'getWrapperCssVariables', 'calcH', 'calcS', 'calcB', 'calcO']);
 proxyInputs(JeepCpicker, ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity']);
+export class JeepFullscreen {
+    /**
+     * @param {?} c
+     * @param {?} r
+     */
+    constructor(c, r) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepFullscreenRequest', 'jeepFullscreenExit', 'jeepFullscreenChange']);
+    }
+}
+JeepFullscreen.decorators = [
+    { type: Component, args: [{ selector: 'jeep-fullscreen', changeDetection: 0, template: '<ng-content></ng-content>' },] },
+];
+/** @nocollapse */
+JeepFullscreen.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+if (false) {
+    /** @type {?} */
+    JeepFullscreen.prototype.jeepFullscreenRequest;
+    /** @type {?} */
+    JeepFullscreen.prototype.jeepFullscreenExit;
+    /** @type {?} */
+    JeepFullscreen.prototype.jeepFullscreenChange;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepFullscreen.prototype.el;
+}
+proxyMethods(JeepFullscreen, ['init', 'setFullscreen', 'setJeepFullscreenVisibility', 'fullscreenRequest', 'fullscreenExit', 'isFullscreen']);
 export class JeepLinechart {
     /**
      * @param {?} c
@@ -167,6 +200,172 @@ if (false) {
 }
 proxyMethods(JeepLinechart, ['init', 'getStatus', 'renderChart', 'getWindowSize', 'getCssProperties']);
 proxyInputs(JeepLinechart, ['animation', 'cborder', 'cstyle', 'ctitle', 'data', 'delay', 'subtitle', 'xtitle', 'ytitle']);
+export class JeepNavigation {
+    /**
+     * @param {?} c
+     * @param {?} r
+     */
+    constructor(c, r) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepNavigationPrev', 'jeepNavigationNext']);
+    }
+}
+JeepNavigation.decorators = [
+    { type: Component, args: [{ selector: 'jeep-navigation', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['name'] },] },
+];
+/** @nocollapse */
+JeepNavigation.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+if (false) {
+    /** @type {?} */
+    JeepNavigation.prototype.jeepNavigationPrev;
+    /** @type {?} */
+    JeepNavigation.prototype.jeepNavigationNext;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepNavigation.prototype.el;
+}
+proxyMethods(JeepNavigation, ['init', 'setNavigation', 'setJeepNavigationVisibility', 'setJeepNavigationPrevDisabled', 'setJeepNavigationNextDisabled', 'getJeepNavigationIconFamily']);
+proxyInputs(JeepNavigation, ['name']);
+export class JeepPagination {
+    /**
+     * @param {?} c
+     * @param {?} r
+     */
+    constructor(c, r) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepPaginationIndex']);
+    }
+}
+JeepPagination.decorators = [
+    { type: Component, args: [{ selector: 'jeep-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['clickable', 'direction', 'ndisplay'] },] },
+];
+/** @nocollapse */
+JeepPagination.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+if (false) {
+    /** @type {?} */
+    JeepPagination.prototype.jeepPaginationIndex;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepPagination.prototype.el;
+}
+proxyMethods(JeepPagination, ['init', 'setJeepPaginationVisibility', 'setJeepPaginationSlidesNumber', 'setJeepPaginationActiveIndex', 'getJeepPaginationBulletNumber']);
+proxyInputs(JeepPagination, ['clickable', 'direction', 'ndisplay']);
+export class JeepPlayControls {
+    /**
+     * @param {?} c
+     * @param {?} r
+     */
+    constructor(c, r) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepPlayControlsIsBeginning', 'jeepPlayControlsIsEnd', 'jeepPlayControlsCurrentIndex', 'jeepPlayControlsAutoplayStart', 'jeepPlayControlsAutoplayStop', 'jeepPlayControlsAutoplayPause', 'jeepPlayControlsAutoplaySkipBackward', 'jeepPlayControlsAutoplaySkipForward']);
+    }
+}
+JeepPlayControls.decorators = [
+    { type: Component, args: [{ selector: 'jeep-play-controls', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['duration', 'fromslide', 'nslides', 'toslide'] },] },
+];
+/** @nocollapse */
+JeepPlayControls.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+if (false) {
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsIsBeginning;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsIsEnd;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsCurrentIndex;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsAutoplayStart;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsAutoplayStop;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsAutoplayPause;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsAutoplaySkipBackward;
+    /** @type {?} */
+    JeepPlayControls.prototype.jeepPlayControlsAutoplaySkipForward;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepPlayControls.prototype.el;
+}
+proxyMethods(JeepPlayControls, ['init', 'setPlayControls', 'setJeepPlayControlsVisibility', 'setJeepPlayControlsSkipBackwardDisabled', 'setJeepPlayControlsSkipForwardDisabled', 'getJeepPlayControlsDuration', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'isPlaying', 'getCurrentIndex', 'setActiveIndexAndPlay', 'setCurrentIndex']);
+proxyInputs(JeepPlayControls, ['duration', 'fromslide', 'nslides', 'toslide']);
+export class JeepSlide {
+    /**
+     * @param {?} c
+     * @param {?} r
+     */
+    constructor(c, r) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepSlideDidLoad']);
+    }
+}
+JeepSlide.decorators = [
+    { type: Component, args: [{ selector: 'jeep-slide', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['cstyle', 'stitle', 'subtitle'] },] },
+];
+/** @nocollapse */
+JeepSlide.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+if (false) {
+    /** @type {?} */
+    JeepSlide.prototype.jeepSlideDidLoad;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepSlide.prototype.el;
+}
+proxyMethods(JeepSlide, ['init', 'setSlide']);
+proxyInputs(JeepSlide, ['cstyle', 'stitle', 'subtitle']);
+export class JeepSlides {
+    /**
+     * @param {?} c
+     * @param {?} r
+     */
+    constructor(c, r) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepSlidesHeaderVisibility']);
+    }
+}
+JeepSlides.decorators = [
+    { type: Component, args: [{ selector: 'jeep-slides', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['options'] },] },
+];
+/** @nocollapse */
+JeepSlides.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef }
+];
+if (false) {
+    /** @type {?} */
+    JeepSlides.prototype.jeepSlidesHeaderVisibility;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepSlides.prototype.el;
+}
+proxyMethods(JeepSlides, ['init', 'setSlides', 'getActiveSlideIndex']);
+proxyInputs(JeepSlides, ['options']);
 export class JeepSvgmorph {
     /**
      * @param {?} c

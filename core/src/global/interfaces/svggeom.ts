@@ -1,9 +1,9 @@
-import { Point } from '../../utils/geom-maths';
+import { MPoint } from '../../utils/geom-maths';
 export interface CubicBezier {
     index: number;
     cBz: string;
     oriCBz: string;
-    lPoint: Point;
+    lPoint: MPoint;
     cType: string;
     cLength: Array<number>;
     tLength: number;
@@ -11,10 +11,10 @@ export interface CubicBezier {
 }
 
 export interface CubicBezierSplitCurves {
-    C1: Array<Point>;
-    C2: Array<Point>;
+    C1: Array<MPoint>;
+    C2: Array<MPoint>;
 }
 export interface BoundingBox {
-    minBox:Point;
-    maxBox:Point;
+    minBox:MPoint;
+    maxBox:MPoint;
 }

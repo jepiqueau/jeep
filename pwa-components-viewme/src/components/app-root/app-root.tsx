@@ -19,6 +19,8 @@ export class AppRoot {
           <ion-route url="/linechart/viewme/:type" component="app-linechart-viewme" />
           <ion-route url="/svgmorph" component="app-svgmorph" />
           <ion-route url="/svgmorph/viewme/:type" component="app-svgmorph-viewme" />
+          <ion-route url="/slides" component="app-slides" />
+          <ion-route url="/slides/viewme/:type" component="app-slides-viewme" />
         </ion-router>
         <ion-nav />
       </ion-app>

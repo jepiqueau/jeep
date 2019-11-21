@@ -1,5 +1,6 @@
 import { Point, Rect } from '../global/interfaces/geom';
 import { Legend, NearestPoint, AxisLength, DataPoint, DataSet, SVGOptions, Anim } from '../global/interfaces/jeep-linechart';
+import { getBoundingClientRect } from './common'; 
 const xmlns:string = "http://www.w3.org/2000/svg";
 
 export const createSVGElement = (eltype:string,parent?:HTMLElement | SVGElement | Element): Element => {
@@ -204,15 +205,6 @@ export const measureText = async (svg:Element,label:string,opt:SVGOptions,mockFu
     let bb: ClientRect = await getBCR(textEl);
     svg.removeChild(textEl);
     return bb;
-}
-export const getBoundingClientRect = (el:Element,delay:number): Promise<ClientRect> => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            let rectBB:ClientRect;
-            rectBB = el.getBoundingClientRect();
-            resolve(rectBB);
-        },delay);    
-    });
 }
 export const getSVGOptions = (options?:SVGOptions): SVGOptions => {
     let anchor:Array<string> = ["start","middle","end"];

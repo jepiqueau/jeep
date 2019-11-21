@@ -21,6 +21,10 @@ export namespace Components {
     'type': string;
   }
   interface AppRoot {}
+  interface AppSlides {}
+  interface AppSlidesViewme {
+    'type': string;
+  }
   interface AppSvgmorph {}
   interface AppSvgmorphViewme {
     'type': string;
@@ -72,6 +76,18 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLAppSlidesElement extends Components.AppSlides, HTMLStencilElement {}
+  var HTMLAppSlidesElement: {
+    prototype: HTMLAppSlidesElement;
+    new (): HTMLAppSlidesElement;
+  };
+
+  interface HTMLAppSlidesViewmeElement extends Components.AppSlidesViewme, HTMLStencilElement {}
+  var HTMLAppSlidesViewmeElement: {
+    prototype: HTMLAppSlidesViewmeElement;
+    new (): HTMLAppSlidesViewmeElement;
+  };
+
   interface HTMLAppSvgmorphElement extends Components.AppSvgmorph, HTMLStencilElement {}
   var HTMLAppSvgmorphElement: {
     prototype: HTMLAppSvgmorphElement;
@@ -91,6 +107,8 @@ declare global {
     'app-linechart': HTMLAppLinechartElement;
     'app-linechart-viewme': HTMLAppLinechartViewmeElement;
     'app-root': HTMLAppRootElement;
+    'app-slides': HTMLAppSlidesElement;
+    'app-slides-viewme': HTMLAppSlidesViewmeElement;
     'app-svgmorph': HTMLAppSvgmorphElement;
     'app-svgmorph-viewme': HTMLAppSvgmorphViewmeElement;
   }
@@ -108,6 +126,10 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface AppRoot {}
+  interface AppSlides {}
+  interface AppSlidesViewme {
+    'type'?: string;
+  }
   interface AppSvgmorph {}
   interface AppSvgmorphViewme {
     'type'?: string;
@@ -121,6 +143,8 @@ declare namespace LocalJSX {
     'app-linechart': AppLinechart;
     'app-linechart-viewme': AppLinechartViewme;
     'app-root': AppRoot;
+    'app-slides': AppSlides;
+    'app-slides-viewme': AppSlidesViewme;
     'app-svgmorph': AppSvgmorph;
     'app-svgmorph-viewme': AppSvgmorphViewme;
   }
@@ -139,6 +163,8 @@ declare module "@stencil/core" {
       'app-linechart': LocalJSX.AppLinechart & JSXBase.HTMLAttributes<HTMLAppLinechartElement>;
       'app-linechart-viewme': LocalJSX.AppLinechartViewme & JSXBase.HTMLAttributes<HTMLAppLinechartViewmeElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'app-slides': LocalJSX.AppSlides & JSXBase.HTMLAttributes<HTMLAppSlidesElement>;
+      'app-slides-viewme': LocalJSX.AppSlidesViewme & JSXBase.HTMLAttributes<HTMLAppSlidesViewmeElement>;
       'app-svgmorph': LocalJSX.AppSvgmorph & JSXBase.HTMLAttributes<HTMLAppSvgmorphElement>;
       'app-svgmorph-viewme': LocalJSX.AppSvgmorphViewme & JSXBase.HTMLAttributes<HTMLAppSvgmorphViewmeElement>;
     }

@@ -6,7 +6,8 @@ import { windowSize } from '../../utils/windowutils';
 import { createSVGElement, createMarker, createText, updateText, textScale,
     createLine, updateLine, axisRange, axisConvertY, measureLegend, createLegendLines,
     removeChilds, axisConvertX, createPolyline, updatePolyline, createAnimation,
-    getTotalLength, createLineLabel, getNearest, getBoundingClientRect} from '../../utils/chart-svgelements';
+    getTotalLength, createLineLabel, getNearest} from '../../utils/chart-svgelements';
+import { getBoundingClientRect } from '../../utils/common';
   
 
 
@@ -323,7 +324,7 @@ import { createSVGElement, createMarker, createText, updateText, textScale,
         this._prop.bdWidth = this._setPropertyValue('--chart-border-width',this.window.getComputedStyle(this.root).getPropertyValue('--chart-border-width'));
         // reading instance css properties if any
         if(this.innerStyle !=null) {
-          const propInstance:any = getCssPropertyFromString(this.innerStyle);
+          const propInstance:any = await getCssPropertyFromString(this.innerStyle);
           if(propInstance != null) {
             this._prop.leftPlot =  propInstance.left ? propInstance.left : this._prop.leftPlot;           
             this._prop.topPlot =  propInstance.top ? propInstance.top : this._prop.topPlot;          

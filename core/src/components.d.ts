@@ -22,6 +22,10 @@ import {
   Rect,
 } from './global/interfaces/geom';
 import {
+  HeaderVisibility,
+  PaginationIndex,
+} from './global/interfaces/jeep-slides';
+import {
   StateProperties as StateProperties1,
 } from './global/interfaces/jeep-svgmorph';
 import {
@@ -121,6 +125,32 @@ export namespace Components {
     */
     'opacity': string;
   }
+  interface JeepFullscreen {
+    /**
+    * Exit Fullscreen
+    */
+    'fullscreenExit': () => Promise<void>;
+    /**
+    * Request Fullscreen
+    */
+    'fullscreenRequest': (elem: any) => Promise<void>;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * Is Fullscreen
+    */
+    'isFullscreen': () => Promise<boolean>;
+    /**
+    * Set the Fullscreen component.
+    */
+    'setFullscreen': () => Promise<void>;
+    /**
+    * Set the Fullscreen Visibility (visible/hidden)
+    */
+    'setJeepFullscreenVisibility': (state: any) => Promise<void>;
+  }
   interface JeepLinechart {
     'animation': boolean;
     'cborder': boolean;
@@ -136,6 +166,180 @@ export namespace Components {
     'subtitle': string;
     'xtitle': string;
     'ytitle': string;
+  }
+  interface JeepNavigation {
+    /**
+    * Get icon name
+    */
+    'getJeepNavigationIconFamily': () => Promise<string>;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * The navigation icon name must be "arrow-circle" or "arrow-round"
+    */
+    'name': string;
+    /**
+    * Set the Navigation next button to enable/disable
+    */
+    'setJeepNavigationNextDisabled': (state: any) => Promise<void>;
+    /**
+    * Set the Navigation previous button to enable/disable
+    */
+    'setJeepNavigationPrevDisabled': (state: any) => Promise<void>;
+    /**
+    * Set the Navigation Visibility (visible/hidden)
+    */
+    'setJeepNavigationVisibility': (state: any) => Promise<void>;
+    /**
+    * Set the navigation component.
+    */
+    'setNavigation': () => Promise<void>;
+  }
+  interface JeepPagination {
+    /**
+    * The pagination clickable option
+    */
+    'clickable': boolean;
+    /**
+    * The pagination direction
+    */
+    'direction': string;
+    /**
+    * Get the Pagination Number of bullets displayed
+    */
+    'getJeepPaginationBulletNumber': () => Promise<number>;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * The pagination number of items display
+    */
+    'ndisplay': number;
+    /**
+    * Set the Pagination Active Index
+    */
+    'setJeepPaginationActiveIndex': (state: any) => Promise<void>;
+    /**
+    * Set the Pagination Slides Number
+    */
+    'setJeepPaginationSlidesNumber': (state: any) => Promise<void>;
+    /**
+    * Set the Pagination Visibility (visible/hidden)
+    */
+    'setJeepPaginationVisibility': (state: any) => Promise<void>;
+  }
+  interface JeepPlayControls {
+    /**
+    * Pause autoplay
+    */
+    'autoplayPause': () => Promise<void>;
+    /**
+    * Start autoplay
+    */
+    'autoplayStart': () => Promise<void>;
+    /**
+    * Stop autoplay
+    */
+    'autoplayStop': () => Promise<void>;
+    /**
+    * The play controls duration time time to stay on same slide
+    */
+    'duration': number;
+    /**
+    * The play controls from slides number The first slide index is 0
+    */
+    'fromslide': number;
+    /**
+    * Get PlayControls Current Index
+    */
+    'getCurrentIndex': () => Promise<number>;
+    /**
+    * Get the PlayControls duration
+    */
+    'getJeepPlayControlsDuration': () => Promise<number>;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * Is Playing
+    */
+    'isPlaying': () => Promise<boolean>;
+    /**
+    * The play controls slides number
+    */
+    'nslides': number;
+    /**
+    * Set PlayControls Active Index
+    */
+    'setActiveIndexAndPlay': (index: number) => Promise<void>;
+    /**
+    * Set PlayControls Current Index
+    */
+    'setCurrentIndex': (index: number, notemit?: boolean) => Promise<void>;
+    /**
+    * Set the PlayControls skipbackward icon to enable/disable
+    */
+    'setJeepPlayControlsSkipBackwardDisabled': (state: any) => Promise<void>;
+    /**
+    * Set the PlayControls skipforward icon to enable/disable
+    */
+    'setJeepPlayControlsSkipForwardDisabled': (state: any) => Promise<void>;
+    /**
+    * Set the PlayControls Visibility (visible/hidden)
+    */
+    'setJeepPlayControlsVisibility': (state: any) => Promise<void>;
+    /**
+    * Set the PlayControls component.
+    */
+    'setPlayControls': () => Promise<void>;
+    /**
+    * The play controls to slides number The last slide index is slides.length - 1
+    */
+    'toslide': number;
+  }
+  interface JeepSlide {
+    /**
+    * The slide subtitle
+    */
+    'cstyle': string;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * Set the slide component.
+    */
+    'setSlide': () => Promise<void>;
+    /**
+    * The slide title
+    */
+    'stitle': string;
+    /**
+    * The slide subtitle
+    */
+    'subtitle': string;
+  }
+  interface JeepSlides {
+    /**
+    * Get Active Slide Index.
+    */
+    'getActiveSlideIndex': () => Promise<number>;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * The slides options
+    */
+    'options': string;
+    /**
+    * Set the slides.
+    */
+    'setSlides': () => Promise<void>;
   }
   interface JeepSvgmorph {
     /**
@@ -198,10 +402,46 @@ declare global {
     new (): HTMLJeepCpickerElement;
   };
 
+  interface HTMLJeepFullscreenElement extends Components.JeepFullscreen, HTMLStencilElement {}
+  var HTMLJeepFullscreenElement: {
+    prototype: HTMLJeepFullscreenElement;
+    new (): HTMLJeepFullscreenElement;
+  };
+
   interface HTMLJeepLinechartElement extends Components.JeepLinechart, HTMLStencilElement {}
   var HTMLJeepLinechartElement: {
     prototype: HTMLJeepLinechartElement;
     new (): HTMLJeepLinechartElement;
+  };
+
+  interface HTMLJeepNavigationElement extends Components.JeepNavigation, HTMLStencilElement {}
+  var HTMLJeepNavigationElement: {
+    prototype: HTMLJeepNavigationElement;
+    new (): HTMLJeepNavigationElement;
+  };
+
+  interface HTMLJeepPaginationElement extends Components.JeepPagination, HTMLStencilElement {}
+  var HTMLJeepPaginationElement: {
+    prototype: HTMLJeepPaginationElement;
+    new (): HTMLJeepPaginationElement;
+  };
+
+  interface HTMLJeepPlayControlsElement extends Components.JeepPlayControls, HTMLStencilElement {}
+  var HTMLJeepPlayControlsElement: {
+    prototype: HTMLJeepPlayControlsElement;
+    new (): HTMLJeepPlayControlsElement;
+  };
+
+  interface HTMLJeepSlideElement extends Components.JeepSlide, HTMLStencilElement {}
+  var HTMLJeepSlideElement: {
+    prototype: HTMLJeepSlideElement;
+    new (): HTMLJeepSlideElement;
+  };
+
+  interface HTMLJeepSlidesElement extends Components.JeepSlides, HTMLStencilElement {}
+  var HTMLJeepSlidesElement: {
+    prototype: HTMLJeepSlidesElement;
+    new (): HTMLJeepSlidesElement;
   };
 
   interface HTMLJeepSvgmorphElement extends Components.JeepSvgmorph, HTMLStencilElement {}
@@ -212,7 +452,13 @@ declare global {
   interface HTMLElementTagNameMap {
     'jeep-colorpicker': HTMLJeepColorpickerElement;
     'jeep-cpicker': HTMLJeepCpickerElement;
+    'jeep-fullscreen': HTMLJeepFullscreenElement;
     'jeep-linechart': HTMLJeepLinechartElement;
+    'jeep-navigation': HTMLJeepNavigationElement;
+    'jeep-pagination': HTMLJeepPaginationElement;
+    'jeep-play-controls': HTMLJeepPlayControlsElement;
+    'jeep-slide': HTMLJeepSlideElement;
+    'jeep-slides': HTMLJeepSlidesElement;
     'jeep-svgmorph': HTMLJeepSvgmorphElement;
   }
 }
@@ -276,6 +522,20 @@ declare namespace LocalJSX {
     */
     'opacity'?: string;
   }
+  interface JeepFullscreen {
+    /**
+    * Emitted when Fullscreen Change
+    */
+    'onJeepFullscreenChange'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when Fullscreen Exit
+    */
+    'onJeepFullscreenExit'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when Fullscreen Requested
+    */
+    'onJeepFullscreenRequest'?: (event: CustomEvent<void>) => void;
+  }
   interface JeepLinechart {
     'animation'?: boolean;
     'cborder'?: boolean;
@@ -286,6 +546,116 @@ declare namespace LocalJSX {
     'subtitle'?: string;
     'xtitle'?: string;
     'ytitle'?: string;
+  }
+  interface JeepNavigation {
+    /**
+    * The navigation icon name must be "arrow-circle" or "arrow-round"
+    */
+    'name'?: string;
+    /**
+    * Emitted when the next button was clicked
+    */
+    'onJeepNavigationNext'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the previous button was clicked
+    */
+    'onJeepNavigationPrev'?: (event: CustomEvent<void>) => void;
+  }
+  interface JeepPagination {
+    /**
+    * The pagination clickable option
+    */
+    'clickable'?: boolean;
+    /**
+    * The pagination direction
+    */
+    'direction'?: string;
+    /**
+    * The pagination number of items display
+    */
+    'ndisplay'?: number;
+    /**
+    * Emitted when a pagination bullet was clicked
+    */
+    'onJeepPaginationIndex'?: (event: CustomEvent<PaginationIndex>) => void;
+  }
+  interface JeepPlayControls {
+    /**
+    * The play controls duration time time to stay on same slide
+    */
+    'duration'?: number;
+    /**
+    * The play controls from slides number The first slide index is 0
+    */
+    'fromslide'?: number;
+    /**
+    * The play controls slides number
+    */
+    'nslides'?: number;
+    /**
+    * Emitted when autoplay pause button clicked
+    */
+    'onJeepPlayControlsAutoplayPause'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when autoplay skip backward button clicked
+    */
+    'onJeepPlayControlsAutoplaySkipBackward'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when autoplay skip forward button clicked
+    */
+    'onJeepPlayControlsAutoplaySkipForward'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when autoplay start button clicked
+    */
+    'onJeepPlayControlsAutoplayStart'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when autoplay stop button clicked
+    */
+    'onJeepPlayControlsAutoplayStop'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the current index change
+    */
+    'onJeepPlayControlsCurrentIndex'?: (event: CustomEvent<{index:string}>) => void;
+    /**
+    * Emitted when current index is fromslide
+    */
+    'onJeepPlayControlsIsBeginning'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when current index is toslide
+    */
+    'onJeepPlayControlsIsEnd'?: (event: CustomEvent<void>) => void;
+    /**
+    * The play controls to slides number The last slide index is slides.length - 1
+    */
+    'toslide'?: number;
+  }
+  interface JeepSlide {
+    /**
+    * The slide subtitle
+    */
+    'cstyle'?: string;
+    /**
+    * Emitted when a pagination bullet was clicked
+    */
+    'onJeepSlideDidLoad'?: (event: CustomEvent<any>) => void;
+    /**
+    * The slide title
+    */
+    'stitle'?: string;
+    /**
+    * The slide subtitle
+    */
+    'subtitle'?: string;
+  }
+  interface JeepSlides {
+    /**
+    * Emitted the Header visibility change
+    */
+    'onJeepSlidesHeaderVisibility'?: (event: CustomEvent<HeaderVisibility>) => void;
+    /**
+    * The slides options
+    */
+    'options'?: string;
   }
   interface JeepSvgmorph {
     /**
@@ -325,7 +695,13 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'jeep-colorpicker': JeepColorpicker;
     'jeep-cpicker': JeepCpicker;
+    'jeep-fullscreen': JeepFullscreen;
     'jeep-linechart': JeepLinechart;
+    'jeep-navigation': JeepNavigation;
+    'jeep-pagination': JeepPagination;
+    'jeep-play-controls': JeepPlayControls;
+    'jeep-slide': JeepSlide;
+    'jeep-slides': JeepSlides;
     'jeep-svgmorph': JeepSvgmorph;
   }
 }
@@ -338,7 +714,13 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'jeep-colorpicker': LocalJSX.JeepColorpicker & JSXBase.HTMLAttributes<HTMLJeepColorpickerElement>;
       'jeep-cpicker': LocalJSX.JeepCpicker & JSXBase.HTMLAttributes<HTMLJeepCpickerElement>;
+      'jeep-fullscreen': LocalJSX.JeepFullscreen & JSXBase.HTMLAttributes<HTMLJeepFullscreenElement>;
       'jeep-linechart': LocalJSX.JeepLinechart & JSXBase.HTMLAttributes<HTMLJeepLinechartElement>;
+      'jeep-navigation': LocalJSX.JeepNavigation & JSXBase.HTMLAttributes<HTMLJeepNavigationElement>;
+      'jeep-pagination': LocalJSX.JeepPagination & JSXBase.HTMLAttributes<HTMLJeepPaginationElement>;
+      'jeep-play-controls': LocalJSX.JeepPlayControls & JSXBase.HTMLAttributes<HTMLJeepPlayControlsElement>;
+      'jeep-slide': LocalJSX.JeepSlide & JSXBase.HTMLAttributes<HTMLJeepSlideElement>;
+      'jeep-slides': LocalJSX.JeepSlides & JSXBase.HTMLAttributes<HTMLJeepSlidesElement>;
       'jeep-svgmorph': LocalJSX.JeepSvgmorph & JSXBase.HTMLAttributes<HTMLJeepSvgmorphElement>;
     }
   }

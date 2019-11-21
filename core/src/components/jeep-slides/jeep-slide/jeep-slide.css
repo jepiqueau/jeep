@@ -1,0 +1,78 @@
+:host {
+  --slide-scroll-snap-align: start;
+  --slide-min-width: 100vw;
+  --slide-height: 100vh;
+  --slide-background:var(--slides-slide-background, #ffffff);
+  --slide-color: var(--slides-slide-color,#000);
+  --slide-font-size : calc(1rem + 3vmin);
+  --slide-display: flex;
+  --slide-align-items: center;
+  --slide-justify-content: center;
+  --slide-text-align: center;
+  --slide-flex-direction: column;
+  --slide-title-font-size: var(--slides-slide-title-font-size,calc(1rem + 3vmin));
+  --slide-subtitle-font-size: var(--slides-slide-subtitle-font-size,calc(1rem + 1.5vmin));
+  --slide-content-top: var(--slides-slide-content-top,0px);
+  --slide-content-padding: var(--slides-slide-content-padding,0);
+  --slide-content-font-size : var(--slides-slide-content-font-size,calc(1rem + 0.5vmin));
+  --slide-content-text-align: var(--slides-slide-content-text-align,center);
+  --slide-header-top: var(--slides-slide-header-top,0px);
+}
+
+.slide-container {
+    z-index: 2;
+    position: relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    scroll-snap-align: var(--slide-scroll-snap-align);
+    scroll-snap-coordinate: 0% 0%; /* older (Firefox/IE) */  
+    -webkit-scroll-snap-coordinate: 0% 0%; /* older (Safari) */  
+    flex-shrink: 0;
+    min-width: var(--slide-min-width);
+    height: var(--slide-height);
+    min-width: var(--slide-min-width);
+    height: var(--slide-height);
+    color: var(--slide-color);
+    background: var(--slide-background);
+}
+.slide-wrapper {
+    box-sizing: var(--slide-box-sizing);
+    margin: 0 auto;
+    padding: 0;
+    display: var(--slide-display);
+    flex-direction: var(--slide-flex-direction);
+    position: relative;  
+    flex-shrink: 0;
+    align-items: var(--slide-align-items);
+    justify-content: var(--slide-justify-content);
+    width: 100%;
+    height: 100%;
+    font-size: var(--slide-font-size);
+}
+.slide-header {
+    position: relative;
+    top: var(--slide-header-top);
+    text-align: center;
+}
+
+.slide-title {
+    font-size: var(--slide-title-font-size);
+    font-weight: bold;
+}
+.slide-subtitle {
+    text-align:center;
+    font-size: var(--slide-subtitle-font-size);
+}
+.slide-content {
+    position: relative;
+    top: var(--slide-content-top);
+    padding: var(--slide-content-padding);
+    text-align: var(--slide-content-text-align);
+    font-size: var(--slide-content-font-size);
+}
+.slide-image {
+    width: auto;
+    max-width: 100vw;
+    height: auto;
+    max-height: 100vh;  
+} 

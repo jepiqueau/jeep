@@ -1,0 +1,68 @@
+:host {
+  --pagination-top: 5%;
+  --pagination-left: 0;
+  --pagination-width: 100vw;
+  --pagination-height: 100vh;
+  --bullet-background: #000000;
+  --bullet-opacity: 0.5;
+  --bullet-active-background: #ff8000;
+  --bullet-active-opacity: 1;
+  --bullet-active-diameter: 22px;
+  --bullet-diameter: 15px;
+ }
+
+.pagination-container {
+    position: absolute;
+    z-index: 8;
+    text-align: center;
+    padding: 0;
+}
+.pagination-container-horizontal {
+    top: var(--pagination-top);
+    left: var(--pagination-left);
+    margin-top: calc(-1 * var(--bullet-active-diameter) / 2);
+    width: var(--pagination-width);
+    height: auto;
+}
+.pagination-container-vertical {
+    top: var(--pagination-top);
+    left: var(--pagination-left);
+    width: calc(var(--bullet-active-diameter));
+    height: var(--pagination-height);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.pagination-wrapper {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+}
+.pagination-bullet {
+    display:inline-block;
+    width: var(--bullet-diameter);
+    height: var(--bullet-diameter);
+    border-radius: 100%;
+    opacity: var(--bullet-opacity);
+    background: var(--bullet-background);
+    visibility: visible;
+}
+.pagination-bullet-horizontal {
+    margin: 0 4px;
+}
+.pagination-bullet-vertical {
+    margin: 4px 0;
+}
+.active-bullet {
+    width: var(--bullet-active-diameter);
+    height: var(--bullet-active-diameter);
+    opacity: var(--bullet-active-opacity);
+    background: var(--bullet-active-background);
+}
+.hidden-bullet {
+    visibility: hidden;
+}
+.hidden {
+    visibility: hidden;
+}
+  

@@ -17,8 +17,12 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+    },
+    { type: 'www',
+      dir: 'public',
+      serviceWorker: null,
       copy: [
-        { src: '../dist', dest: '../../test/build' }
+        { src: '../tests', dest: 'tests' }
       ]
     },
     {

@@ -151,15 +151,16 @@ export const getCssPropertyFromInnerHTML = (innerHTML:string,instanceId:string):
   } 
     return prop;
 }
-export const getCssPropertyFromString = (cstyle:string): any => {
+export const getCssPropertyFromString = async (cstyle:string, type?:string): Promise<any> => {
   let prop: any = null;
-  const styles:Array<string> = cstyle.replace(/:/g,';').split(';').slice(0,-1);
+  const stype:string = type ? `--${type}-` : `--`;
+  const styles = cstyle.replace(/:host{/g,'').replace(/}/g,'').replace(/[\n\r]+/g, '').replace(/:/g,';').split(';').slice(0,-1);
+
   if(styles.length % 2 === 0) {
     prop = {};
     for(let i: number =0;i< styles.length; i+=2) {
-      prop[styles[i].replace(/-/g,'')] = styles[i+1].replace(/ /g,'');
+      prop[styles[i].replace(stype,'').replace(/(\-\w)/g, (m) => {return m[1].toUpperCase();}).trim()] = styles[i+1].trim();
     }
-    return prop;
   }
   return prop;
 }
@@ -187,5 +188,18 @@ const calculate = (a:number,b:number,op:string): number => {
     } else {
       return null;
     }
-  
+}
+export const getBoundingClientRect = (el:Element | HTMLElement,delay:number): Promise<ClientRect> => {
+  return new Promise((resolve) => {
+      const i_delay: number  = delay ? delay : 300;
+      const i_el: Element | HTMLElement = el ? el : null;
+      if(i_el !== null) {
+        setTimeout(() => {
+            const rectBB:ClientRect = i_el.getBoundingClientRect();
+            resolve(rectBB);
+        },i_delay);
+      } else {
+        resolve(null);
+      }    
+    });
 }

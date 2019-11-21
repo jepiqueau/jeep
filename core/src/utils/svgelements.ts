@@ -1,4 +1,4 @@
-import { Point, Matrix} from './geom-maths';
+import { MPoint, Matrix} from './geom-maths';
 import { CubicBezier, /*BoundingBox,*/ CubicBezierSplitCurves } from '../global/interfaces/svggeom';
 
 export const isALetter = (charVal): Boolean => {
@@ -24,24 +24,24 @@ export const isRegularShape = (shape:CubicBezier): boolean => {
     if(Math.abs(sideLength * shape.cLength.length - shape.tLength) < 0.01) ret = true;
     return ret;
 }
-export const splitCubicBezier = (cB:Array<Point>, z:number): CubicBezierSplitCurves => {
+export const splitCubicBezier = (cB:Array<MPoint>, z:number): CubicBezierSplitCurves => {
     // check if cB are all on a line 
     let retCurves: CubicBezierSplitCurves = {} as CubicBezierSplitCurves;
-    let r1 = cB[0].isPointOnLine(cB[3],cB[1]);
-    let r2 = cB[0].isPointOnLine(cB[3],cB[2]); 
+    let r1 = cB[0].isMPointOnLine(cB[3],cB[1]);
+    let r2 = cB[0].isMPointOnLine(cB[3],cB[2]); 
     if (r1 && r2 ){
         retCurves.C1 = [];
         retCurves.C2 = [];
         retCurves.C1 = [...retCurves.C1,cB[0]];
-        let ptEnd:Point = cB[0].addPoint(cB[3].substractPoint(cB[0]).multNumber(z));
-        let pt1:Point = cB[0].addPoint(ptEnd.substractPoint(cB[0]).multNumber(1.0/3.0));
-        let pt2:Point = cB[0].addPoint(ptEnd.substractPoint(cB[0]).multNumber(2.0/3.0));
+        let ptEnd:MPoint = cB[0].addMPoint(cB[3].substractMPoint(cB[0]).multNumber(z));
+        let pt1:MPoint = cB[0].addMPoint(ptEnd.substractMPoint(cB[0]).multNumber(1.0/3.0));
+        let pt2:MPoint = cB[0].addMPoint(ptEnd.substractMPoint(cB[0]).multNumber(2.0/3.0));
         retCurves.C1 = [...retCurves.C1,pt1];
         retCurves.C1 = [...retCurves.C1,pt2];
         retCurves.C1 = [...retCurves.C1,ptEnd];
         retCurves.C2 = [...retCurves.C2,ptEnd];
-        pt1 = ptEnd.addPoint(cB[3].substractPoint(ptEnd).multNumber(1.0/3.0));
-        pt2 = ptEnd.addPoint(cB[3].substractPoint(ptEnd).multNumber(2.0/3.0));
+        pt1 = ptEnd.addMPoint(cB[3].substractMPoint(ptEnd).multNumber(1.0/3.0));
+        pt2 = ptEnd.addMPoint(cB[3].substractMPoint(ptEnd).multNumber(2.0/3.0));
         retCurves.C2 = [...retCurves.C2,pt1];
         retCurves.C2 = [...retCurves.C2,pt2]; 
         retCurves.C2 = [...retCurves.C2,cB[3]];
@@ -58,15 +58,15 @@ export const splitCubicBezier = (cB:Array<Point>, z:number): CubicBezierSplitCur
         mat.matrix[2][2] = z*z;
         mat.matrix[3][2] = -3*z1*z*z;
         mat.matrix[3][3] = z*z*z;
-        retCurves.C1 = mat.multiplyByVectorPoints(cB);
+        retCurves.C1 = mat.multiplyByVectorMPoints(cB);
         // apply circular permutation and flip to the matrix
         mat.circularPermuteRow({rowIndex:true})
         mat.flipRow();
-        retCurves.C2 = mat.multiplyByVectorPoints(cB);
+        retCurves.C2 = mat.multiplyByVectorMPoints(cB);
     }
     return retCurves;
 }
-export const getCubicBezierFromPoints = (points:Array<Point>): string => {
+export const getCubicBezierFromMPoints = (points:Array<MPoint>): string => {
     let d: string = "";
     for(let i:number = 0; i< points.length-1 ; i+=3) {
         if(i === 0 ) d = d.concat('M ').concat(points[i].toFixed(2)).concat(' ');
@@ -77,23 +77,23 @@ export const getCubicBezierFromPoints = (points:Array<Point>): string => {
     d = d.trim();
     return d;
 }
-export const initCurvePoints = (P1: Point,P2: Point,P3: Point,P4: Point): Array<Point> => {
-    let pts: Array<Point> = [];
+export const initCurveMPoints = (P1: MPoint,P2: MPoint,P3: MPoint,P4: MPoint): Array<MPoint> => {
+    let pts: Array<MPoint> = [];
     pts = [...pts,P1];
     pts = [...pts,P2];
     pts = [...pts,P3];
     pts = [...pts,P4];
     return pts;
 }
-export const getPointsFromCBPath = (cB:CubicBezier): Array<Point> => {
+export const getPointsFromCBPath = (cB:CubicBezier): Array<MPoint> => {
     const arr: Array<string> = cB.cBz.split('C');
-    let points: Array<Point> = [];
+    let points: Array<MPoint> = [];
     for(let i:number = 0;i<arr.length;i++) {
         if( i === 0 && arr[i].charAt( 0 ) === 'M' ) arr[i] = arr[i].slice( 1 );
         let ar: Array<string> =arr[i].trim().split(' ');
         if(ar.length > 0) {
             for (let j:number =0;j < ar.length; j++) {
-                let pt:Point =  new Point();
+                let pt:MPoint =  new MPoint();
                 let res:boolean = pt.fromString(ar[j]);
                 if(res) points = [...points,pt];
             }
@@ -101,15 +101,15 @@ export const getPointsFromCBPath = (cB:CubicBezier): Array<Point> => {
     }
     return points;
 }
-export const permuteCubicBezier = (points:Array<Point>,startIndex:number): string => {
-    let newPoints: Array<Point> = [];
+export const permuteCubicBezier = (points:Array<MPoint>,startIndex:number): string => {
+    let newPoints: Array<MPoint> = [];
     newPoints = permutePoints(points,startIndex);
-    let cBz:string = getCubicBezierFromPoints(newPoints);
+    let cBz:string = getCubicBezierFromMPoints(newPoints);
     return cBz;
 }
-export const permutePoints = (points:Array<Point>,index:number): Array<any> => {
+export const permutePoints = (points:Array<MPoint>,index:number): Array<any> => {
     let pts:Array<any> = points;
-    let t: Array<Point> = [];
+    let t: Array<MPoint> = [];
     if(index > 0) {
         //circular permutation
         for (let i:number =0; i< index; i++) {
@@ -139,25 +139,25 @@ export const permutePoints = (points:Array<Point>,index:number): Array<any> => {
     }
     return pts;
 }
-export const cubicBezierAverageLength = (P1:Point,P2:Point,P3:Point,P4:Point): number => {
+export const cubicBezierAverageLength = (P1:MPoint,P2:MPoint,P3:MPoint,P4:MPoint): number => {
     let lgthMin: number = P1.scalarDistance(P4);
     let lgthMax: number = P1.scalarDistance(P2) + P2.scalarDistance(P3)+ P3.scalarDistance(P4);
     return (lgthMax+lgthMin)/2;
 }
-export const alignSegmentPath = (cB:CubicBezier,ratio:number): {points:Array<Point>,segLength:Array<number>} => {
-    let points: Array<Point> = [];
+export const alignSegmentPath = (cB:CubicBezier,ratio:number): {points:Array<MPoint>,segLength:Array<number>} => {
+    let points: Array<MPoint> = [];
     let segLength: Array<number> = [];
-    let newPoints: Array<Point> = [];
+    let newPoints: Array<MPoint> = [];
     points = getPointsFromCBPath(cB);
     if(ratio > 1.0) {
         // generate new points by splitting curves
         for(let i:number = 0; i< points.length-1 ; i+=3) {
             let nbSplit = ratio;
             if(i === 0) newPoints = [...newPoints,points[i]];
-            let tmpPt: Array<Point> = initCurvePoints(points[i],points[i+1],points[i+2],points[i+3]);
+            let tmpPt: Array<MPoint> = initCurveMPoints(points[i],points[i+1],points[i+2],points[i+3]);
             while ( nbSplit > 1) {
                 let z = 1.0 / nbSplit;
-                let pts: Array<Point> = initCurvePoints(tmpPt[0],tmpPt[1],tmpPt[2],tmpPt[3]);
+                let pts: Array<MPoint> = initCurveMPoints(tmpPt[0],tmpPt[1],tmpPt[2],tmpPt[3]);
                 let curves: CubicBezierSplitCurves = splitCubicBezier(pts,z);
                 newPoints = [...newPoints,curves.C1[1]];
                 newPoints = [...newPoints,curves.C1[2]];
@@ -172,7 +172,7 @@ export const alignSegmentPath = (cB:CubicBezier,ratio:number): {points:Array<Poi
                     segLength = [...segLength,cubicBezierAverageLength(curves.C2[0],curves.C2[1],
                                     curves.C2[2],curves.C2[3])];
                 } else {
-                    tmpPt = initCurvePoints(curves.C2[0],curves.C2[1],curves.C2[2],curves.C2[3]);
+                    tmpPt = initCurveMPoints(curves.C2[0],curves.C2[1],curves.C2[2],curves.C2[3]);
                 }
             }
         }
@@ -180,9 +180,9 @@ export const alignSegmentPath = (cB:CubicBezier,ratio:number): {points:Array<Poi
     }
     return {points:points,segLength:segLength};
 }
-export const addSegmentToPath = (points:Array<Point>,segLength:Array<number>,
-    nSegment:number): {points:Array<Point>,segLength:Array<number>} => {
-    let newPoints: Array<Point> = points;
+export const addSegmentToPath = (points:Array<MPoint>,segLength:Array<number>,
+    nSegment:number): {points:Array<MPoint>,segLength:Array<number>} => {
+    let newPoints: Array<MPoint> = points;
     let newSegLength: Array<number> = segLength;
     let lastPoint = newPoints.slice(-1)[0];
     for(let i:number = 0; i< nSegment ; i++) {
@@ -225,7 +225,7 @@ export const alignPathSegmentWithMax = (cB:CubicBezier, nSegment:number): Promis
         // circular permutation
         cBzNew.cBz = permuteCubicBezier(res.points,cB.startIndex);
     } else {
-        cBzNew.cBz = getCubicBezierFromPoints(res.points);
+        cBzNew.cBz = getCubicBezierFromMPoints(res.points);
     }
     return Promise.resolve(cBzNew);
 }
@@ -239,7 +239,7 @@ export const alignPathSegments = async (cBPaths: Array<CubicBezier>, nSegment?:n
                 alignCBPaths = [...alignCBPaths,newPath];
         } else {
             if(cBPaths[i].startIndex != 0) {
-                let points: Array<Point> = getPointsFromCBPath(cBPaths[i]);
+                let points: Array<MPoint> = getPointsFromCBPath(cBPaths[i]);
                 let cBz:string = permuteCubicBezier(points,cBPaths[i].startIndex);
                 cBPaths[i].cBz = cBz;
             }
@@ -255,7 +255,7 @@ export const cubicBezierfromPath = async (path:string,startIndex?:number): Promi
     cBezier.cBz = "";
     cBezier.oriCBz = "";
     cBezier.cType = '';
-    cBezier.lPoint = new Point();
+    cBezier.lPoint = new MPoint();
     cBezier.cLength = [];
     cBezier.tLength = 0;
     if(path.length > 0 && isALetter(path.charAt(0)) && path.charAt(0).toUpperCase() === "M") {
@@ -304,8 +304,8 @@ export const cubicBezierfromPath = async (path:string,startIndex?:number): Promi
 }
 export const lineToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,letter:boolean): Promise<CubicBezier> => {
     let cBz: CubicBezier = cBezier;
-    let tPoint: Point = new Point();
-    let nPoint: Point = new Point();
+    let tPoint: MPoint = new MPoint();
+    let nPoint: MPoint = new MPoint();
     if(letter) {
         switch(cBz.cType.toUpperCase()) {
             case "H":
@@ -345,8 +345,8 @@ export const lineToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,lette
         nPoint = tPoint;
     }
     cBz.cBz = cBz.cBz.concat('C ');
-    cBz.cBz = cBz.cBz.concat(cBz.lPoint.atDistancePoint(nPoint,1.0/3.0).toFixed(2)+" ");
-    cBz.cBz = cBz.cBz.concat(cBz.lPoint.atDistancePoint(nPoint,2.0/3.0).toFixed(2)+" ");
+    cBz.cBz = cBz.cBz.concat(cBz.lPoint.atDistanceMPoint(nPoint,1.0/3.0).toFixed(2)+" ");
+    cBz.cBz = cBz.cBz.concat(cBz.lPoint.atDistanceMPoint(nPoint,2.0/3.0).toFixed(2)+" ");
     cBz.cBz = cBz.cBz.concat(nPoint.toFixed(2)+" ");
     let lgth: number = cBz.lPoint.scalarDistance(nPoint);
     cBz.cLength = [...cBz.cLength, lgth];
@@ -356,10 +356,10 @@ export const lineToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,lette
 }
 export const quadraticToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,letter:boolean): Promise<CubicBezier> => {
     let cBz: CubicBezier = cBezier;
-    let tP2: Point = new Point();
-    let tP3: Point = new Point();
-    let nP2: Point = new Point();
-    let nP3: Point = new Point();
+    let tP2: MPoint = new MPoint();
+    let tP3: MPoint = new MPoint();
+    let nP2: MPoint = new MPoint();
+    let nP3: MPoint = new MPoint();
     if(letter) {
         tP2.x = Number(oPath[cBz.index+1]);            
         tP2.y = Number(oPath[cBz.index+2]);            
@@ -383,9 +383,9 @@ export const quadraticToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,
         nP3 = tP3;
     }
     cBz.cBz = cBz.cBz.concat('C ');
-    const cP1: Point = cBz.lPoint.addPoint(nP2.substractPoint(cBz.lPoint).multNumber(2.0/3.0));
+    const cP1: MPoint = cBz.lPoint.addMPoint(nP2.substractMPoint(cBz.lPoint).multNumber(2.0/3.0));
     cBz.cBz = cBz.cBz.concat(cP1.toFixed(2)+" ");
-    const cP2: Point = nP3.addPoint(nP2.substractPoint(nP3).multNumber(2.0/3.0));  
+    const cP2: MPoint = nP3.addMPoint(nP2.substractMPoint(nP3).multNumber(2.0/3.0));  
     cBz.cBz = cBz.cBz.concat(cP2.toFixed(2)+" ");
     cBz.cBz = cBz.cBz.concat(nP3.toFixed(2)+" ");
     // quick approximate length
@@ -398,12 +398,12 @@ export const quadraticToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,
 }
 export const cubicToCubicBezier = (cBezier: CubicBezier,oPath:Array<string>,letter:boolean): Promise<CubicBezier> => {
     let cBz: CubicBezier = cBezier;
-    let tP2: Point = new Point();
-    let tP3: Point = new Point();
-    let tP4: Point = new Point();
-    let nP2: Point = new Point();
-    let nP3: Point = new Point();
-    let nP4: Point = new Point();
+    let tP2: MPoint = new MPoint();
+    let tP3: MPoint = new MPoint();
+    let tP4: MPoint = new MPoint();
+    let nP2: MPoint = new MPoint();
+    let nP3: MPoint = new MPoint();
+    let nP4: MPoint = new MPoint();
     if(letter) {
         tP2.x = Number(oPath[cBz.index+1]);            
         tP2.y = Number(oPath[cBz.index+2]);            

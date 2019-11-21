@@ -7,6 +7,7 @@ The library includes the following React components:
  - JeepColorpicker
  - JeepLinechart
  - JeepSvgmorph
+ - JeepSlides
 
 
 ## Usage

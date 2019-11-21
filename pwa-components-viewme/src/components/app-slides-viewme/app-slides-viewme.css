@@ -1,0 +1,26 @@
+ion-header {
+    visibility: visible;  
+}
+.hidden {
+    visibility: hidden;
+}
+#navigationvertical {
+    --slides-navigation-padding-horizontal: 25px;
+    --slides-navigation-button-icon-color: #ff0000;
+}
+#paginationhorizontal {
+    --slides-bullet-active-background: #ff7300;       
+    --slides-bullet-active-diameter: 30px;
+    --slides-bullet-diameter: 22px;
+    --slides-bullet-background: #af0ea7;
+    --slides-pagination-bottom: 60px;
+}
+#paginationvertical {
+    --slides-pagination-right: 15px;
+}
+#paginationnavigationhorizontal {
+    --slides-pagination-bottom: 60px;
+}
+#fullscreenhorizontal {
+    --slides-pagination-bottom: 60px;
+}

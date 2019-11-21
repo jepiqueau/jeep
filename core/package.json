@@ -1,6 +1,6 @@
 {
   "name": "@jeepq/core",
-  "version": "0.0.1-alpha.10",
+  "version": "0.0.1-alpha.12",
   "description": "Jeep Stencil Web Component Library",
   "keywords": [
     "jeep",
@@ -21,23 +21,24 @@
   ],
   "scripts": {
     "build": "stencil build --docs",
-    "start": "stencil build --dev  && http-server ./test -c-1",
+    "start": "stencil build --dev  && http-server ./public -c-1",
     "test": "stencil test --spec --e2e",
+    "test.spec": "stencil test --spec",
+    "test.e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "deploy": "npm run build && npm publish --access public"
   },
   "devDependencies": {
     "@stencil/angular-output-target": "0.0.1",
-    "@stencil/core": "^1.7.5",
+    "@stencil/core": "^1.8.1",
     "@stencil/react-output-target": "0.0.1",
-    "@types/jest": "24.0.21",
-    "@types/puppeteer": "1.20.2",
+    "@types/jest": "24.0.23",
+    "@types/puppeteer": "1.20.3",
     "jest": "24.9.0",
     "jest-cli": "24.9.0",
     "puppeteer": "1.20.0"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jepiqueau/jeep.git"

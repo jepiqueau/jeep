@@ -1,0 +1,37 @@
+:host {
+  --fullscreen-top: 10px;
+  --fullscreen-left: 10px;
+  --fullscreen-width: 100%;
+  --fullscreen-button-width: 50px;
+  --fullscreen-button-height: 50px;
+  --fullscreen-button-icon-color: #222428;
+
+}
+/*
+.fullscreen-button.request {
+    background-image : url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20d=%22M396.795%20396.8H320V448h128V320h-51.205zM396.8%20115.205V192H448V64H320v51.205zM115.205%20115.2H192V64H64v128h51.205zM115.2%20396.795V320H64v128h128v-51.205z%22/%3E%3C/svg%3E");
+}
+.fullscreen-button.exit {
+    background-image : url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20d=%22M64%20371.2h76.795V448H192V320H64v51.2zm76.795-230.4H64V192h128V64h-51.205v76.8zM320%20448h51.2v-76.8H448V320H320v128zm51.2-307.2V64H320v128h128v-51.2h-76.8z%22/%3E%3C/svg%3E");
+}
+*/
+.fullscreen-container {
+    position: absolute;
+    top: var(--fullscreen-top);
+    left: var(--fullscreen-left);
+    width: var(--fullscreen-width);
+    height: auto;
+    z-index: 12;
+    visibility: visible;
+}
+.fullscreen-button {
+    display: inline-block;
+    width: var(--fullscreen-button-width,20px);
+    height: var(--fullscreen-button-height,20px);
+    fill: var(--fullscreen-button-icon-color);
+
+}
+
+.hidden {
+    visibility: hidden;
+}

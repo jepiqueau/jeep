@@ -4,14 +4,15 @@
  */
 import { NgModule } from "@angular/core";
 import { defineCustomElements } from "@jeepq/core/loader";
-import { JeepColorpicker, JeepLinechart, JeepSvgmorph } from "./directives/proxies";
+import { JeepColorpicker, JeepLinechart, JeepSvgmorph, JeepSlides } from "./directives/proxies";
 defineCustomElements(window);
 /** @type {?} */
 const DECLARATIONS = [
     // proxies
     JeepColorpicker,
     JeepLinechart,
-    JeepSvgmorph
+    JeepSvgmorph,
+    JeepSlides
 ];
 export class ComponentLibraryModule {
 }

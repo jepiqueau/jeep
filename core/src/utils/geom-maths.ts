@@ -1,6 +1,6 @@
 import { BoundingBox } from '../global/interfaces/svggeom';
 
-export class Point {
+export class MPoint {
     public x: number;
     public y: number;
       constructor(x:number = 0, y:number = 0)
@@ -28,110 +28,110 @@ export class Point {
       }
       return ret;
     }
-    public clone(): Point {
-      let ret:Point = new Point();
+    public clone(): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = this.x;
       ret.y = this.y;
       return ret;
       
     }
-    public multNumber(a:number): Point {
-      let ret:Point = new Point();
+    public multNumber(a:number): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = this.x * a;
       ret.y = this.y * a;
       return ret;
     }
-    public multPoint(coeff:Point): Point {
-      let ret:Point = new Point();
+    public multMPoint(coeff:MPoint): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = this.x * coeff.x;
       ret.y = this.y * coeff.y;
       return ret;
     }
-    public multMatrix(a:Array<Array<number>>): Point {
-      let ret :Point = new Point;
+    public multMatrix(a:Array<Array<number>>): MPoint {
+      let ret :MPoint = new MPoint;
         ret.x = a[0][0] * this.x + a[0][1] * this.y;
         ret.y = a[1][0] * this.x + a[1][1] * this.y;
       return ret;
     } 
-    public addPoint(pt:Point): Point {
-      let ret:Point = new Point();
+    public addMPoint(pt:MPoint): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = this.x + pt.x;
       ret.y = this.y + pt.y;
       return ret;
     }
-    public substractPoint(pt:Point): Point {
-      let ret:Point = new Point();
+    public substractMPoint(pt:MPoint): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = this.x - pt.x;
       ret.y = this.y - pt.y;
       return ret;
     }
-    public middlePoint(pt:Point): Point {
-      let ret:Point = new Point();
+    public middleMPoint(pt:MPoint): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = (this.x + pt.x) / 2.0;
       ret.y = (this.y + pt.y) / 2.0;    
       return ret;    
     }
-    public distance(pt:Point): Point {
-      let ret:Point = new Point();
+    public distance(pt:MPoint): MPoint {
+      let ret:MPoint = new MPoint();
       ret.x = pt.x - this.x;
       ret.y = pt.y - this.y; 
       return ret; 
     }
-    public dotProduct(ptEnd:Point,pt:Point) : number {
+    public dotProduct(ptEnd:MPoint,pt:MPoint) : number {
       return (pt.x-this.x)*(ptEnd.x-this.x)
             + (pt.y-this.y)*(ptEnd.y-this.y);
     }
-    public isPointOnLine (ptEnd:Point,pt:Point) : boolean {
+    public isMPointOnLine (ptEnd:MPoint,pt:MPoint) : boolean {
       let ret:boolean = false;
       let l:number = this.scalarDistance(ptEnd);
       let r : number = this.dotProduct(ptEnd,pt) / (l*l);
-      let ptP: Point = this.addPoint(ptEnd.substractPoint(this).multNumber(r));
+      let ptP: MPoint = this.addMPoint(ptEnd.substractMPoint(this).multNumber(r));
       let s: number = ptP.scalarDistance(pt);
       if(Math.abs(s) < 0.0001)  ret = true;
       return ret;
     }
-    public scalarDistance(pt:Point): number {
+    public scalarDistance(pt:MPoint): number {
       return Math.sqrt((pt.x - this.x)*(pt.x - this.x) + (pt.y - this.y)*(pt.y - this.y));
     }
-    public atDistancePoint(pt:Point,distance:number): Point {
+    public atDistanceMPoint(pt:MPoint,distance:number): MPoint {
         let distPt = this.distance(pt).multNumber(distance)
-        return this.addPoint(distPt);
+        return this.addMPoint(distPt);
        
     }
 } 
 export class CubicBezierCurve {
-  public P1: Point;
-  public P2: Point;
-  public P3: Point;
-  public P4: Point;
-  constructor(p1:Point = new Point(),p2:Point = new Point(),
-                p3:Point = new Point(),p4:Point = new Point()) {
+  public P1: MPoint;
+  public P2: MPoint;
+  public P3: MPoint;
+  public P4: MPoint;
+  constructor(p1:MPoint = new MPoint(),p2:MPoint = new MPoint(),
+                p3:MPoint = new MPoint(),p4:MPoint = new MPoint()) {
     this.P1 = p1;
     this.P2 = p2;
     this.P3 = p3;
     this.P4 = p4;
   }
-  public onCurvePointAtTpos(t:number) : Point {
-    let ret:Point = new Point();
+  public onCurveMPointAtTpos(t:number) : MPoint {
+    let ret:MPoint = new MPoint();
     if(t < 0 ) return null;
     if (t > 1) return null;
       ret = this.P1.multNumber(Math.pow(1.0-t,3))
-          .addPoint(this.P2.multNumber(3*t*Math.pow(1-t,2))
-          .addPoint(this.P3.multNumber(3*(1.0-t)*Math.pow(t,2))
-          .addPoint(this.P4.multNumber(Math.pow(t,3))
+          .addMPoint(this.P2.multNumber(3*t*Math.pow(1-t,2))
+          .addMPoint(this.P3.multNumber(3*(1.0-t)*Math.pow(t,2))
+          .addMPoint(this.P4.multNumber(Math.pow(t,3))
           )));
     return ret;
   }
-  public getSegmentBox(pt0:Point,pt1:Point,pt2:Point,pt3:Point): { bBox:BoundingBox, bPoints: Array<Point>, bTValues:Array<number>} {
-    let ret: { bBox:BoundingBox, bPoints: Array<Point>, bTValues:Array<number>} = {} as { bBox:BoundingBox, bPoints: Array<Point>, bTValues:Array<number>};
+  public getSegmentBox(pt0:MPoint,pt1:MPoint,pt2:MPoint,pt3:MPoint): { bBox:BoundingBox, bMPoints: Array<MPoint>, bTValues:Array<number>} {
+    let ret: { bBox:BoundingBox, bMPoints: Array<MPoint>, bTValues:Array<number>} = {} as { bBox:BoundingBox, bMPoints: Array<MPoint>, bTValues:Array<number>};
     ret.bBox = {} as BoundingBox;
-    ret.bBox.minBox = new Point();
-    ret.bBox.maxBox = new Point();
-    ret.bPoints = [];
+    ret.bBox.minBox = new MPoint();
+    ret.bBox.maxBox = new MPoint();
+    ret.bMPoints = [];
     ret.bTValues= [];
     let tvalues:Array<number> = new Array();
     let bounds:Array<Array<number>> = [new Array(),new Array()];
-    let points:Array<Point> = new Array();
+    let MPoints:Array<MPoint> = new Array();
 
     let a: number;
     let b: number;
@@ -197,25 +197,25 @@ export class CubicBezierCurve {
 
       y = (mt * mt * mt * pt0.y) + (3 * mt * mt * t * pt1.y) + (3 * mt * t * t * pt2.y) + (t * t * t * pt3.y);
       bounds[1][j] = y;
-      let point:Point = new Point();
-      point.x = x;
-      point.y = y;
-      points[j] = point;
+      let MPt:MPoint = new MPoint();
+      MPt.x = x;
+      MPt.y = y;
+      MPoints[j] = MPt;
     }
     tvalues[jlen] = 0;
     tvalues[jlen + 1] = 1;
-    points[jlen] = pt0 ;
-    points[jlen + 1] = pt3;
+    MPoints[jlen] = pt0 ;
+    MPoints[jlen + 1] = pt3;
     bounds[0][jlen] = pt0.x;
     bounds[1][jlen] = pt0.y;
     bounds[0][jlen + 1] = pt3.x;
     bounds[1][jlen + 1] = pt3.y;
-    tvalues.length = bounds[0].length = bounds[1].length = points.length = jlen + 2;
+    tvalues.length = bounds[0].length = bounds[1].length = MPoints.length = jlen + 2;
     ret.bBox.minBox.x = Math.min.apply(null,bounds[0]);
     ret.bBox.minBox.y = Math.min.apply(null,bounds[1]);
     ret.bBox.maxBox.x = Math.max.apply(null,bounds[0]);
     ret.bBox.maxBox.y = Math.max.apply(null,bounds[1]);
-    ret.bPoints = points;
+    ret.bMPoints = MPoints;
     ret.bTValues = tvalues;
     return ret;
   }
@@ -223,18 +223,18 @@ export class CubicBezierCurve {
 export class Matrix {
   public matrix:Array<Array<number>> | Array<number>;
   private _size: Array<number> | number;
-  constructor(size:Array<number> | number = null) {
-    if(size != null) {
-      this._size=size;
+  constructor(msize:Array<number> | number = null) {
+    if(msize != null) {
+      this._size=msize;
       this.zeros();
     }
     
   }
-  set size(arr:Array<number> | number ) {
+  setSize(arr:Array<number> | number ) {
     this._size = arr;
     this.zeros();
   }
-  get size(): Array<number> | number {
+  getSize(): Array<number> | number {
     return this._size;
   }
   zeros() {
@@ -373,13 +373,13 @@ export class Matrix {
     let tmp1: number;   
     if(typeof this._size === "number") {
       row = this._size;
-      col = typeof bMat.size === "number" ? bMat.size : bMat.size[0] ? bMat.size[0] : null;
-      tmp = !bMat.size[1] ? 1 : null;
+      col = typeof bMat.getSize === "number" ? bMat.getSize : bMat.getSize[0] ? bMat.getSize[0] : null;
+      tmp = !bMat.getSize[1] ? 1 : null;
     } else {
       row = this._size[0];
       tmp = this._size[1] ? this._size[1] : 1;
-      col = bMat.size[1] ? bMat.size[1] : bMat.size[0] ? bMat.size[0] : bMat.size;
-      tmp1 = !bMat.size[1] ? 1: bMat.size[0];
+      col = bMat.getSize[1] ? bMat.getSize[1] : bMat.getSize[0] ? bMat.getSize[0] : bMat.getSize;
+      tmp1 = !bMat.getSize[1] ? 1: bMat.getSize[0];
       tmp = tmp1 === tmp ? tmp : null;
     }  
     if(row === null || col === null || tmp === null) return null;
@@ -405,26 +405,26 @@ export class Matrix {
     }
     return rMat;
   }
-  multiplyByVectorPoints(vPoints: Array<Point>): Array<Point> {
-    let nPoints:Array<Point> = [];
+  multiplyByVectorMPoints(vMPoints: Array<MPoint>): Array<MPoint> {
+    let nMPoints:Array<MPoint> = [];
     let mat: any = this.matrix;
     if(typeof this._size === "number") {
-      if(this._size != vPoints.length) return null;
-      nPoints[0] = new Point();
+      if(this._size != vMPoints.length) return null;
+      nMPoints[0] = new MPoint();
       for(let i:number = 0; i<this._size; i++) {
-        nPoints[0] = nPoints[0].addPoint(vPoints[i].multNumber(mat[i])); 
+        nMPoints[0] = nMPoints[0].addMPoint(vMPoints[i].multNumber(mat[i])); 
       }
     } else {
       let row: number = !this._size[1] ? 1 : this._size[0];
       let col : number = this._size[1] ? this._size[1] : this._size[0];
-      if(col != vPoints.length) return null;
+      if(col != vMPoints.length) return null;
       for(let i:number = 0; i<row; i++) {
-        nPoints[i] = new Point();
+        nMPoints[i] = new MPoint();
         for(let j:number = 0; j<col; j++) {
-          nPoints[i] = nPoints[i].addPoint(vPoints[j].multNumber(mat[i][j])); 
+          nMPoints[i] = nMPoints[i].addMPoint(vMPoints[j].multNumber(mat[i][j])); 
         }     
       }
     }
-    return nPoints;
+    return nMPoints;
   }
 }

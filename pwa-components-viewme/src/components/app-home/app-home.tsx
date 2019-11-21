@@ -28,6 +28,7 @@ export class AppHome {
         <ion-button href="/colorpicker" expand="block">ColorPicker Viewme</ion-button>
         <ion-button href="/linechart" expand="block">LineChart Viewme</ion-button>
         <ion-button href="/svgmorph" expand="block">SVGMorphing Viewme</ion-button>
+        <ion-button href="/slides" expand="block">Slides Viewme</ion-button>
       </ion-content>
     ];
   }

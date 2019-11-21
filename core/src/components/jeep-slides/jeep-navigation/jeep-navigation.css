@@ -1,0 +1,57 @@
+:host {
+  --navigation-top: 50%;
+  --navigation-left: 0;
+  --navigation-width: 100vw;
+  --navigation-button-width: 50px;
+  --navigation-button-height: 50px;
+  --navigation-padding-horizontal: 10px;
+  --navigation-button-icon-color: #222428;
+ }
+
+.navigation-container {
+    position: absolute;
+    top: var(--navigation-top);
+    left: var(--navigation-left);
+    margin-top: calc(-1 * var(--navigation-button-height) / 2);
+    z-index: 10;
+    width: var(--navigation-width);
+    height: auto;
+    display: flex;
+    padding: 0 var(--navigation-padding-horizontal);
+    visibility: visible;
+}
+.navigation-wrapper {
+    width: calc(100% - 2 * var(--navigation-padding-horizontal));
+    height: auto;
+}
+.icon {
+    position:relative;
+    width: var(--navigation-button-width);
+    height: var(--navigation-button-height);
+    fill: var(--navigation-button-icon-color);
+    visibility: visible;
+}
+.navigation-prev {
+    padding: 0;
+    border-width: 0px;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 100%;
+    left: 0;
+    opacity: 1;
+}
+.navigation-next {
+    padding: 0;
+    border-width: 0px;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 100%;
+    left: calc(100% - 2 * var(--navigation-button-width));
+    opacity: 1;
+}
+.disabled {
+    opacity: 0.2;
+}
+.hidden {
+    visibility: hidden;
+}
