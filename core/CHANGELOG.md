@@ -1,3 +1,9 @@
+## 0.0.1-alpha.14 (2019-12-29)
+
+### Chores
+
+* stencil/core: update to 1.8.2 
+
 ## 0.0.1-alpha.13 (2019-12-16)
 
 ### Added Features

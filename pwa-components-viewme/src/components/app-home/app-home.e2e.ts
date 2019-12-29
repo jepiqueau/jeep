@@ -14,7 +14,7 @@ describe('app-home', () => {
     await page.setContent('<app-home></app-home>');
 
     const elArray:E2EElement[] = await page.findAll('app-home ion-content ion-button');
-    expect(elArray.length).toEqual(4);
+    expect(elArray.length).toEqual(5);
     expect(elArray[0].textContent).toEqual('About Page');
   });
   it('contains a "ColorPicker Viewme" button', async () => {
@@ -22,7 +22,7 @@ describe('app-home', () => {
     await page.setContent('<app-home></app-home>');
 
     const elArray:E2EElement[] = await page.findAll('app-home ion-content ion-button');
-    expect(elArray.length).toEqual(4);
+    expect(elArray.length).toEqual(5);
     expect(elArray[1].textContent).toEqual('ColorPicker Viewme');
   });
   it('contains a "LineChart Viewme" button', async () => {
@@ -30,7 +30,7 @@ describe('app-home', () => {
     await page.setContent('<app-home></app-home>');
 
     const elArray:E2EElement[] = await page.findAll('app-home ion-content ion-button');
-    expect(elArray.length).toEqual(4);
+    expect(elArray.length).toEqual(5);
     expect(elArray[2].textContent).toEqual('LineChart Viewme');
   });
   it('contains a "SVGMorphing Viewme" button', async () => {
@@ -38,7 +38,7 @@ describe('app-home', () => {
     await page.setContent('<app-home></app-home>');
 
     const elArray:E2EElement[] = await page.findAll('app-home ion-content ion-button');
-    expect(elArray.length).toEqual(4);
+    expect(elArray.length).toEqual(5);
     expect(elArray[3].textContent).toEqual('SVGMorphing Viewme');
   });
 

@@ -2,7 +2,7 @@ import { createSVGElement } from './chart-svgelements';
 import { cubicBezierfromPath, isRegularShape, splitCubicBezier, getPointsFromCBPath,
     alignPathSegmentWithMax, alignPathSegments, cubicBezierAverageLength, permutePoints } from './svgelements'
 import { CubicBezier, CubicBezierSplitCurves } from '../global/interfaces/svggeom';
-import { Point } from './geom-maths';
+import { MPoint } from './geom-maths';
 
 describe('createSVG-utils', () => {
     let container: HTMLElement;
@@ -264,14 +264,14 @@ describe('createSVG-utils', () => {
     });
     it('should return the average length of a cubic bezier path "M 250,230 C 280,100 450,150 400,250"', async () => {
         const d: string = 'M 250,230 C 280,100 450,150 400,250';
-        const len:number = cubicBezierAverageLength(new Point(250,230),new Point(280,100),
-                            new Point(450,150), new Point(400,250));
+        const len:number = cubicBezierAverageLength(new MPoint(250,230),new MPoint(280,100),
+                            new MPoint(450,150), new MPoint(400,250));
         expect(len).toBeCloseTo(286.874);   
     });
     it('should return the average length of a cubic bezier path "M 100,250 C 50,150 220,100 250,230"', async () => {
         const d: string = 'M 100,250 C 50,150 220,100 250,230';
-        const len:number = cubicBezierAverageLength(new Point(100,250),new Point(50,150),
-                            new Point(220,100), new Point(250,230));
+        const len:number = cubicBezierAverageLength(new MPoint(100,250),new MPoint(50,150),
+                            new MPoint(220,100), new MPoint(250,230));
         expect(len).toBeCloseTo(286.874);   
     });
     
@@ -300,29 +300,29 @@ describe('createSVG-utils', () => {
         expect(res).toBeTruthy();   
     });
     it('should split a cubic bezier path given by P1,P2,P3,P4 at z=0.5', async () => {
-        let oriPoints: Array<Point> = [];
-        oriPoints = [...oriPoints,new Point(10,60)]
-        oriPoints = [...oriPoints,new Point(10,20)]
-        oriPoints = [...oriPoints,new Point(70,20)]
-        oriPoints = [...oriPoints,new Point(70,60)]
+        let oriPoints: Array<MPoint> = [];
+        oriPoints = [...oriPoints,new MPoint(10,60)]
+        oriPoints = [...oriPoints,new MPoint(10,20)]
+        oriPoints = [...oriPoints,new MPoint(70,20)]
+        oriPoints = [...oriPoints,new MPoint(70,60)]
         let curves: CubicBezierSplitCurves = splitCubicBezier(oriPoints,0.5);
-        expect(curves.C1[0]).toEqual(new Point(10,60));
-        expect(curves.C1[1]).toEqual(new Point(10,40));
-        expect(curves.C1[2]).toEqual(new Point(25,30));
-        expect(curves.C1[3]).toEqual(new Point(40,30));
-        expect(curves.C2[0]).toEqual(new Point(40,30));
-        expect(curves.C2[1]).toEqual(new Point(55,30));
-        expect(curves.C2[2]).toEqual(new Point(70,40));
-        expect(curves.C2[3]).toEqual(new Point(70,60));
+        expect(curves.C1[0]).toEqual(new MPoint(10,60));
+        expect(curves.C1[1]).toEqual(new MPoint(10,40));
+        expect(curves.C1[2]).toEqual(new MPoint(25,30));
+        expect(curves.C1[3]).toEqual(new MPoint(40,30));
+        expect(curves.C2[0]).toEqual(new MPoint(40,30));
+        expect(curves.C2[1]).toEqual(new MPoint(55,30));
+        expect(curves.C2[2]).toEqual(new MPoint(70,40));
+        expect(curves.C2[3]).toEqual(new MPoint(70,60));
     });
     it('should split a cubic bezier path given by P1,P2,P3,P4 at z=0.33333', async () => {
-        let oriPoints: Array<Point> = [];
-        oriPoints = [...oriPoints,new Point(10,60)]
-        oriPoints = [...oriPoints,new Point(10,20)]
-        oriPoints = [...oriPoints,new Point(70,20)]
-        oriPoints = [...oriPoints,new Point(70,60)]
+        let oriPoints: Array<MPoint> = [];
+        oriPoints = [...oriPoints,new MPoint(10,60)]
+        oriPoints = [...oriPoints,new MPoint(10,20)]
+        oriPoints = [...oriPoints,new MPoint(70,20)]
+        oriPoints = [...oriPoints,new MPoint(70,60)]
         let curves: CubicBezierSplitCurves = splitCubicBezier(oriPoints,0.33333);
-        expect(curves.C1[0]).toEqual(new Point(10,60));
+        expect(curves.C1[0]).toEqual(new MPoint(10,60));
         expect(curves.C1[1].x).toBeCloseTo(10);
         expect(curves.C1[1].y).toBeCloseTo(46.6668);
         expect(curves.C1[2].x).toBeCloseTo(16.6665);
@@ -335,16 +335,16 @@ describe('createSVG-utils', () => {
         expect(curves.C2[1].y).toBeCloseTo(24.444356);
         expect(curves.C2[2].x).toBeCloseTo(70);
         expect(curves.C2[2].y).toBeCloseTo(33.33320);
-        expect(curves.C2[3]).toEqual(new Point(70,60));
+        expect(curves.C2[3]).toEqual(new MPoint(70,60));
     });
     it('should split a cubic bezier path given by P1,P2,P3,P4 at z=0.33333 and 0.66666', async () => {
-        let oriPoints: Array<Point> = [];
-        oriPoints = [...oriPoints,new Point(10,60)]
-        oriPoints = [...oriPoints,new Point(10,20)]
-        oriPoints = [...oriPoints,new Point(70,20)]
-        oriPoints = [...oriPoints,new Point(70,60)]
+        let oriPoints: Array<MPoint> = [];
+        oriPoints = [...oriPoints,new MPoint(10,60)]
+        oriPoints = [...oriPoints,new MPoint(10,20)]
+        oriPoints = [...oriPoints,new MPoint(70,20)]
+        oriPoints = [...oriPoints,new MPoint(70,60)]
         let curves: CubicBezierSplitCurves = splitCubicBezier(oriPoints,0.33333);
-        expect(curves.C1[0]).toEqual(new Point(10,60));
+        expect(curves.C1[0]).toEqual(new MPoint(10,60));
         expect(curves.C1[1].x).toBeCloseTo(10);
         expect(curves.C1[1].y).toBeCloseTo(46.6668);
         expect(curves.C1[2].x).toBeCloseTo(16.6665);
@@ -357,7 +357,7 @@ describe('createSVG-utils', () => {
         expect(curves.C2[1].y).toBeCloseTo(24.444356);
         expect(curves.C2[2].x).toBeCloseTo(70);
         expect(curves.C2[2].y).toBeCloseTo(33.33320);
-        expect(curves.C2[3]).toEqual(new Point(70,60));
+        expect(curves.C2[3]).toEqual(new MPoint(70,60));
         let curves1: CubicBezierSplitCurves = splitCubicBezier(curves.C2,0.33333);
         expect(curves1.C1[0].x).toBeCloseTo(25.55529);
         expect(curves1.C1[0].y).toBeCloseTo(33.33320);
@@ -373,163 +373,163 @@ describe('createSVG-utils', () => {
         expect(curves1.C2[1].y).toBeCloseTo(32.34548);
         expect(curves1.C2[2].x).toBeCloseTo(70);
         expect(curves1.C2[2].y).toBeCloseTo(42.22204);
-        expect(curves1.C2[3]).toEqual(new Point(70,60));
+        expect(curves1.C2[3]).toEqual(new MPoint(70,60));
     });
     it('should split a cubic bezier path (line) given by P1,P2,P3,P4 at z=0.5', async () => {
-        let oriPoints: Array<Point> = [];
-        oriPoints = [...oriPoints,new Point(10,10)]
-        oriPoints = [...oriPoints,new Point(30,33.33)]
-        oriPoints = [...oriPoints,new Point(50,56.57)]
-        oriPoints = [...oriPoints,new Point(70,80)]
+        let oriPoints: Array<MPoint> = [];
+        oriPoints = [...oriPoints,new MPoint(10,10)]
+        oriPoints = [...oriPoints,new MPoint(30,33.33)]
+        oriPoints = [...oriPoints,new MPoint(50,56.57)]
+        oriPoints = [...oriPoints,new MPoint(70,80)]
         let curves: CubicBezierSplitCurves = splitCubicBezier(oriPoints,0.5);
-        expect(curves.C1[0]).toEqual(new Point(10,10));
-        expect(curves.C1[1]).toEqual(new Point(20,21.665));
-        expect(curves.C1[2]).toEqual(new Point(30,33.3075));
-        expect(curves.C1[3]).toEqual(new Point(40,44.9625));
-        expect(curves.C2[0]).toEqual(new Point(40,44.9625));
-        expect(curves.C2[1]).toEqual(new Point(50,56.6175));
-        expect(curves.C2[2]).toEqual(new Point(60,68.285));
-        expect(curves.C2[3]).toEqual(new Point(70,80));
+        expect(curves.C1[0]).toEqual(new MPoint(10,10));
+        expect(curves.C1[1]).toEqual(new MPoint(20,21.665));
+        expect(curves.C1[2]).toEqual(new MPoint(30,33.3075));
+        expect(curves.C1[3]).toEqual(new MPoint(40,44.9625));
+        expect(curves.C2[0]).toEqual(new MPoint(40,44.9625));
+        expect(curves.C2[1]).toEqual(new MPoint(50,56.6175));
+        expect(curves.C2[2]).toEqual(new MPoint(60,68.285));
+        expect(curves.C2[3]).toEqual(new MPoint(70,80));
     });
     it('should split a cubic bezier path (line) given by P1,P2,P3,P4 at z=0.25', async () => {
-        let oriPoints: Array<Point> = [];
-        oriPoints = [...oriPoints,new Point(100,100)]
-        oriPoints = [...oriPoints,new Point(200,100)]
-        oriPoints = [...oriPoints,new Point(300,100)]
-        oriPoints = [...oriPoints,new Point(400,100)]
+        let oriPoints: Array<MPoint> = [];
+        oriPoints = [...oriPoints,new MPoint(100,100)]
+        oriPoints = [...oriPoints,new MPoint(200,100)]
+        oriPoints = [...oriPoints,new MPoint(300,100)]
+        oriPoints = [...oriPoints,new MPoint(400,100)]
         let curves: CubicBezierSplitCurves = splitCubicBezier(oriPoints,0.25);
-        expect(curves.C1[0]).toEqual(new Point(100,100));
-        expect(curves.C1[1]).toEqual(new Point(125,100));
-        expect(curves.C1[2]).toEqual(new Point(150,100));
-        expect(curves.C1[3]).toEqual(new Point(175,100));
-        expect(curves.C2[0]).toEqual(new Point(175,100));
-        expect(curves.C2[1]).toEqual(new Point(250,100));
-        expect(curves.C2[2]).toEqual(new Point(325,100));
-        expect(curves.C2[3]).toEqual(new Point(400,100));
+        expect(curves.C1[0]).toEqual(new MPoint(100,100));
+        expect(curves.C1[1]).toEqual(new MPoint(125,100));
+        expect(curves.C1[2]).toEqual(new MPoint(150,100));
+        expect(curves.C1[3]).toEqual(new MPoint(175,100));
+        expect(curves.C2[0]).toEqual(new MPoint(175,100));
+        expect(curves.C2[1]).toEqual(new MPoint(250,100));
+        expect(curves.C2[2]).toEqual(new MPoint(325,100));
+        expect(curves.C2[3]).toEqual(new MPoint(400,100));
     });
     it('should return the points from a path "M100,100 H400 V400 H 100 V 100"', async () => {
         const d: string = 'M100,100 H400 V400 H 100 V 100';
         const cbp: CubicBezier = await cubicBezierfromPath(d,0);
-        const points: Array<Point> = getPointsFromCBPath(cbp); 
-        expect(points[0]).toEqual(new Point(100,100));
-        expect(points[1]).toEqual(new Point(200,100));
-        expect(points[2]).toEqual(new Point(300,100));
-        expect(points[3]).toEqual(new Point(400,100));
-        expect(points[4]).toEqual(new Point(400,200));
-        expect(points[5]).toEqual(new Point(400,300));
-        expect(points[6]).toEqual(new Point(400,400));
-        expect(points[7]).toEqual(new Point(300,400));
-        expect(points[8]).toEqual(new Point(200,400));
-        expect(points[9]).toEqual(new Point(100,400));
-        expect(points[10]).toEqual(new Point(100,300));
-        expect(points[11]).toEqual(new Point(100,200));
-        expect(points[12]).toEqual(new Point(100,100));
+        const points: Array<MPoint> = getPointsFromCBPath(cbp); 
+        expect(points[0]).toEqual(new MPoint(100,100));
+        expect(points[1]).toEqual(new MPoint(200,100));
+        expect(points[2]).toEqual(new MPoint(300,100));
+        expect(points[3]).toEqual(new MPoint(400,100));
+        expect(points[4]).toEqual(new MPoint(400,200));
+        expect(points[5]).toEqual(new MPoint(400,300));
+        expect(points[6]).toEqual(new MPoint(400,400));
+        expect(points[7]).toEqual(new MPoint(300,400));
+        expect(points[8]).toEqual(new MPoint(200,400));
+        expect(points[9]).toEqual(new MPoint(100,400));
+        expect(points[10]).toEqual(new MPoint(100,300));
+        expect(points[11]).toEqual(new MPoint(100,200));
+        expect(points[12]).toEqual(new MPoint(100,100));
     });
     it('should return the points from a path "M 250,100 L 270,230 400,250 270,270 250,400 230,270 100,250 230,230 250,100"', async () => {
         const d: string = 'M 250,100 L 270,230 400,250 270,270 250,400 230,270 100,250 230,230 250,100';
         const cbp: CubicBezier = await cubicBezierfromPath(d,0);
-        const points: Array<Point> = getPointsFromCBPath(cbp);
-        expect(points[0]).toEqual(new Point(250,100 ));
-        expect(points[1]).toEqual(new Point(256.67, 143.33));
-        expect(points[2]).toEqual(new Point(263.33, 186.67));
-        expect(points[3]).toEqual(new Point(270, 230));
-        expect(points[4]).toEqual(new Point(313.33, 236.67));
-        expect(points[5]).toEqual(new Point(356.67, 243.33));
-        expect(points[6]).toEqual(new Point(400, 250));
-        expect(points[7]).toEqual(new Point(356.67, 256.67));
-        expect(points[8]).toEqual(new Point(313.33, 263.33));
-        expect(points[9]).toEqual(new Point(270, 270));
-        expect(points[10]).toEqual(new Point(263.33, 313.33));
-        expect(points[11]).toEqual(new Point(256.67, 356.67));
-        expect(points[12]).toEqual(new Point(250, 400));
-        expect(points[13]).toEqual(new Point(243.33, 356.67));
-        expect(points[14]).toEqual(new Point(236.67, 313.33));
-        expect(points[15]).toEqual(new Point(230, 270));
-        expect(points[16]).toEqual(new Point(186.67, 263.33));
-        expect(points[17]).toEqual(new Point(143.33, 256.67));
-        expect(points[18]).toEqual(new Point(100, 250));
-        expect(points[19]).toEqual(new Point(143.33, 243.33));
-        expect(points[20]).toEqual(new Point(186.67, 236.67));
-        expect(points[21]).toEqual(new Point(230, 230));
-        expect(points[22]).toEqual(new Point(236.67, 186.67));
-        expect(points[23]).toEqual(new Point(243.33,143.33));
-        expect(points[24]).toEqual(new Point(250,100));
+        const points: Array<MPoint> = getPointsFromCBPath(cbp);
+        expect(points[0]).toEqual(new MPoint(250,100 ));
+        expect(points[1]).toEqual(new MPoint(256.67, 143.33));
+        expect(points[2]).toEqual(new MPoint(263.33, 186.67));
+        expect(points[3]).toEqual(new MPoint(270, 230));
+        expect(points[4]).toEqual(new MPoint(313.33, 236.67));
+        expect(points[5]).toEqual(new MPoint(356.67, 243.33));
+        expect(points[6]).toEqual(new MPoint(400, 250));
+        expect(points[7]).toEqual(new MPoint(356.67, 256.67));
+        expect(points[8]).toEqual(new MPoint(313.33, 263.33));
+        expect(points[9]).toEqual(new MPoint(270, 270));
+        expect(points[10]).toEqual(new MPoint(263.33, 313.33));
+        expect(points[11]).toEqual(new MPoint(256.67, 356.67));
+        expect(points[12]).toEqual(new MPoint(250, 400));
+        expect(points[13]).toEqual(new MPoint(243.33, 356.67));
+        expect(points[14]).toEqual(new MPoint(236.67, 313.33));
+        expect(points[15]).toEqual(new MPoint(230, 270));
+        expect(points[16]).toEqual(new MPoint(186.67, 263.33));
+        expect(points[17]).toEqual(new MPoint(143.33, 256.67));
+        expect(points[18]).toEqual(new MPoint(100, 250));
+        expect(points[19]).toEqual(new MPoint(143.33, 243.33));
+        expect(points[20]).toEqual(new MPoint(186.67, 236.67));
+        expect(points[21]).toEqual(new MPoint(230, 230));
+        expect(points[22]).toEqual(new MPoint(236.67, 186.67));
+        expect(points[23]).toEqual(new MPoint(243.33,143.33));
+        expect(points[24]).toEqual(new MPoint(250,100));
     }); 
     it('should return the points from a path "M100,100 H400 V400 H 100 V 100" permuted with pathIndex = 1', async () => {
         const d: string = 'M100,100 H400 V400 H 100 V 100';
         const cbp: CubicBezier = await cubicBezierfromPath(d,1);
-        const pts: Array<Point> = getPointsFromCBPath(cbp);
-        const points: Array<Point> = permutePoints(pts,1); 
-        expect(points[0]).toEqual(new Point(400,100));
-        expect(points[1]).toEqual(new Point(400,200));
-        expect(points[2]).toEqual(new Point(400,300));
-        expect(points[3]).toEqual(new Point(400,400));
-        expect(points[4]).toEqual(new Point(300,400));
-        expect(points[5]).toEqual(new Point(200,400));
-        expect(points[6]).toEqual(new Point(100,400));
-        expect(points[7]).toEqual(new Point(100,300));
-        expect(points[8]).toEqual(new Point(100,200));
-        expect(points[9]).toEqual(new Point(100,100));
-        expect(points[10]).toEqual(new Point(200,100));
-        expect(points[11]).toEqual(new Point(300,100));
-        expect(points[12]).toEqual(new Point(400,100));
+        const pts: Array<MPoint> = getPointsFromCBPath(cbp);
+        const points: Array<MPoint> = permutePoints(pts,1); 
+        expect(points[0]).toEqual(new MPoint(400,100));
+        expect(points[1]).toEqual(new MPoint(400,200));
+        expect(points[2]).toEqual(new MPoint(400,300));
+        expect(points[3]).toEqual(new MPoint(400,400));
+        expect(points[4]).toEqual(new MPoint(300,400));
+        expect(points[5]).toEqual(new MPoint(200,400));
+        expect(points[6]).toEqual(new MPoint(100,400));
+        expect(points[7]).toEqual(new MPoint(100,300));
+        expect(points[8]).toEqual(new MPoint(100,200));
+        expect(points[9]).toEqual(new MPoint(100,100));
+        expect(points[10]).toEqual(new MPoint(200,100));
+        expect(points[11]).toEqual(new MPoint(300,100));
+        expect(points[12]).toEqual(new MPoint(400,100));
     });
     it('should return the points from a path "M100,100 H400 V400 H 100 V 100" permuted with pathIndex = 2', async () => {
         const d: string = 'M100,100 H400 V400 H 100 V 100';
         const cbp: CubicBezier = await cubicBezierfromPath(d,2);
-        const pts: Array<Point> = getPointsFromCBPath(cbp);
-        const points: Array<Point> = permutePoints(pts,2); 
-        expect(points[0]).toEqual(new Point(400,400));
-        expect(points[1]).toEqual(new Point(300,400));
-        expect(points[2]).toEqual(new Point(200,400));
-        expect(points[3]).toEqual(new Point(100,400));
-        expect(points[4]).toEqual(new Point(100,300));
-        expect(points[5]).toEqual(new Point(100,200));
-        expect(points[6]).toEqual(new Point(100,100));
-        expect(points[7]).toEqual(new Point(200,100));
-        expect(points[8]).toEqual(new Point(300,100));
-        expect(points[9]).toEqual(new Point(400,100));
-        expect(points[10]).toEqual(new Point(400,200));
-        expect(points[11]).toEqual(new Point(400,300));
-        expect(points[12]).toEqual(new Point(400,400));
+        const pts: Array<MPoint> = getPointsFromCBPath(cbp);
+        const points: Array<MPoint> = permutePoints(pts,2); 
+        expect(points[0]).toEqual(new MPoint(400,400));
+        expect(points[1]).toEqual(new MPoint(300,400));
+        expect(points[2]).toEqual(new MPoint(200,400));
+        expect(points[3]).toEqual(new MPoint(100,400));
+        expect(points[4]).toEqual(new MPoint(100,300));
+        expect(points[5]).toEqual(new MPoint(100,200));
+        expect(points[6]).toEqual(new MPoint(100,100));
+        expect(points[7]).toEqual(new MPoint(200,100));
+        expect(points[8]).toEqual(new MPoint(300,100));
+        expect(points[9]).toEqual(new MPoint(400,100));
+        expect(points[10]).toEqual(new MPoint(400,200));
+        expect(points[11]).toEqual(new MPoint(400,300));
+        expect(points[12]).toEqual(new MPoint(400,400));
     });
     it('should return the points from a path "M100,100 H400 V400 H 100 V 100" permuted with pathIndex = -1', async () => {
         const d: string = 'M100,100 H400 V400 H 100 V 100';
         const cbp: CubicBezier = await cubicBezierfromPath(d,-1);
-        const pts: Array<Point> = getPointsFromCBPath(cbp);
-        const points: Array<Point> = permutePoints(pts,-1); 
-        expect(points[0]).toEqual(new Point(100,400));
-        expect(points[1]).toEqual(new Point(100,300));
-        expect(points[2]).toEqual(new Point(100,200));
-        expect(points[3]).toEqual(new Point(100,100));
-        expect(points[4]).toEqual(new Point(200,100));
-        expect(points[5]).toEqual(new Point(300,100));
-        expect(points[6]).toEqual(new Point(400,100));
-        expect(points[7]).toEqual(new Point(400,200));
-        expect(points[8]).toEqual(new Point(400,300));
-        expect(points[9]).toEqual(new Point(400,400));
-        expect(points[10]).toEqual(new Point(300,400));
-        expect(points[11]).toEqual(new Point(200,400));
-        expect(points[12]).toEqual(new Point(100,400));
+        const pts: Array<MPoint> = getPointsFromCBPath(cbp);
+        const points: Array<MPoint> = permutePoints(pts,-1); 
+        expect(points[0]).toEqual(new MPoint(100,400));
+        expect(points[1]).toEqual(new MPoint(100,300));
+        expect(points[2]).toEqual(new MPoint(100,200));
+        expect(points[3]).toEqual(new MPoint(100,100));
+        expect(points[4]).toEqual(new MPoint(200,100));
+        expect(points[5]).toEqual(new MPoint(300,100));
+        expect(points[6]).toEqual(new MPoint(400,100));
+        expect(points[7]).toEqual(new MPoint(400,200));
+        expect(points[8]).toEqual(new MPoint(400,300));
+        expect(points[9]).toEqual(new MPoint(400,400));
+        expect(points[10]).toEqual(new MPoint(300,400));
+        expect(points[11]).toEqual(new MPoint(200,400));
+        expect(points[12]).toEqual(new MPoint(100,400));
     });
     it('should return the points from a path "M100,100 H400 V400 H 100 V 100" permuted with pathIndex = -2', async () => {
         const d: string = 'M100,100 H400 V400 H 100 V 100';
         const cbp: CubicBezier = await cubicBezierfromPath(d,-2);
-        const pts: Array<Point> = getPointsFromCBPath(cbp);
-        const points: Array<Point> = permutePoints(pts,-2); 
-        expect(points[0]).toEqual(new Point(400,400));
-        expect(points[1]).toEqual(new Point(300,400));
-        expect(points[2]).toEqual(new Point(200,400));
-        expect(points[3]).toEqual(new Point(100,400));
-        expect(points[4]).toEqual(new Point(100,300));
-        expect(points[5]).toEqual(new Point(100,200));
-        expect(points[6]).toEqual(new Point(100,100));
-        expect(points[7]).toEqual(new Point(200,100));
-        expect(points[8]).toEqual(new Point(300,100));
-        expect(points[9]).toEqual(new Point(400,100));
-        expect(points[10]).toEqual(new Point(400,200));
-        expect(points[11]).toEqual(new Point(400,300));
-        expect(points[12]).toEqual(new Point(400,400));
+        const pts: Array<MPoint> = getPointsFromCBPath(cbp);
+        const points: Array<MPoint> = permutePoints(pts,-2); 
+        expect(points[0]).toEqual(new MPoint(400,400));
+        expect(points[1]).toEqual(new MPoint(300,400));
+        expect(points[2]).toEqual(new MPoint(200,400));
+        expect(points[3]).toEqual(new MPoint(100,400));
+        expect(points[4]).toEqual(new MPoint(100,300));
+        expect(points[5]).toEqual(new MPoint(100,200));
+        expect(points[6]).toEqual(new MPoint(100,100));
+        expect(points[7]).toEqual(new MPoint(200,100));
+        expect(points[8]).toEqual(new MPoint(300,100));
+        expect(points[9]).toEqual(new MPoint(400,100));
+        expect(points[10]).toEqual(new MPoint(400,200));
+        expect(points[11]).toEqual(new MPoint(400,300));
+        expect(points[12]).toEqual(new MPoint(400,400));
     });
     it('should align the modulo Shape "M100,100 H400 V400 H 100 V 100" with twice number of Points', async () => {
         const d: string = 'M100,100 H400 V400 H 100 V 100';
