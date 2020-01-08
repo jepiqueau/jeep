@@ -7,6 +7,7 @@ This is a library of Stencil Web Components including
  - [jeep-linechart  ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-linechart/readme.md)
  - [jeep-svgmorph   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-svgmorph/readme.md)
  - [jeep-slides   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-slides/readme.md)
+ - [jeep-flipimages   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-flipimages/readme.md)
 
 
 ## Jeep Components Viewme
@@ -18,6 +19,8 @@ This is a library of Stencil Web Components including
  - [SVGMorphing ViewMe](https://jeep-viewme-app.firebaseapp.com/svgmorph)
 
  - [Slides ViewMe](https://jeep-viewme-app.firebaseapp.com/slides)
+
+ - [Flipimages ViewMe](https://jeep-viewme-app.firebaseapp.com/flipimages)
 
 ## Using this library
 

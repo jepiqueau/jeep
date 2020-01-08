@@ -1,0 +1,272 @@
+:host {
+  --flipimages-border-width: 10px;
+  --flipimages-border-color: #ffffff;  
+  --flipimages-shadow-width: 20px;
+  --flipimages-shadow-color: #808080;
+  --image-height: 720px;
+  --image-width: 1280px;
+  --container-padding: 0px;
+
+}
+.imghidden {
+  display:none;
+  visibility:hidden;
+}
+.container {
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  overflow: hidden;
+  display: flex;
+  align-items : center;
+  justify-content : center;
+  padding: var(--container-padding);
+}
+/* image size */
+.image-dim {
+  display: flex;
+  align-items: center;
+  position: relative;
+  visibility: hidden;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%; 
+  z-index: 10;
+}
+.image-dim img {
+  max-width: 100%;
+  max-height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+}
+  
+.flip-container {
+  width: var(--image-width);
+  height: var(--image-height);
+  margin: 0;
+  perspective: calc( 2 * var(--image-width));
+  box-shadow: 0px 0px var(--flipimages-shadow-width) 2px var(--flipimages-shadow-color);
+  border-color: var(--flipimages-border-color);
+  border-style: solid;
+  border-width: var(--flipimages-border-width);
+  border-radius: var(--flipimages-border-width);
+  visibility: hidden;
+}
+.flipvisible {
+  visibility: visible;
+}
+/* flip the pane when touched */
+.toggle.horizontal.flip-container .flipper {
+  transform: rotateX(-180deg);
+  -moz-transform: rotateX(-180deg);
+  -webkit-transform: rotateX(-180deg);
+}
+.toggle.horizontal.flip-container .back-top {
+  opacity: 1;	
+}
+.toggle.horizontal.flip-container .front-bottom {
+  opacity: 0;
+}
+/* flip the pane when touched */
+.toggle.vertical.flip-container .flipper {
+  transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+}
+.toggle.vertical.flip-container .back-left {
+  opacity: 1;	
+}
+
+.toggle.vertical.flip-container .front-right {
+  opacity: 0;	
+}
+
+/* flip speed goes here */
+.flipper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left:0;
+
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  transition-timing-function: linear;
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+
+  transform-style: preserve-3d;
+}
+.front-top, .front-bottom, .back-top, .back-bottom {
+  max-height: calc( 1 * var(--image-height) / 2 + 2px);
+  max-width: var(--image-width);
+  overflow: hidden;
+  margin: 0;
+}      
+.front-top img, .front-bottom img, .back-top img, .back-bottom img {
+  display: block;
+  width: var(--image-width);
+} 
+     
+.front-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 10;
+}
+.front-bottom {
+  position: absolute;
+  /*top: 50%;  50% */
+  bottom: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+}
+.front-top img {
+  margin-bottom: calc( -1 * var(--image-height) / 2 + 2px);
+}
+.front-bottom img {
+  margin-top: calc( -1 * var(--image-height) / 2);
+}
+.back-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  z-index: -2;
+}
+.back-bottom {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:5;
+}
+.back-top img {
+  margin-bottom: calc( -1 * var(--image-height) / 2 + 2px);
+}
+.back-bottom img {
+  margin-top: calc( -1 * var(--image-height) / 2);
+}
+/* front pane, placed above back */
+
+.front-top {
+  /* for firefox 31 */
+  transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+}
+
+/* back, initially hidden pane */
+.back-bottom {
+  transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+.front-left, .front-right, .back-left, .back-right {
+  max-height: var(--image-height);
+  max-width: calc( 1 * var(--image-width) / 2 + 2px);
+  overflow: hidden;
+  margin: 0;
+}      
+.front-left img, .front-right img, .back-left img, .back-right img {
+  display: block;
+  width: var(--image-width);
+}
+.front-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 10;
+}
+.front-right {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+}
+.front-left img {
+  margin-right: calc( -1 * var(--image-width) / 2 + 2px);
+}
+.front-right img {
+  margin-left: calc( -1 * var(--image-width) / 2);
+}
+.back-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  z-index: -2;
+}
+.back-right {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:5;
+}
+.back-left img {
+  margin-right: calc( -1 * var(--image-width) / 2 + 2px);
+}
+.back-right img {
+  margin-left: calc( -1 * var(--image-width) / 2);
+}
+
+/* front pane, placed above back */
+.front-left {
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back-right {
+  transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}

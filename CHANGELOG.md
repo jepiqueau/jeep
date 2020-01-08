@@ -1,3 +1,23 @@
+## 0.0.1-alpha.17 (2020-01-08)
+
+### Chores
+
+* @stencil/core: update to 1.8.4 
+* @stencil/angular-output-target: update to 0.0.2
+* @stencil/react-output-target: update to 0.0.2
+
+### Added Features
+
+* add use of jeep-flipimages in IonicAngularApps
+* add use of jeep-linechart in IonicAngularApps
+* add use of jeep-slides in IonicAngularApps
+* add use of jeep-svgmorph in IonicAngularApps
+* add use of jeep-flipimages in IonicReactApps
+* add use of jeep-linechart in IonicReactApps
+* add use of jeep-slides in IonicReactApps
+* add use of jeep-flipimages in pwa-components-viewme
+
+
 ## 0.0.1-alpha.14 (2019-12-29)
 
 ### Chores

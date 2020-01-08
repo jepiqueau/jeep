@@ -2,16 +2,18 @@
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+import * as tslib_1 from "tslib";
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { Component, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone } from '@angular/core';
 import { fromEvent } from 'rxjs';
-/**
+/** @type {?} */
+export var proxyInputs = (/**
  * @param {?} Cmp
  * @param {?} inputs
  * @return {?}
  */
-function proxyInputs(Cmp, inputs) {
+function (Cmp, inputs) {
     /** @type {?} */
     var Prototype = Cmp.prototype;
     inputs.forEach((/**
@@ -28,16 +30,23 @@ function proxyInputs(Cmp, inputs) {
              * @param {?} val
              * @return {?}
              */
-            function (val) { this.el[item] = val; },
+            function (val) {
+                var _this = this;
+                this.z.runOutsideAngular((/**
+                 * @return {?}
+                 */
+                function () { return (_this.el[item] = val); }));
+            }
         });
     }));
-}
-/**
+});
+/** @type {?} */
+export var proxyMethods = (/**
  * @param {?} Cmp
  * @param {?} methods
  * @return {?}
  */
-function proxyMethods(Cmp, methods) {
+function (Cmp, methods) {
     /** @type {?} */
     var Prototype = Cmp.prototype;
     methods.forEach((/**
@@ -49,43 +58,74 @@ function proxyMethods(Cmp, methods) {
          * @return {?}
          */
         function () {
+            var _this = this;
             /** @type {?} */
             var args = arguments;
-            return this.el.componentOnReady().then((/**
-             * @param {?} el
+            return this.z.runOutsideAngular((/**
              * @return {?}
              */
-            function (el) { return el[methodName].apply(el, args); }));
+            function () { return _this.el[methodName].apply(_this.el, args); }));
         });
     }));
-}
-/**
+});
+/** @type {?} */
+export var proxyOutputs = (/**
  * @param {?} instance
  * @param {?} el
  * @param {?} events
  * @return {?}
  */
-function proxyOutputs(instance, el, events) {
+function (instance, el, events) {
     events.forEach((/**
      * @param {?} eventName
      * @return {?}
      */
     function (eventName) { return instance[eventName] = fromEvent(el, eventName); }));
+})
+// tslint:disable-next-line: only-arrow-functions
+;
+// tslint:disable-next-line: only-arrow-functions
+/**
+ * @param {?} opts
+ * @return {?}
+ */
+export function ProxyCmp(opts) {
+    /** @type {?} */
+    var decorator = (/**
+     * @param {?} cls
+     * @return {?}
+     */
+    function (cls) {
+        if (opts.inputs) {
+            proxyInputs(cls, opts.inputs);
+        }
+        if (opts.methods) {
+            proxyMethods(cls, opts.methods);
+        }
+        return cls;
+    });
+    return decorator;
 }
 var JeepColorpicker = /** @class */ (function () {
-    function JeepColorpicker(c, r) {
+    function JeepColorpicker(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepColorpickerGetColor', 'jeepColorpickerOpen', 'jeepColorpickerClose']);
     }
     JeepColorpicker.decorators = [
-        { type: Component, args: [{ selector: 'jeep-colorpicker', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'] },] },
+        { type: Component, args: [{ selector: 'jeep-colorpicker', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'] },] },
     ];
     /** @nocollapse */
     JeepColorpicker.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepColorpicker = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'], 'methods': ['init', 'open', 'close'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepColorpicker);
     return JeepColorpicker;
 }());
 export { JeepColorpicker };
@@ -101,23 +141,32 @@ if (false) {
      * @protected
      */
     JeepColorpicker.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepColorpicker.prototype.z;
 }
-proxyMethods(JeepColorpicker, ['init', 'open', 'close']);
-proxyInputs(JeepColorpicker, ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity']);
 var JeepCpicker = /** @class */ (function () {
-    function JeepCpicker(c, r) {
+    function JeepCpicker(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepCpickerOpen', 'jeepCpickerClose', 'jeepCpickerInstantColor']);
     }
     JeepCpicker.decorators = [
-        { type: Component, args: [{ selector: 'jeep-cpicker', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'] },] },
+        { type: Component, args: [{ selector: 'jeep-cpicker', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'] },] },
     ];
     /** @nocollapse */
     JeepCpicker.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepCpicker = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'], 'methods': ['init', 'getStateProperties', 'getWrapperCssVariables', 'calcH', 'calcS', 'calcB', 'calcO'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepCpicker);
     return JeepCpicker;
 }());
 export { JeepCpicker };
@@ -133,23 +182,69 @@ if (false) {
      * @protected
      */
     JeepCpicker.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepCpicker.prototype.z;
 }
-proxyMethods(JeepCpicker, ['init', 'getStateProperties', 'getWrapperCssVariables', 'calcH', 'calcS', 'calcB', 'calcO']);
-proxyInputs(JeepCpicker, ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity']);
+var JeepFlipimages = /** @class */ (function () {
+    function JeepFlipimages(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepFlipImagesImgLoaded']);
+    }
+    JeepFlipimages.decorators = [
+        { type: Component, args: [{ selector: 'jeep-flipimages', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['fpadding', 'type'] },] },
+    ];
+    /** @nocollapse */
+    JeepFlipimages.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: ElementRef },
+        { type: NgZone }
+    ]; };
+    JeepFlipimages = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['fpadding', 'type'], 'methods': ['init'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepFlipimages);
+    return JeepFlipimages;
+}());
+export { JeepFlipimages };
+if (false) {
+    /** @type {?} */
+    JeepFlipimages.prototype.jeepFlipImagesImgLoaded;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepFlipimages.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepFlipimages.prototype.z;
+}
 var JeepFullscreen = /** @class */ (function () {
-    function JeepFullscreen(c, r) {
+    function JeepFullscreen(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepFullscreenRequest', 'jeepFullscreenExit', 'jeepFullscreenChange']);
     }
     JeepFullscreen.decorators = [
-        { type: Component, args: [{ selector: 'jeep-fullscreen', changeDetection: 0, template: '<ng-content></ng-content>' },] },
+        { type: Component, args: [{ selector: 'jeep-fullscreen', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>' },] },
     ];
     /** @nocollapse */
     JeepFullscreen.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepFullscreen = tslib_1.__decorate([
+        ProxyCmp({ 'methods': ['init', 'setFullscreen', 'setJeepFullscreenVisibility', 'fullscreenRequest', 'fullscreenExit', 'isFullscreen'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepFullscreen);
     return JeepFullscreen;
 }());
 export { JeepFullscreen };
@@ -165,21 +260,31 @@ if (false) {
      * @protected
      */
     JeepFullscreen.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepFullscreen.prototype.z;
 }
-proxyMethods(JeepFullscreen, ['init', 'setFullscreen', 'setJeepFullscreenVisibility', 'fullscreenRequest', 'fullscreenExit', 'isFullscreen']);
 var JeepLinechart = /** @class */ (function () {
-    function JeepLinechart(c, r) {
+    function JeepLinechart(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
     }
     JeepLinechart.decorators = [
-        { type: Component, args: [{ selector: 'jeep-linechart', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['animation', 'cborder', 'cstyle', 'ctitle', 'data', 'delay', 'subtitle', 'xtitle', 'ytitle'] },] },
+        { type: Component, args: [{ selector: 'jeep-linechart', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['animation', 'cborder', 'cstyle', 'ctitle', 'data', 'delay', 'subtitle', 'xtitle', 'ytitle'] },] },
     ];
     /** @nocollapse */
     JeepLinechart.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepLinechart = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['animation', 'cborder', 'cstyle', 'ctitle', 'data', 'delay', 'subtitle', 'xtitle', 'ytitle'], 'methods': ['init', 'getStatus', 'renderChart', 'getWindowSize', 'getCssProperties'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepLinechart);
     return JeepLinechart;
 }());
 export { JeepLinechart };
@@ -189,23 +294,32 @@ if (false) {
      * @protected
      */
     JeepLinechart.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepLinechart.prototype.z;
 }
-proxyMethods(JeepLinechart, ['init', 'getStatus', 'renderChart', 'getWindowSize', 'getCssProperties']);
-proxyInputs(JeepLinechart, ['animation', 'cborder', 'cstyle', 'ctitle', 'data', 'delay', 'subtitle', 'xtitle', 'ytitle']);
 var JeepNavigation = /** @class */ (function () {
-    function JeepNavigation(c, r) {
+    function JeepNavigation(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepNavigationPrev', 'jeepNavigationNext']);
     }
     JeepNavigation.decorators = [
-        { type: Component, args: [{ selector: 'jeep-navigation', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['name'] },] },
+        { type: Component, args: [{ selector: 'jeep-navigation', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['name'] },] },
     ];
     /** @nocollapse */
     JeepNavigation.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepNavigation = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['name'], 'methods': ['init', 'setNavigation', 'setJeepNavigationVisibility', 'setJeepNavigationPrevDisabled', 'setJeepNavigationNextDisabled', 'getJeepNavigationIconFamily'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepNavigation);
     return JeepNavigation;
 }());
 export { JeepNavigation };
@@ -219,23 +333,32 @@ if (false) {
      * @protected
      */
     JeepNavigation.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepNavigation.prototype.z;
 }
-proxyMethods(JeepNavigation, ['init', 'setNavigation', 'setJeepNavigationVisibility', 'setJeepNavigationPrevDisabled', 'setJeepNavigationNextDisabled', 'getJeepNavigationIconFamily']);
-proxyInputs(JeepNavigation, ['name']);
 var JeepPagination = /** @class */ (function () {
-    function JeepPagination(c, r) {
+    function JeepPagination(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepPaginationIndex']);
     }
     JeepPagination.decorators = [
-        { type: Component, args: [{ selector: 'jeep-pagination', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['clickable', 'direction', 'ndisplay'] },] },
+        { type: Component, args: [{ selector: 'jeep-pagination', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['clickable', 'direction', 'ndisplay'] },] },
     ];
     /** @nocollapse */
     JeepPagination.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepPagination = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['clickable', 'direction', 'ndisplay'], 'methods': ['init', 'setJeepPaginationVisibility', 'setJeepPaginationSlidesNumber', 'setJeepPaginationActiveIndex', 'getJeepPaginationBulletNumber'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepPagination);
     return JeepPagination;
 }());
 export { JeepPagination };
@@ -247,23 +370,32 @@ if (false) {
      * @protected
      */
     JeepPagination.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepPagination.prototype.z;
 }
-proxyMethods(JeepPagination, ['init', 'setJeepPaginationVisibility', 'setJeepPaginationSlidesNumber', 'setJeepPaginationActiveIndex', 'getJeepPaginationBulletNumber']);
-proxyInputs(JeepPagination, ['clickable', 'direction', 'ndisplay']);
 var JeepPlayControls = /** @class */ (function () {
-    function JeepPlayControls(c, r) {
+    function JeepPlayControls(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepPlayControlsIsBeginning', 'jeepPlayControlsIsEnd', 'jeepPlayControlsCurrentIndex', 'jeepPlayControlsAutoplayStart', 'jeepPlayControlsAutoplayStop', 'jeepPlayControlsAutoplayPause', 'jeepPlayControlsAutoplaySkipBackward', 'jeepPlayControlsAutoplaySkipForward']);
     }
     JeepPlayControls.decorators = [
-        { type: Component, args: [{ selector: 'jeep-play-controls', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['duration', 'fromslide', 'nslides', 'toslide'] },] },
+        { type: Component, args: [{ selector: 'jeep-play-controls', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['duration', 'fromslide', 'nslides', 'toslide'] },] },
     ];
     /** @nocollapse */
     JeepPlayControls.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepPlayControls = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['duration', 'fromslide', 'nslides', 'toslide'], 'methods': ['init', 'setPlayControls', 'setJeepPlayControlsVisibility', 'setJeepPlayControlsSkipBackwardDisabled', 'setJeepPlayControlsSkipForwardDisabled', 'getJeepPlayControlsDuration', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'isPlaying', 'getCurrentIndex', 'setActiveIndexAndPlay', 'setCurrentIndex'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepPlayControls);
     return JeepPlayControls;
 }());
 export { JeepPlayControls };
@@ -289,23 +421,32 @@ if (false) {
      * @protected
      */
     JeepPlayControls.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepPlayControls.prototype.z;
 }
-proxyMethods(JeepPlayControls, ['init', 'setPlayControls', 'setJeepPlayControlsVisibility', 'setJeepPlayControlsSkipBackwardDisabled', 'setJeepPlayControlsSkipForwardDisabled', 'getJeepPlayControlsDuration', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'isPlaying', 'getCurrentIndex', 'setActiveIndexAndPlay', 'setCurrentIndex']);
-proxyInputs(JeepPlayControls, ['duration', 'fromslide', 'nslides', 'toslide']);
 var JeepSlide = /** @class */ (function () {
-    function JeepSlide(c, r) {
+    function JeepSlide(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepSlideDidLoad']);
     }
     JeepSlide.decorators = [
-        { type: Component, args: [{ selector: 'jeep-slide', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['cstyle', 'stitle', 'subtitle'] },] },
+        { type: Component, args: [{ selector: 'jeep-slide', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['cstyle', 'stitle', 'subtitle'] },] },
     ];
     /** @nocollapse */
     JeepSlide.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepSlide = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['cstyle', 'stitle', 'subtitle'], 'methods': ['init', 'setSlide'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepSlide);
     return JeepSlide;
 }());
 export { JeepSlide };
@@ -317,23 +458,32 @@ if (false) {
      * @protected
      */
     JeepSlide.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepSlide.prototype.z;
 }
-proxyMethods(JeepSlide, ['init', 'setSlide']);
-proxyInputs(JeepSlide, ['cstyle', 'stitle', 'subtitle']);
 var JeepSlides = /** @class */ (function () {
-    function JeepSlides(c, r) {
+    function JeepSlides(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
         proxyOutputs(this, this.el, ['jeepSlidesHeaderVisibility']);
     }
     JeepSlides.decorators = [
-        { type: Component, args: [{ selector: 'jeep-slides', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['options'] },] },
+        { type: Component, args: [{ selector: 'jeep-slides', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['options'] },] },
     ];
     /** @nocollapse */
     JeepSlides.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepSlides = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['options'], 'methods': ['init', 'setSlides', 'getActiveSlideIndex'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepSlides);
     return JeepSlides;
 }());
 export { JeepSlides };
@@ -345,22 +495,31 @@ if (false) {
      * @protected
      */
     JeepSlides.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepSlides.prototype.z;
 }
-proxyMethods(JeepSlides, ['init', 'setSlides', 'getActiveSlideIndex']);
-proxyInputs(JeepSlides, ['options']);
 var JeepSvgmorph = /** @class */ (function () {
-    function JeepSvgmorph(c, r) {
+    function JeepSvgmorph(c, r, z) {
+        this.z = z;
         c.detach();
         this.el = r.nativeElement;
     }
     JeepSvgmorph.decorators = [
-        { type: Component, args: [{ selector: 'jeep-svgmorph', changeDetection: 0, template: '<ng-content></ng-content>', inputs: ['calcmode', 'duration', 'fill', 'keysplines', 'keytimes', 'nsegment', 'pathindex', 'repeatcount'] },] },
+        { type: Component, args: [{ selector: 'jeep-svgmorph', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['calcmode', 'duration', 'fill', 'keysplines', 'keytimes', 'nsegment', 'pathindex', 'repeatcount'] },] },
     ];
     /** @nocollapse */
     JeepSvgmorph.ctorParameters = function () { return [
         { type: ChangeDetectorRef },
-        { type: ElementRef }
+        { type: ElementRef },
+        { type: NgZone }
     ]; };
+    JeepSvgmorph = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['calcmode', 'duration', 'fill', 'keysplines', 'keytimes', 'nsegment', 'pathindex', 'repeatcount'], 'methods': ['init', 'getStateProperties', 'getPath', 'getPathList', 'getFillColor', 'renderSVGFirstPath', 'getAlignedPaths'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepSvgmorph);
     return JeepSvgmorph;
 }());
 export { JeepSvgmorph };
@@ -370,6 +529,9 @@ if (false) {
      * @protected
      */
     JeepSvgmorph.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepSvgmorph.prototype.z;
 }
-proxyMethods(JeepSvgmorph, ['init', 'getStateProperties', 'getPath', 'getPathList', 'getFillColor', 'renderSVGFirstPath', 'getAlignedPaths']);
-proxyInputs(JeepSvgmorph, ['calcmode', 'duration', 'fill', 'keysplines', 'keytimes', 'nsegment', 'pathindex', 'repeatcount']);

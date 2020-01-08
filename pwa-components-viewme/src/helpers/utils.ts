@@ -12,17 +12,17 @@ export const slidesPresentation1: string =   '<div slot="slides">\
 <jeep-slide cstyle=":host{--slide-background: #4c67c1;}">Section Five</jeep-slide>\
 <jeep-slide cstyle=":host{--slide-background: rgb(178, 180, 72);}">Section Six</jeep-slide>\
 <jeep-slide>\
-<img src="../../assets/images/italy-mountains.jpeg"\
+<img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg"\
   style="width:100%;max-width:var(--slide-min-width);height:auto;max-height:var(--slide-height);\
   box-sizing:border-box;border:1vmin solid var(--gslider-slide-background)"></img>\
 </jeep-slide>\
 <jeep-slide>\
-<img src="../../assets/images/lake-sunset-twilight.jpeg"\
+<img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg"\
 style="width:100%;max-width:var(--slide-min-width);height:auto;max-height:var(--slide-height);\
 box-sizing:border-box;border:1vmin solid var(--gslider-slide-background)"></img>\
 </jeep-slide>\
 <jeep-slide>\
-<img src="../../assets/images/deerl.jpg" alt="deer"\
+<img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/deerl.jpg" alt="deer"\
 style="width:75%;max-width:var(--slide-min-width);height:auto;max-height:var(--slide-height);\
 box-sizing:border-box;border:1vmin solid var(--gslider-slide-background)"></img>\
 </jeep-slide>\
@@ -48,17 +48,17 @@ export const slidesPresentation:string = [
     '<jeep-slide cstyle=":host{--slide-background: #4c67c1;}">Section Five</jeep-slide>',
     '<jeep-slide cstyle=":host{--slide-background: rgb(178, 180, 72);}">Section Six</jeep-slide>',
     '<jeep-slide>',
-      '<img src="../../assets/images/italy-mountains.jpeg"\
+      '<img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg"\
         style="width:100%;max-width:var(--slide-min-width);height:auto;max-height:var(--slide-height);\
         box-sizing:border-box;border:1vmin solid var(--gslider-slide-background)"></img>',
     '</jeep-slide>',
     '<jeep-slide>',
-      '<img src="../../assets/images/lake-sunset-twilight.jpeg"\
+      '<img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg"\
       style="width:100%;max-width:var(--slide-min-width);height:auto;max-height:var(--slide-height);\
       box-sizing:border-box;border:1vmin solid var(--gslider-slide-background)"></img>',
     '</jeep-slide>',
     '<jeep-slide>',
-      '<img src="../../assets/images/deerl.jpg" alt="deer"\
+      '<img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/deerl.jpg" alt="deer"\
       style="width:75%;max-width:var(--slide-min-width);height:auto;max-height:var(--slide-height);\
       box-sizing:border-box;border:1vmin solid var(--gslider-slide-background)"></img>',
     '</jeep-slide>',
@@ -69,34 +69,34 @@ export const slidesPresentation:string = [
 ].join('');
 
 export const carouselImages:string = JSON.stringify({slides:[
-  {slide:['<img class="image" src="../../assets/images/deerl.jpg" alt="deer"></img>']},
-  {slide:['<img class="image" src="../../assets/images/elephantl.jpg" alt="elephant"></img>']},
-  {slide:['<img class="image" src="../../assets/images/tigerl.jpg" alt="tiger"></img>']},
-  {slide:['<img class="image" src="../../assets/images/lionl.jpg" alt="lion"></img>']},
-  {slide:['<img class="image" src="../../assets/images/eaglel.jpg" alt="eagle"></img>']},
-  {slide:['<img class="image" src="../../assets/images/eagleheadl.jpg" alt="eagle head"></img>']}
+  {slide:['<img class="image" src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/deerl.jpg" alt="deer"></img>']},
+  {slide:['<img class="image" src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/elephantl.jpg" alt="elephant"></img>']},
+  {slide:['<img class="image" src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/tigerl.jpg" alt="tiger"></img>']},
+  {slide:['<img class="image" src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lionl.jpg" alt="lion"></img>']},
+  {slide:['<img class="image" src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eaglel.jpg" alt="eagle"></img>']},
+  {slide:['<img class="image" src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eagleheadl.jpg" alt="eagle head"></img>']}
 ]});
 
 export const carouselLazyImages:string = JSON.stringify({slides:[
-  {slide:['<img class="swiper-lazy image" data-src="../../assets/images/deerl.jpg" alt="deer"></img>']},
-  {slide:['<img class="swiper-lazy image" data-src="../../assets/images/elephantl.jpg" alt="elephant"></img>']},
-  {slide:['<img class="swiper-lazy image" data-src="../../assets/images/tigerl.jpg" alt="tiger"></img>']},
-  {slide:['<img class="swiper-lazy image" data-src="../../assets/images/lionl.jpg" alt="lion"></img>']},
-  {slide:['<img class="swiper-lazy image" data-src="../../assets/images/eaglel.jpg" alt="eagle"></img>']},
-  {slide:['<img class="swiper-lazy image" data-src="../../assets/images/eagleheadl.jpg" alt="eagle head"></img>']} 
+  {slide:['<img class="swiper-lazy image" data-src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/deerl.jpg" alt="deer"></img>']},
+  {slide:['<img class="swiper-lazy image" data-src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/elephantl.jpg" alt="elephant"></img>']},
+  {slide:['<img class="swiper-lazy image" data-src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/tigerl.jpg" alt="tiger"></img>']},
+  {slide:['<img class="swiper-lazy image" data-src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lionl.jpg" alt="lion"></img>']},
+  {slide:['<img class="swiper-lazy image" data-src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eaglel.jpg" alt="eagle"></img>']},
+  {slide:['<img class="swiper-lazy image" data-src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eagleheadl.jpg" alt="eagle head"></img>']} 
 ]});
 
 export const carouselCoverImages:string = JSON.stringify({slides:[
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/italy-mountains.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/lake-sunset-twilight.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-67517s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-247474s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-268633s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-371589s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-414171s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-414513s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-814499s.jpeg)"></div>']},
-  {slide:['<div class="swiper-slide cover-image" style="background-image:url(../../assets/images/pexels-photo-910368s.jpeg)"></div>']}
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-67517s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-247474s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-268633s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-371589s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-414171s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-414513s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-814499s.jpeg)"></div>']},
+  {slide:['<div class="swiper-slide cover-image" style="background-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/pexels-photo-910368s.jpeg)"></div>']}
 ]});
 
 export const carouselParallaxSlides:string = JSON.stringify({slides:[

@@ -22,7 +22,8 @@ export const config: Config = {
       dir: 'public',
       serviceWorker: null,
       copy: [
-        { src: '../tests', dest: 'tests' }
+        { src: '../tests', dest: 'tests' },
+        { src: '../../assets', dest:'assets'}
       ]
     },
     {

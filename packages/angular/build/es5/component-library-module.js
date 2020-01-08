@@ -4,7 +4,7 @@
  */
 import { NgModule } from "@angular/core";
 import { defineCustomElements } from "@jeepq/core/loader";
-import { JeepColorpicker, JeepLinechart, JeepSvgmorph, JeepSlides } from "./directives/proxies";
+import { JeepColorpicker, JeepLinechart, JeepSvgmorph, JeepSlides, JeepFlipimages } from "./directives/proxies";
 defineCustomElements(window);
 /** @type {?} */
 var DECLARATIONS = [
@@ -12,7 +12,8 @@ var DECLARATIONS = [
     JeepColorpicker,
     JeepLinechart,
     JeepSvgmorph,
-    JeepSlides
+    JeepSlides,
+    JeepFlipimages
 ];
 var ComponentLibraryModule = /** @class */ (function () {
     function ComponentLibraryModule() {

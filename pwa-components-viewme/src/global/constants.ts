@@ -1,1 +1,1 @@
-export const APPVERSION:string ="0.0.1-alpha.14";
+export const APPVERSION:string ="0.0.1-alpha.17";

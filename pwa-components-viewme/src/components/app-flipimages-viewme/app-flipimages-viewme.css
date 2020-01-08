@@ -1,0 +1,10 @@
+#flip1 {
+    --flipimages-border-width: 10px;                
+    --flipimages-shadow-width: 20px;                
+}
+#flip2 {
+    --flipimages-border-width: 2px; 
+    --flipimages-border-color: #2a2a2a;               
+    --flipimages-shadow-width: 15px;
+    --flipimages-shadow-color: #686868;               
+}

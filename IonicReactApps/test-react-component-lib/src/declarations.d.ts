@@ -15,9 +15,10 @@ to declare the IntrinsicElements Interface of the namespace JSX
 I could not understand the reason for this, but it works
 
 */
-
+/*
 declare namespace JSX {
     interface IntrinsicElements {
       "jeep-colorpicker": any;
     }
 }
+*/

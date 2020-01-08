@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import ColorPicker from './pages/ColorPicker';
 import SvgMorph from './pages/SvgMorph';
 import LineChart from './pages/LineChart';
+import FlipImages from './pages/FlipImages';
+import Slides from './pages/Slides';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -30,6 +32,8 @@ const App: React.FunctionComponent = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet>
+          <Route path="/slides" component={Slides} />
+          <Route path="/flipimages" component={FlipImages} />
           <Route path="/linechart" component={LineChart} />
           <Route path="/svgmorph" component={SvgMorph} />
           <Route path="/colorpicker" component={ColorPicker} />

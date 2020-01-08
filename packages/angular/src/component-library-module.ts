@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { defineCustomElements } from "@jeepq/core/loader";
 
-import { JeepColorpicker, JeepLinechart, JeepSvgmorph, JeepSlides } from "./directives/proxies";
+import { JeepColorpicker, JeepLinechart, JeepSvgmorph, JeepSlides, JeepFlipimages } from "./directives/proxies";
 
 defineCustomElements(window);
 
@@ -10,7 +10,8 @@ const DECLARATIONS = [
   JeepColorpicker,
   JeepLinechart,
   JeepSvgmorph,
-  JeepSlides
+  JeepSlides,
+  JeepFlipimages
 ];
 
 @NgModule({

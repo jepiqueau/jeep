@@ -1,3 +1,24 @@
+## 0.0.1-alpha.17 (2020-01-08)
+
+### Chores
+
+* @stencil/core: update to 1.8.4 
+* @stencil/angular-output-target: update to 0.0.2
+* @stencil/react-output-target: update to 0.0.2
+
+## 0.0.1-alpha.16 (2020-01-07)
+
+### Bug Fixes
+
+* Fix first render flip-container visibility
+* Fix opacity transition time
+
+## 0.0.1-alpha.15 (2020-01-07)
+
+### Added Features
+
+* add jeep-flipimages stencil web component
+
 ## 0.0.1-alpha.14 (2019-12-29)
 
 ### Chores

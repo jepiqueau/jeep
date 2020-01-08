@@ -21,6 +21,8 @@ export class AppRoot {
           <ion-route url="/svgmorph/viewme/:type" component="app-svgmorph-viewme" />
           <ion-route url="/slides" component="app-slides" />
           <ion-route url="/slides/viewme/:type" component="app-slides-viewme" />
+          <ion-route url="/flipimages" component="app-flipimages" />
+          <ion-route url="/flipimages/viewme/:type" component="app-flipimages-viewme" />
         </ion-router>
         <ion-nav />
       </ion-app>

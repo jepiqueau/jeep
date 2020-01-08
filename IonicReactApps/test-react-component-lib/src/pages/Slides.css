@@ -1,0 +1,21 @@
+:root {
+    --gslides-background-color:#eeeeee;
+    --gslides-slide-color:#ffffff;
+    --gslides-slide-background:#6d6c6c;
+    --gslides-slide-content-font-size:7vmin;
+    --gslides-margin-top:0px;
+    --gslides-margin-left:5vmin;
+    --gslides-margin-right:5vmin;
+    --gslides-margin-bottom:10vmin;
+    --gslides-fullscreen-top:56px;
+}
+
+.ionheader {
+    visibility: visible;  
+}
+.hidden {
+    visibility: hidden;
+}
+.paginationnavigationhorizontal {
+    --slides-pagination-bottom: 60px;
+}

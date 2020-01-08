@@ -15,6 +15,10 @@ export namespace Components {
   interface AppColorpickerViewme {
     'type': string;
   }
+  interface AppFlipimages {}
+  interface AppFlipimagesViewme {
+    'type': string;
+  }
   interface AppHome {}
   interface AppLinechart {}
   interface AppLinechartViewme {
@@ -50,6 +54,18 @@ declare global {
   var HTMLAppColorpickerViewmeElement: {
     prototype: HTMLAppColorpickerViewmeElement;
     new (): HTMLAppColorpickerViewmeElement;
+  };
+
+  interface HTMLAppFlipimagesElement extends Components.AppFlipimages, HTMLStencilElement {}
+  var HTMLAppFlipimagesElement: {
+    prototype: HTMLAppFlipimagesElement;
+    new (): HTMLAppFlipimagesElement;
+  };
+
+  interface HTMLAppFlipimagesViewmeElement extends Components.AppFlipimagesViewme, HTMLStencilElement {}
+  var HTMLAppFlipimagesViewmeElement: {
+    prototype: HTMLAppFlipimagesViewmeElement;
+    new (): HTMLAppFlipimagesViewmeElement;
   };
 
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
@@ -103,6 +119,8 @@ declare global {
     'app-about': HTMLAppAboutElement;
     'app-colorpicker': HTMLAppColorpickerElement;
     'app-colorpicker-viewme': HTMLAppColorpickerViewmeElement;
+    'app-flipimages': HTMLAppFlipimagesElement;
+    'app-flipimages-viewme': HTMLAppFlipimagesViewmeElement;
     'app-home': HTMLAppHomeElement;
     'app-linechart': HTMLAppLinechartElement;
     'app-linechart-viewme': HTMLAppLinechartViewmeElement;
@@ -118,6 +136,10 @@ declare namespace LocalJSX {
   interface AppAbout {}
   interface AppColorpicker {}
   interface AppColorpickerViewme {
+    'type'?: string;
+  }
+  interface AppFlipimages {}
+  interface AppFlipimagesViewme {
     'type'?: string;
   }
   interface AppHome {}
@@ -139,6 +161,8 @@ declare namespace LocalJSX {
     'app-about': AppAbout;
     'app-colorpicker': AppColorpicker;
     'app-colorpicker-viewme': AppColorpickerViewme;
+    'app-flipimages': AppFlipimages;
+    'app-flipimages-viewme': AppFlipimagesViewme;
     'app-home': AppHome;
     'app-linechart': AppLinechart;
     'app-linechart-viewme': AppLinechartViewme;
@@ -159,6 +183,8 @@ declare module "@stencil/core" {
       'app-about': LocalJSX.AppAbout & JSXBase.HTMLAttributes<HTMLAppAboutElement>;
       'app-colorpicker': LocalJSX.AppColorpicker & JSXBase.HTMLAttributes<HTMLAppColorpickerElement>;
       'app-colorpicker-viewme': LocalJSX.AppColorpickerViewme & JSXBase.HTMLAttributes<HTMLAppColorpickerViewmeElement>;
+      'app-flipimages': LocalJSX.AppFlipimages & JSXBase.HTMLAttributes<HTMLAppFlipimagesElement>;
+      'app-flipimages-viewme': LocalJSX.AppFlipimagesViewme & JSXBase.HTMLAttributes<HTMLAppFlipimagesViewmeElement>;
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
       'app-linechart': LocalJSX.AppLinechart & JSXBase.HTMLAttributes<HTMLAppLinechartElement>;
       'app-linechart-viewme': LocalJSX.AppLinechartViewme & JSXBase.HTMLAttributes<HTMLAppLinechartViewmeElement>;

@@ -125,6 +125,20 @@ export namespace Components {
     */
     'opacity': string;
   }
+  interface JeepFlipimages {
+    /**
+    * The container padding
+    */
+    'fpadding': string;
+    /**
+    * Method initialize
+    */
+    'init': () => Promise<void>;
+    /**
+    * The type of image horizontal or vertical
+    */
+    'type': string;
+  }
   interface JeepFullscreen {
     /**
     * Exit Fullscreen
@@ -402,6 +416,12 @@ declare global {
     new (): HTMLJeepCpickerElement;
   };
 
+  interface HTMLJeepFlipimagesElement extends Components.JeepFlipimages, HTMLStencilElement {}
+  var HTMLJeepFlipimagesElement: {
+    prototype: HTMLJeepFlipimagesElement;
+    new (): HTMLJeepFlipimagesElement;
+  };
+
   interface HTMLJeepFullscreenElement extends Components.JeepFullscreen, HTMLStencilElement {}
   var HTMLJeepFullscreenElement: {
     prototype: HTMLJeepFullscreenElement;
@@ -452,6 +472,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'jeep-colorpicker': HTMLJeepColorpickerElement;
     'jeep-cpicker': HTMLJeepCpickerElement;
+    'jeep-flipimages': HTMLJeepFlipimagesElement;
     'jeep-fullscreen': HTMLJeepFullscreenElement;
     'jeep-linechart': HTMLJeepLinechartElement;
     'jeep-navigation': HTMLJeepNavigationElement;
@@ -521,6 +542,20 @@ declare namespace LocalJSX {
     * The preselected opacity
     */
     'opacity'?: string;
+  }
+  interface JeepFlipimages {
+    /**
+    * The container padding
+    */
+    'fpadding'?: string;
+    /**
+    * Emitted when the first image is loaded
+    */
+    'onJeepFlipImagesImgLoaded'?: (event: CustomEvent<HTMLImageElement>) => void;
+    /**
+    * The type of image horizontal or vertical
+    */
+    'type'?: string;
   }
   interface JeepFullscreen {
     /**
@@ -695,6 +730,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'jeep-colorpicker': JeepColorpicker;
     'jeep-cpicker': JeepCpicker;
+    'jeep-flipimages': JeepFlipimages;
     'jeep-fullscreen': JeepFullscreen;
     'jeep-linechart': JeepLinechart;
     'jeep-navigation': JeepNavigation;
@@ -714,6 +750,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'jeep-colorpicker': LocalJSX.JeepColorpicker & JSXBase.HTMLAttributes<HTMLJeepColorpickerElement>;
       'jeep-cpicker': LocalJSX.JeepCpicker & JSXBase.HTMLAttributes<HTMLJeepCpickerElement>;
+      'jeep-flipimages': LocalJSX.JeepFlipimages & JSXBase.HTMLAttributes<HTMLJeepFlipimagesElement>;
       'jeep-fullscreen': LocalJSX.JeepFullscreen & JSXBase.HTMLAttributes<HTMLJeepFullscreenElement>;
       'jeep-linechart': LocalJSX.JeepLinechart & JSXBase.HTMLAttributes<HTMLJeepLinechartElement>;
       'jeep-navigation': LocalJSX.JeepNavigation & JSXBase.HTMLAttributes<HTMLJeepNavigationElement>;

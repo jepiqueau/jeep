@@ -8,6 +8,7 @@ The library includes the following React components:
  - JeepLinechart
  - JeepSvgmorph
  - JeepSlides
+ - JeepFlipimages
 
 
 ## Usage
