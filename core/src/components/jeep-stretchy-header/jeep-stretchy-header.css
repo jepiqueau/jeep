@@ -1,0 +1,26 @@
+
+:host {
+  display: block;
+}
+
+.stretchy-header-background {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+.stretchy-header.back {
+  transition: height 0.4s linear;
+}
+.stretchy-header-background.blur {
+  transition:all 1.0s ease-in-out;
+  -webkit-transition:all 1.0s ease-in-out;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+}
+.stretchy-header-background.unblur {
+  transition:all 0.4s ease;
+  -webkit-transition:all 0.4s ease;
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+}
+

@@ -185,6 +185,19 @@ export class JeepSlides {
   }
 }
 
+export declare interface JeepStretchyHeader extends Components.JeepStretchyHeader {}
+@ProxyCmp({inputs: ['headerbackground', 'headerbackgroundblur', 'headerheight', 'toolbarcontrastcolor'], 'methods': ['init']})
+@Component({ selector: 'jeep-stretchy-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['headerbackground', 'headerbackgroundblur', 'headerheight', 'toolbarcontrastcolor'] })
+export class JeepStretchyHeader {
+  jeepStretchyHeaderToolbar!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['jeepStretchyHeaderToolbar']);
+  }
+}
+
 export declare interface JeepSvgmorph extends Components.JeepSvgmorph {}
 @ProxyCmp({inputs: ['calcmode', 'duration', 'fill', 'keysplines', 'keytimes', 'nsegment', 'pathindex', 'repeatcount'], 'methods': ['init', 'getStateProperties', 'getPath', 'getPathList', 'getFillColor', 'renderSVGFirstPath', 'getAlignedPaths']})
 @Component({ selector: 'jeep-svgmorph', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['calcmode', 'duration', 'fill', 'keysplines', 'keytimes', 'nsegment', 'pathindex', 'repeatcount'] })

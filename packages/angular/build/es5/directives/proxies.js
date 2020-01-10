@@ -501,6 +501,43 @@ if (false) {
      */
     JeepSlides.prototype.z;
 }
+var JeepStretchyHeader = /** @class */ (function () {
+    function JeepStretchyHeader(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepStretchyHeaderToolbar']);
+    }
+    JeepStretchyHeader.decorators = [
+        { type: Component, args: [{ selector: 'jeep-stretchy-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['headerbackground', 'headerbackgroundblur', 'headerheight', 'toolbarcontrastcolor'] },] },
+    ];
+    /** @nocollapse */
+    JeepStretchyHeader.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: ElementRef },
+        { type: NgZone }
+    ]; };
+    JeepStretchyHeader = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['headerbackground', 'headerbackgroundblur', 'headerheight', 'toolbarcontrastcolor'], 'methods': ['init'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepStretchyHeader);
+    return JeepStretchyHeader;
+}());
+export { JeepStretchyHeader };
+if (false) {
+    /** @type {?} */
+    JeepStretchyHeader.prototype.jeepStretchyHeaderToolbar;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepStretchyHeader.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepStretchyHeader.prototype.z;
+}
 var JeepSvgmorph = /** @class */ (function () {
     function JeepSvgmorph(c, r, z) {
         this.z = z;

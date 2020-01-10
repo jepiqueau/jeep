@@ -1,6 +1,6 @@
 {
   "name": "ionic-react-colorpicker",
-  "version": "0.0.1-alpha.17",
+  "version": "0.0.1-alpha.18",
   "description": "Ionic/React App demonstrating the use of @jeepq/react",
   "keywords": [
     "jeep",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@ionic/react": "^4.11.7",
     "@ionic/react-router": "^4.11.7",
-    "@jeepq/react": "0.0.1-alpha.17",
+    "@jeepq/react": "0.0.1-alpha.19",
     "@types/jest": "24.0.21",
     "@types/node": "12.12.3",
     "@types/react": "^16.9.17",

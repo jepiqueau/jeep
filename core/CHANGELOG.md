@@ -1,3 +1,19 @@
+## 0.0.1-alpha.19 (2020-01-10)
+
+### Bug Fixes
+
+* add jeepStretchyHeaderToolbar Event for React compatibility
+
+## 0.0.1-alpha.18 (2020-01-10)
+
+### Added Features
+
+* add jeep-stretchy-header stencil web component
+
+### Bug Fixes
+
+* Update asset directory url to: https://raw.githubusercontent.com/jepiqueau/jeep/master/assets
+
 ## 0.0.1-alpha.17 (2020-01-08)
 
 ### Chores

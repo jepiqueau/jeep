@@ -1,7 +1,7 @@
 {
   "name": "pwa-components-viewme",
   "private": true,
-  "version": "0.0.1-alpha.17",
+  "version": "0.0.1-alpha.19",
   "description": "Jeep Components Library Viewme PWA App",
   "keywords": [
     "jeep",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@ionic/core": "^4.11.7",
-    "@jeepq/core": "0.0.1-alpha.17"
+    "@jeepq/core": "0.0.1-alpha.19"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4",

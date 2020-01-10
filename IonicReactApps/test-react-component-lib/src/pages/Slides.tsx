@@ -66,12 +66,12 @@ class Slides extends Component<Props> {
             <JeepSlide cstyle=":host{--slide-background: #4c67c1;}">Section Five</JeepSlide>
             <JeepSlide cstyle=":host{--slide-background: rgb(178, 180, 72);}">Section Six</JeepSlide>
             <JeepSlide>
-              <img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg"
+              <img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg" alt="mountains"
                 style={{width:"100%",maxWidth:"var(--slide-min-width)",height:"auto",maxHeight:"var(--slide-height)",
                 boxSizing:"border-box",border:"1vmin solid var(--gslider-slide-background)"}}></img>
             </JeepSlide>
             <JeepSlide>
-              <img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg"
+              <img src="https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg" alt="lake-sunset"
               style={{width:"100%",maxWidth:"var(--slide-min-width)",height:"auto",maxHeight:"var(--slide-height)",
               boxSizing:"border-box",border:"1vmin solid var(--gslider-slide-background)"}}></img>
             </JeepSlide>

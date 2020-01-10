@@ -3,11 +3,12 @@
 # Jeep Stencil Components Library
 
 This is a library of Stencil Web Components including
- - [jeep-colorpicker](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-colorpicker/readme.md)
- - [jeep-linechart  ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-linechart/readme.md)
- - [jeep-svgmorph   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-svgmorph/readme.md)
- - [jeep-slides   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-slides/readme.md)
- - [jeep-flipimages   ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-flipimages/readme.md)
+ - [jeep-colorpicker    ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-colorpicker/readme.md)
+ - [jeep-linechart      ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-linechart/readme.md)
+ - [jeep-svgmorph       ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-svgmorph/readme.md)
+ - [jeep-slides         ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-slides/readme.md)
+ - [jeep-flipimages     ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-flipimages/readme.md)
+ - [jeep-stretchy-header](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-stretchy-header/readme.md)
 
 
 ## Jeep Components Viewme
@@ -21,6 +22,8 @@ This is a library of Stencil Web Components including
  - [Slides ViewMe](https://jeep-viewme-app.firebaseapp.com/slides)
 
  - [Flipimages ViewMe](https://jeep-viewme-app.firebaseapp.com/flipimages)
+
+ - [StretchyHeader ViewMe](https://jeep-viewme-app.firebaseapp.com/stretchyheader)
 
 ## Using this library
 

@@ -106,3 +106,25 @@ http://ionicframework.com/docs/theming/ */
   --chart-border-color: #000000;
   --chart-border-width: 4;   
 }
+body {
+  margin:0;
+  padding:0;
+}
+:root {
+  font-size : 28px;
+}
+@media only screen and (max-width: 815px) {
+  :root {
+    font-size : 22px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  :root {
+    font-size : 16px;
+  }
+}
+@media only screen and (max-width: 340px) {
+  :root {
+    font-size : 12px;
+  }
+}

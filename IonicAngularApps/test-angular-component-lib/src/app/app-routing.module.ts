@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'linechart', loadChildren: './linechart/linechart.module#LinechartPageModule'},
   { path: 'slides', loadChildren: './slides/slides.module#SlidesPageModule'},
   { path: 'svgmorphing', loadChildren: './svgmorphing/svgmorphing.module#SVGMorphingPageModule'},
+  { path: 'stretchyheader', loadChildren: './stretchyheader/stretchyheader.module#StretchyheaderPageModule' },
 ];
 
 @NgModule({

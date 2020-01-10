@@ -19,6 +19,7 @@ class Home extends Component<Props> {
             <IonButton href="/linechart" expand="block">LineChart Test</IonButton>
             <IonButton href="/flipimages" expand="block">FlipImages Test</IonButton>
             <IonButton href="/slides" expand="block">Slides Test</IonButton>
+            <IonButton href="/stretchyheader" expand="block">Stretchy Header Test</IonButton>
           </IonContent>
         </IonPage>
         );

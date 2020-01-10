@@ -18,4 +18,5 @@ export const JeepPagination = /*@__PURE__*/createReactComponent<JSX.JeepPaginati
 export const JeepPlayControls = /*@__PURE__*/createReactComponent<JSX.JeepPlayControls, HTMLJeepPlayControlsElement>('jeep-play-controls');
 export const JeepSlide = /*@__PURE__*/createReactComponent<JSX.JeepSlide, HTMLJeepSlideElement>('jeep-slide');
 export const JeepSlides = /*@__PURE__*/createReactComponent<JSX.JeepSlides, HTMLJeepSlidesElement>('jeep-slides');
+export const JeepStretchyHeader = /*@__PURE__*/createReactComponent<JSX.JeepStretchyHeader, HTMLJeepStretchyHeaderElement>('jeep-stretchy-header');
 export const JeepSvgmorph = /*@__PURE__*/createReactComponent<JSX.JeepSvgmorph, HTMLJeepSvgmorphElement>('jeep-svgmorph');

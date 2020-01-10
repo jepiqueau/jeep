@@ -100,6 +100,14 @@ export declare class JeepSlides {
     protected el: HTMLElement;
     constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
 }
+export declare interface JeepStretchyHeader extends Components.JeepStretchyHeader {
+}
+export declare class JeepStretchyHeader {
+    protected z: NgZone;
+    jeepStretchyHeaderToolbar: EventEmitter<CustomEvent>;
+    protected el: HTMLElement;
+    constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
+}
 export declare interface JeepSvgmorph extends Components.JeepSvgmorph {
 }
 export declare class JeepSvgmorph {

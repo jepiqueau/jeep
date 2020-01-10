@@ -537,6 +537,47 @@ if (false) {
      */
     JeepSlides.prototype.z;
 }
+let JeepStretchyHeader = class JeepStretchyHeader {
+    /**
+     * @param {?} c
+     * @param {?} r
+     * @param {?} z
+     */
+    constructor(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepStretchyHeaderToolbar']);
+    }
+};
+JeepStretchyHeader.decorators = [
+    { type: Component, args: [{ selector: 'jeep-stretchy-header', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['headerbackground', 'headerbackgroundblur', 'headerheight', 'toolbarcontrastcolor'] },] },
+];
+/** @nocollapse */
+JeepStretchyHeader.ctorParameters = () => [
+    { type: ChangeDetectorRef },
+    { type: ElementRef },
+    { type: NgZone }
+];
+JeepStretchyHeader = tslib_1.__decorate([
+    ProxyCmp({ inputs: ['headerbackground', 'headerbackgroundblur', 'headerheight', 'toolbarcontrastcolor'], 'methods': ['init'] }),
+    tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+], JeepStretchyHeader);
+export { JeepStretchyHeader };
+if (false) {
+    /** @type {?} */
+    JeepStretchyHeader.prototype.jeepStretchyHeaderToolbar;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepStretchyHeader.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepStretchyHeader.prototype.z;
+}
 let JeepSvgmorph = class JeepSvgmorph {
     /**
      * @param {?} c

@@ -30,6 +30,7 @@ export class AppHome {
         <ion-button href="/flipimages" expand="block">FlipImages Viewme</ion-button>
         <ion-button href="/svgmorph" expand="block">SVGMorphing Viewme</ion-button>
         <ion-button href="/slides" expand="block">Slides Viewme</ion-button>
+        <ion-button href="/stretchyheader" expand="block">StretchyHeader Viewme</ion-button>
       </ion-content>
     ];
   }

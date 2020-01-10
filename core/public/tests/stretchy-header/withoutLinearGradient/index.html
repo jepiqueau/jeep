@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Stretchy Header Component</title>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.7/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.7/dist/ionic/ionic.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.7/css/ionic.bundle.css" rel="stylesheet">
+
+  <script nomodule src="/build/jeep.js"></script>
+  <script type="module" src="/build/jeep.esm.js"></script>   
+  <style>
+    :root {
+      --ion-color-light: #f4f5f8;
+      --ion-color-light-rgb: 244,244,244;
+      --ion-color-light-contrast: #000000;
+    }
+    body {
+      margin:0;
+      padding:0;
+    }
+  </style>
+</head>
+<body>
+  <ion-app>  
+    <jeep-stretchy-header headerheight="25%" 
+        headerbackground="url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg)"
+        headerbackgroundblur toolbarcontrastcolor="#ffffff">
+      <ion-header>
+        <ion-toolbar color="light">
+          <ion-buttons slot="start">
+              <ion-button>
+                  <ion-icon slot="start" name="star"></ion-icon>
+                  Left Icon
+              </ion-button>
+          </ion-buttons>
+          <ion-title>Stretchy Header</ion-title>
+        </ion-toolbar>
+      </ion-header>
+    </jeep-stretchy-header>
+    <ion-content class="ion-padding">
+      <h1>A Stretchy Header Web Component</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cum eum obcaecati corrupti nulla, eos minus, impedit corporis at quidem illum cupiditate illo excepturi architecto soluta veritatis aliquam, quibusdam aut.</p>      
+    </ion-content>
+  </ion-app>  
+  <script>
+    var stHeader = document.querySelector('jeep-stretchy-header');
+    stHeader.addEventListener('jeepStretchyHeaderToolbar', (ev) => {
+        const toolbar = document.querySelector('ion-toolbar')
+        toolbar.style.setProperty("--ion-color-base", `${ev.detail.color}`,"important");
+        toolbar.style.setProperty("--ion-color-contrast", `${ev.detail.contrastColor}`,"important");
+    });
+ 
+  </script>
+</body>
+</html>
+
+
+
+
+

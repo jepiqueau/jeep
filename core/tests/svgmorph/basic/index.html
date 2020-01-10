@@ -9,23 +9,41 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <script nomodule src="/build/jeep.js"></script>
   <script type="module" src="/build/jeep.esm.js"></script>   
+  <style>
+    p {
+        margin-left:15px;
+    }
+    #silhouette {
+        width: 100%;
+        height: 100%;
+    }
+    jeep-svgmorph {
+        --width: 80%;
+        --height: 80%;
+        --left: 10%;
+        --top: 0px;
+    }    
+  </style>  
 </head>
 <body style="height: 100vh; padding: 2vmin; margin: 0px; font-family: sans-serif; overflow: hidden;">
-  <jeep-svgmorph duration="4000ms" repeatcount="2" pathindex="2;0;1;0;0;2" nsegment="16" 
-    keytimes="0;.2;.4;.55;.85;1" calcmode="spline" 
-    keysplines="0.645,0.045,0.355,1;0.645,0.045,0.355,1;0.645,0.045,0.355,1;
-    0.645,0.045,0.355,1;0.645,0.045,0.355,1">
-    <svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-      <path d="M100,100 H400 V400 H 100 V 100" fill="#1eb287"></path>   
-      <path d="M 250,100 L 270,230 400,250 270,270 250,400 230,270 100,250 230,230 250,100" fill="#f8ef07"></path>   
-      <path d="M 171.29942,60 H 328.70057 L 440,171.29942 V 328.70057 L 328.70057,440 H 171.29942 L 60,328.70057 V 171.29942 L 171.29942,60" fill='#142de2'></path>   
-      <path d="M 250,230 C 280,100 450,150 400,250 L 280,450 C 260,480 240,480 220,450 L100,250 C 50,150 220,100 250,230" fill="#ff0000"></path>
-      <path d="M 250,50 C 270,50 370,250 270,150 V 230 H 350 C 370,230 450,230 450,250 
-      C 450,270 370,270 350,270 H 270 V 350 C 270,370 270 450 250,450 C 230 450 230 370 230 350 
-      V 270 H 150 C 130,270 50,270 50,250 C 50,230 130,230 150,230 H 230 V 150 
-      C 130,250 230,50 250 50" fill="#e97f0d"></path>
-      <path d="M100,100 H400 V400 H 100 V 100" fill="#1eb287"></path>   
-    </svg>
-  </jeep-svgmorph>
+  <p>Click on Svg</p>
+  <div id="silhouette">
+    <jeep-svgmorph duration="4000ms" repeatcount="2" pathindex="2;0;1;0;0;2" nsegment="16" 
+      keytimes="0;.2;.4;.55;.85;1" calcmode="spline" 
+      keysplines="0.645,0.045,0.355,1;0.645,0.045,0.355,1;0.645,0.045,0.355,1;
+      0.645,0.045,0.355,1;0.645,0.045,0.355,1">
+      <svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100,100 H400 V400 H 100 V 100" fill="#1eb287"></path>   
+        <path d="M 250,100 L 270,230 400,250 270,270 250,400 230,270 100,250 230,230 250,100" fill="#f8ef07"></path>   
+        <path d="M 171.29942,60 H 328.70057 L 440,171.29942 V 328.70057 L 328.70057,440 H 171.29942 L 60,328.70057 V 171.29942 L 171.29942,60" fill='#142de2'></path>   
+        <path d="M 250,230 C 280,100 450,150 400,250 L 280,450 C 260,480 240,480 220,450 L100,250 C 50,150 220,100 250,230" fill="#ff0000"></path>
+        <path d="M 250,50 C 270,50 370,250 270,150 V 230 H 350 C 370,230 450,230 450,250 
+        C 450,270 370,270 350,270 H 270 V 350 C 270,370 270 450 250,450 C 230 450 230 370 230 350 
+        V 270 H 150 C 130,270 50,270 50,250 C 50,230 130,230 150,230 H 230 V 150 
+        C 130,250 230,50 250 50" fill="#e97f0d"></path>
+        <path d="M100,100 H400 V400 H 100 V 100" fill="#1eb287"></path>   
+      </svg>
+    </jeep-svgmorph>
+  </div>
 </body>
 </html>

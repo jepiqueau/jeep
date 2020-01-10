@@ -26,6 +26,9 @@ import {
   PaginationIndex,
 } from './global/interfaces/jeep-slides';
 import {
+  StretchyHeaderToolbar,
+} from './global/interfaces/stretchyheader';
+import {
   StateProperties as StateProperties1,
 } from './global/interfaces/jeep-svgmorph';
 import {
@@ -355,6 +358,28 @@ export namespace Components {
     */
     'setSlides': () => Promise<void>;
   }
+  interface JeepStretchyHeader {
+    /**
+    * The Header Background Linear Gtradient if any and Url   headerbackground="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) ,    url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg)"
+    */
+    'headerbackground': string;
+    /**
+    * The blur effect
+    */
+    'headerbackgroundblur': boolean;
+    /**
+    * The Header Height
+    */
+    'headerheight': string;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * The Navbar Contrast Color
+    */
+    'toolbarcontrastcolor': string;
+  }
   interface JeepSvgmorph {
     /**
     * The preselected calculation mode
@@ -464,6 +489,12 @@ declare global {
     new (): HTMLJeepSlidesElement;
   };
 
+  interface HTMLJeepStretchyHeaderElement extends Components.JeepStretchyHeader, HTMLStencilElement {}
+  var HTMLJeepStretchyHeaderElement: {
+    prototype: HTMLJeepStretchyHeaderElement;
+    new (): HTMLJeepStretchyHeaderElement;
+  };
+
   interface HTMLJeepSvgmorphElement extends Components.JeepSvgmorph, HTMLStencilElement {}
   var HTMLJeepSvgmorphElement: {
     prototype: HTMLJeepSvgmorphElement;
@@ -480,6 +511,7 @@ declare global {
     'jeep-play-controls': HTMLJeepPlayControlsElement;
     'jeep-slide': HTMLJeepSlideElement;
     'jeep-slides': HTMLJeepSlidesElement;
+    'jeep-stretchy-header': HTMLJeepStretchyHeaderElement;
     'jeep-svgmorph': HTMLJeepSvgmorphElement;
   }
 }
@@ -692,6 +724,28 @@ declare namespace LocalJSX {
     */
     'options'?: string;
   }
+  interface JeepStretchyHeader {
+    /**
+    * The Header Background Linear Gtradient if any and Url   headerbackground="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.75)) ,    url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg)"
+    */
+    'headerbackground'?: string;
+    /**
+    * The blur effect
+    */
+    'headerbackgroundblur'?: boolean;
+    /**
+    * The Header Height
+    */
+    'headerheight'?: string;
+    /**
+    * Emitted the Header visibility change
+    */
+    'onJeepStretchyHeaderToolbar'?: (event: CustomEvent<StretchyHeaderToolbar>) => void;
+    /**
+    * The Navbar Contrast Color
+    */
+    'toolbarcontrastcolor'?: string;
+  }
   interface JeepSvgmorph {
     /**
     * The preselected calculation mode
@@ -738,6 +792,7 @@ declare namespace LocalJSX {
     'jeep-play-controls': JeepPlayControls;
     'jeep-slide': JeepSlide;
     'jeep-slides': JeepSlides;
+    'jeep-stretchy-header': JeepStretchyHeader;
     'jeep-svgmorph': JeepSvgmorph;
   }
 }
@@ -758,6 +813,7 @@ declare module "@stencil/core" {
       'jeep-play-controls': LocalJSX.JeepPlayControls & JSXBase.HTMLAttributes<HTMLJeepPlayControlsElement>;
       'jeep-slide': LocalJSX.JeepSlide & JSXBase.HTMLAttributes<HTMLJeepSlideElement>;
       'jeep-slides': LocalJSX.JeepSlides & JSXBase.HTMLAttributes<HTMLJeepSlidesElement>;
+      'jeep-stretchy-header': LocalJSX.JeepStretchyHeader & JSXBase.HTMLAttributes<HTMLJeepStretchyHeaderElement>;
       'jeep-svgmorph': LocalJSX.JeepSvgmorph & JSXBase.HTMLAttributes<HTMLJeepSvgmorphElement>;
     }
   }

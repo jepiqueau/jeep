@@ -1,3 +1,15 @@
+ion-card {
+  margin: 3vh 1vw;
+  padding: 1vh 2vw;
+}
+ion-item {
+  --min-height: 3rem;
+  font-family: Verdana;
+  font-size: 0.8rem;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0.1rem;
+}
 .app-colorpicker{
   padding: 10px;
 }

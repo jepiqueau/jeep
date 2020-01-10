@@ -1,3 +1,12 @@
+## 0.0.1-alpha.19 (2020-01-10)
+
+### Added Features
+
+* add use of jeep-stretchy-header in IonicAngularApps
+* add use of jeep-stretchy-header in IonicReactApps
+* add jeep-stretchy-header in viewMe App
+
+
 ## 0.0.1-alpha.17 (2020-01-08)
 
 ### Chores

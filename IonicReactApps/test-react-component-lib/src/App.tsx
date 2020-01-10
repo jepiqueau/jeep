@@ -8,6 +8,7 @@ import SvgMorph from './pages/SvgMorph';
 import LineChart from './pages/LineChart';
 import FlipImages from './pages/FlipImages';
 import Slides from './pages/Slides';
+import StretchyHeader from './pages/StretchyHeader';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,6 +33,7 @@ const App: React.FunctionComponent = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet>
+          <Route path="/stretchyheader" component={StretchyHeader} />
           <Route path="/slides" component={Slides} />
           <Route path="/flipimages" component={FlipImages} />
           <Route path="/linechart" component={LineChart} />

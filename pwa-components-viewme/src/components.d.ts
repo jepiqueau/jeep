@@ -29,6 +29,8 @@ export namespace Components {
   interface AppSlidesViewme {
     'type': string;
   }
+  interface AppStretchyheader {}
+  interface AppStretchyheaderViewme {}
   interface AppSvgmorph {}
   interface AppSvgmorphViewme {
     'type': string;
@@ -104,6 +106,18 @@ declare global {
     new (): HTMLAppSlidesViewmeElement;
   };
 
+  interface HTMLAppStretchyheaderElement extends Components.AppStretchyheader, HTMLStencilElement {}
+  var HTMLAppStretchyheaderElement: {
+    prototype: HTMLAppStretchyheaderElement;
+    new (): HTMLAppStretchyheaderElement;
+  };
+
+  interface HTMLAppStretchyheaderViewmeElement extends Components.AppStretchyheaderViewme, HTMLStencilElement {}
+  var HTMLAppStretchyheaderViewmeElement: {
+    prototype: HTMLAppStretchyheaderViewmeElement;
+    new (): HTMLAppStretchyheaderViewmeElement;
+  };
+
   interface HTMLAppSvgmorphElement extends Components.AppSvgmorph, HTMLStencilElement {}
   var HTMLAppSvgmorphElement: {
     prototype: HTMLAppSvgmorphElement;
@@ -127,6 +141,8 @@ declare global {
     'app-root': HTMLAppRootElement;
     'app-slides': HTMLAppSlidesElement;
     'app-slides-viewme': HTMLAppSlidesViewmeElement;
+    'app-stretchyheader': HTMLAppStretchyheaderElement;
+    'app-stretchyheader-viewme': HTMLAppStretchyheaderViewmeElement;
     'app-svgmorph': HTMLAppSvgmorphElement;
     'app-svgmorph-viewme': HTMLAppSvgmorphViewmeElement;
   }
@@ -152,6 +168,8 @@ declare namespace LocalJSX {
   interface AppSlidesViewme {
     'type'?: string;
   }
+  interface AppStretchyheader {}
+  interface AppStretchyheaderViewme {}
   interface AppSvgmorph {}
   interface AppSvgmorphViewme {
     'type'?: string;
@@ -169,6 +187,8 @@ declare namespace LocalJSX {
     'app-root': AppRoot;
     'app-slides': AppSlides;
     'app-slides-viewme': AppSlidesViewme;
+    'app-stretchyheader': AppStretchyheader;
+    'app-stretchyheader-viewme': AppStretchyheaderViewme;
     'app-svgmorph': AppSvgmorph;
     'app-svgmorph-viewme': AppSvgmorphViewme;
   }
@@ -191,6 +211,8 @@ declare module "@stencil/core" {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'app-slides': LocalJSX.AppSlides & JSXBase.HTMLAttributes<HTMLAppSlidesElement>;
       'app-slides-viewme': LocalJSX.AppSlidesViewme & JSXBase.HTMLAttributes<HTMLAppSlidesViewmeElement>;
+      'app-stretchyheader': LocalJSX.AppStretchyheader & JSXBase.HTMLAttributes<HTMLAppStretchyheaderElement>;
+      'app-stretchyheader-viewme': LocalJSX.AppStretchyheaderViewme & JSXBase.HTMLAttributes<HTMLAppStretchyheaderViewmeElement>;
       'app-svgmorph': LocalJSX.AppSvgmorph & JSXBase.HTMLAttributes<HTMLAppSvgmorphElement>;
       'app-svgmorph-viewme': LocalJSX.AppSvgmorphViewme & JSXBase.HTMLAttributes<HTMLAppSvgmorphViewmeElement>;
     }

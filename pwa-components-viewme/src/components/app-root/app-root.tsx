@@ -23,6 +23,8 @@ export class AppRoot {
           <ion-route url="/slides/viewme/:type" component="app-slides-viewme" />
           <ion-route url="/flipimages" component="app-flipimages" />
           <ion-route url="/flipimages/viewme/:type" component="app-flipimages-viewme" />
+          <ion-route url="/stretchyheader" component="app-stretchyheader" />
+          <ion-route url="/stretchyheader/viewme/" component="app-stretchyheader-viewme" />
         </ion-router>
         <ion-nav />
       </ion-app>
