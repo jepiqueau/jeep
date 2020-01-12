@@ -1,0 +1,11 @@
+
+  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.jeep.plugins.capacitor">
+    <uses-permission android:name = "android.permission.INTERNET"/>
+    <application>
+      <activity android:name="com.jeep.plugins.capacitor.VideoPlayerActivity"
+          android:configChanges="orientation|screenSize">
+      </activity>
+    </application>
+</manifest>
+  

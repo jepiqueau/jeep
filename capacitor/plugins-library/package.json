@@ -1,0 +1,52 @@
+{
+  "name": "@jeepq/capacitor",
+  "version": "0.0.1-alpha.3",
+  "description": "Capacitor Plugins Library",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "deploy": "npm run build && npm publish --access public"
+  },
+  "author": "Jean Pierre Quéau",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "latest",
+    "jeep-localforage": "^1.7.5-4"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.4",
+    "@capacitor/ios": "latest",
+    "@capacitor/android": "latest"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "docs/",
+    "PluginsLibrary.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jepiqueau/jeep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jepiqueau/jeep.git/issues"
+  }
+}

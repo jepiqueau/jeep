@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Test Capacitor Plugins
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    The world is your oyster.
+    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-button (click)="testVideoPlayerPlugin()" expand="block">Test Fullscreen Video</ion-button>
+    <ion-button *ngIf="bPlatform" id="embedded" [href]="'./embedded'" routerDirection="forward" expand="block">Test Embedded Videos</ion-button>
+    <ion-button (click)="testStoragePlugin()" expand="block">Test Storage</ion-button>
+    <ion-button (click)="testStoragePluginWithWrapper()" expand="block">Test Storage With Wrapper</ion-button>
+    <ion-card class="card hidden">
+      <div class="echo"></div>
+      <p class="populate hidden">
+        Storing data successful
+      </p>
+      <p class="iskey hidden">
+        Iskey successful
+      </p>
+      <p class="keys hidden">
+        Get keys successful
+      </p>
+      <p class="values hidden">
+        Get values successful
+      </p>
+      <p class="keysvalues hidden">
+        Get keys/values successful
+      </p>
+      <p class="remove hidden">
+        Remove key successful
+      </p>
+      <p class="clear hidden">
+        Clear keys successful
+      </p>
+      <p class="success1 display">
+        The test 1 was successful
+      </p>
+      <p class="failure1 display">
+        The test 1 failed
+      </p>
+      <p class="success2 display">
+        The test 2 was successful
+      </p>
+      <p class="failure2 display">
+        The test 2 failed
+      </p>
+      <p class="success3 display">
+        The test 3 was successful
+      </p>
+      <p class="failure3 display">
+        The test 3 failed
+      </p>
+      <p class="success4 display">
+        The test 4 was successful
+      </p>
+      <p class="failure4 display">
+        The test 4 failed
+      </p>
+      <p class="success5 display">
+        The test 5 was successful
+      </p>
+      <p class="failure5 display">
+        The test 5 failed
+      </p>
+      <p class="success6 display">
+        The test 6 was successful
+      </p>
+      <p class="failure6 display">
+        The test 6 failed
+      </p>
+      <p class="success7 display">
+        The test 7 was successful
+      </p>
+      <p class="failure7 display">
+        The test 7 failed
+      </p>
+      <p class="success8 display">
+        The test 8 was successful
+      </p>
+      <p class="failure8 display">
+        The test 8 failed
+      </p>
+      <p class="success9 display">
+        The test 9 was successful
+      </p>
+      <p class="failure9 display">
+        The test 9 failed
+      </p>
+      <p class="success display">
+        The set of tests was successful
+      </p>
+      <p class="failure display">
+        The set of tests failed
+      </p>
+      <p class="wrapper-success display">
+        The test with wrapper was successful
+      </p>
+      <p class="wrapper-failure display">
+        The test with wrapper failed
+      </p>
+    </ion-card>
+  </div>
+</ion-content>

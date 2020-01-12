@@ -1,3 +1,12 @@
+## 0.0.1-alpha.20 (2020-01-12)
+
+### Added Features
+
+* add @jeepq/capacitor library of capacitor plugins for Android and Web
+* add Ionic4 App to demonstrate the use of the plugin library
+* add Stencil PWA App to demonstrate the use of the plugin library 
+
+
 ## 0.0.1-alpha.19 (2020-01-10)
 
 ### Added Features

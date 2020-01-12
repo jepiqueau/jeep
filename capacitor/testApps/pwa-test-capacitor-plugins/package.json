@@ -1,0 +1,25 @@
+{
+  "name": "pwa-test-capacitor-plugins",
+  "private": true,
+  "version": "0.0.1-alpha.3",
+  "description": "pwa-test-capacitor-plugins",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "update": "npm install --save @jeepq/capacitor@latest",
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watch",
+    "generate": "stencil generate"
+  },
+  "dependencies": {
+    "@ionic/core": "^4.11.7",
+    "@jeepq/capacitor": "0.0.1-alpha.3"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.8.4"
+  }
+}

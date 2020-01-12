@@ -1,0 +1,13 @@
+ion-scroll {
+    padding: 15px;
+}
+.hidden {
+visibility: hidden;
+}
+p {
+    font-size: 1rem;
+    color: var(--ion-color-dark);
+}
+.card {
+    padding-left: 2%;
+}
