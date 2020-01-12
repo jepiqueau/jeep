@@ -16,13 +16,15 @@
 | **Core** | [`@jeepq/core`](https://www.npmjs.com/package/@jeepq/core) | [![version](https://img.shields.io/npm/v/@jeepq/core/latest.svg)](https://www.npmjs.com/package/@jeepq/core) | [`README.md`](core/README.md)
 | **Angular** | [`@jeepq/angular`](https://www.npmjs.com/package/@jeepq/angular) | [![version](https://img.shields.io/npm/v/@jeepq/angular/latest.svg)](https://www.npmjs.com/package/@jeepq/angular) | [`README.md`](packages/angular/README.md)
 | **React** | [`@jeepq/react`](https://www.npmjs.com/package/@jeepq/react) | [![version](https://img.shields.io/npm/v/@jeepq/react/latest.svg)](https://www.npmjs.com/package/@jeepq/react) | [`README.md`](packages/react/README.md)
+| **Capacitor** | [`@jeepq/capacitor`](https://www.npmjs.com/package/@jeepq/capacitor) | [![version](https://img.shields.io/npm/v/@jeepq/capacitor/latest.svg)](https://www.npmjs.com/package/@jeepq/capacitor) | [`README.md`](capacitor/plugins-library/README.md)
+
 
 
 ### ViewMe PWA
 
 [Jeep Viewme App](https://jeep-viewme-app.firebaseapp.com)
 
-### Applications
+### Applications for Web Components
 
 Applications will come in future releases.
 
@@ -43,3 +45,13 @@ Applications will come in future releases.
 #### PWA app
 
 - [Jeep Viewme App] (https://github.com/jepiqueau/jeep/tree/master/pwa-components-viewme)
+
+
+### Applications for Capacitor Plugins
+
+#### @Ionic/Angular app
+
+- [ionic-angular-test-plugins] (https://github.com/jepiqueau/jeep/tree/master/capacitor/testApps/ionic-angular-test-plugins)
+
+#### PWA app
+- [pwa-test-capacitor-plugins] (https://github.com/jepiqueau/jeep/tree/master/capacitor/testApps/pwa-test-capacitor-plugins)
