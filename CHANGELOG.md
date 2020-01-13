@@ -1,3 +1,9 @@
+## 0.0.1-beta.1 (2020-01-13)
+
+### Chores
+
+* @stencil/core: update to 1.8.5 
+
 ## 0.0.1-alpha.21 (2020-01-13)
 
 ### Added Features

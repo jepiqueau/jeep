@@ -9,6 +9,7 @@ The library includes the following Angular components:
  - JeepFlipimages
  - JeepSvgmorph
  - JeepSlides
+ - JeepStretchyHeader
 
 
 ## Usage

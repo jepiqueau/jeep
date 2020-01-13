@@ -13,5 +13,13 @@ Jeep Capacitor Plugins Library is a library of Capacitor Plugins.
 
 ## Jeep Plugins Viewme
 
+## Ionic/Angular Application
+ - [test-angular-plugin-lib](https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
+
+
+## PWA Application
+ - [pwa-test-capacitor-plugins](https://github.com/jepiqueau/jeep/blob/master/capacitor/testApps/pwa-test-capacitor-plugins)
+
+
 ## Using this library
 

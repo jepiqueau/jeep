@@ -1,3 +1,9 @@
+## 0.0.1-beta.1 (2020-01-13)
+
+### Added Features
+
+* Add applications demonstrating the use of the plugin library
+
 ## 0.0.1-alpha.6 (2020-01-13)
 
 ### Bug Fixes

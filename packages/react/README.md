@@ -9,6 +9,7 @@ The library includes the following React components:
  - JeepSvgmorph
  - JeepSlides
  - JeepFlipimages
+ - JeepStretchyHeader
 
 
 ## Usage
