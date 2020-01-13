@@ -1,3 +1,10 @@
+## 0.0.1-alpha.21 (2020-01-13)
+
+### Added Features
+
+* add @jeepq/capacitor library of capacitor plugins for Android and Web
+
+
 ## 0.0.1-alpha.20 (2020-01-12)
 
 ### Added Features

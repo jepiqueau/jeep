@@ -1,7 +1,7 @@
 {
   "name": "pwa-test-capacitor-plugins",
   "private": true,
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.6",
   "description": "pwa-test-capacitor-plugins",
   "license": "MIT",
   "files": [
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@ionic/core": "^4.11.7",
-    "@jeepq/capacitor": "0.0.1-alpha.3"
+    "@jeepq/capacitor": "0.0.1-alpha.6"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4"

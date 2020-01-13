@@ -1,3 +1,21 @@
+## 0.0.1-alpha.6 (2020-01-13)
+
+### Bug Fixes
+
+* Fix podspec file name in package.json
+
+## 0.0.1-alpha.5 (2020-01-13)
+
+### Bug Fixes
+
+* Rename podspec file as JeepqCapacitor.podspec
+
+## 0.0.1-alpha.4 (2020-01-13)
+
+### Added Features
+
+* First trial for IOS Plugin
+
 ## 0.0.1-alpha.3 (2020-01-12)
 
 ### Added Features

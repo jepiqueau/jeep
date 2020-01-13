@@ -3,16 +3,16 @@
 Capacitor Video Player Plugin is a custom Native Capacitor plugin to play a video 
  - fullscreen on IOS, Android, Web and Electron platforms 
  - embedded on Web and Electron platforms
-As capacitor provides fisrt-class Progressive Web App support so you can use this plugin in your app which will later be deployed to the app stores and the mobile web.
+As capacitor provides first-class Progressive Web App support so you can use this plugin in your app which will later be deployed to the app stores and the mobile web.
 
-## Methods Available for Android, Web Plugins
+## Methods Available for IOS, Android, Web Plugins
 
 ### `initPlayer(options) => Promise<{result:boolean}>`
 
 Initialize the Video Player 
 
 #### options
- - available for Android, Web Plugins
+ - available for IOS, Android, Web Plugins
 
    ```{mode: "fullscreen", url: string}```
    play a video given by an url

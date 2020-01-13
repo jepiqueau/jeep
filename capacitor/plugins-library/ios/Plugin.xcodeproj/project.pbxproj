@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		03FC29A292ACC40490383A1F /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		20C0B05DCFC8E3958A738AF2 /* Pods_PluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */; };
+		2CCD09CC23CC708E00DC3463 /* DataStorageSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09CB23CC708E00DC3463 /* DataStorageSQLite.swift */; };
+		2CCD09CE23CC712400DC3463 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09CD23CC712400DC3463 /* VideoPlayer.swift */; };
+		2CCD09D223CC724C00DC3463 /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09D123CC724C00DC3463 /* CMTime.swift */; };
+		2CCD09D423CC726C00DC3463 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09D323CC726C00DC3463 /* Notification.Name.swift */; };
+		2CCD09D623CC727E00DC3463 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09D523CC727E00DC3463 /* View.swift */; };
+		2CCD09D923CC730900DC3463 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09D823CC730900DC3463 /* Video.swift */; };
+		2CCD09DB23CC732400DC3463 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09DA23CC732400DC3463 /* VideoModel.swift */; };
+		2CCD09DD23CC739200DC3463 /* FullScreenVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09DC23CC739200DC3463 /* FullScreenVideoPlayerView.swift */; };
+		2CCD09DF23CC73C400DC3463 /* SmallVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09DE23CC73C400DC3463 /* SmallVideoPlayerView.swift */; };
+		2CCD09E123CC740200DC3463 /* VideoPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09E023CC740200DC3463 /* VideoPlayerTableViewCell.swift */; };
+		2CCD09E323CC744800DC3463 /* VideoPlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09E223CC744800DC3463 /* VideoPlayerTableViewController.swift */; };
+		2CCD09E623CC74F200DC3463 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09E523CC74F200DC3463 /* Data.swift */; };
+		2CCD09E823CC750500DC3463 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09E723CC750500DC3463 /* Global.swift */; };
+		2CCD09EA23CC752400DC3463 /* StorageDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09E923CC752400DC3463 /* StorageDatabaseHelper.swift */; };
 		50ADFF92201F53D600D50D53 /* Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFF88201F53D600D50D53 /* Plugin.framework */; };
 		50ADFF97201F53D600D50D53 /* PluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFF96201F53D600D50D53 /* PluginTests.swift */; };
 		50ADFF99201F53D600D50D53 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,6 +42,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CCD09CB23CC708E00DC3463 /* DataStorageSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageSQLite.swift; sourceTree = "<group>"; };
+		2CCD09CD23CC712400DC3463 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		2CCD09D123CC724C00DC3463 /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
+		2CCD09D323CC726C00DC3463 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
+		2CCD09D523CC727E00DC3463 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		2CCD09D823CC730900DC3463 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		2CCD09DA23CC732400DC3463 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		2CCD09DC23CC739200DC3463 /* FullScreenVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenVideoPlayerView.swift; sourceTree = "<group>"; };
+		2CCD09DE23CC73C400DC3463 /* SmallVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVideoPlayerView.swift; sourceTree = "<group>"; };
+		2CCD09E023CC740200DC3463 /* VideoPlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerTableViewCell.swift; sourceTree = "<group>"; };
+		2CCD09E223CC744800DC3463 /* VideoPlayerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerTableViewController.swift; sourceTree = "<group>"; };
+		2CCD09E523CC74F200DC3463 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		2CCD09E723CC750500DC3463 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		2CCD09E923CC752400DC3463 /* StorageDatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDatabaseHelper.swift; sourceTree = "<group>"; };
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF88201F53D600D50D53 /* Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF8B201F53D600D50D53 /* Plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
@@ -67,6 +95,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CCD09CF23CC71AF00DC3463 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				2CCD09D723CC72EE00DC3463 /* Models */,
+				2CCD09D023CC721800DC3463 /* Extensions */,
+				2CCD09DC23CC739200DC3463 /* FullScreenVideoPlayerView.swift */,
+				2CCD09DE23CC73C400DC3463 /* SmallVideoPlayerView.swift */,
+				2CCD09E023CC740200DC3463 /* VideoPlayerTableViewCell.swift */,
+				2CCD09E223CC744800DC3463 /* VideoPlayerTableViewController.swift */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		2CCD09D023CC721800DC3463 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CCD09D123CC724C00DC3463 /* CMTime.swift */,
+				2CCD09D323CC726C00DC3463 /* Notification.Name.swift */,
+				2CCD09D523CC727E00DC3463 /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2CCD09D723CC72EE00DC3463 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CCD09D823CC730900DC3463 /* Video.swift */,
+				2CCD09DA23CC732400DC3463 /* VideoModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2CCD09E423CC74B400DC3463 /* DataStorageSQLite */ = {
+			isa = PBXGroup;
+			children = (
+				2CCD09E523CC74F200DC3463 /* Data.swift */,
+				2CCD09E723CC750500DC3463 /* Global.swift */,
+				2CCD09E923CC752400DC3463 /* StorageDatabaseHelper.swift */,
+			);
+			path = DataStorageSQLite;
+			sourceTree = "<group>";
+		};
 		50ADFF7E201F53D600D50D53 = {
 			isa = PBXGroup;
 			children = (
@@ -90,10 +160,14 @@
 		50ADFF8A201F53D600D50D53 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD09E423CC74B400DC3463 /* DataStorageSQLite */,
+				2CCD09CF23CC71AF00DC3463 /* VideoPlayer */,
 				50E1A94720377CB70090CE1A /* Plugin.swift */,
 				50ADFF8B201F53D600D50D53 /* Plugin.h */,
 				50ADFFA72020EE4F00D50D53 /* Plugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
+				2CCD09CB23CC708E00DC3463 /* DataStorageSQLite.swift */,
+				2CCD09CD23CC712400DC3463 /* VideoPlayer.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -283,11 +357,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-PluginTests/Pods-PluginTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
 				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLCipher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -301,7 +377,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCD09EA23CC752400DC3463 /* StorageDatabaseHelper.swift in Sources */,
+				2CCD09E123CC740200DC3463 /* VideoPlayerTableViewCell.swift in Sources */,
+				2CCD09DD23CC739200DC3463 /* FullScreenVideoPlayerView.swift in Sources */,
+				2CCD09CE23CC712400DC3463 /* VideoPlayer.swift in Sources */,
 				50E1A94820377CB70090CE1A /* Plugin.swift in Sources */,
+				2CCD09D423CC726C00DC3463 /* Notification.Name.swift in Sources */,
+				2CCD09CC23CC708E00DC3463 /* DataStorageSQLite.swift in Sources */,
+				2CCD09DF23CC73C400DC3463 /* SmallVideoPlayerView.swift in Sources */,
+				2CCD09E623CC74F200DC3463 /* Data.swift in Sources */,
+				2CCD09E823CC750500DC3463 /* Global.swift in Sources */,
+				2CCD09DB23CC732400DC3463 /* VideoModel.swift in Sources */,
+				2CCD09D223CC724C00DC3463 /* CMTime.swift in Sources */,
+				2CCD09D923CC730900DC3463 /* Video.swift in Sources */,
+				2CCD09D623CC727E00DC3463 /* View.swift in Sources */,
+				2CCD09E323CC744800DC3463 /* VideoPlayerTableViewController.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +548,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -482,7 +572,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getcapacitor.Plugin;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

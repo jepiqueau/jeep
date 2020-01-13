@@ -1,6 +1,6 @@
 {
   "name": "@jeepq/capacitor",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.6",
   "description": "Capacitor Plugins Library",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -26,13 +26,15 @@
     "dist/",
     "ios/",
     "android/",
-    "docs/",
-    "PluginsLibrary.podspec"
+    "JeepqCapacitor.podspec"
   ],
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "videoplayer",
+    "storage",
+    "SQLite"
   ],
   "capacitor": {
     "ios": {
