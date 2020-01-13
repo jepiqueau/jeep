@@ -53,7 +53,7 @@ Applications will come in future releases.
 
 #### @Ionic/Angular app
 
- - [test-angular-plugin-lib](https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
+ - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
 
 #### PWA app
  - [pwa-test-capacitor-plugins] (https://github.com/jepiqueau/jeep/tree/master/capacitor/testApps/pwa-test-capacitor-plugins)
