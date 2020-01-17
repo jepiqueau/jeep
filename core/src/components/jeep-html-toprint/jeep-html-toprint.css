@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+#error-div {
+  width: 100%;
+  height: 50px;
+  background-color: #d6a0a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #000000;
+}

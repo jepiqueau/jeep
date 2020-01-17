@@ -1,7 +1,7 @@
 {
   "name": "pwa-components-viewme",
   "private": true,
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "description": "Jeep Components Library Viewme PWA App",
   "keywords": [
     "jeep",
@@ -25,10 +25,10 @@
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@ionic/core": "^4.11.7"
+    "@ionic/core": "^4.11.8"
   },
   "devDependencies": {
-    "@jeepq/core": "0.0.1-beta.1",
+    "@jeepq/core": "0.0.1-beta.2",
     "@stencil/core": "^1.8.5",
     "@types/jest": "^24.0.25",
     "@types/puppeteer": "^1.20.3",

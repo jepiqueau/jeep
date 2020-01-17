@@ -26,11 +26,14 @@ export class AppHome {
 
         <ion-button href="/about" expand="block">About Page</ion-button>
         <ion-button href="/colorpicker" expand="block">ColorPicker Viewme</ion-button>
+        <ion-button href="/columnchart" expand="block">ColumnChart Viewme</ion-button>
         <ion-button href="/linechart" expand="block">LineChart Viewme</ion-button>
         <ion-button href="/flipimages" expand="block">FlipImages Viewme</ion-button>
         <ion-button href="/svgmorph" expand="block">SVGMorphing Viewme</ion-button>
         <ion-button href="/slides" expand="block">Slides Viewme</ion-button>
         <ion-button href="/stretchyheader" expand="block">StretchyHeader Viewme</ion-button>
+        <ion-button href="/carousel" expand="block">Carousel Viewme</ion-button>
+        <ion-button href="/htmltoprint" expand="block">HTML to Print Viewme</ion-button>
       </ion-content>
     ];
   }

@@ -5,10 +5,13 @@
 This is a library of Stencil Web Components including
  - [jeep-colorpicker    ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-colorpicker/readme.md)
  - [jeep-linechart      ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-linechart/readme.md)
+ - [jeep-columnchart      ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-columnchart/readme.md)
  - [jeep-svgmorph       ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-svgmorph/readme.md)
  - [jeep-slides         ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-slides/readme.md)
  - [jeep-flipimages     ](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-flipimages/readme.md)
  - [jeep-stretchy-header](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-stretchy-header/readme.md)
+ - [jeep-html-toprint](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-html-toprint/readme.md)
+ - [jeep-carousel](https://github.com/jepiqueau/jeep/blob/master/core/src/components/jeep-carousel/readme.md)
 
 
 ## Jeep Components Viewme
@@ -17,6 +20,8 @@ This is a library of Stencil Web Components including
 
  - [LineChart ViewMe](https://jeep-viewme-app.firebaseapp.com/linechart)
 
+ - [ColumnChart ViewMe](https://jeep-viewme-app.firebaseapp.com/columnchart)
+
  - [SVGMorphing ViewMe](https://jeep-viewme-app.firebaseapp.com/svgmorph)
 
  - [Slides ViewMe](https://jeep-viewme-app.firebaseapp.com/slides)
@@ -24,6 +29,10 @@ This is a library of Stencil Web Components including
  - [Flipimages ViewMe](https://jeep-viewme-app.firebaseapp.com/flipimages)
 
  - [StretchyHeader ViewMe](https://jeep-viewme-app.firebaseapp.com/stretchyheader)
+
+ - [HtmlToPrint ViewMe](https://jeep-viewme-app.firebaseapp.com/htmltoprint)
+
+ - [Carousel ViewMe](https://jeep-viewme-app.firebaseapp.com/carousel)
 
 ## Using this library
 

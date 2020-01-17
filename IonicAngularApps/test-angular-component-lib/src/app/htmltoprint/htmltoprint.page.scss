@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+h2 {
+    margin:15px;
+    font: 20px Calibri;
+    font-weight: bold;
+    text-align: center;
+}
+h3 {
+    margin:15px;
+    font: 12px Calibri;
+    font-weight: normal;
+    text-align: left;
+}
+table {
+    width: 100%;
+    font: 15px Calibri;
+}
+table, tr, th, td {
+    border: solid 1px #AAA; 
+    border-collapse: collapse;
+    padding: 2px 5px;
+}
+.left {
+    text-align: left;
+}
+.center {
+    text-align: center;
+    font-weight: normal;
+}
+.table-tr-header {
+    background-color:rgb(193,195,203);
+}

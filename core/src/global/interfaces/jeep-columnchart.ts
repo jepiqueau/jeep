@@ -1,0 +1,31 @@
+export interface Variables {
+    bgColor?: string; 
+    axColor?: string;
+    lnColor?: string;
+    tiColor?: string;
+    stColor?: string;
+    atColor?: string;
+    lbColor?: string;
+    topPlot?: string;
+    leftPlot?: string;
+    widthPlot?: string;
+    heightPlot?: string;
+    ftTiSize?:string;
+    ftLbSize?:string;
+    ftFamily?:string;
+    ftATSize?: string;
+    ftSTSize?: string;
+    ftLgSize?: string;
+    tickX?: string;
+    tickY?: string;
+    gridX?: string;
+    gridY?: string;
+    xInterval?: string;
+    yInterval?: string;
+    xZero?: string;
+    yZero?: string;
+    animDuration?: string;
+    legendTop?: string;
+    bdColor?:string;
+    bdWidth?:string;
+}

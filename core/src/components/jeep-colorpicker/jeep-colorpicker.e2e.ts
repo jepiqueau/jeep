@@ -44,12 +44,14 @@ describe('jeep-colorpicker', () => {
 
   it('renders changes to the color property', async () => {
     cmp.setProperty('color', '#a8bed6');
+    await cmp.callMethod('init');
     await page.waitForChanges();
-    expect(cmp.getAttribute('color')).toEqual("#a8bed6");
+  expect(cmp.getAttribute('color')).toEqual("#a8bed6");
     expect(cmp.getAttribute('opacity')).toEqual("1");
   });
   it('renders changes to the opacity property', async () => {
     cmp.setProperty('opacity', '0.525');
+    await cmp.callMethod('init');
     await page.waitForChanges();
     expect(cmp.getAttribute('color')).toEqual("#ff0000");
     expect(cmp.getAttribute('opacity')).toEqual("0.525");
@@ -57,6 +59,7 @@ describe('jeep-colorpicker', () => {
   it('renders changes to the color & opacity properties', async () => {
     cmp.setProperty('color', '#a8bed6');
     cmp.setProperty('opacity', '0.525');
+    await cmp.callMethod('init');
     await page.waitForChanges();
     expect(cmp.getAttribute('color')).toEqual("#a8bed6");
     expect(cmp.getAttribute('opacity')).toEqual("0.525");
@@ -64,6 +67,8 @@ describe('jeep-colorpicker', () => {
 
   it('renders changes to the buttons [Color] properties', async () => {
     cmp.setProperty('buttons', '[Color]');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -78,6 +83,8 @@ describe('jeep-colorpicker', () => {
   });
   it('renders changes to the buttons [Color,Valid] properties', async () => {
     cmp.setProperty('buttons', '[Color,Valid]');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -92,6 +99,8 @@ describe('jeep-colorpicker', () => {
   });
   it('renders changes to the buttons [Color,Valid,Dismiss] properties', async () => {
     cmp.setProperty('buttons', '[Color,Valid,Dismiss]');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -106,6 +115,8 @@ describe('jeep-colorpicker', () => {
   });
   it('renders changes to the hidebuttons properties', async () => {
     cmp.setProperty('hidebuttons', true);
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -120,6 +131,8 @@ describe('jeep-colorpicker', () => {
   });
   it('renders changes to the hideheader properties', async () => {
     cmp.setProperty('hideheader', true);
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -134,6 +147,8 @@ describe('jeep-colorpicker', () => {
   });
   it('renders changes to the hideopacity properties when opacity not given', async () => {
     cmp.setProperty('hideopacity', true);
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -149,6 +164,8 @@ describe('jeep-colorpicker', () => {
   it('renders changes to the hideopacity properties when opacity is given', async () => {
     cmp.setProperty('opacity', "0.45");
     cmp.setProperty('hideopacity', true);
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(cmp).toEqualHtml(`
@@ -202,6 +219,8 @@ describe('jeep-colorpicker', () => {
   it('should define cpicker properties with color, opacity properties given when calling open method', async () => {
     cmp.setProperty('color', '#a8bed6');
     cmp.setProperty('opacity', '0.525');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
@@ -210,6 +229,8 @@ describe('jeep-colorpicker', () => {
   });
   it('should define cpicker properties with buttons [Okay,Cancel] properties when buttons [Color] given & calling open method', async () => {
     cmp.setProperty('buttons', '[Color]');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
@@ -217,6 +238,8 @@ describe('jeep-colorpicker', () => {
   });
   it('should define cpicker properties with buttons [Valid,Cancel] properties when buttons [Color,Valid] given & calling open method', async () => {
     cmp.setProperty('buttons', '[Color,Valid]');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
@@ -224,6 +247,8 @@ describe('jeep-colorpicker', () => {
   });
   it('should define cpicker properties with buttons [Valid,Dismiss] properties when buttons [Color,Valid,Dismiss] given & calling open method', async () => {
     cmp.setProperty('buttons', '[Color,Valid,Dismiss]');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
@@ -234,6 +259,8 @@ describe('jeep-colorpicker', () => {
     const openCpickerSpy:EventSpy = await page.spyOnEvent('jeepColorpickerOpen');
     cmp.setProperty('color', '#a8bed6');
     cmp.setProperty('opacity', '0.525');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     expect(openCpickerSpy).toHaveReceivedEventTimes(1);
@@ -247,6 +274,8 @@ describe('jeep-colorpicker', () => {
     opacity: 0.5};
     cmp.setProperty('color', '#a8bed6');
     cmp.setProperty('opacity', '0.525');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     await cmp.callMethod('close',{color:color,button:1});
@@ -263,6 +292,8 @@ describe('jeep-colorpicker', () => {
     opacity: 0.500};
     cmp.setProperty('color', '#17bb17');
     cmp.setProperty('opacity', '0.500');
+    await cmp.callMethod('init');
+    await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
     cmp.triggerEvent('jeepCpickerClose',{detail:{color:color,button:1}});

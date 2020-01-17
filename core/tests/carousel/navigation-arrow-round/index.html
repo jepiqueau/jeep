@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Carousel Component</title>
+  <script nomodule src="/build/jeep.js"></script>
+  <script type="module" src="/build/jeep.esm.js"></script>   
+  <link rel='stylesheet' type="text/css" href='https://cdn.jsdelivr.net/npm/stencil-carousel@latest/dist/jeepcarousel/jeepcarousel.css'>
+  <style>
+    :root {
+      --navigation-next-background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20fill=%22%23ff0000%22%20d=%22M284.9%20412.6l138.1-134c6-5.8%209-13.7%209-22.4v-.4c0-8.7-3-16.6-9-22.4l-138.1-134c-12-12.5-31.3-12.5-43.2%200-11.9%2012.5-11.9%2032.7%200%2045.2l83%2079.4h-214c-17%200-30.7%2014.3-30.7%2032%200%2018%2013.7%2032%2030.6%2032h214l-83%2079.4c-11.9%2012.5-11.9%2032.7%200%2045.2%2012%2012.5%2031.3%2012.5%2043.3%200z%22/%3E%3C/svg%3E");
+      --navigation-prev-background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20fill=%22%23ff0000%22%20d=%22M401.4%20224h-214l83-79.4c11.9-12.5%2011.9-32.7%200-45.2s-31.2-12.5-43.2%200L89%20233.4c-6%205.8-9%2013.7-9%2022.4v.4c0%208.7%203%2016.6%209%2022.4l138.1%20134c12%2012.5%2031.3%2012.5%2043.2%200%2011.9-12.5%2011.9-32.7%200-45.2l-83-79.4h214c16.9%200%2030.6-14.3%2030.6-32%20.1-18-13.6-32-30.5-32z%22/%3E%3C/svg%3E");
+      --navigation-height: 45px;
+      --navigation-width: 45px;
+      --swiper-slide-display: flex;
+      --swiper-slide-align-items: center;
+      --swiper-slide-justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <jeep-carousel  
+    data = '{"slides":[
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/deerl.jpg\" alt=\"deer\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/elephantl.jpg\" alt=\"elephant\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/tigerl.jpg\" alt=\"tiger\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lionl.jpg\" alt=\"lion\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eaglel.jpg\" alt=\"eagle\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eagleheadl.jpg\" alt=\"eagle head\"></img>"]}
+    ]}'
+    cstyle = ".image {width: 75%;max-width: 100%;height: auto;max-height: 100%;}"
+    options = '{
+    "navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"}}'
+    >
+  </jeep-carousel>
+</body>
+</html>
+

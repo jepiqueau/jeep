@@ -4,16 +4,20 @@
  */
 import { NgModule } from "@angular/core";
 import { defineCustomElements } from "@jeepq/core/loader";
-import { JeepColorpicker, JeepLinechart, JeepSvgmorph, JeepSlides, JeepFlipimages } from "./directives/proxies";
+import { JeepColorpicker, JeepLinechart, JeepColumnchart, JeepSvgmorph, JeepSlides, JeepFlipimages, JeepStretchyHeader, JeepHtmlToprint, JeepCarousel } from "./directives/proxies";
 defineCustomElements(window);
 /** @type {?} */
 var DECLARATIONS = [
     // proxies
     JeepColorpicker,
     JeepLinechart,
+    JeepColumnchart,
     JeepSvgmorph,
     JeepSlides,
-    JeepFlipimages
+    JeepFlipimages,
+    JeepStretchyHeader,
+    JeepHtmlToprint,
+    JeepCarousel
 ];
 var ComponentLibraryModule = /** @class */ (function () {
     function ComponentLibraryModule() {

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <jeep-columnchart ctitle="Basic Column Chart" subtitle="test sub-title" 
+      xtitle="test for x axis" ytitle="test for y axis" 
+      datapoints='{"data":[
+      {"label":"Apple","y":10,"color":"#e34c46"},
+      {"label":"Orange","y":-17,"color":"#d1b038"},
+      {"label":"Banana","y":12,"color":"#48a37c"},
+      {"label":"Mango","y":-30,"color":"#111782"},
+      {"label":"Grape","y":28,"color":"#db123a"}]}'
+      animation cborder
+      cstyle="--height:450px;--width:80%;--top:30px;--left:10%;">
+    </jeep-columnchart>
+</ion-content>

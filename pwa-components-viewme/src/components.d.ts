@@ -11,8 +11,16 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppAbout {}
+  interface AppCarousel {}
+  interface AppCarouselViewme {
+    'type': string;
+  }
   interface AppColorpicker {}
   interface AppColorpickerViewme {
+    'type': string;
+  }
+  interface AppColumnchart {}
+  interface AppColumnchartViewme {
     'type': string;
   }
   interface AppFlipimages {}
@@ -20,6 +28,8 @@ export namespace Components {
     'type': string;
   }
   interface AppHome {}
+  interface AppHtmltoprint {}
+  interface AppHtmltoprintViewme {}
   interface AppLinechart {}
   interface AppLinechartViewme {
     'type': string;
@@ -46,6 +56,18 @@ declare global {
     new (): HTMLAppAboutElement;
   };
 
+  interface HTMLAppCarouselElement extends Components.AppCarousel, HTMLStencilElement {}
+  var HTMLAppCarouselElement: {
+    prototype: HTMLAppCarouselElement;
+    new (): HTMLAppCarouselElement;
+  };
+
+  interface HTMLAppCarouselViewmeElement extends Components.AppCarouselViewme, HTMLStencilElement {}
+  var HTMLAppCarouselViewmeElement: {
+    prototype: HTMLAppCarouselViewmeElement;
+    new (): HTMLAppCarouselViewmeElement;
+  };
+
   interface HTMLAppColorpickerElement extends Components.AppColorpicker, HTMLStencilElement {}
   var HTMLAppColorpickerElement: {
     prototype: HTMLAppColorpickerElement;
@@ -56,6 +78,18 @@ declare global {
   var HTMLAppColorpickerViewmeElement: {
     prototype: HTMLAppColorpickerViewmeElement;
     new (): HTMLAppColorpickerViewmeElement;
+  };
+
+  interface HTMLAppColumnchartElement extends Components.AppColumnchart, HTMLStencilElement {}
+  var HTMLAppColumnchartElement: {
+    prototype: HTMLAppColumnchartElement;
+    new (): HTMLAppColumnchartElement;
+  };
+
+  interface HTMLAppColumnchartViewmeElement extends Components.AppColumnchartViewme, HTMLStencilElement {}
+  var HTMLAppColumnchartViewmeElement: {
+    prototype: HTMLAppColumnchartViewmeElement;
+    new (): HTMLAppColumnchartViewmeElement;
   };
 
   interface HTMLAppFlipimagesElement extends Components.AppFlipimages, HTMLStencilElement {}
@@ -74,6 +108,18 @@ declare global {
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
+  };
+
+  interface HTMLAppHtmltoprintElement extends Components.AppHtmltoprint, HTMLStencilElement {}
+  var HTMLAppHtmltoprintElement: {
+    prototype: HTMLAppHtmltoprintElement;
+    new (): HTMLAppHtmltoprintElement;
+  };
+
+  interface HTMLAppHtmltoprintViewmeElement extends Components.AppHtmltoprintViewme, HTMLStencilElement {}
+  var HTMLAppHtmltoprintViewmeElement: {
+    prototype: HTMLAppHtmltoprintViewmeElement;
+    new (): HTMLAppHtmltoprintViewmeElement;
   };
 
   interface HTMLAppLinechartElement extends Components.AppLinechart, HTMLStencilElement {}
@@ -131,11 +177,17 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-about': HTMLAppAboutElement;
+    'app-carousel': HTMLAppCarouselElement;
+    'app-carousel-viewme': HTMLAppCarouselViewmeElement;
     'app-colorpicker': HTMLAppColorpickerElement;
     'app-colorpicker-viewme': HTMLAppColorpickerViewmeElement;
+    'app-columnchart': HTMLAppColumnchartElement;
+    'app-columnchart-viewme': HTMLAppColumnchartViewmeElement;
     'app-flipimages': HTMLAppFlipimagesElement;
     'app-flipimages-viewme': HTMLAppFlipimagesViewmeElement;
     'app-home': HTMLAppHomeElement;
+    'app-htmltoprint': HTMLAppHtmltoprintElement;
+    'app-htmltoprint-viewme': HTMLAppHtmltoprintViewmeElement;
     'app-linechart': HTMLAppLinechartElement;
     'app-linechart-viewme': HTMLAppLinechartViewmeElement;
     'app-root': HTMLAppRootElement;
@@ -150,8 +202,16 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppAbout {}
+  interface AppCarousel {}
+  interface AppCarouselViewme {
+    'type'?: string;
+  }
   interface AppColorpicker {}
   interface AppColorpickerViewme {
+    'type'?: string;
+  }
+  interface AppColumnchart {}
+  interface AppColumnchartViewme {
     'type'?: string;
   }
   interface AppFlipimages {}
@@ -159,6 +219,8 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface AppHome {}
+  interface AppHtmltoprint {}
+  interface AppHtmltoprintViewme {}
   interface AppLinechart {}
   interface AppLinechartViewme {
     'type'?: string;
@@ -177,11 +239,17 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'app-about': AppAbout;
+    'app-carousel': AppCarousel;
+    'app-carousel-viewme': AppCarouselViewme;
     'app-colorpicker': AppColorpicker;
     'app-colorpicker-viewme': AppColorpickerViewme;
+    'app-columnchart': AppColumnchart;
+    'app-columnchart-viewme': AppColumnchartViewme;
     'app-flipimages': AppFlipimages;
     'app-flipimages-viewme': AppFlipimagesViewme;
     'app-home': AppHome;
+    'app-htmltoprint': AppHtmltoprint;
+    'app-htmltoprint-viewme': AppHtmltoprintViewme;
     'app-linechart': AppLinechart;
     'app-linechart-viewme': AppLinechartViewme;
     'app-root': AppRoot;
@@ -201,11 +269,17 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'app-about': LocalJSX.AppAbout & JSXBase.HTMLAttributes<HTMLAppAboutElement>;
+      'app-carousel': LocalJSX.AppCarousel & JSXBase.HTMLAttributes<HTMLAppCarouselElement>;
+      'app-carousel-viewme': LocalJSX.AppCarouselViewme & JSXBase.HTMLAttributes<HTMLAppCarouselViewmeElement>;
       'app-colorpicker': LocalJSX.AppColorpicker & JSXBase.HTMLAttributes<HTMLAppColorpickerElement>;
       'app-colorpicker-viewme': LocalJSX.AppColorpickerViewme & JSXBase.HTMLAttributes<HTMLAppColorpickerViewmeElement>;
+      'app-columnchart': LocalJSX.AppColumnchart & JSXBase.HTMLAttributes<HTMLAppColumnchartElement>;
+      'app-columnchart-viewme': LocalJSX.AppColumnchartViewme & JSXBase.HTMLAttributes<HTMLAppColumnchartViewmeElement>;
       'app-flipimages': LocalJSX.AppFlipimages & JSXBase.HTMLAttributes<HTMLAppFlipimagesElement>;
       'app-flipimages-viewme': LocalJSX.AppFlipimagesViewme & JSXBase.HTMLAttributes<HTMLAppFlipimagesViewmeElement>;
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+      'app-htmltoprint': LocalJSX.AppHtmltoprint & JSXBase.HTMLAttributes<HTMLAppHtmltoprintElement>;
+      'app-htmltoprint-viewme': LocalJSX.AppHtmltoprintViewme & JSXBase.HTMLAttributes<HTMLAppHtmltoprintViewmeElement>;
       'app-linechart': LocalJSX.AppLinechart & JSXBase.HTMLAttributes<HTMLAppLinechartElement>;
       'app-linechart-viewme': LocalJSX.AppLinechartViewme & JSXBase.HTMLAttributes<HTMLAppLinechartViewmeElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;

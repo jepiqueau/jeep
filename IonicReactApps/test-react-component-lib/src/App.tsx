@@ -5,10 +5,13 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import ColorPicker from './pages/ColorPicker';
 import SvgMorph from './pages/SvgMorph';
+import ColumnChart from './pages/ColumnChart';
 import LineChart from './pages/LineChart';
 import FlipImages from './pages/FlipImages';
 import Slides from './pages/Slides';
 import StretchyHeader from './pages/StretchyHeader';
+import HtmltoPrint from './pages/HtmltoPrint';
+import Carousel from './pages/Carousel';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,9 +36,12 @@ const App: React.FunctionComponent = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet>
+          <Route path="/carousel" component={Carousel} />
+          <Route path="/htmltoprint" component={HtmltoPrint} />
           <Route path="/stretchyheader" component={StretchyHeader} />
           <Route path="/slides" component={Slides} />
           <Route path="/flipimages" component={FlipImages} />
+          <Route path="/columnchart" component={ColumnChart} />
           <Route path="/linechart" component={LineChart} />
           <Route path="/svgmorph" component={SvgMorph} />
           <Route path="/colorpicker" component={ColorPicker} />

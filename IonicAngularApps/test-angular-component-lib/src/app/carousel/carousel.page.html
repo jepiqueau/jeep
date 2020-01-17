@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <jeep-carousel  
+      [data]="carouselImages"
+      [cstyle] = "carouselCstyle"
+      [options] = "carouselOptions"
+    >
+    </jeep-carousel>
+</ion-content>

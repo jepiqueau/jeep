@@ -6,10 +6,13 @@ The library includes the following Angular components:
 
  - JeepColorpicker
  - JeepLinechart
+ - JeepColumnchart
  - JeepFlipimages
  - JeepSvgmorph
  - JeepSlides
  - JeepStretchyHeader
+ - JeepHtmlToPrint
+ - JeepCarousel
 
 
 ## Usage

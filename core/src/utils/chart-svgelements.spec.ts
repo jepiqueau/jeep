@@ -1,5 +1,5 @@
 import { Rect, Point } from '../global/interfaces/geom';
-import { SVGOptions, DataSet, AxisLength, NearestPoint, DataPoint }  from '../global/interfaces/jeep-linechart';
+import { SVGOptions, DataSet, AxisLength, NearestPoint, DataPoint }  from '../global/interfaces/charts';
 import { axisMaxArrayAttribute, axisMinArrayAttribute, axisMaxArrayLabel , axisRange,
         axisNiceNumber, axisGetNumber, maxLegend, axisConvertX, axisConvertY,
         scalarDistance, getTotalLength, getNearest, getSVGOptions} from './chart-svgelements';
@@ -423,6 +423,10 @@ describe('svgelements', () => {
         it('should return the axis range of the "y" axis with zero', () => {
             let value: AxisLength = axisRange(data1,"y",0,true);
             expect(value).toEqual({ "type": 'number', "top": 600, "bottom": 0, "interval": 200, "length": 600 });
+        });    
+        it('should return the axis range of the "y" axis no interval without zero', () => {
+            let value: AxisLength = axisRange(data1,"y");
+            expect(value).toEqual({ "type": 'number', "top": 600, "bottom": 300, "interval": 50, "length": 300 });
         });    
         it('should return the axis range of the "y" axis without zero', () => {
             let value: AxisLength = axisRange(data1,"y",0,false);

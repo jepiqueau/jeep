@@ -73,18 +73,18 @@ export const cssVar = (elem: any,name:string,value?:string): string => {
 export const getDim = (css:string, wind:number, pad:string): number =>{
   let w: number;
   let vpad:number = 0;
-  if(pad && pad!= "0"){
-    if (pad.slice(-2) === "px") {
+  if(pad !== "0"){
+    if (pad.length > 2 && pad.slice(-2) === "px") {
       vpad = parseFloat(pad.split('px',2)[0]);
     } 
   }
-  if(css && css != "0"){
-    if (css.slice(-1) === "%") {
+  if(css && css !== "0"){
+    if (css.length > 1 && css.slice(-1) === "%") {
       w = parseFloat(css.split('%',2)[0]);
       if (w > 100) w = 100;
       let ret:number = Math.round(((w * wind / 100) -vpad));
       return ret;
-    } else if (css.slice(-2) === "px") {
+    } else if (css.length > 2 && css.slice(-2) === "px") {
       w = parseFloat(css.split('px',2)[0]);
       if (w > (wind-vpad)) {
         return wind-vpad;
@@ -99,14 +99,14 @@ export const getDim = (css:string, wind:number, pad:string): number =>{
   } 
 }
 export const convertCSSNumber = (css:string): number => {
-  if (css.slice(-2) === "px") {
+  if (css.length > 2 && css.slice(-2) === "px") {
     return parseFloat(css.split('px',2)[0]); 
   } else {
     return 0;
   } 
 }
 export const convertCSSBoolean = (css:string): boolean => {
-  if (css.slice(-2) === "ue") {
+  if (css.length > 2 && css.slice(-2) === "ue") {
     return true; 
   } else {
     return false;

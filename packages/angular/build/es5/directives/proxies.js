@@ -106,6 +106,79 @@ export function ProxyCmp(opts) {
     });
     return decorator;
 }
+var JeepCarousel = /** @class */ (function () {
+    function JeepCarousel(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepCarouselDidLoad', 'jeepCarouselBeforeDestroy', 'jeepCarouselAfterDestroy', 'jeepCarouselTap', 'jeepCarouselDoubleTap', 'jeepCarouselSlideChange', 'jeepCarouselWillChange', 'jeepCarouselDidChange', 'jeepCarouselNextStart', 'jeepCarouselPrevStart', 'jeepCarouselNextEnd', 'jeepCarouselPrevEnd', 'jeepCarouselTransitionStart', 'jeepCarouselTransitionEnd', 'jeepCarouselDrag', 'jeepCarouselReachStart', 'jeepCarouselReachEnd', 'jeepCarouselTouchStart', 'jeepCarouselTouchEnd']);
+    }
+    JeepCarousel.decorators = [
+        { type: Component, args: [{ selector: 'jeep-carousel', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['cstyle', 'data', 'notcleanstyles', 'options', 'parallaxoptions', 'playcontrols', 'rtl'] },] },
+    ];
+    /** @nocollapse */
+    JeepCarousel.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: ElementRef },
+        { type: NgZone }
+    ]; };
+    JeepCarousel = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['cstyle', 'data', 'notcleanstyles', 'options', 'parallaxoptions', 'playcontrols', 'rtl'], 'methods': ['init', 'setSwiper', 'update', 'appendSlide', 'addSlide', 'slideTo', 'slideNext', 'slidePrev', 'getActiveIndex', 'getPreviousIndex', 'length', 'isEnd', 'isBeginning', 'startAutoplay', 'stopAutoplay', 'swiperDestroy'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepCarousel);
+    return JeepCarousel;
+}());
+export { JeepCarousel };
+if (false) {
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselDidLoad;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselBeforeDestroy;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselAfterDestroy;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselTap;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselDoubleTap;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselSlideChange;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselWillChange;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselDidChange;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselNextStart;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselPrevStart;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselNextEnd;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselPrevEnd;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselTransitionStart;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselTransitionEnd;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselDrag;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselReachStart;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselReachEnd;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselTouchStart;
+    /** @type {?} */
+    JeepCarousel.prototype.jeepCarouselTouchEnd;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepCarousel.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepCarousel.prototype.z;
+}
 var JeepColorpicker = /** @class */ (function () {
     function JeepColorpicker(c, r, z) {
         this.z = z;
@@ -146,6 +219,40 @@ if (false) {
      * @protected
      */
     JeepColorpicker.prototype.z;
+}
+var JeepColumnchart = /** @class */ (function () {
+    function JeepColumnchart(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+    }
+    JeepColumnchart.decorators = [
+        { type: Component, args: [{ selector: 'jeep-columnchart', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['animation', 'cborder', 'color', 'cstyle', 'ctitle', 'datapoints', 'delay', 'subtitle', 'xtitle', 'ytitle'] },] },
+    ];
+    /** @nocollapse */
+    JeepColumnchart.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: ElementRef },
+        { type: NgZone }
+    ]; };
+    JeepColumnchart = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['animation', 'cborder', 'color', 'cstyle', 'ctitle', 'datapoints', 'delay', 'subtitle', 'xtitle', 'ytitle'], 'methods': ['init', 'getStatus', 'renderChart', 'getWindowSize', 'getCssProperties'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepColumnchart);
+    return JeepColumnchart;
+}());
+export { JeepColumnchart };
+if (false) {
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepColumnchart.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepColumnchart.prototype.z;
 }
 var JeepCpicker = /** @class */ (function () {
     function JeepCpicker(c, r, z) {
@@ -265,6 +372,47 @@ if (false) {
      * @protected
      */
     JeepFullscreen.prototype.z;
+}
+var JeepHtmlToprint = /** @class */ (function () {
+    function JeepHtmlToprint(c, r, z) {
+        this.z = z;
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepHtmlToPrint', 'jeepHtmlToPrintReady', 'jeepHtmlToPrintCompleted']);
+    }
+    JeepHtmlToprint.decorators = [
+        { type: Component, args: [{ selector: 'jeep-html-toprint', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['slotstyle'] },] },
+    ];
+    /** @nocollapse */
+    JeepHtmlToprint.ctorParameters = function () { return [
+        { type: ChangeDetectorRef },
+        { type: ElementRef },
+        { type: NgZone }
+    ]; };
+    JeepHtmlToprint = tslib_1.__decorate([
+        ProxyCmp({ inputs: ['slotstyle'], 'methods': ['init', 'load', 'emitPrint', 'getSlotStyle'] }),
+        tslib_1.__metadata("design:paramtypes", [ChangeDetectorRef, ElementRef, NgZone])
+    ], JeepHtmlToprint);
+    return JeepHtmlToprint;
+}());
+export { JeepHtmlToprint };
+if (false) {
+    /** @type {?} */
+    JeepHtmlToprint.prototype.jeepHtmlToPrint;
+    /** @type {?} */
+    JeepHtmlToprint.prototype.jeepHtmlToPrintReady;
+    /** @type {?} */
+    JeepHtmlToprint.prototype.jeepHtmlToPrintCompleted;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepHtmlToprint.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    JeepHtmlToprint.prototype.z;
 }
 var JeepLinechart = /** @class */ (function () {
     function JeepLinechart(c, r, z) {

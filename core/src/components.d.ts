@@ -16,11 +16,16 @@ import {
 } from './global/interfaces/jeep-colorpicker';
 import {
   Status,
-  Variables,
-} from './global/interfaces/jeep-linechart';
+} from './global/interfaces/charts';
 import {
   Rect,
 } from './global/interfaces/geom';
+import {
+  Variables,
+} from './global/interfaces/jeep-columnchart';
+import {
+  Variables as Variables1,
+} from './global/interfaces/jeep-linechart';
 import {
   HeaderVisibility,
   PaginationIndex,
@@ -36,6 +41,100 @@ import {
 } from './global/interfaces/svggeom';
 
 export namespace Components {
+  interface JeepCarousel {
+    /**
+    * Add new slides to required index slides could be HTMLElement or HTML string with new slide or array with such slides
+    */
+    'addSlide': (index: number, slides: any) => Promise<void>;
+    /**
+    * Append new slides  slides could be HTMLElement or HTML string with new slide or array with such slides
+    */
+    'appendSlide': (slides: any) => Promise<void>;
+    /**
+    * Slide data style
+    */
+    'cstyle': string;
+    /**
+    * Slide data
+    */
+    'data': string;
+    /**
+    * Get the index of the active slide.
+    */
+    'getActiveIndex': () => Promise<number>;
+    /**
+    * Get the index of the previous slide.
+    */
+    'getPreviousIndex': () => Promise<number>;
+    /**
+    * Init data from properties.
+    */
+    'init': () => Promise<void>;
+    /**
+    * Get whether or not the current slide is the first slide.
+    */
+    'isBeginning': () => Promise<boolean>;
+    /**
+    * Get whether or not the current slide is the last slide.
+    */
+    'isEnd': () => Promise<boolean>;
+    /**
+    * Get the total number of slides.
+    */
+    'length': () => Promise<number>;
+    /**
+    * Clean styles when swiper destroys
+    */
+    'notcleanstyles': boolean;
+    /**
+    * Swiper options
+    */
+    'options': string;
+    /**
+    * Swiper data-swiper-parallax
+    */
+    'parallaxoptions': string;
+    /**
+    * PlayControls when autoplay
+    */
+    'playcontrols': boolean;
+    /**
+    * Swiper RTL Layout
+    */
+    'rtl': boolean;
+    /**
+    * Set the swiper.
+    */
+    'setSwiper': () => Promise<void>;
+    /**
+    * Transition to the next slide.
+    */
+    'slideNext': (speed?: number, runCallbacks?: boolean) => Promise<void>;
+    /**
+    * Transition to the previous slide.
+    */
+    'slidePrev': (speed?: number, runCallbacks?: boolean) => Promise<void>;
+    /**
+    * Transition to the specified slide.
+    */
+    'slideTo': (index: number, speed?: number, runCallbacks?: boolean) => Promise<void>;
+    /**
+    * Start auto play.
+    */
+    'startAutoplay': () => Promise<void>;
+    /**
+    * Stop auto play.
+    */
+    'stopAutoplay': () => Promise<void>;
+    /**
+    * Swiper destroy.
+    */
+    'swiperDestroy': (cleanstyles: boolean) => Promise<void>;
+    /**
+    * Update the underlying slider implementation. Call this if you've added or removed child slides.
+    */
+    'update': () => Promise<void>;
+  }
   interface JeepColorpicker {
     /**
     * The buttons text
@@ -73,6 +172,23 @@ export namespace Components {
     * Method open the cpicker component
     */
     'open': () => Promise<void>;
+  }
+  interface JeepColumnchart {
+    'animation': boolean;
+    'cborder': boolean;
+    'color': string;
+    'cstyle': string;
+    'ctitle': string;
+    'datapoints': string;
+    'delay': string;
+    'getCssProperties': () => Promise<Variables>;
+    'getStatus': () => Promise<Status>;
+    'getWindowSize': () => Promise<Rect>;
+    'init': () => Promise<void>;
+    'renderChart': () => Promise<void>;
+    'subtitle': string;
+    'xtitle': string;
+    'ytitle': string;
   }
   interface JeepCpicker {
     /**
@@ -167,6 +283,19 @@ export namespace Components {
     * Set the Fullscreen Visibility (visible/hidden)
     */
     'setJeepFullscreenVisibility': (state: any) => Promise<void>;
+  }
+  interface JeepHtmlToprint {
+    'emitPrint': () => Promise<void>;
+    'getSlotStyle': () => Promise<string>;
+    /**
+    * Method initialize
+    */
+    'init': () => Promise<void>;
+    'load': () => Promise<void>;
+    /**
+    * The style for elements in slot
+    */
+    'slotstyle': string;
   }
   interface JeepLinechart {
     'animation': boolean;
@@ -429,10 +558,22 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLJeepCarouselElement extends Components.JeepCarousel, HTMLStencilElement {}
+  var HTMLJeepCarouselElement: {
+    prototype: HTMLJeepCarouselElement;
+    new (): HTMLJeepCarouselElement;
+  };
+
   interface HTMLJeepColorpickerElement extends Components.JeepColorpicker, HTMLStencilElement {}
   var HTMLJeepColorpickerElement: {
     prototype: HTMLJeepColorpickerElement;
     new (): HTMLJeepColorpickerElement;
+  };
+
+  interface HTMLJeepColumnchartElement extends Components.JeepColumnchart, HTMLStencilElement {}
+  var HTMLJeepColumnchartElement: {
+    prototype: HTMLJeepColumnchartElement;
+    new (): HTMLJeepColumnchartElement;
   };
 
   interface HTMLJeepCpickerElement extends Components.JeepCpicker, HTMLStencilElement {}
@@ -451,6 +592,12 @@ declare global {
   var HTMLJeepFullscreenElement: {
     prototype: HTMLJeepFullscreenElement;
     new (): HTMLJeepFullscreenElement;
+  };
+
+  interface HTMLJeepHtmlToprintElement extends Components.JeepHtmlToprint, HTMLStencilElement {}
+  var HTMLJeepHtmlToprintElement: {
+    prototype: HTMLJeepHtmlToprintElement;
+    new (): HTMLJeepHtmlToprintElement;
   };
 
   interface HTMLJeepLinechartElement extends Components.JeepLinechart, HTMLStencilElement {}
@@ -501,10 +648,13 @@ declare global {
     new (): HTMLJeepSvgmorphElement;
   };
   interface HTMLElementTagNameMap {
+    'jeep-carousel': HTMLJeepCarouselElement;
     'jeep-colorpicker': HTMLJeepColorpickerElement;
+    'jeep-columnchart': HTMLJeepColumnchartElement;
     'jeep-cpicker': HTMLJeepCpickerElement;
     'jeep-flipimages': HTMLJeepFlipimagesElement;
     'jeep-fullscreen': HTMLJeepFullscreenElement;
+    'jeep-html-toprint': HTMLJeepHtmlToprintElement;
     'jeep-linechart': HTMLJeepLinechartElement;
     'jeep-navigation': HTMLJeepNavigationElement;
     'jeep-pagination': HTMLJeepPaginationElement;
@@ -517,6 +667,112 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface JeepCarousel {
+    /**
+    * Slide data style
+    */
+    'cstyle'?: string;
+    /**
+    * Slide data
+    */
+    'data'?: string;
+    /**
+    * Clean styles when swiper destroys
+    */
+    'notcleanstyles'?: boolean;
+    /**
+    * Emitted after Swiper destroy
+    */
+    'onJeepCarouselAfterDestroy'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted before Swiper destroy
+    */
+    'onJeepCarouselBeforeDestroy'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted after the active slide has changed.
+    */
+    'onJeepCarouselDidChange'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted after Swiper initialization
+    */
+    'onJeepCarouselDidLoad'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the user double taps on the slide's container.
+    */
+    'onJeepCarouselDoubleTap'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the slider is actively being moved.
+    */
+    'onJeepCarouselDrag'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the next slide has ended.
+    */
+    'onJeepCarouselNextEnd'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the next slide has started.
+    */
+    'onJeepCarouselNextStart'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the previous slide has ended.
+    */
+    'onJeepCarouselPrevEnd'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the previous slide has started.
+    */
+    'onJeepCarouselPrevStart'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the slider is at the last slide.
+    */
+    'onJeepCarouselReachEnd'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the slider is at its initial position.
+    */
+    'onJeepCarouselReachStart'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the active slide has changed.
+    */
+    'onJeepCarouselSlideChange'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the user taps/clicks on the slide's container.
+    */
+    'onJeepCarouselTap'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the user releases the touch.
+    */
+    'onJeepCarouselTouchEnd'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the user first touches the slider.
+    */
+    'onJeepCarouselTouchStart'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the slide transition has ended.
+    */
+    'onJeepCarouselTransitionEnd'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the slide transition has started.
+    */
+    'onJeepCarouselTransitionStart'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted before the active slide has changed.
+    */
+    'onJeepCarouselWillChange'?: (event: CustomEvent<void>) => void;
+    /**
+    * Swiper options
+    */
+    'options'?: string;
+    /**
+    * Swiper data-swiper-parallax
+    */
+    'parallaxoptions'?: string;
+    /**
+    * PlayControls when autoplay
+    */
+    'playcontrols'?: boolean;
+    /**
+    * Swiper RTL Layout
+    */
+    'rtl'?: boolean;
+  }
   interface JeepColorpicker {
     /**
     * The buttons text
@@ -545,6 +801,18 @@ declare namespace LocalJSX {
     * The preselected opacity
     */
     'opacity'?: string;
+  }
+  interface JeepColumnchart {
+    'animation'?: boolean;
+    'cborder'?: boolean;
+    'color'?: string;
+    'cstyle'?: string;
+    'ctitle'?: string;
+    'datapoints'?: string;
+    'delay'?: string;
+    'subtitle'?: string;
+    'xtitle'?: string;
+    'ytitle'?: string;
   }
   interface JeepCpicker {
     /**
@@ -602,6 +870,15 @@ declare namespace LocalJSX {
     * Emitted when Fullscreen Requested
     */
     'onJeepFullscreenRequest'?: (event: CustomEvent<void>) => void;
+  }
+  interface JeepHtmlToprint {
+    'onJeepHtmlToPrint'?: (event: CustomEvent<void>) => void;
+    'onJeepHtmlToPrintCompleted'?: (event: CustomEvent<void>) => void;
+    'onJeepHtmlToPrintReady'?: (event: CustomEvent<void>) => void;
+    /**
+    * The style for elements in slot
+    */
+    'slotstyle'?: string;
   }
   interface JeepLinechart {
     'animation'?: boolean;
@@ -782,10 +1059,13 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'jeep-carousel': JeepCarousel;
     'jeep-colorpicker': JeepColorpicker;
+    'jeep-columnchart': JeepColumnchart;
     'jeep-cpicker': JeepCpicker;
     'jeep-flipimages': JeepFlipimages;
     'jeep-fullscreen': JeepFullscreen;
+    'jeep-html-toprint': JeepHtmlToprint;
     'jeep-linechart': JeepLinechart;
     'jeep-navigation': JeepNavigation;
     'jeep-pagination': JeepPagination;
@@ -803,10 +1083,13 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'jeep-carousel': LocalJSX.JeepCarousel & JSXBase.HTMLAttributes<HTMLJeepCarouselElement>;
       'jeep-colorpicker': LocalJSX.JeepColorpicker & JSXBase.HTMLAttributes<HTMLJeepColorpickerElement>;
+      'jeep-columnchart': LocalJSX.JeepColumnchart & JSXBase.HTMLAttributes<HTMLJeepColumnchartElement>;
       'jeep-cpicker': LocalJSX.JeepCpicker & JSXBase.HTMLAttributes<HTMLJeepCpickerElement>;
       'jeep-flipimages': LocalJSX.JeepFlipimages & JSXBase.HTMLAttributes<HTMLJeepFlipimagesElement>;
       'jeep-fullscreen': LocalJSX.JeepFullscreen & JSXBase.HTMLAttributes<HTMLJeepFullscreenElement>;
+      'jeep-html-toprint': LocalJSX.JeepHtmlToprint & JSXBase.HTMLAttributes<HTMLJeepHtmlToprintElement>;
       'jeep-linechart': LocalJSX.JeepLinechart & JSXBase.HTMLAttributes<HTMLJeepLinechartElement>;
       'jeep-navigation': LocalJSX.JeepNavigation & JSXBase.HTMLAttributes<HTMLJeepNavigationElement>;
       'jeep-pagination': LocalJSX.JeepPagination & JSXBase.HTMLAttributes<HTMLJeepPaginationElement>;

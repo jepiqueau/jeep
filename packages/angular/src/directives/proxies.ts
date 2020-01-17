@@ -43,6 +43,37 @@ export function ProxyCmp(opts: { inputs?: any; methods?: any }) {
 
 import { Components } from '@jeepq/core'
 
+export declare interface JeepCarousel extends Components.JeepCarousel {}
+@ProxyCmp({inputs: ['cstyle', 'data', 'notcleanstyles', 'options', 'parallaxoptions', 'playcontrols', 'rtl'], 'methods': ['init', 'setSwiper', 'update', 'appendSlide', 'addSlide', 'slideTo', 'slideNext', 'slidePrev', 'getActiveIndex', 'getPreviousIndex', 'length', 'isEnd', 'isBeginning', 'startAutoplay', 'stopAutoplay', 'swiperDestroy']})
+@Component({ selector: 'jeep-carousel', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['cstyle', 'data', 'notcleanstyles', 'options', 'parallaxoptions', 'playcontrols', 'rtl'] })
+export class JeepCarousel {
+  jeepCarouselDidLoad!: EventEmitter<CustomEvent>;
+  jeepCarouselBeforeDestroy!: EventEmitter<CustomEvent>;
+  jeepCarouselAfterDestroy!: EventEmitter<CustomEvent>;
+  jeepCarouselTap!: EventEmitter<CustomEvent>;
+  jeepCarouselDoubleTap!: EventEmitter<CustomEvent>;
+  jeepCarouselSlideChange!: EventEmitter<CustomEvent>;
+  jeepCarouselWillChange!: EventEmitter<CustomEvent>;
+  jeepCarouselDidChange!: EventEmitter<CustomEvent>;
+  jeepCarouselNextStart!: EventEmitter<CustomEvent>;
+  jeepCarouselPrevStart!: EventEmitter<CustomEvent>;
+  jeepCarouselNextEnd!: EventEmitter<CustomEvent>;
+  jeepCarouselPrevEnd!: EventEmitter<CustomEvent>;
+  jeepCarouselTransitionStart!: EventEmitter<CustomEvent>;
+  jeepCarouselTransitionEnd!: EventEmitter<CustomEvent>;
+  jeepCarouselDrag!: EventEmitter<CustomEvent>;
+  jeepCarouselReachStart!: EventEmitter<CustomEvent>;
+  jeepCarouselReachEnd!: EventEmitter<CustomEvent>;
+  jeepCarouselTouchStart!: EventEmitter<CustomEvent>;
+  jeepCarouselTouchEnd!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['jeepCarouselDidLoad', 'jeepCarouselBeforeDestroy', 'jeepCarouselAfterDestroy', 'jeepCarouselTap', 'jeepCarouselDoubleTap', 'jeepCarouselSlideChange', 'jeepCarouselWillChange', 'jeepCarouselDidChange', 'jeepCarouselNextStart', 'jeepCarouselPrevStart', 'jeepCarouselNextEnd', 'jeepCarouselPrevEnd', 'jeepCarouselTransitionStart', 'jeepCarouselTransitionEnd', 'jeepCarouselDrag', 'jeepCarouselReachStart', 'jeepCarouselReachEnd', 'jeepCarouselTouchStart', 'jeepCarouselTouchEnd']);
+  }
+}
+
 export declare interface JeepColorpicker extends Components.JeepColorpicker {}
 @ProxyCmp({inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'], 'methods': ['init', 'open', 'close']})
 @Component({ selector: 'jeep-colorpicker', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['buttons', 'color', 'hidebuttons', 'hideheader', 'hideopacity', 'opacity'] })
@@ -55,6 +86,17 @@ export class JeepColorpicker {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['jeepColorpickerGetColor', 'jeepColorpickerOpen', 'jeepColorpickerClose']);
+  }
+}
+
+export declare interface JeepColumnchart extends Components.JeepColumnchart {}
+@ProxyCmp({inputs: ['animation', 'cborder', 'color', 'cstyle', 'ctitle', 'datapoints', 'delay', 'subtitle', 'xtitle', 'ytitle'], 'methods': ['init', 'getStatus', 'renderChart', 'getWindowSize', 'getCssProperties']})
+@Component({ selector: 'jeep-columnchart', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['animation', 'cborder', 'color', 'cstyle', 'ctitle', 'datapoints', 'delay', 'subtitle', 'xtitle', 'ytitle'] })
+export class JeepColumnchart {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
   }
 }
 
@@ -98,6 +140,21 @@ export class JeepFullscreen {
     c.detach();
     this.el = r.nativeElement;
     proxyOutputs(this, this.el, ['jeepFullscreenRequest', 'jeepFullscreenExit', 'jeepFullscreenChange']);
+  }
+}
+
+export declare interface JeepHtmlToprint extends Components.JeepHtmlToprint {}
+@ProxyCmp({inputs: ['slotstyle'], 'methods': ['init', 'load', 'emitPrint', 'getSlotStyle']})
+@Component({ selector: 'jeep-html-toprint', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['slotstyle'] })
+export class JeepHtmlToprint {
+  jeepHtmlToPrint!: EventEmitter<CustomEvent>;
+  jeepHtmlToPrintReady!: EventEmitter<CustomEvent>;
+  jeepHtmlToPrintCompleted!: EventEmitter<CustomEvent>;
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['jeepHtmlToPrint', 'jeepHtmlToPrintReady', 'jeepHtmlToPrintCompleted']);
   }
 }
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Carousel Component</title>
+  <script nomodule src="/build/jeep.js"></script>
+  <script type="module" src="/build/jeep.esm.js"></script>   
+  <link rel='stylesheet' type="text/css" href='https://cdn.jsdelivr.net/npm/stencil-carousel@latest/dist/jeepcarousel/jeepcarousel.css'>
+  <style>
+    :root {
+      --container-background-color:#888888;
+      --bullet-diameter: 2vmax;
+      --bullet-background: #000000;
+      --bullet-opacity: 0.5;
+      --bullet-active-background: #ff8000;
+      --bullet-active-opacity: 1;
+      --swiper-slide-width: 100vmin;
+      --swiper-slide-height: calc(var(--swiper-slide-width) * 1024 / 1366);
+      --swiper-slide-top: calc((100% - var(--swiper-slide-height)) / 2);
+      --swiper-slide-align-items: center;
+      --swiper-slide-justify-content: center;
+      --swiper-slide-display: initial;
+    }
+  </style>
+</head>
+<body>
+
+  <jeep-carousel  
+    data = '{"slides":[
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/deerl.jpg\" alt=\"deer\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/elephantl.jpg\" alt=\"elephant\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/tigerl.jpg\" alt=\"tiger\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lionl.jpg\" alt=\"lion\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eaglel.jpg\" alt=\"eagle\"></img>"]},
+    {"slide":["<img class=\"image\" src=\"https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/eagleheadl.jpg\" alt=\"eagle head\"></img>"]}
+    ]}'
+    cstyle = ".image {width: auto;max-width: 100%;height: auto;max-height: 100%;}"
+    options = '{"direction":"horizontal","effect":"coverflow",
+    "centeredSlides":true,"slidesPerView":"auto",
+    "coverflowEffect": {"rotate": 50,"stretch":0,"depth":100,"modifier":1,"slideShadows":true},
+    "pagination":{"el":".swiper-pagination","type":"bullets"}}'
+    >
+  </jeep-carousel>
+</body>
+</html>
+

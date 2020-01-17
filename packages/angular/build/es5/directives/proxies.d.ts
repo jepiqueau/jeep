@@ -7,6 +7,32 @@ export declare function ProxyCmp(opts: {
     methods?: any;
 }): (cls: any) => any;
 import { Components } from '@jeepq/core';
+export declare interface JeepCarousel extends Components.JeepCarousel {
+}
+export declare class JeepCarousel {
+    protected z: NgZone;
+    jeepCarouselDidLoad: EventEmitter<CustomEvent>;
+    jeepCarouselBeforeDestroy: EventEmitter<CustomEvent>;
+    jeepCarouselAfterDestroy: EventEmitter<CustomEvent>;
+    jeepCarouselTap: EventEmitter<CustomEvent>;
+    jeepCarouselDoubleTap: EventEmitter<CustomEvent>;
+    jeepCarouselSlideChange: EventEmitter<CustomEvent>;
+    jeepCarouselWillChange: EventEmitter<CustomEvent>;
+    jeepCarouselDidChange: EventEmitter<CustomEvent>;
+    jeepCarouselNextStart: EventEmitter<CustomEvent>;
+    jeepCarouselPrevStart: EventEmitter<CustomEvent>;
+    jeepCarouselNextEnd: EventEmitter<CustomEvent>;
+    jeepCarouselPrevEnd: EventEmitter<CustomEvent>;
+    jeepCarouselTransitionStart: EventEmitter<CustomEvent>;
+    jeepCarouselTransitionEnd: EventEmitter<CustomEvent>;
+    jeepCarouselDrag: EventEmitter<CustomEvent>;
+    jeepCarouselReachStart: EventEmitter<CustomEvent>;
+    jeepCarouselReachEnd: EventEmitter<CustomEvent>;
+    jeepCarouselTouchStart: EventEmitter<CustomEvent>;
+    jeepCarouselTouchEnd: EventEmitter<CustomEvent>;
+    protected el: HTMLElement;
+    constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
+}
 export declare interface JeepColorpicker extends Components.JeepColorpicker {
 }
 export declare class JeepColorpicker {
@@ -14,6 +40,13 @@ export declare class JeepColorpicker {
     jeepColorpickerGetColor: EventEmitter<CustomEvent>;
     jeepColorpickerOpen: EventEmitter<CustomEvent>;
     jeepColorpickerClose: EventEmitter<CustomEvent>;
+    protected el: HTMLElement;
+    constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
+}
+export declare interface JeepColumnchart extends Components.JeepColumnchart {
+}
+export declare class JeepColumnchart {
+    protected z: NgZone;
     protected el: HTMLElement;
     constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
 }
@@ -42,6 +75,16 @@ export declare class JeepFullscreen {
     jeepFullscreenRequest: EventEmitter<CustomEvent>;
     jeepFullscreenExit: EventEmitter<CustomEvent>;
     jeepFullscreenChange: EventEmitter<CustomEvent>;
+    protected el: HTMLElement;
+    constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
+}
+export declare interface JeepHtmlToprint extends Components.JeepHtmlToprint {
+}
+export declare class JeepHtmlToprint {
+    protected z: NgZone;
+    jeepHtmlToPrint: EventEmitter<CustomEvent>;
+    jeepHtmlToPrintReady: EventEmitter<CustomEvent>;
+    jeepHtmlToPrintCompleted: EventEmitter<CustomEvent>;
     protected el: HTMLElement;
     constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
 }

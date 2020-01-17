@@ -1,6 +1,7 @@
 import { h, Component, Host, Prop, Method, Element, State, Watch } from '@stencil/core';
 import { Rect, Point } from '../../global/interfaces/geom';
-import { Variables, Status, SVGOptions, DataSet, AxisLength, Legend, Anim, NearestPoint }  from '../../global/interfaces/jeep-linechart';
+import { Variables }  from '../../global/interfaces/jeep-linechart';
+import { Status, SVGOptions, DataSet, AxisLength, Legend, Anim, NearestPoint }  from '../../global/interfaces/charts';
 import { debounce, getDim, convertCSSNumber, convertCSSBoolean, getCssPropertyFromString }  from '../../utils/common';
 import { windowSize } from '../../utils/windowutils';
 import { createSVGElement, createMarker, createText, updateText, textScale,

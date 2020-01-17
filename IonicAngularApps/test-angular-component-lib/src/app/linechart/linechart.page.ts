@@ -32,7 +32,7 @@ export class LinechartPage implements OnInit {
     root.style.setProperty('--chart-tick-y-length','4px');
     root.style.setProperty('--chart-grid-x','false');
     root.style.setProperty('--chart-axis-x-zero','false');
-    root.style.setProperty('--chart-axis-y-zero','alse');
+    root.style.setProperty('--chart-axis-y-zero','false');
     root.style.setProperty('--chart-axis-x-interval','20');
     root.style.setProperty('--chart-axis-y-interval','50');
     root.style.setProperty('--chart-animation-duration','1s');

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stencil Starter App</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#16161d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script nomodule src="/build/jeep.js"></script>
+  <script type="module" src="/build/jeep.esm.js"></script>   
+  <style>
+    :root {
+        --chart-width: 100%;
+        --chart-height: 600px;
+        --chart-top: 0;
+        --chart-left: 0;
+        --chart-background-color: #ffffff;
+        --chart-axis-color: #000000;   
+        --chart-font-family: Verdana;  
+        --chart-label-font-size: 10px;
+        --chart-title-color: #000000;
+        --chart-title-font-size: 25px;
+        --chart-subtitle-color: #cc3a3a;
+        --chart-subtitle-font-size: 20px;
+        --chart-axis-title-color: #000000;
+        --chart-axis-title-font-size: 15px;
+        --chart-line-color: #4ba96e;
+        --chart-label-color:#000000;
+        --chart-tick-x-length: 5px;
+        --chart-tick-y-length: 4px;
+        --chart-grid-x: false;
+    }
+  </style>
+</head>
+<body style="margin: 0px; font-family: sans-serif; overflow: hidden; position: fixed;">
+  <jeep-columnchart ctitle="Basic Column Chart" subtitle="test sub-title" xtitle="test for x axis" ytitle="test for y axis" datapoints='{"data":[
+    {"label":"Apple","y":10,"color":"#e34c46"},
+    {"label":"Orange","y":-17,"color":"#d1b038"},
+    {"label":"Banana","y":12,"color":"#48a37c"},
+    {"label":"Mango","y":-30,"color":"#111782"},
+    {"label":"Grape","y":28,"color":"#db123a"}]}'
+    animation cborder 
+    cstyle="--height:450px;--width:80%;--top:30px;--left:10%;">
+  </jeep-columnchart>
+</body>
+</html>

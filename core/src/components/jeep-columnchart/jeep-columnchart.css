@@ -1,0 +1,50 @@
+:host {
+    --height:200px;
+    --width:300px;
+    --top:30px;
+    --left:10px;
+    --backgroundcolor: rgb(255, 255, 255);
+}
+#div-columnchart-container {
+    position:relative;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:calc(var(--height) + var(--top));
+    z-index: 1;
+
+}
+#div-columnchart-chart {
+    position:relative;
+    left:var(--left);
+    top:var(--top);
+    width:var(--width);
+    height:var(--height);
+    background-color:var(--backgroundcolor);
+    z-index: 1;
+}
+.hidden {
+    visibility: hidden;
+}
+
+#div-error-message{
+    background-color:#f89393;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    height:60px;
+    line-height:60px;
+    text-align:left;
+    padding-left:10px;
+    font-size:15px;
+    font-family:Verdana;
+}
+#p-error-message {
+    display:inline-block;
+    vertical-align:middle;
+    line-height:normal;        
+}
+
+

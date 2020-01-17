@@ -5,4 +5,4 @@
 /**
  * Generated bundle index. Do not edit.
  */
-export { ComponentLibraryModule, ProxyCmp, proxyInputs, proxyMethods, proxyOutputs, JeepColorpicker, JeepCpicker, JeepFlipimages, JeepFullscreen, JeepLinechart, JeepNavigation, JeepPagination, JeepPlayControls, JeepSlide, JeepSlides, JeepStretchyHeader, JeepSvgmorph } from './index';
+export { ComponentLibraryModule, ProxyCmp, proxyInputs, proxyMethods, proxyOutputs, JeepCarousel, JeepColorpicker, JeepColumnchart, JeepCpicker, JeepFlipimages, JeepFullscreen, JeepHtmlToprint, JeepLinechart, JeepNavigation, JeepPagination, JeepPlayControls, JeepSlide, JeepSlides, JeepStretchyHeader, JeepSvgmorph } from './index';

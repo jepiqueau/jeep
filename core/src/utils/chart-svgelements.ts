@@ -1,5 +1,5 @@
 import { Point, Rect } from '../global/interfaces/geom';
-import { Legend, NearestPoint, AxisLength, DataPoint, DataSet, SVGOptions, Anim } from '../global/interfaces/jeep-linechart';
+import { Legend, NearestPoint, AxisLength, DataPoint, DataSet, SVGOptions, Anim } from '../global/interfaces/charts';
 import { getBoundingClientRect } from './common'; 
 const xmlns:string = "http://www.w3.org/2000/svg";
 
@@ -88,6 +88,42 @@ export const createAnimation = (el:Element,anim:Anim): Element => {
     animEl.setAttributeNS (null, "fill", anim.fill);
     return animEl;
 }
+export function createColumnLabel(svg:Element,colbb:ClientRect,label:string,index:number,
+    color:string,pt:Point,options:SVGOptions) {
+    let opt: SVGOptions = getSVGOptions(options);
+    //measure the label text size  
+    let textEl: Element = createSVGElement ("text",svg);
+    textEl.setAttributeNS(null,'x',"0");
+    textEl.setAttributeNS(null,'y',"0");
+    elementSVGOptions(opt,textEl,'text');
+    textEl.textContent = label;
+    let bb: ClientRect = textEl.getBoundingClientRect();
+    svg.removeChild(textEl);
+    // create a group
+    let gEl: Element = createSVGElement ("g",svg);               
+    gEl.setAttributeNS(null,'id',"columnchart-label-value");
+    let rwidth: number = bb.width + 10;
+    let rheight: number = bb.height + 10;
+    let xpos: number = index > 1 ? colbb.left + Math.floor(0.1*colbb.width) - rwidth : colbb.left + colbb.width - Math.floor(0.1*colbb.width);
+    let ypos: number = Math.floor(pt.y - rheight - 15);
+    let rectEl: Element = createSVGElement ("rect",gEl);
+    rectEl.setAttributeNS(null,'x',xpos.toString());
+    rectEl.setAttributeNS(null,'y',ypos.toString());
+    rectEl.setAttributeNS(null,'width',rwidth.toString());
+    rectEl.setAttributeNS(null,'height',rheight.toString());
+    rectEl.setAttributeNS(null,'stroke',color);
+    rectEl.setAttributeNS(null,'fill','#ffffff');
+    rectEl.setAttributeNS(null,'fill-opacity','0.85');
+    textEl = createSVGElement ("text",gEl);
+    //define xtext
+    let xtext: number = xpos + (bb.width + 10)/2; 
+    let ytext: number = ypos + 3 * (bb.height + 10) / 4;
+    textEl.setAttributeNS(null,'x',xtext.toString());
+    textEl.setAttributeNS(null,'y',ytext.toString());
+    elementSVGOptions(opt,textEl,'text');
+    textEl.textContent = label;
+}
+
 export const createLineLabel = async (svg:Element,label:string,pt:NearestPoint,color:string,
     options:SVGOptions): Promise<void> => {
     let opt: SVGOptions = getSVGOptions(options);
@@ -344,7 +380,9 @@ export const maxLegend = (arr:Array<string>): string =>{
     }    
     return max;
 }
-export const axisRange = (arr:Array<DataSet>, axis:string,interval:number, zero?:boolean): AxisLength => {
+export const axisRange = (arr:Array<DataSet>, axis:string,_interval?:number, _zero?:boolean): AxisLength => {
+    const interval:number = _interval ? _interval : 0;
+    const zero: boolean = _zero ? _zero : false;
     let lenAxis:AxisLength = {} as AxisLength;
     if(axis === "label" && arr[0].dataPoints[0].label) {
         lenAxis.label = axisMaxArrayLabel(arr,"label").label;
@@ -360,7 +398,7 @@ export const axisRange = (arr:Array<DataSet>, axis:string,interval:number, zero?
         lenAxis.type = 'number';    
         if(axis === "y"){
             maxAxis = axisMaxArrayAttribute(arr,axis).y;
-            minAxis = axisMinArrayAttribute(arr,axis).y;    
+            minAxis = axisMinArrayAttribute(arr,axis).y;
         }
         if(axis === "x"){
             maxAxis = axisMaxArrayAttribute(arr,axis).x;

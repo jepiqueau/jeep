@@ -270,10 +270,12 @@ export const randomColor = () : string => {
 }
 export const randomHexColor = (start:number,end:number) : string => {
     let hsb:HSB = {} as HSB;
+    const opa: number = 1.0;
     hsb.h = randomHue(start,end);
     hsb.s = randomSB();
     hsb.b = randomSB();
     hsb.hsb = "HSB(" + hsb.h.toFixed(0) + "," + hsb.s.toFixed(0) + "%," + hsb.b.toFixed(0) + "%)";
+    hsb.hsba = "HSBA(" + hsb.h.toFixed(0) + "," + hsb.s.toFixed(0) + "%," + hsb.b.toFixed(0) + "%," + opa.toFixed(3) + ")";
     let rgb:RGB = HSBtoRGB(hsb);
     let hex:HEX = RGBtoHEX(rgb);
     return hex.hex;  

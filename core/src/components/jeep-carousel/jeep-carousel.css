@@ -1,0 +1,167 @@
+@import './swiper/swiper.css';
+
+#fake-card {
+    margin: 1.5em;
+    height: 400px;
+    background-image: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80%), linear-gradient(lightgray 20px, transparent 0), linear-gradient(lightgray 20px, transparent 0), linear-gradient(lightgray 100px, transparent 0);
+    background-size: 100% 220px;
+    background-position: 10px 0, 10px 120px, 10px 160px;
+}
+.container {
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  right: 0; 
+  left: 0; 
+  overflow: hidden;
+  background-color: transparent;
+}
+.swiper-container {
+  margin: 0 auto;
+  padding: 0;
+  background-color: var(--container-background-color,#eeeeee);
+  top: var(--swiper-container-top,auto) !important;
+  left: var(--swiper-container-left,auto) !important;
+  position: var(--swiper-container-position,relative) !important;
+  width: var(--swiper-container-width,100%) !important;
+  height: var(--swiper-container-height,100%) !important;
+  z-index: 1;
+}
+.parallax-bg {
+  position: var(--parallax-position,absolute) !important;
+  left: var(--parallax-left,0) !important;
+  top: var(--parallax-top,0) !important;
+  width: var(--parallax-width,130%) !important;
+  height: var(--parallax-height,100%) !important;
+  -webkit-background-size: var(--parallax-background-size,cover) !important;
+  background-size: var(--parallax-background-size,cover) !important;
+  background-position: var(--parallax-background-position,center) !important;
+}
+.swiper-container .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}    
+.swiper-container .swiper-slide {
+  flex-shrink: 0;
+  color: var(--swiper-slide-color,#000) !important;
+  width: var(--swiper-slide-width,100%);
+  height: var(--swiper-slide-height,100%);
+  padding: var(--swiper-slide-padding,0);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  top: var(--swiper-slide-top,auto) !important;
+  position: relative;
+  display: var(--swiper-slide-display,initial);
+  flex-direction: var(--swiper-slide-flex-direction,column);
+  align-items: var(--swiper-slide-align-items,initial);
+  justify-content: var(--swiper-slide-justify-content,initial);
+}
+
+.swiper-pagination {
+  visibility: visible;
+}
+.swiper-pagination-bullet {
+  width: var(--bullet-diameter,15px) !important;
+  height: var(--bullet-diameter,15px) !important;
+  opacity: var(--bullet-opacity,0.5) !important;
+  background: var(--bullet-background,#000000) !important;
+}       
+.swiper-pagination-bullet-active {
+  opacity: var(--bullet-active-opacity,1) !important;
+  background: var(--bullet-active-background,#007aff) !important;
+} 
+.swipper-button-prev,.swipper-button-next {
+  visibility: visible;
+}
+.gallery-thumbs {
+  position: absolute !important;
+  top: var(--gallery-thumbs-top,80%) !important;
+  height: var(--gallery-thumbs-height,20%) !important;
+  padding: var(--gallery-thumbs-padding,10px 0);
+  background-color: var(--gallery-thumbs-background-color,#000);
+  box-sizing: border-box;
+  visibility: visible;
+  z-index:10
+}
+.gallery-thumbs .swiper-slide {
+  width: var(--gallery-thumbs-width,25%);
+  height: 100%;
+  opacity: var(--galery-thumbs-opacity,0.4);
+}
+.gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+} 
+.gallery-thumbs .swiper-slide img {
+  width: 100%;
+  height: auto;
+}
+.hidden {
+  visibility: hidden;
+}
+.autoplay-button-pause {
+  background-image : url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20d=%22M199.9%20416h-63.8c-4.5%200-8.1-3.6-8.1-8V104c0-4.4%203.6-8%208.1-8h63.8c4.5%200%208.1%203.6%208.1%208v304c0%204.4-3.6%208-8.1%208zM375.9%20416h-63.8c-4.5%200-8.1-3.6-8.1-8V104c0-4.4%203.6-8%208.1-8h63.8c4.5%200%208.1%203.6%208.1%208v304c0%204.4-3.6%208-8.1%208z%22/%3E%3C/svg%3E");
+  width: calc(var(--playcontrols-width,20px) * 1.4 ) !important;
+  height: calc(var(--playcontrols-height,20px) * 1.4 ) !important;
+  padding-bottom: 0px !important;
+}
+.autoplay-button-play {
+  background-image : url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20d=%22M128%20104.3v303.4c0%206.4%206.5%2010.4%2011.7%207.2l240.5-151.7c5.1-3.2%205.1-11.1%200-14.3L139.7%2097.2c-5.2-3.3-11.7.7-11.7%207.1z%22/%3E%3C/svg%3E");
+  width: calc(var(--playcontrols-width,20px) * 1.4 ) !important;
+  height: calc(var(--playcontrols-height,20px) * 1.4 ) !important;
+  padding-bottom: 0px !important;
+}
+.autoplay-button-skip-forward {
+  background-image : url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20d=%22M337%20100v137.8L108.1%2098.1C102.7%2095%2096%2098.8%2096%20105v302c0%206.2%206.7%2010%2012.1%206.9L337%20274.2V412c0%202.2%201.8%204%204%204h71c2.2%200%204-1.8%204-4V100c0-2.2-1.8-4-4-4h-71c-2.2%200-4%201.8-4%204z%22/%3E%3C/svg%3E");
+}
+.autoplay-button-skip-backward {
+  background-image : url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20512%20512%22%3E%3Cpath%20d=%22M175%20100v137.8L403.9%2098.1c5.3-3.1%2012.1.7%2012.1%206.9v302c0%206.2-6.7%2010-12.1%206.9L175%20274.2V412c0%202.2-1.8%204-4%204h-71c-2.2%200-4-1.8-4-4V100c0-2.2%201.8-4%204-4h71c2.2%200%204%201.8%204%204z%22/%3E%3C/svg%3E");
+}
+.swiper-playcontrols-buttons {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+}
+.swiper-playcontrols-button {
+  display: inline-block;
+  width: var(--playcontrols-width,20px);
+  height: var(--playcontrols-height,20px);
+  padding-bottom: calc(var(--playcontrols-height,20px) * 0.2 );
+}
+.swiper-pagination-progressbar {
+  background: var(--progress-bar-background-color,rgb(0,0,0,.25)) !important;
+}
+.swiper-container-horizontal>.swiper-pagination-progressbar,
+.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+.swiper-container-horizontal>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+.swiper-container-vertical>.swiper-pagination-progressbar  {
+  width: var(--progress-bar-width,100%) !important;
+  height: var(--progress-bar-height,0.5%) !important;
+  top: var(--progress-bar-top,0) !important;
+  left: var(--progress-bar-left,0) !important;
+}
+.swiper-pagination-progressbar-fill {
+  background: var(--progress-bar-color,#007aff) !important;
+}
+.swiper-pagination-fraction {
+  font-family: var(--fraction-font-family,"Times New Roman", Times, serif) !important;
+  font-size: var(--fraction-font-size,15px) !important;
+  font-weight: var(--fraction-font-weight,normal) !important;
+  font-style: var(--fraction-font-style,normal) !important;
+  color: var(--fraction-text-color,#000000) !important; 
+}
+.swiper-scrollbar-drag {
+  background: var(--scrollbar-color,rgba(0,0,0,.5)) !important;
+}
+.swiper-container-horizontal>.swiper-scrollbar,
+.swiper-container-vertical>.swiper-scrollbar {
+  left: var(--scrollbar-left,1%) !important;
+  bottom: var(--scrollbar-bottom,3px) !important;
+  height: var(--scrollbar-height,5px) !important;
+  width: var(--scrollbar-width,98%) !important;
+  background: var(--scrollbar-background-color,rgba(0,0,0,.1)) !important;
+}

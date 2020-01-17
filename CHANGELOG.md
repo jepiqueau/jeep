@@ -1,3 +1,14 @@
+## 0.0.1-beta.2 (2020-01-17)
+
+### Added Features
+
+* add jeep-html-print stencil web component
+* add jeep-carousel stencil web component
+* add jeep-columnchart stencil web component
+
+### Chores
+* @ionic/core update to 4.11.8 
+
 ## 0.0.1-beta.1 (2020-01-13)
 
 ### Chores

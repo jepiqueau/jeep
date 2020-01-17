@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Testing Html To Print App</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#16161d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.8/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.8/dist/ionic/ionic.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.8/css/ionic.bundle.css" rel="stylesheet">
+
+  <script nomodule src="/build/jeep.js"></script>
+  <script type="module" src="/build/jeep.esm.js"></script>   
+</head>
+<body>
+  <ion-app>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Stencil HTML to Print</ion-title>
+        <ion-buttons slot='end'>
+          <ion-button  onClick="handlePrintClick()">
+            <ion-icon slot="end" name="print" color="dark">
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+      <jeep-html-toprint>
+        <div slot="toprint">
+            <h3></h3>
+            <h2>Hello World</h2>
+            <table>
+              <tr class="table-tr-header">
+                <th class="left">Firstname</th>
+                <th class="left">Lastname</th> 
+                <th class="center">Age</th>
+              </tr>
+              <tr>
+                <td class="left">Jill</td>
+                <td class="left">Smith</td> 
+                <td class="center">50</td>
+              </tr>
+              <tr>
+                <td class="left">Eve</td>
+                <td class="left">Jackson</td> 
+                <td class="center">94</td>
+              </tr>
+            </table> 
+        </div>   
+      </jeep-html-toprint>
+    </ion-content>
+  </ion-app>
+  <script>
+    function handlePrintClick() {
+      var cmpt = document.querySelector('jeep-html-toprint');
+      cmpt.emitPrint();
+    }
+  
+    var slotStyle = "<style>";
+    slotStyle += "h2 {margin:15px;font: 20px Calibri;font-weight: bold;text-align: center;}";
+    slotStyle += "h3 {margin:15px;font: 12px Calibri;font-weight: normal;text-align: left;}";
+    slotStyle += "table {width: 100%;font: 15px Calibri;}";
+    slotStyle += "table, th, td {border: solid 1px #AAA; border-collapse: collapse;";
+    slotStyle += "padding: 2px 3px;}";
+    slotStyle += ".left {text-align: left;}";
+    slotStyle += ".center {text-align: center;font-weight: normal;}";
+    slotStyle += ".table-tr-header {background-color:rgb(193,195,203);}";
+    slotStyle += "</style>";
+    document.querySelector('jeep-html-toprint').setAttribute('slotstyle',slotStyle);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+   
+button:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1);
+    transform: translateY(1px);
+}
+
+#navigationvertical {
+    --slider-navigation-padding-horizontal: 25px;
+    --slider-navigation-button-icon-color: #ff0000;
+}
+#paginationhorizontal {
+    --slider-bullet-active-background: #ff7300;       
+    --slider-bullet-active-diameter: 30px;
+    --slider-bullet-diameter: 22px;
+    --slider-bullet-background: #af0ea7;
+    --slider-pagination-bottom: 40px;
+}
+#paginationvertical {
+    --slider-pagination-right: 15px;
+}
+#paginationnavigationhorizontal {
+    --slider-pagination-bottom: 35px;
+}

@@ -335,14 +335,14 @@ describe('jeep-play-controls', () => {
       await page.waitForChanges();
       await cmp.callMethod('setPlayControls');
       await cmp.callMethod('autoplayStart');
-      await page.waitFor(400);
+      await page.waitFor(420);
       await cmp.callMethod('autoplayPause');
       await page.waitFor(100);
       await cmp.callMethod('autoplayStart');
+      const index = await cmp.callMethod('getCurrentIndex');
       await page.waitFor(100);
       const isPlaying: boolean = await cmp.callMethod('isPlaying');
       expect(isPlaying).toBeTruthy();
-      const index = await cmp.callMethod('getCurrentIndex');
       expect(index).toEqual(2); 
       expect(isBeginning).toHaveReceivedEventTimes(1); 
       expect(curIndex).toHaveReceivedEventTimes(3);
@@ -356,7 +356,7 @@ describe('jeep-play-controls', () => {
       await page.waitForChanges();
       await cmp.callMethod('setPlayControls');
       await cmp.callMethod('autoplayStart');
-      await page.waitFor(400);
+      await page.waitFor(420);
       await cmp.callMethod('autoplayPause');
       await page.waitFor(100);
       await cmp.callMethod('autoplayStart');
