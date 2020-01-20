@@ -124,7 +124,156 @@ The secret key and newsecret key are set in the Global.swift file for IOS and in
 Type: `Promise<{result:boolean}>`
 
 
+## Using the Plugin in your App
 
+ - [see capacitor documentation](https://capacitor.ionicframework.com/docs/getting-started/with-ionic)
+
+ - Plugin installation
+
+  ```bash
+  npm install --save @jeepq/capacitor@latest
+  ```
+ - In your code
+
+ ```ts
+  import { Plugins } from '@capacitor/core';
+  import * as PluginsLibrary from '@jeepq/capacitor';
+  const { CapacitorDataStorageSqlite,Device } = Plugins;
+
+  @Component( ... )
+  export class MyPage {
+    _storage: any;
+
+    ...
+
+    async ngAfterViewInit()() {
+      const info = await Device.getInfo();
+      if (info.platform === "ios" || info.platform === "android") {
+        this._storage = CapacitorDataStorageSqlite;
+      } else {
+        this._storage = PluginsLibrary.CapacitorDataStorageSqlite
+      }
+
+    }
+
+    async testStoragePlugin() {
+      const result:any = await this._storage.openStore({});
+      if (result.result) {
+        let ret:any;
+        ret = await this._storage.set({key:"session",value:"Session Opened"});
+        console.log("Save Data : " + ret.result);
+        ret = await this._storage.get({key:"session"})
+        console.log("Get Data : " + ret.value);
+
+        ...
+      }
+    }
+    ...
+  }
+ ```
+### Running on Android
+
+ ```bash
+ npx cap update
+ npm run build
+ npx cap copy
+ npx cap open android
+ ``` 
+ Android Studio will be opened with your project and will sync the files.
+ In Android Studio go to the file MainActivity
+
+ ```java 
+  ...
+ import com.jeep.plugins.capacitor.CapacitorDataStorageSqlite;
+
+  ...
+
+  public class MainActivity extends BridgeActivity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+
+      // Initializes the Bridge
+      this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+        // Additional plugins you've installed go here
+        // Ex: add(TotallyAwesomePlugin.class);
+        add(CapacitorDataStorageSqlite.class);
+      }});
+    }
+  }
+ ``` 
+### Running on IOS
+
+ Modify the Podfile under the ios folder as follows
+
+ ```
+ platform :ios, '11.0'
+ use_frameworks!
+
+ # workaround to avoid Xcode 10 caching of Pods that requires
+ # Product -> Clean Build Folder after new Cordova plugins installed
+ # Requires CocoaPods 1.6 or newer
+ install! 'cocoapods', :disable_input_output_paths => true
+
+ def capacitor_pods
+  # Automatic Capacitor Pod dependencies, do not delete
+  pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
+  pod 'JeepqCapacitor', :path => '../../node_modules/@jeepq/capacitor'
+  # Do not delete
+ end
+
+ target 'App' do
+  capacitor_pods
+  # Add your Pods here
+ end
+ ```
+
+ ```bash
+ npx cap update
+ npm run build
+ npx cap copy
+ npx cap open ios
+ ```
+
+### Running on Electron
+
+ ```bash
+ npx cap update
+ npm run build
+ npx cap copy
+ npx cap copy web
+ npx cap open electron
+ ``` 
+
+### Running on PWA
+
+ - in your code
+ ```ts
+ import {  CapacitorDataStorageSqlite } from '@jeepq/capacitor';
+  @Component( ... )
+  export class MyApp {
+    componentDidLoad() {
+    const storage: any = CapacitorDataStorageSqlite;
+    // Open the Store
+    let resOpen:any = await storage.openStore({});
+    if(resOpen) {
+      // Store Data
+      let result:any = await storage.set({key:"session", value:"Session Opened"});
+      console.log("Save Data : " + result.result);
+      // Retrieve Data
+      result = await storage.get({key:"session"})
+      console.log("Get Data : " + result.value);
+    }
+  }
+ ```
+
+ ```bash
+ npm run build
+ npx cap copy
+ npx cap copy web
+ npm start
+ ``` 
 
 ## Using a wrapper to adhere to the Storage API 
 (https://developer.mozilla.org/de/docs/Web/API/Storage)

@@ -144,3 +144,151 @@ Type: `Promise<{method:string,result:boolean,value:number}>`
 | `jeepCapVideoPlayerEnded`   | Emitted when the video has ended       | `CustomEvent<{fromPlayerId:string,currentTime:number}>` |
 
 the target for the events is the document
+
+## Using the Plugin in your App
+
+ - [see capacitor documentation](https://capacitor.ionicframework.com/docs/getting-started/with-ionic)
+
+ - Plugin installation
+
+  ```bash
+  npm install --save @jeepq/capacitor@latest
+  ```
+ - In your code
+
+ ```ts
+  import { Plugins } from '@capacitor/core';
+  import * as PluginsLibrary from '@jeepq/capacitor';
+  const { CapacitorVideoPlayer,Device } = Plugins;
+
+  @Component( ... )
+  export class MyPage {
+    _videoPlayer: any;
+    _url: string;
+
+    ...
+
+    async ngAfterViewInit()() {
+      const info = await Device.getInfo();
+      if (info.platform === "ios" || info.platform === "android") {
+        this._videoPlayer = CapacitorVideoPlayer;
+      } else {
+        this._videoPlayer = PluginsLibrary.CapacitorVideoPlayer
+      }
+
+    }
+
+    async testVideoPlayerPlugin() {
+      this._url = "https://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+      document.addEventListener('jeepCapVideoPlayerPlay', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPlay ', e.detail)}, false);
+      document.addEventListener('jeepCapVideoPlayerPause', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPause ', e.detail)}, false);
+      document.addEventListener('jeepCapVideoPlayerEnded', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerEnded ', e.detail)}, false);
+      const res:any  = await this._videoPlayer.initPlayer({mode:"fullscreen",url:this._url});
+
+        ...
+      }
+    }
+    ...
+  }
+ ```
+### Running on Android
+
+ ```bash
+ npx cap update
+ npm run build
+ npx cap copy
+ npx cap open android
+ ``` 
+ Android Studio will be opened with your project and will sync the files.
+ In Android Studio go to the file MainActivity
+
+ ```java 
+  ...
+ import com.jeep.plugins.capacitor.CapacitorVideoPlayer;
+
+  ...
+
+  public class MainActivity extends BridgeActivity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+
+      // Initializes the Bridge
+      this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+        // Additional plugins you've installed go here
+        // Ex: add(TotallyAwesomePlugin.class);
+        add(CapacitorVideoPlayer.class);
+      }});
+    }
+  }
+ ``` 
+### Running on IOS
+
+ Modify the Podfile under the ios folder as follows
+
+ ```
+ platform :ios, '11.0'
+ use_frameworks!
+
+ # workaround to avoid Xcode 10 caching of Pods that requires
+ # Product -> Clean Build Folder after new Cordova plugins installed
+ # Requires CocoaPods 1.6 or newer
+ install! 'cocoapods', :disable_input_output_paths => true
+
+ def capacitor_pods
+  # Automatic Capacitor Pod dependencies, do not delete
+  pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
+  pod 'JeepqCapacitor', :path => '../../node_modules/@jeepq/capacitor'
+  # Do not delete
+ end
+
+ target 'App' do
+  capacitor_pods
+  # Add your Pods here
+ end
+ ```
+
+ ```bash
+ npx cap update
+ npm run build
+ npx cap copy
+ npx cap open ios
+ ```
+
+### Running on Electron
+
+ ```bash
+ npx cap update
+ npm run build
+ npx cap copy
+ npx cap copy web
+ npx cap open electron
+ ``` 
+
+### Running on PWA
+
+ - in your code
+ ```ts
+ import {  CapacitorVideoPlayer } from '@jeepq/capacitor';
+  @Component( ... )
+  export class MyApp {
+    componentDidLoad() {
+    const videoPlayer: any = CapacitorVideoPlayer;
+    const url:string = "https://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+    document.addEventListener('jeepCapVideoPlayerPlay', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPlay ', e.detail)}, false);
+    document.addEventListener('jeepCapVideoPlayerPause', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPause ', e.detail)}, false);
+    document.addEventListener('jeepCapVideoPlayerEnded', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerEnded ', e.detail)}, false);
+    const res:any  = await videoPlayer.initPlayer({mode:"fullscreen",url:url});
+    console.log('result of echo ', res)
+    }
+  }
+ ```
+
+ ```bash
+ npm run build
+ npx cap copy
+ npx cap copy web
+ npm start
+ ``` 
+

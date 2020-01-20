@@ -23,3 +23,8 @@ Jeep Capacitor Plugins Library is a library of Capacitor Plugins.
 
 ## Using this library
 
+  ```bash
+  npm install --save @jeepq/capacitor@latest
+  ```
+
+
