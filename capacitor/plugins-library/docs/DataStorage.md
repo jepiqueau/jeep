@@ -16,6 +16,8 @@ Type: `Promise<{result:boolean}>`
 ### `openStore({database:"fooDB",table:"fooTable"}) => Promise<{result:boolean}>`
 
 Open the store with given database and table names
+the plugin add a suffix "SQLite" and an extension ".db" to the name given ie (fooDBSQLite.db)
+
 
 #### Returns
 

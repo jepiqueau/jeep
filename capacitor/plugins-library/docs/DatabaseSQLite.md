@@ -8,7 +8,8 @@ Databases can be or not encrypted using SQLCipher module.
 
 ### `open({database:"fooDB"}) => Promise<{result:boolean}>`
 
-Open a database
+Open a database, 
+the plugin add a suffix "SQLite" and an extension ".db" to the name given ie (fooDBSQLite.db)
 
 #### Returns
 
