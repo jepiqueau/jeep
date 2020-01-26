@@ -9,6 +9,7 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import java.util.List;
 import org.json.JSONException;
+import java.io.File;
 
 import com.jeep.plugins.capacitor.cdssUtils.StorageDatabaseHelper;
 import com.jeep.plugins.capacitor.cdssUtils.Data;
@@ -73,6 +74,7 @@ public class CapacitorDataStorageSqlite extends Plugin {
                 newsecret = globalData.newsecret;
                 globalData.secret = newsecret;
             } else if (inMode.equals("wrongsecret")) {
+                // for test purpose only
                 secret = "wrongsecret";
                 inMode = "secret";
             } else {
@@ -238,4 +240,24 @@ public class CapacitorDataStorageSqlite extends Plugin {
         }
         call.resolve(ret);
     }
+    @PluginMethod()
+    public void deleteStore(PluginCall call) {
+        String dbName = null;
+        dbName = call.getString("database");
+        if (dbName == null) {
+            dbName = "storage";
+        }
+        JSObject ret = new JSObject();
+
+        context.deleteDatabase(dbName + "SQLite.db");
+        context.deleteFile(dbName + "SQLite.db");
+        File databaseFile = context.getDatabasePath(dbName + "SQLite.db");
+        if (databaseFile.exists()) {
+            ret.put("result",false);
+        } else {
+            ret.put("result",true);
+        }
+        call.resolve(ret);
+    }
+
 }

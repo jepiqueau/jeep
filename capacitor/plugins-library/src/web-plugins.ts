@@ -2,5 +2,6 @@ import { Plugins, mergeWebPlugins /*¨, mergeWebPlugin, WebPlugin */} from '@cap
 
 export * from './web/capacitordatastoragesqlite';
 export * from './web/capacitorvideoplayer';
+export * from './web/capacitorsqlite';
 
 mergeWebPlugins(Plugins);

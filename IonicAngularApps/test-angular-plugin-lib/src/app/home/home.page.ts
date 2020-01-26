@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { setStorage,setVideoPlayer } from '../../utils/util';
+import { setStorage,setVideoPlayer,setSQLite } from '../../utils/util';
 import { StorageAPIWrapper } from '../../utils/storageAPIWrapper';
 
 const videoFrom:string = "http";
@@ -15,13 +15,17 @@ const videoFrom:string = "http";
 })
 export class HomePage {
   bPlatform:boolean;
+  sbPlatform:boolean;
   private _videoPlayer: any = {};
   private _vpPlatform: string = "web";
   private _url: string;
   private _storage: any = {};
   private _stPlatform: string = "web";
   private _wrapperStorage: any = {};
-  private _card: HTMLIonCardElement;
+  private _sqlite: any = {};
+  private _sqPlatform: string = "web";
+  private _cardStorage: HTMLIonCardElement;
+  private _cardSQLite: HTMLIonCardElement;
 
 
   constructor() {}
@@ -50,17 +54,33 @@ export class HomePage {
     // setup the storage with wrapper
     this._wrapperStorage = new StorageAPIWrapper();
 
-    this._card = document.querySelector('.card');
+    // setup the SQLite plugin
+    this.sbPlatform = true;
+    const sqlite:any = await setSQLite();
+    this._sqlite = sqlite.plugin;
+    this._sqPlatform = sqlite.platform;
+    if(this._sqPlatform === "web") this.sbPlatform = false;
+
+    this._cardStorage = document.querySelector('.card-storage');
+    this._cardSQLite = document.querySelector('.card-sqlite');
   }
-  async testVideoPlayerPlugin() { 
-    if(!this._card.classList.contains("hidden")) this._card.classList.add('hidden');
+  async testVideoPlayerPlugin() {
+    this._cardStorage.style.display = "contents";
+    this._cardSQLite.style.display = "contents";
+    if(!this._cardStorage.classList.contains("hidden")) this._cardStorage.classList.add('hidden');
+    if(!this._cardSQLite.classList.contains("hidden")) this._cardSQLite.classList.add('hidden');
     document.addEventListener('jeepCapVideoPlayerPlay', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPlay ', e.detail)}, false);
     document.addEventListener('jeepCapVideoPlayerPause', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPause ', e.detail)}, false);
     document.addEventListener('jeepCapVideoPlayerEnded', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerEnded ', e.detail)}, false);
     const res:any  = await this._videoPlayer.initPlayer({mode:"fullscreen",url:this._url});
   }
   async testStoragePlugin() {
-    if(this._card.classList.contains("hidden")) this._card.classList.remove('hidden');
+    this._cardStorage.style.display = "initial";
+    this._cardSQLite.style.display = "contents";
+    if(this._cardStorage.classList.contains("hidden")) this._cardStorage.classList.remove('hidden');
+    if(!this._cardSQLite.classList.contains("hidden")) this._cardSQLite.classList.add('hidden');
+    await this.resetStorageDisplay();
+    await this.resetSQLiteDisplay();
     const result:any = await this._storage.echo({value:"Hello from Jeep"});
     console.log('in testPlugin value ',JSON.stringify(result));
     const divEchoEl = document.querySelector('.echo');
@@ -88,7 +108,16 @@ export class HomePage {
       return false;
     }
   }
+  async resetStorageDisplay(): Promise<void> {
+    for (let i:number=0;i< this._cardStorage.childElementCount;i++) {
+      if(!this._cardStorage.children[i].classList.contains('display')) this._cardStorage.children[i].classList.add('display');
+    }
+  }
+
   async testStoragePluginWithWrapper() {
+    this._cardStorage.style.display = "initial";
+    this._cardSQLite.style.display = "contents";
+    if(this._cardStorage.classList.contains("hidden")) this._cardStorage.classList.remove('hidden');
     let ret1: boolean = false;
     let ret2: boolean = false;
     let ret3: boolean = false;
@@ -175,7 +204,7 @@ export class HomePage {
       let ret3: boolean = false;
       if (result.value === data1.toString()) ret3 = true;
       if (ret1 && ret2 && ret3) retpopulate = true;
-      if (retpopulate) document.querySelector('.populate').classList.remove('hidden');
+      if (retpopulate) document.querySelector('.populate').classList.remove('display');
       console.log(" before isKey testNumber ") 
       result = await this._storage.iskey({key:"testNumber"})
       console.log("isKey testNumber " + result.result)
@@ -184,7 +213,7 @@ export class HomePage {
       console.log("isKey foo " + result.result)
       ret2 = result.result
       if (ret1 && !ret2) retiskey = true
-      if (retiskey) document.querySelector('.iskey').classList.remove('hidden');
+      if (retiskey) document.querySelector('.iskey').classList.remove('display');
       
       result = await this._storage.keys()
       console.log("Get keys : " + result.keys);
@@ -193,7 +222,7 @@ export class HomePage {
       if(result.keys.length === 3 && result.keys[0] === "session"
           && result.keys[1] === "testJson" && result.keys[2] === "testNumber") {
         retkeys = true;
-        document.querySelector('.keys').classList.remove('hidden');
+        document.querySelector('.keys').classList.remove('display');
       }
       result = await this._storage.values()
       console.log("Get values : " + result.values);
@@ -201,7 +230,7 @@ export class HomePage {
       if(result.values.length === 3 && result.values[0] === "Session Opened"
           && result.values[1] === JSON.stringify(data) && result.values[2] === data1.toString()) {
         retvalues = true;
-        document.querySelector('.values').classList.remove('hidden');
+        document.querySelector('.values').classList.remove('display');
       }
   
       result = await this._storage.keysvalues();
@@ -214,7 +243,7 @@ export class HomePage {
           result.keysvalues[1].key === "testJson" && result.keysvalues[1].value === JSON.stringify(data) &&
           result.keysvalues[2].key === "testNumber" && result.keysvalues[2].value === data1.toString()) {
         retkeysvalues = true;
-        document.querySelector('.keysvalues').classList.remove('hidden');
+        document.querySelector('.keysvalues').classList.remove('display');
       }
       result = await this._storage.remove({key:"testJson"});
       if(result.result) {
@@ -223,7 +252,7 @@ export class HomePage {
           res.keysvalues[0].key === "session" && res.keysvalues[0].value === "Session Opened" &&
           res.keysvalues[1].key === "testNumber" && res.keysvalues[1].value === data1.toString()) {
           retremove = true;
-          document.querySelector('.remove').classList.remove('hidden');
+          document.querySelector('.remove').classList.remove('display');
         }
       }
       result = await this._storage.clear();
@@ -232,7 +261,7 @@ export class HomePage {
         console.log("after clear res.keysvalues.length " + res.keysvalues.length)
         if(res.keysvalues.length === 0) {
           retclear = true;
-          document.querySelector('.clear').classList.remove('hidden');
+          document.querySelector('.clear').classList.remove('display');
           if(retpopulate && retiskey && retkeys && retvalues && retkeysvalues && retremove && retclear) {
             retTest1 = true;
             document.querySelector('.success1').classList.remove('display');
@@ -252,6 +281,10 @@ export class HomePage {
   async testSecondStore(): Promise<boolean> { 
     // open a second store
     console.log('in testSecondStore ***** ')
+    if(this._stPlatform === "ios" || this._stPlatform === "android") {
+      this._storage.deleteStore({database:"myStore"});
+    }
+
     let result: any = await this._storage.openStore({database:"myStore",table:"saveData"});
     result = await this._storage.clear();
     // store data in the second store
@@ -485,6 +518,9 @@ export class HomePage {
     var result: boolean = false;
     var retKey1: boolean = false;
     var retKey2: boolean = false;
+    if(this._stPlatform === "ios" || this._stPlatform === "android") {
+      this._storage.deleteStore({database:"fourthStore"});
+    }    
     let resultOpen: any = await this._storage.openStore({database:"fourthStore",table:"test1_table",encrypted:true,
       mode:"secret"});
     if(resultOpen.result) {
@@ -508,6 +544,357 @@ export class HomePage {
     console.log("*** end testNewEncryptedFourthStore *** ",ret);
     return ret
   }
+  async testSQLitePlugin() {
+    console.log("***** testSQLITE Started")
+    this._cardStorage.style.display = "contents";
+    this._cardSQLite.style.display = "initial";
+    if(!this._cardStorage.classList.contains("hidden")) this._cardStorage.classList.add('hidden');
+    if(this._cardSQLite.classList.contains("hidden")) this._cardSQLite.classList.remove('hidden');
+    await this.resetStorageDisplay();
+    await this.resetSQLiteDisplay();
+    const retTest1 = await this.testDatabase();
+    const retTest2 = await this.testEncryptionDatabase(); 
+    const retTest3 = await this.testEncryptedDatabase();
+    const retTest4 = await this.testWrongSecret();
+    const retTest5 = await this.testChangePassword();
+    const retTest6 = await this.testDatabaseNewPassword();
+    
+    if(!retTest1 || !retTest2 || !retTest3 || !retTest4 || !retTest5 || !retTest6) {     
+      document.querySelector('.sql-allfailure').classList.remove('display');
+    } else {
+      document.querySelector('.sql-allsuccess').classList.remove('display');
+    }
+  }
+  async resetSQLiteDisplay(): Promise<void> {
+    for (let i:number=0;i< this._cardSQLite.childElementCount;i++) {
+      if(!this._cardSQLite.children[i].classList.contains('display')) this._cardSQLite.children[i].classList.add('display');
+    }
+  }
+  async testDatabase(): Promise<Boolean> {
+    let retTest:Boolean = false;
+    //populate some data
+    //string
+    let retOpenDB: boolean = false;
+    let retExecute1: boolean = false;
+    let retExecute2: boolean = false;
+    let retExecute3: boolean = false;
+    let retQuery1: boolean = false;
+    let retQuery2: boolean = false;
+    let retQuery3: boolean = false;
+    let retQuery4: boolean = false;
+    let retRun1: boolean = false;
+    let retRun2: boolean = false;
+    let retClose: boolean = false;
+    let echo:any = await this._sqlite.echo({value:"Hello from JEEP"});
+    console.log("echo ",echo)
+    // Delete the Database to enable restart
+    // as after the first pass the database is encrypted
+    if(this._sqPlatform === "ios" || this._sqPlatform === "android") {
+      const resDel: any = await this._sqlite.deleteDatabase({database:"testsqlite"});
+      console.log("Delete database testsqlite ", resDel.result.toString());
+    }
+
+    // Open Database
+    let result:any = await this._sqlite.open({database:"testsqlite"});
+    console.log("Open database : " + result.result.toString());
+    retOpenDB = result.result;
+    if(retOpenDB) {
+      document.querySelector('.openDB').classList.remove('display');
+      // Create Tables if not exist
+      let sqlcmd: string = `
+      BEGIN TRANSACTION;
+      CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY NOT NULL,
+          email TEXT UNIQUE NOT NULL,
+          name TEXT,
+          age INTEGER
+      );
+      CREATE TABLE IF NOT EXISTS messages (
+          id INTEGER PRIMARY KEY NOT NULL,
+          title TEXT NOT NULL,
+          body TEXT NOT NULL
+      );
+      PRAGMA user_version = 1;
+      COMMIT TRANSACTION;
+      `;
+      console.log('sqlcmd ',sqlcmd)
+      var retExe: any = await this._sqlite.execute({statements:sqlcmd});
+      console.log('retExe ',retExe.changes)
+      retExecute1 = retExe.changes === 0 || retExe.changes === 1 ? true : false;
+      if (retExecute1) {
+        document.querySelector('.execute1').classList.remove('display');        
+      }
+      // Insert some Users
+      sqlcmd = `
+      BEGIN TRANSACTION;
+      DELETE FROM users;
+      INSERT INTO users (name,email,age) VALUES ("Whiteley","Whiteley.com",30);
+      INSERT INTO users (name,email,age) VALUES ("Jones","Jones.com",44);
+      COMMIT TRANSACTION;
+      `;
+      retExe = await this._sqlite.execute({statements:sqlcmd});
+      retExecute2 = retExe.changes >= 1 ? true : false;
+      if (retExecute2) {
+        document.querySelector('.execute2').classList.remove('display');        
+      }
+      // Insert some Messages
+      sqlcmd = `
+      BEGIN TRANSACTION;
+      DELETE FROM messages;
+      INSERT INTO messages (title,body) VALUES ("test post 1","content test post 1");
+      INSERT INTO messages (title,body) VALUES ("test post 2","content test post 2");
+      COMMIT TRANSACTION;
+      `;
+      retExe = await this._sqlite.execute({statements:sqlcmd});
+      console.log('retExe.changes ',retExe.changes)
+      retExecute3 = retExe.changes >= 1 ? true : false;
+      if (retExecute3) {
+        document.querySelector('.execute3').classList.remove('display');        
+      }
+      // Select all Users
+      sqlcmd = "SELECT * FROM users";
+      var retSelect: any = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect.values.length ',retSelect.values.length)
+      retQuery1 = retSelect.values.length === 2 ? true : false;
+      const row1: any = retSelect.values[0];
+      console.log("row1 users ",JSON.stringify(row1))
+      const resQueryRow1:boolean = (row1.id === 1 && row1.name === "Whiteley" && row1.email === "Whiteley.com")  ? true : false;
+      const row2: any = retSelect.values[1];
+      console.log("row2 users ",JSON.stringify(row2))
+      const resQueryRow2:boolean = (row2.id === 2 && row2.name === "Jones" && row2.email === "Jones.com")  ? true : false;
+      console.log("retQuery1 resQueryRow1 resQueryRow2 ",retQuery1,resQueryRow1,resQueryRow2)
+      if (retQuery1 && resQueryRow1 && resQueryRow2) {
+        document.querySelector('.query1').classList.remove('display');        
+      }
+      // Select all Messages
+      sqlcmd = "SELECT * FROM messages";
+      var retSelect1: any = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect1.values.length ',retSelect1.values.length)
+      retQuery2 = retSelect1.values.length === 2 ? true : false;
+      const rowM1: any = retSelect1.values[0];
+      console.log("row1 messages ",JSON.stringify(rowM1))
+      const resQueryMRow1:boolean = (rowM1.id === 1 && rowM1.title === "test post 1" && rowM1.body === "content test post 1")  ? true : false;
+      const rowM2: any = retSelect1.values[1];
+      console.log("row2 messages ",JSON.stringify(rowM2))
+      const resQueryMRow2:boolean = (rowM2.id === 2 && rowM2.title === "test post 2" && rowM2.body === "content test post 2")  ? true : false;
+      console.log("retQuery2 resQueryMRow1 resQueryMRow2 ",retQuery2,resQueryMRow1,resQueryMRow2)
+      if (retQuery2 && resQueryMRow1 && resQueryMRow2) {
+        document.querySelector('.query2').classList.remove('display');        
+      }
+      // Insert a new User with SQL and Values
+
+      sqlcmd = "INSERT INTO users (name,email,age) VALUES (?,?,?)";
+      let values: Array<any>  = ["Simpson","Simpson@example.com",69];
+      var retRun: any = await this._sqlite.run({statement:sqlcmd,values:values});
+      retRun1 = retRun.changes === 1 ? true : false;
+      if (retRun1) {
+        document.querySelector('.run1').classList.remove('display');        
+      }
+
+      // Insert a new User with SQL
+      sqlcmd = `INSERT INTO users (name,email,age) VALUES ("Brown","Brown@example.com",15)`;
+      retRun = await this._sqlite.run({statement:sqlcmd,values:[]});
+      retRun2 = retRun.changes === 1 ? true : false;
+      if (retRun2) {
+        document.querySelector('.run2').classList.remove('display');        
+      }
+
+      // Select all Users
+      sqlcmd = "SELECT * FROM users";
+      retSelect = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect ',retSelect.values.length)
+      retQuery3 = retSelect.values.length === 4 ? true : false;
+      for (let i:number =0; i< retSelect.values.length; i++) {
+        console.log("results : ",i,retSelect.values[i]);
+      }
+      if (retQuery3) {
+        document.querySelector('.query3').classList.remove('display');        
+      }
+      // Select Users with age > 35
+      sqlcmd = "SELECT name,email,age FROM users WHERE age > ?";
+      retSelect = await this._sqlite.query({statement:sqlcmd,values:["35"]});
+      console.log('retSelect ',retSelect.values.length)
+      retQuery4 = retSelect.values.length === 2 ? true : false;
+      for (let i:number =0; i< retSelect.values.length; i++) {
+        console.log("results : ",i,retSelect.values[i]);
+      }
+      if (retQuery4) {
+        document.querySelector('.query4').classList.remove('display');        
+      }
+
+      // close database
+      console.log('closing the db')
+      const res = await this._sqlite.close({database:"testsqlite"});
+      if(res.result) retClose = true;
+      if(!retExecute1 || !retExecute2 || !retExecute3 || !retQuery1 || !retRun1 || 
+        !retRun2 || !retQuery2 || !retQuery3 || !retQuery4 || !retClose) {
+        document.querySelector('.sql-failure1').classList.remove('display');
+      } else {
+        console.log("***** End testDatabase *****")
+        document.querySelector('.sql-success1').classList.remove('display');
+        retTest = true;
+      }
+    } else {
+      document.querySelector('.sql-failure1').classList.remove('display');
+    }
+
+    return retTest;
+  }
+  async testEncryptedDatabase(): Promise<Boolean> {
+    let retTest:Boolean = false;
+    let retOpenDB: boolean = false;
+    let retClose: boolean = false;
+    // Delete the Database to enable restart
+    // as after the first pass the secret phrase is set to the new secret phrase
+    if(this._sqPlatform === "ios" || this._sqPlatform === "android") {
+      const resDel: any =  await this._sqlite.deleteDatabase({database:"encryptedsqlite"});
+      console.log("Delete database encryptedsqlite ", resDel.result.toString());
+    }
+    // Open Database
+
+    let result:any = await this._sqlite.open({database:"encryptedsqlite",encrypted:true,mode:"secret"});
+    console.log("Open database : " + result.result);
+    retOpenDB = result.result;
+    if(retOpenDB) {
+      // Create Tables if not exist
+      let sqlcmd: string = `
+      BEGIN TRANSACTION;
+      CREATE TABLE IF NOT EXISTS contacts (
+          id INTEGER PRIMARY KEY NOT NULL,
+          email TEXT UNIQUE NOT NULL,
+          name TEXT
+      );
+      PRAGMA user_version = 1;
+      COMMIT TRANSACTION;
+      `;
+      console.log('sqlcmd ',sqlcmd)
+      var retExe: any = await this._sqlite.execute({statements:sqlcmd});
+      console.log('retExe ',retExe.changes)
+      const retExecute1:Boolean  = retExe.changes === 0 || retExe.changes === 1 ? true : false;
+      // Insert some Contacts
+      sqlcmd = `
+      BEGIN TRANSACTION;
+      DELETE FROM contacts;
+      INSERT INTO contacts (name,email) VALUES ("Whiteley","Whiteley.com");
+      INSERT INTO contacts (name,email) VALUES ("Jones","Jones.com");
+      COMMIT TRANSACTION;
+      `;
+      retExe = await this._sqlite.execute({statements:sqlcmd});
+      const retExecute2: Boolean = retExe.changes >= 1 ? true : false;
+      // Select all Contacts
+      sqlcmd = "SELECT * FROM contacts";
+      const retSelect = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect ',retSelect.values.length)
+      const retQuery1 = retSelect.values.length === 2 ? true : false;
+      // close database
+      const res:any = await this._sqlite.close({database:"encryptedsqlite"});
+      if(res.result) retClose = true;
+
+      if(!retExecute1 || !retExecute2 || !retQuery1 || !retClose) {
+        document.querySelector('.sql-failure3').classList.remove('display');
+      } else {
+        document.querySelector('.sql-success3').classList.remove('display');
+        retTest = true;
+      }
 
 
+    } else {
+      document.querySelector('.sql-failure3').classList.remove('display');
+    }
+    return retTest;
+  }
+  async testWrongSecret(): Promise<Boolean> {
+    let retTest:Boolean = false;
+    let resultOpen:any = await this._sqlite.open({database:"encryptedsqlite",encrypted:true,mode:"wrongsecret"});
+
+    if (!resultOpen.result) {
+      document.querySelector('.sql-success4').classList.remove('display');
+      retTest = true
+    } else {
+      document.querySelector('.sql-failure4').classList.remove('display');
+
+    }
+
+    return retTest;
+  }
+  async testChangePassword(): Promise<Boolean> {
+    let retTest:Boolean = false;
+    let retClose:Boolean = false;
+    let resultOpen:any = await this._sqlite.open({database:"encryptedsqlite",encrypted:true,mode:"newsecret"});
+    if(resultOpen.result) {
+      // Select all Contacts
+      const sqlcmd: string = "SELECT * FROM contacts";
+      const retSelect = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect ',retSelect.values.length)
+      const retQuery1 = retSelect.values.length === 2 ? true : false;
+      // close database
+      const res:any = await this._sqlite.close({database:"encryptedsqlite"});
+      if(res.result) retClose = true;
+      if(!retQuery1 || !retClose) {
+        document.querySelector('.sql-failure5').classList.remove('display');
+      } else {
+        document.querySelector('.sql-success5').classList.remove('display');
+        retTest = true;
+      }
+    } else {
+      document.querySelector('.sql-failure5').classList.remove('display');
+    }
+    return retTest;
+  }
+  async testDatabaseNewPassword(): Promise<Boolean> {
+    let retTest:Boolean = false;
+    let retClose: Boolean = false;
+    let resultOpen:any = await this._sqlite.open({database:"encryptedsqlite",encrypted:true,mode:"secret"});
+    if(resultOpen.result) {
+      // Select all Contacts
+      const sqlcmd: string = "SELECT * FROM contacts";
+      const retSelect = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect ',retSelect.values.length)
+      const retQuery1 = retSelect.values.length === 2 ? true : false;
+      // close database
+      const res = await this._sqlite.close({database:"encryptedsqlite"});
+      if(res.result) retClose = true;
+      if(!retQuery1 || !retClose) {
+        document.querySelector('.sql-failure6').classList.remove('display');
+      } else {
+        document.querySelector('.sql-success6').classList.remove('display');
+        retTest = true;
+      }
+    } else {
+      document.querySelector('.sql-failure6').classList.remove('display');
+    }    
+    return retTest;
+  }
+  async testEncryptionDatabase(): Promise<Boolean> {
+    let retQuery1: Boolean = false;
+    let retQuery2: Boolean = false;
+    let retTest:Boolean = false;
+    let retClose: Boolean = false;
+    let resultOpen:any = await this._sqlite.open({database:"testsqlite",encrypted:true,mode:"encryption"});
+    if(resultOpen.result) {
+      // Select all Users
+      let sqlcmd:string = "SELECT * FROM users";
+      var retSelect: any = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect.result.length ',retSelect.values.length)
+      retQuery1 = retSelect.values.length === 4 ? true : false;
+      // Select all Messages
+      sqlcmd = "SELECT * FROM messages";
+      var retSelect1: any = await this._sqlite.query({statement:sqlcmd,values:[]});
+      console.log('retSelect1.result.length ',retSelect1.values.length)
+      retQuery2 = retSelect1.values.length === 2 ? true : false;
+      // close database
+      const res = await this._sqlite.close({database:"testsqlite"});
+      if(res.result) retClose = true;
+      if (!retQuery1 || !retQuery2 || !retClose) {
+        document.querySelector('.sql-failure2').classList.remove('display');
+      } else {
+        document.querySelector('.sql-success2').classList.remove('display');
+        retTest = true;
+      }
+    } else {
+      document.querySelector('.sql-failure2').classList.remove('display');
+    }
+    return retTest;
+  }
+ 
 }

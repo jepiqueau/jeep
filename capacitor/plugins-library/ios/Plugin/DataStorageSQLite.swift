@@ -188,5 +188,26 @@ public class CapacitorDataStorageSqlite: CAPPlugin {
             "keysvalues": dic
             ])
     }
+    @objc func deleteStore(_ call: CAPPluginCall) {
+        let storeName = call.options["database"] as? String ?? "storage"
+        var res: Bool = false
+        do {
+            res = try (mDb?.deleteDB(databaseName:"\(storeName)SQLite.db"))!;
+            if res {
+                call.success([
+                    "result": true
+                ])
+            } else {
+                call.success([
+                    "result": false
+                ])
+            }
+        } catch StorageDatabaseHelperError.deleteStore{
+            call.reject("Error in deleting store")
+        } catch {
+            call.reject("Unexpected error: \(error).");
+        }
+
+    }
 
 }

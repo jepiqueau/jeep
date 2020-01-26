@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		03FC29A292ACC40490383A1F /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		20C0B05DCFC8E3958A738AF2 /* Pods_PluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */; };
+		2C95B66823DADE53003A5C68 /* GlobalSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95B66723DADE53003A5C68 /* GlobalSQLite.swift */; };
+		2C95B66B23DAE7C7003A5C68 /* UtilsSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95B66A23DAE7C7003A5C68 /* UtilsSQLite.swift */; };
+		2C95B66D23DB372A003A5C68 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95B66C23DB372A003A5C68 /* Blob.swift */; };
+		2CC3EAFC23DA00EB005CF028 /* DatabaseSQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3EAFB23DA00EB005CF028 /* DatabaseSQLiteHelper.swift */; };
+		2CC3EAFE23DA0110005CF028 /* DatabaseSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3EAFD23DA0110005CF028 /* DatabaseSQLite.swift */; };
 		2CCD09CC23CC708E00DC3463 /* DataStorageSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09CB23CC708E00DC3463 /* DataStorageSQLite.swift */; };
 		2CCD09CE23CC712400DC3463 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09CD23CC712400DC3463 /* VideoPlayer.swift */; };
 		2CCD09D223CC724C00DC3463 /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD09D123CC724C00DC3463 /* CMTime.swift */; };
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C95B66723DADE53003A5C68 /* GlobalSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSQLite.swift; sourceTree = "<group>"; };
+		2C95B66A23DAE7C7003A5C68 /* UtilsSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsSQLite.swift; sourceTree = "<group>"; };
+		2C95B66C23DB372A003A5C68 /* Blob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
+		2CC3EAFB23DA00EB005CF028 /* DatabaseSQLiteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSQLiteHelper.swift; sourceTree = "<group>"; };
+		2CC3EAFD23DA0110005CF028 /* DatabaseSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSQLite.swift; sourceTree = "<group>"; };
 		2CCD09CB23CC708E00DC3463 /* DataStorageSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageSQLite.swift; sourceTree = "<group>"; };
 		2CCD09CD23CC712400DC3463 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		2CCD09D123CC724C00DC3463 /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
@@ -95,6 +105,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C95B66923DAE79F003A5C68 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2C95B66A23DAE7C7003A5C68 /* UtilsSQLite.swift */,
+				2C95B66C23DB372A003A5C68 /* Blob.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2CC3EAF823DA0070005CF028 /* DatabaseSQLite */ = {
+			isa = PBXGroup;
+			children = (
+				2CC3EAFB23DA00EB005CF028 /* DatabaseSQLiteHelper.swift */,
+				2C95B66723DADE53003A5C68 /* GlobalSQLite.swift */,
+			);
+			path = DatabaseSQLite;
+			sourceTree = "<group>";
+		};
 		2CCD09CF23CC71AF00DC3463 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +188,8 @@
 		50ADFF8A201F53D600D50D53 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				2C95B66923DAE79F003A5C68 /* Utils */,
+				2CC3EAF823DA0070005CF028 /* DatabaseSQLite */,
 				2CCD09E423CC74B400DC3463 /* DataStorageSQLite */,
 				2CCD09CF23CC71AF00DC3463 /* VideoPlayer */,
 				50E1A94720377CB70090CE1A /* Plugin.swift */,
@@ -168,6 +198,7 @@
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
 				2CCD09CB23CC708E00DC3463 /* DataStorageSQLite.swift */,
 				2CCD09CD23CC712400DC3463 /* VideoPlayer.swift */,
+				2CC3EAFD23DA0110005CF028 /* DatabaseSQLite.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -377,15 +408,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC3EAFC23DA00EB005CF028 /* DatabaseSQLiteHelper.swift in Sources */,
 				2CCD09EA23CC752400DC3463 /* StorageDatabaseHelper.swift in Sources */,
 				2CCD09E123CC740200DC3463 /* VideoPlayerTableViewCell.swift in Sources */,
+				2C95B66D23DB372A003A5C68 /* Blob.swift in Sources */,
 				2CCD09DD23CC739200DC3463 /* FullScreenVideoPlayerView.swift in Sources */,
 				2CCD09CE23CC712400DC3463 /* VideoPlayer.swift in Sources */,
 				50E1A94820377CB70090CE1A /* Plugin.swift in Sources */,
 				2CCD09D423CC726C00DC3463 /* Notification.Name.swift in Sources */,
+				2C95B66B23DAE7C7003A5C68 /* UtilsSQLite.swift in Sources */,
 				2CCD09CC23CC708E00DC3463 /* DataStorageSQLite.swift in Sources */,
 				2CCD09DF23CC73C400DC3463 /* SmallVideoPlayerView.swift in Sources */,
+				2CC3EAFE23DA0110005CF028 /* DatabaseSQLite.swift in Sources */,
 				2CCD09E623CC74F200DC3463 /* Data.swift in Sources */,
+				2C95B66823DADE53003A5C68 /* GlobalSQLite.swift in Sources */,
 				2CCD09E823CC750500DC3463 /* Global.swift in Sources */,
 				2CCD09DB23CC732400DC3463 /* VideoModel.swift in Sources */,
 				2CCD09D223CC724C00DC3463 /* CMTime.swift in Sources */,

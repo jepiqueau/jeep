@@ -7,6 +7,7 @@ import com.getcapacitor.Plugin;
 
 import com.jeep.plugins.capacitor.CapacitorVideoPlayer;
 import com.jeep.plugins.capacitor.CapacitorDataStorageSqlite;
+import com.jeep.plugins.capacitor.CapacitorSQLite;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class MainActivity extends BridgeActivity {
       // Ex: add(TotallyAwesomePlugin.class);
       add(CapacitorVideoPlayer.class);
       add(CapacitorDataStorageSqlite.class);
+      add(CapacitorSQLite.class);
     }});
   }
 }

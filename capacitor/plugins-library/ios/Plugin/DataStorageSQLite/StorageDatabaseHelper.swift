@@ -11,9 +11,6 @@ import Foundation
 import SQLCipher
 
 enum StorageDatabaseHelperError: Error {
-    case connectionFailed
-    case wrongSecret
-    case wrongNewSecret
     case creationTableFailed
     case creationIndexFailed
     case encryptionFailed
@@ -23,6 +20,8 @@ enum StorageDatabaseHelperError: Error {
     case noTables
     case renameFileFailed
     case insertRowFailed
+    case deleteStore
+    case deleteDB
 }
 
 class StorageDatabaseHelper {
@@ -58,16 +57,16 @@ class StorageDatabaseHelper {
         var db: OpaquePointer?
         if !self.encrypted && mode == "no-encryption" {
             do {
-                try db = connection("\(path)/\(self.dbName)")
+                try db = UtilsSQLite.connection(filename: "\(path)/\(self.dbName)")
                 self.isOpen = true
             } catch {
                 let error:String = "init: Error Database connection failed"
                 print(error)
-                throw StorageDatabaseHelperError.connectionFailed
+                throw UtilsSQLiteError.connectionFailed
             }
         } else if encrypted && mode == "secret" && secret.count > 0 {
             do {
-                try db = connection("\(path)/\(self.dbName)",readonly: false,key: secret)
+                try db = UtilsSQLite.connection(filename: "\(path)/\(self.dbName)",readonly: false,key: secret)
                 self.isOpen = true
             } catch {
                 let error:String = "init: Error Database connection failed wrong secret"
@@ -77,14 +76,14 @@ class StorageDatabaseHelper {
 
         } else if encrypted && mode == "newsecret" && secret.count > 0 && newsecret.count > 0 {
             do {
-                try db = connection("\(path)/\(self.dbName)",readonly: false,key: secret)
+                try db = UtilsSQLite.connection(filename: "\(path)/\(self.dbName)",readonly: false,key: secret)
                 
                 let keyStatementString = """
                 PRAGMA rekey = '\(newsecret)';
                 """
                 if sqlite3_exec(db, keyStatementString, nil,nil,nil) != SQLITE_OK  {
                     print("connection: Unable to open a connection to database at \(path)/\(self.dbName)")
-                    throw StorageDatabaseHelperError.wrongNewSecret
+                    throw UtilsSQLiteError.wrongNewSecret
                 }
                 /* this should work but does not sqlite3_rekey_v2 is not known
                 if sqlite3_rekey_v2(db!, "\(path)/\(self.dbName)", newsecret, Int32(newsecret.count)) == SQLITE_OK {
@@ -100,17 +99,17 @@ class StorageDatabaseHelper {
             } catch {
                 let error:String = "init: Error Database connection failed wrong secret"
                 print(error)
-                throw StorageDatabaseHelperError.wrongSecret
+                throw UtilsSQLiteError.wrongSecret
             }
         } else if encrypted && mode == "encryption" && secret.count > 0 {
-            if isFileExist(filePath: "\(path)/\(self.dbName)") {
+            if UtilsSQLite.isFileExist(filePath: "\(path)/\(self.dbName)") {
                 // rename database file as temp.db
                 let tempFile: String = "\(path)/temp.db"
-                try renameFile(filePath: "\(path)/\(self.dbName)", toFilePath: tempFile)
+                try UtilsSQLite.renameFile(filePath: "\(path)/\(self.dbName)", toFilePath: tempFile)
                 do {
-                    try db = connection("\(path)/\(self.dbName)",readonly: false,key: secret)
+                    try db = UtilsSQLite.connection(filename: "\(path)/\(self.dbName)",readonly: false,key: secret)
                     // copy the temp file in the new encrypted database
-                    let tempDB: OpaquePointer = try connection(tempFile)
+                    let tempDB: OpaquePointer = try UtilsSQLite.connection(filename: tempFile)
                     let tables: Array<String> = try getTables(db: tempDB)
                     let currentTableName: String = self.tableName
                     for table: String in tables {
@@ -150,7 +149,7 @@ class StorageDatabaseHelper {
                             throw StorageDatabaseHelperError.creationTableFailed
                         }
                     }
-                    try deleteFile(filePath: tempFile)
+                    try _ = UtilsSQLite.deleteFile(fileName: "temp.db")
                     self.tableName = currentTableName
                     self.encrypted = true
                     self.isOpen = true
@@ -158,7 +157,7 @@ class StorageDatabaseHelper {
                 } catch {
                     let error:String = "init: Error Database connection failed wrong secret"
                     print(error)
-                    throw StorageDatabaseHelperError.wrongSecret
+                    throw UtilsSQLiteError.wrongSecret
                 }
             } else {
                 let error:String = "init: Error Database not existing"
@@ -188,7 +187,7 @@ class StorageDatabaseHelper {
         var ret: Bool = false
         let db: OpaquePointer?
         do {
-            try db = getWritableDatabase()
+            try db = UtilsSQLite.getWritableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
             print("Error: \(error)")
             return false
@@ -224,7 +223,7 @@ class StorageDatabaseHelper {
         var retData: Data = Data()
         let db: OpaquePointer?
         do {
-           try db = getReadableDatabase()
+            try db = UtilsSQLite.getReadableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return nil
@@ -266,7 +265,7 @@ class StorageDatabaseHelper {
         var ret: Bool = false
         let db: OpaquePointer?
         do {
-           try db = getWritableDatabase()
+            try db = UtilsSQLite.getWritableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return false
@@ -299,7 +298,7 @@ class StorageDatabaseHelper {
         var ret: Bool = false
         let db: OpaquePointer?
         do {
-           try db = getWritableDatabase()
+            try db = UtilsSQLite.getWritableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return false
@@ -323,7 +322,7 @@ class StorageDatabaseHelper {
         var ret: Bool = false
         let db: OpaquePointer?
         do {
-           try db = getWritableDatabase()
+            try db = UtilsSQLite.getWritableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return false
@@ -351,7 +350,7 @@ class StorageDatabaseHelper {
         var ret: Bool = false
         let db: OpaquePointer?
         do {
-            try db = getWritableDatabase()
+            try db = UtilsSQLite.getWritableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
             print("Error: \(error)")
             return false
@@ -372,7 +371,7 @@ class StorageDatabaseHelper {
         var retArray: Array<String> = Array<String>()
         let db: OpaquePointer?
         do {
-           try db = getReadableDatabase()
+            try db = UtilsSQLite.getReadableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return nil
@@ -395,7 +394,7 @@ class StorageDatabaseHelper {
         var retArray: Array<String> = Array<String>()
         let db: OpaquePointer?
         do {
-           try db = getReadableDatabase()
+            try db = UtilsSQLite.getReadableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return nil
@@ -418,7 +417,7 @@ class StorageDatabaseHelper {
         var retArray: Array<Data> = Array<Data>()
         let db: OpaquePointer?
         do {
-           try db = getReadableDatabase()
+            try db = UtilsSQLite.getReadableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
         } catch let error {
            print("Error: \(error)")
            return nil
@@ -428,59 +427,6 @@ class StorageDatabaseHelper {
     }
 
     // Private functions
-    
-    private func connection(_ filename: String, readonly: Bool = false, key: String = "") throws -> OpaquePointer {
-        let flags = readonly ? SQLITE_OPEN_READONLY : SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE
-        var db: OpaquePointer? = nil
-        if sqlite3_open_v2(filename, &db, flags | SQLITE_OPEN_FULLMUTEX, nil) == SQLITE_OK {
-            if key.count > 0 {
-                let keyStatementString = """
-                PRAGMA key = '\(key)';
-                """
-                if sqlite3_exec(db, keyStatementString, nil,nil,nil) == SQLITE_OK  {
-                    if (sqlite3_exec(db!, "SELECT count(*) FROM sqlite_master;", nil, nil, nil) != SQLITE_OK) {
-                        print("Unable to open a connection to database at \(filename)")
-                        throw StorageDatabaseHelperError.wrongSecret
-                    }
-                } else {
-                    print("connection: Unable to open a connection to database at \(filename)")
-                    throw StorageDatabaseHelperError.wrongSecret
-                }
-            }
-            /* this should work but doe not sqlite3_key_v2 is not known
-            if key.count > 0 {
-                let nKey:Int32 = Int32(key.count)
-                if sqlite3_key_v2(db!, filename, key, nKey) == SQLITE_OK {
-                    if (sqlite3_exec(db!, "SELECT count(*) FROM sqlite_master;", nil, nil, nil) != SQLITE_OK) {
-                      print("Unable to open a connection to database at \(filename)")
-                      throw StorageDatabaseHelperError.wrongSecret
-                    }
-                } else {
-                    print("Unable to open a connection to database at \(filename)")
-                    throw StorageDatabaseHelperError.wrongSecret
-                }
-            }
-            print("Successfully opened connection to database at \(filename)")
-            */
-            return db!
-        } else {
-            print("connection: Unable to open a connection to database at \(filename)")
-            throw StorageDatabaseHelperError.connectionFailed
-        }
-    }
-        
-    private func getWritableDatabase() throws -> OpaquePointer? {
-        guard let db = try? connection("\(path)/\(self.dbName)",readonly: false,key: secret) else {
-            throw StorageDatabaseHelperError.connectionFailed
-        }
-        return db
-    }
-    private func getReadableDatabase() throws -> OpaquePointer? {
-        guard let db = try? connection("\(path)/\(self.dbName)", readonly: true,key: secret) else {
-            throw StorageDatabaseHelperError.connectionFailed
-        }
-        return db
-    }
 
     private func createTable (db: OpaquePointer, tableName: String ,ifNotExists: Bool) -> Bool {
         var ret: Bool = false
@@ -551,39 +497,11 @@ class StorageDatabaseHelper {
         }
     }
 
-    private func isFileExist(filePath: String) -> Bool {
-        var ret: Bool = false
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: filePath) {
-            ret = true
-         }
-        return ret
-    }
-    
-    private func deleteFile (filePath: String) throws {
-        let fileManager = FileManager.default
-        do {
-            try fileManager.removeItem(atPath: filePath)
-        } catch {
-            throw StorageDatabaseHelperError.deleteFileFailed
-        }
-    }
-    private func renameFile (filePath: String, toFilePath: String) throws {
-        // rename database file as temp.db
-        let fileManager = FileManager.default
-        do {
-            try fileManager.moveItem(atPath: filePath, toPath: toFilePath)
-        }
-        catch  {
-            throw StorageDatabaseHelperError.renameFileFailed
-        }
-    }
-    
     private func resetIndex() -> Bool {
          var ret: Bool = false
          let db: OpaquePointer?
          do {
-            try db = getWritableDatabase()
+            try db = UtilsSQLite.getWritableDatabase(filename: "\(path)/\(self.dbName)",secret:self.secret)
          } catch let error {
             print("Error: \(error)")
             return false
@@ -621,6 +539,26 @@ class StorageDatabaseHelper {
         sqlite3_finalize(getKeysValuesStatement)
         return retArray
 
+    }
+    func deleteDB(databaseName:String) throws -> Bool {
+        var ret: Bool = false
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let fileURL = dir.appendingPathComponent(databaseName)
+            let isFileExists = FileManager.default.fileExists(atPath: fileURL.path)
+            if(isFileExists) {
+                do {
+                    try FileManager.default.removeItem(at: fileURL)
+                    print("Database \(databaseName) deleted")
+                    isOpen = false
+                    ret = true
+                } catch {
+                    throw StorageDatabaseHelperError.deleteDB
+                }
+            } else {
+                throw StorageDatabaseHelperError.deleteDB
+            }
+        }
+        return ret
     }
 
 }

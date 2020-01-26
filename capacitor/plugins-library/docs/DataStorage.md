@@ -93,13 +93,36 @@ Clear / Remove all keys from the store
 
 Type: `Promise<{result:boolean}>`
 
+## Methods available only for IOS and Android Plugins
+
+
+### `deleteStore({}) => Promise<{result:boolean}>`
+
+Delete the store with default database name
+
+#### Returns
+
+Type: `Promise<{result:boolean}>`
+
+### `deleteStore({database:"fooDB"}) => Promise<{result:boolean}>`
+
+Delete the store with given database name
+
+#### Returns
+
+Type: `Promise<{result:boolean}>`
+
 
 ## Methods available for encrypted database in IOS and Android
 
 ### `openStore({database:"fooDB",table:"fooTable",encrypted:true,mode:"encryption"}) => Promise<{result:boolean}>`
 
-Encrypt an existing store with a secret key and open the store with given database and table names. 
-The secret key is set in the Global.swift file for IOS and in Global.java file for Android. Set your own before building your app.
+Encrypt an existing store with a secret key and open the store with given database and table names.
+
+To define your own "secret" and "newsecret" keys: 
+ - in IOS, go to the Pod/Development Pods/jeepqCapacitor/DataStorageSQLite/Global.swift file 
+ - in Android, go to jeepq-capacitor/java/com.jeep.plugins.capacitor/cdssUtils/Global.java
+and update the default values before building your app.
 
 #### Returns
 
@@ -108,7 +131,6 @@ Type: `Promise<{result:boolean}>`
 ### `openStore({database:"fooDB",table:"fooTable",encrypted:true,mode:"secret"}) => Promise<{result:boolean}>`
 
 Open an encrypted store with given database and table names and secret key.
-The secret key is set in the Global.swift file for IOS and in Global.java file for Android. Set your own before building your app.
 
 #### Returns
 
@@ -117,7 +139,6 @@ Type: `Promise<{result:boolean}>`
 ### `openStore({database:"fooDB",table:"fooTable",encrypted:true,mode:"newsecret"}) => Promise<{result:boolean}>`
 
 Modify the secret key with the newsecret key of an encrypted store and open it with given database and table names and newsecret key.
-The secret key and newsecret key are set in the Global.swift file for IOS and in Global.java file for Android. Set your own before building your app.
 
 #### Returns
 
@@ -319,6 +340,12 @@ export const StorageAPIWrapper = (storage:any) => {
           .then(() => cb())
           .catch(cb);
       },
+      deleteStore: (options,cb) => {
+        storage.deleteStore(options)
+          .then(({result} ) => cb(null, result))
+          .catch(cb);
+      },
+
     };
 }
 
@@ -354,23 +381,28 @@ export class StorageAPIWrapper {
     }
     public async setItem(key:string, value:string): Promise<void> {
         await this.storage.set({ key, value });
-    return;
+      return;
     }
     public async getItem(key:string): Promise<string> {
         const {value} = await this.storage.get({ key });
-    return value;
+      return value;
     }
     public async getAllKeys(): Promise<Array<string>> {
         const {keys} = await this.storage.keys();
-    return keys;
+      return keys;
     }
     public async removeItem(key:string): Promise<void> {
         await this.storage.remove({ key });
-    return;
+      return;
     }
     public async clear(): Promise<void> {
         await this.storage.clear();
-    return;
+      return;
+    }
+    public async deleteStore(options:any): Promise<boolean> {
+        await this.init();
+        const {result} = await this.storage.deleteStore(options);
+        return result;
     }
 }
 ```

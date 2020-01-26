@@ -1,3 +1,12 @@
+## 0.0.1-beta.3 (2020-01-26)
+
+### Added Features
+
+* add method deleteStore to capacitor-data-storage-sqlite IOS & Android Plugins
+* update doc DataStorage.md
+* add capacitor-sqlite IOS & Android Plugins with database encryption
+* add capacitor-sqlite doc 
+
 ## 0.0.1-beta.2-1 (2020-01-20)
 
 ### Bug Fixes

@@ -9,6 +9,8 @@ Jeep Capacitor Plugins Library is a library of Capacitor Plugins.
 ## Capacitor Data Storage SQLite Plugin
  - [capacitor-data-storage-sqlite](https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/DataStorage.md)
 
+## Capacitor SQLite Plugin
+ - [capacitor-sqlite](https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/DatabaseSQLite.md)
 
 
 ## Jeep Plugins Viewme

@@ -120,6 +120,11 @@ export class CapacitorDataStorageSqliteWeb extends WebPlugin implements Capacito
     }
     return Promise.resolve({keysvalues:ret});
   }
+  async deleteStore(options: capOpenStorageOptions): Promise<capDataStorageResult> {
+    console.log('deleteStore', options);
+    return Promise.reject("Not implemented");
+  }
+
 }
 
 const CapacitorDataStorageSqlite = new CapacitorDataStorageSqliteWeb();
