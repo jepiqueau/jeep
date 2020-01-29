@@ -13,6 +13,7 @@
 - ion-toolbar
 - ion-title
 - ion-buttons
+- ion-back-button
 - ion-button
 - ion-icon
 - ion-content
@@ -25,10 +26,13 @@ graph TD;
   app-htmltoprint-viewme --> ion-toolbar
   app-htmltoprint-viewme --> ion-title
   app-htmltoprint-viewme --> ion-buttons
+  app-htmltoprint-viewme --> ion-back-button
   app-htmltoprint-viewme --> ion-button
   app-htmltoprint-viewme --> ion-icon
   app-htmltoprint-viewme --> ion-content
   app-htmltoprint-viewme --> jeep-html-toprint
+  ion-back-button --> ion-icon
+  ion-back-button --> ion-ripple-effect
   ion-button --> ion-ripple-effect
   style app-htmltoprint-viewme fill:#f9f,stroke:#333,stroke-width:4px
 ```

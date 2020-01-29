@@ -34,6 +34,9 @@ export class AppHtmltoprintViewme {
           <ion-header>
             <ion-toolbar color="primary">
               <ion-title>Stencil HTML to Print</ion-title>
+              <ion-buttons slot="start">
+                <ion-back-button defaultHref="/htmltoprint" />
+              </ion-buttons>
               <ion-buttons slot='end'>
                 <ion-button  onClick={this._handlePrintClick.bind(this)}>
                   <ion-icon slot="end" name="print" color="dark">

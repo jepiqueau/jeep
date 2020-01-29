@@ -1,3 +1,10 @@
+## 0.0.1 (2020-01-29)
+
+### Bug Fixes
+
+* update README.md
+
+
 ## 0.0.1-beta.3 (2020-01-26)
 
 ### Added Features

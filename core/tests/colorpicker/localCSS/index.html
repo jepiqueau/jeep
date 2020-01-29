@@ -7,9 +7,9 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
 
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.8/dist/ionic/ionic.esm.js"></script>
-        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.8/dist/ionic/ionic.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.8/css/ionic.bundle.css" rel="stylesheet">
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.10/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.10/dist/ionic/ionic.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.10/css/ionic.bundle.css" rel="stylesheet">
       
         <script nomodule src="/build/jeep.js"></script>
         <script type="module" src="/build/jeep.esm.js"></script>   
@@ -43,11 +43,7 @@
             </ion-content>
         </ion-app> 
         <script>
-            var color = {};
-            var picker = document.querySelector('jeep-colorpicker');
-            picker.addEventListener('jeepColorpickerGetColor', (ev) => {
-                console.log(" event in index GetColor",ev.detail); 
-                var color = ev.detail;
+            function setColor(color) {
                 var grid = document.querySelector('ion-grid'); 
                 if(color != null) {
                     grid.innerHTML=`
@@ -71,13 +67,23 @@
                     grid.innerHTML=``;
 
                 }
+
+            }
+            var color = {};
+            var picker = document.querySelector('jeep-colorpicker');
+            picker.addEventListener('jeepColorpickerGetColor', (ev) => {
+                console.log(" event in index GetColor",ev.detail); 
+                var color = ev.detail;
+                setColor(color);
             });
             picker.addEventListener('jeepColorpickerOpen', (ev) => {
                 var grid = document.querySelector('ion-grid');
                 grid.innerHTML=``; 
             });
             picker.addEventListener('jeepColorpickerClose', (ev) => {
-                console.log(" event in index Close ",ev.detail);
+                var color = ev.detail.color;
+                console.log(" event in Close color",color);
+                setColor(color);
             }); 
 
         </script>    

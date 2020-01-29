@@ -1,3 +1,9 @@
+## 0.0.1 (2020-01-29)
+
+### Chores
+* @stencil/core: update to 1.8.6 
+* @ionic/core update to 4.11.10 in tests index files
+
 ## 0.0.1-beta.2 (2020-01-17)
 
 ### Added Features
