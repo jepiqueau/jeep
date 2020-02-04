@@ -1,3 +1,14 @@
+## 0.0.2-1 (2020-02-04)
+
+### Added Features
+
+* add in the README a link to an Ionic/Angular SQLite Application Starter
+* add in the README a link to an Ionic/React SQLite Application Starter
+
+### Bug Fixes
+
+* fix the renameFile method in UtilsSQLite.swift
+
 ## 0.0.1 (2020-01-29)
 
 ### Bug Fixes

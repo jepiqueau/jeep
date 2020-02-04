@@ -201,11 +201,13 @@ class UtilsSQLite {
                 do {
                     try fileManager.removeItem(atPath: filePath)
                     ret = true
-                } catch {
+                } catch let error {
+                    print("Error: \(error)")
                     throw UtilsSQLiteError.deleteFileFailed
                 }
             }
-        } catch {
+        } catch let error {
+            print("Error: \(error)")
             throw UtilsSQLiteError.filePathFailed
         }
         return ret
@@ -214,13 +216,19 @@ class UtilsSQLite {
     class func renameFile (filePath: String, toFilePath: String) throws {
          let fileManager = FileManager.default
          do {
+            if isFileExist(filePath: toFilePath) {
+                let fileName = URL(fileURLWithPath: toFilePath).lastPathComponent
+                try  _ = deleteFile(fileName: fileName)
+            }
+
              try fileManager.moveItem(atPath: filePath, toPath: toFilePath)
          }
-         catch  {
+         catch let error {
+            print("Error: \(error)")
              throw UtilsSQLiteError.renameFileFailed
          }
-     }
-    
+    }
+       
     class func encryptDatabase(fileName: String, secret: String) throws -> Bool {
         var ret: Bool = false
         var db: OpaquePointer?
@@ -243,12 +251,14 @@ class UtilsSQLite {
                         ret = true
                     }
 
-                } catch {
+                } catch let error {
+                    print("Error: \(error)")
                     throw UtilsSQLiteError.encryptionFailed
                 }
                 
             }
-        } catch {
+        } catch let error {
+            print("Error: \(error)")
             throw UtilsSQLiteError.filePathFailed
         }
         return ret

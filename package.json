@@ -1,6 +1,6 @@
 {
     "name": "jeep",
-    "version": "0.0.1-beta.3",
+    "version": "0.0.2-1",
     "description": "Jeep Repository",
     "author": "Jean Pierre Quéau",
     "license": "MIT",
@@ -9,6 +9,7 @@
         "url": "https://github.com/jepiqueau/jeep.git"
     },
     "bugs": {
-    "url": "https://github.com/jepiqueau/jeep.git/issues"
-    }
+        "url": "https://github.com/jepiqueau/jeep.git/issues"
+    },
+    "homepage": "https://github.com/jepiqueau/jeep#readme",
 }
