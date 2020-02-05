@@ -54,11 +54,12 @@ Applications will come in future releases.
 #### @Ionic/Angular app
 
  - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
- - [angular-sqlite-app-starter](https://github.com/jepiqueau/angular-sqlite-app-starter)
+
+ - [angular-sqlite-app-starter] (https://github.com/jepiqueau/angular-sqlite-app-starter)
 
 #### Ionic/React Application
 
- - [react-sqlite-app-starter](https://github.com/jepiqueau/react-sqlite-app-starter)
+ - [react-sqlite-app-starter] (https://github.com/jepiqueau/react-sqlite-app-starter)
 
 
 #### PWA app
