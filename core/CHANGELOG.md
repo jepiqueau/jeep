@@ -1,3 +1,8 @@
+## 0.0.2 (2020-02-05)
+
+### Chores
+* @stencil/core: update to 1.8.7 
+
 ## 0.0.1 (2020-01-29)
 
 ### Chores

@@ -1,3 +1,12 @@
+## 0.0.2 (2020-02-05)
+
+### Chores
+* @capacitor/core: update to 1.5.0 
+* @capacitor/ios: update to 1.5.0 
+* @capacitor/android: update to 1.5.0 
+* @jeepq/capacitor: update to 0.0.2
+* @stencil/core: update to 1.8.7 
+
 ## 0.0.2-1 (2020-02-04)
 
 ### Added Features

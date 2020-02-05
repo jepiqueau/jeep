@@ -1,6 +1,6 @@
 {
   "name": "@jeepq/angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Angular specific wrapper for @jeepq/core",
   "keywords": [
     "jeep",
@@ -31,7 +31,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@jeepq/core": "0.0.1",
+    "@jeepq/core": "0.0.2",
     "tslib": "^1.9.0"
   },
   "peerDependencies": {

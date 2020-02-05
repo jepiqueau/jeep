@@ -45,7 +45,7 @@ export class HomePage {
       this._url = "assets/video/video.mp4";
     }
     if (videoFrom === "http") {
-      this._url = "https://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+      this._url = "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4";
     }
     // setup the storage
     const store:any = await setStorage();

@@ -30,5 +30,5 @@ Jeep Capacitor Plugins Library is a library of Capacitor Plugins including:
   ```
 
 ## Dependencies
- The library is based on ```@ionic/capacitor@1.4.0``` and ```SQLCipher 4.3.0``` for SQLite database encryption.
+ The library is based on ```@ionic/capacitor@1.5.0``` and ```SQLCipher 4.3.0``` for SQLite database encryption.
 

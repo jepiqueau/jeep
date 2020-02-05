@@ -25,7 +25,7 @@ export class AppHome {
   }
   async testVideoPlayerPlugin() { 
     const videoPlayer:any = CapacitorVideoPlayer;
-    const url:string = "https://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+    const url:string = "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4";
     document.addEventListener('jeepCapVideoPlayerPlay', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPlay ', e.detail)}, false);
     document.addEventListener('jeepCapVideoPlayerPause', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerPause ', e.detail)}, false);
     document.addEventListener('jeepCapVideoPlayerEnded', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerEnded ', e.detail)}, false);
