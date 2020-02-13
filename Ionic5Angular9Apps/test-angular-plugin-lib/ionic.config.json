@@ -1,0 +1,7 @@
+{
+  "name": "ionic-angular-test-plugins",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

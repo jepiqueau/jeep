@@ -30,7 +30,7 @@ ADDED from /Users/queaujeanpierre/Documents/StencilWebComponent/publishLibrary/j
 activity#com.jeep.plugins.capacitor.VideoPlayerActivity
 ADDED from /Users/queaujeanpierre/Documents/StencilWebComponent/publishLibrary/jeep/capacitor/plugins-library/android/src/main/AndroidManifest.xml:6:7-8:18
 	android:configChanges
-		ADDED from /Users/queaujeanpierre/Documents/StencilWebComponent/publishLibrary/jeep/capacitor/plugins-library/android/src/main/AndroidManifest.xml:7:11-57
+		ADDED from /Users/queaujeanpierre/Documents/StencilWebComponent/publishLibrary/jeep/capacitor/plugins-library/android/src/main/AndroidManifest.xml:7:11-99
 	android:name
 		ADDED from /Users/queaujeanpierre/Documents/StencilWebComponent/publishLibrary/jeep/capacitor/plugins-library/android/src/main/AndroidManifest.xml:6:17-78
 uses-sdk

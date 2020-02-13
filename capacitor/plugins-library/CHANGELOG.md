@@ -1,3 +1,9 @@
+## 0.0.3-1 (2020-02-09)
+
+### Added Features
+
+* add compatibility with AndroidTV and remote control device
+
 ## 0.0.2 (2020-02-05)
 
 ### Chores

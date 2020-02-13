@@ -1,3 +1,24 @@
+## 0.0.3-2 (2020-02-13)
+
+### Bug Fixes
+
+* Flipimages remove ViewEncapsulation
+* fix HTMLPrint remove ViewEncapsulation
+
+### Known Issues
+
+* Linechart on Android flicking when snapping for a vertex label
+* Carousel on IOS navigation arrows hidden issue
+* HTMLPrint does not work on IOS and Android
+
+## 0.0.3-1 (2020-02-12)
+
+### Bug Fixes
+
+* fix Flipimages running on IOS
+* fix HTMLPrint running on IOS
+* fix Columnchart label position
+
 ## 0.0.2 (2020-02-05)
 
 ### Chores

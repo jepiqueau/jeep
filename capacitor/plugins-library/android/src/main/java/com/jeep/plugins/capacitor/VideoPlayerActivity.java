@@ -13,15 +13,21 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 import android.media.MediaPlayer.OnPreparedListener;
 
+import android.view.KeyEvent;
+import android.widget.Toast;
+
 import com.jeep.plugins.capacitor.R;
 
 public class VideoPlayerActivity  extends AppCompatActivity {
     private static final String TAG = "VideoPlayerActivity";
     VideoView videoView;
     MediaController mCtrl;
+    Boolean isTV;
 
     // Current playback position (in milliseconds).
     private int mCurrentPosition = 0;
+    private int mDuration;
+    private static final int videoStep = 15000;
 
     // Tag for the instance state bundle.
     private static final String PLAYBACK_TIME = "play_time";
@@ -33,10 +39,20 @@ public class VideoPlayerActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_videoplayer);
         videoView = (VideoView) findViewById(R.id.videoViewId);
 
+
         // Get the Intent that started this activity and extract the string
         final Intent intent = getIntent();
-        Uri url = intent.getParcelableExtra("videoUri");
+        Bundle extras = intent.getExtras();
+        String videoPath = extras.getString("videoPath");
+        isTV = extras.getBoolean("isTV");
+        if(isTV) {
+            Toast.makeText(this, "Device is a TV ", Toast.LENGTH_SHORT).show();
+        }
+
+        Uri url = Uri.parse(videoPath);
         Log.v(TAG,"display url: "+url);
+        Log.v(TAG,"display isTV: "+isTV);
+
         if (url != null) {
             // set to Full Screen
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -55,6 +71,8 @@ public class VideoPlayerActivity  extends AppCompatActivity {
             videoView.setVideoURI(url);
             videoView.setOnPreparedListener(new OnPreparedListener(){
                 public void onPrepared(MediaPlayer mp) {
+                    mDuration = videoView.getDuration();
+
                     // Restore saved position, if available.
                     if (mCurrentPosition > 0) {
                         videoView.seekTo(mCurrentPosition);
@@ -66,6 +84,7 @@ public class VideoPlayerActivity  extends AppCompatActivity {
                     videoView.start();
                 }
             });
+
             videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
@@ -92,8 +111,63 @@ public class VideoPlayerActivity  extends AppCompatActivity {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(isTV) {
+            int videoPosition = videoView.getCurrentPosition();
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    fastForward(videoPosition);
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                    rewind(videoPosition);
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_CENTER:
+                    play_pause();
+                    return true;
+                case KeyEvent.KEYCODE_MEDIA_FAST_FORWARD:
+                    fastForward(videoPosition);
+                    return true;
+                case KeyEvent.KEYCODE_MEDIA_REWIND:
+                    rewind(videoPosition);
+                    return true;
+                case KeyEvent.KEYCODE_BACK:
+                    onBackPressed();
+                    return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    @Override
     public void onBackPressed() {
+        videoView.stopPlayback();
         setResult(RESULT_CANCELED, getIntent().putExtra("result", false));
         finish();
+    }
+
+    private void fastForward(int position) {
+        if(position < mDuration - videoStep ) {
+            if(videoView.isPlaying()) {
+                videoView.pause();
+            }
+            videoView.seekTo(position + videoStep);
+            videoView.start();
+        }
+    }
+    private void rewind(int position) {
+        if(position > videoStep ) {
+            if(videoView.isPlaying()) {
+                videoView.pause();
+            }
+            videoView.seekTo(position - videoStep);
+            videoView.start();
+        }
+    }
+    private void play_pause() {
+        if(videoView.isPlaying()) {
+            videoView.pause();
+        } else {
+            videoView.start();
+        }
     }
 }

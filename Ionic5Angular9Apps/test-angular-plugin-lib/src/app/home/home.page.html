@@ -1,0 +1,184 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Test Capacitor Plugins
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    The world is your oyster.
+    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-button (click)="testVideoPlayerPlugin()" expand="block">Test Fullscreen Video</ion-button>
+    <ion-button *ngIf="bPlatform" id="embedded" [href]="'./embedded'" routerDirection="forward" expand="block">Test Embedded Videos</ion-button>
+    <ion-button (click)="testStoragePlugin()" expand="block">Test Storage</ion-button>
+    <ion-button (click)="testStoragePluginWithWrapper()" expand="block">Test Storage With Wrapper</ion-button>
+    <ion-button *ngIf="sbPlatform" (click)="testSQLitePlugin()" expand="block">Test SQLite</ion-button>
+    <ion-card class="card-storage hidden">
+      <div class="echo"></div>
+      <p class="populate display">
+        Storing data successful
+      </p>
+      <p class="iskey display">
+        Iskey successful
+      </p>
+      <p class="keys display">
+        Get keys successful
+      </p>
+      <p class="values display">
+        Get values successful
+      </p>
+      <p class="keysvalues display">
+        Get keys/values successful
+      </p>
+      <p class="remove display">
+        Remove key successful
+      </p>
+      <p class="clear display">
+        Clear keys successful
+      </p>
+      <p class="success1 display">
+        The test 1 was successful
+      </p>
+      <p class="failure1 display">
+        The test 1 failed
+      </p>
+      <p class="success2 display">
+        The test 2 was successful
+      </p>
+      <p class="failure2 display">
+        The test 2 failed
+      </p>
+      <p class="success3 display">
+        The test 3 was successful
+      </p>
+      <p class="failure3 display">
+        The test 3 failed
+      </p>
+      <p class="success4 display">
+        The test 4 was successful
+      </p>
+      <p class="failure4 display">
+        The test 4 failed
+      </p>
+      <p class="success5 display">
+        The test 5 was successful
+      </p>
+      <p class="failure5 display">
+        The test 5 failed
+      </p>
+      <p class="success6 display">
+        The test 6 was successful
+      </p>
+      <p class="failure6 display">
+        The test 6 failed
+      </p>
+      <p class="success7 display">
+        The test 7 was successful
+      </p>
+      <p class="failure7 display">
+        The test 7 failed
+      </p>
+      <p class="success8 display">
+        The test 8 was successful
+      </p>
+      <p class="failure8 display">
+        The test 8 failed
+      </p>
+      <p class="success9 display">
+        The test 9 was successful
+      </p>
+      <p class="failure9 display">
+        The test 9 failed
+      </p>
+      <p class="success display">
+        The set of tests was successful
+      </p>
+      <p class="failure display">
+        The set of tests failed
+      </p>
+      <p class="wrapper-success display">
+        The test with wrapper was successful
+      </p>
+      <p class="wrapper-failure display">
+        The test with wrapper failed
+      </p>
+    </ion-card>
+    <ion-card class="card-sqlite hidden">
+      <p class="openDB display">
+        Open Database successful
+      </p>
+      <p class="execute1 display">
+        Execute Creation Tables successful
+      </p>
+      <p class="execute2 display">
+        Execute Insert Users successful
+      </p>
+      <p class="execute3 display">
+        Execute Insert Messages successful
+      </p>
+      <p class="query1 display">
+        Query Two Users successful
+      </p>
+      <p class="query2 display">
+        Query Two Messages successful
+      </p>
+        <p class="run1 display">
+        Create One User with sqlcmd and values successful
+      </p>
+      <p class="run2 display">
+        Create One User with sqlcmd successful
+      </p>
+      <p class="query3 display">
+        Query Four Users successful
+      </p>
+      <p class="query4 display">
+        Query Users age > 30 successful
+      </p>
+      <p class="sql-success1 display">
+        The test database was successful
+      </p>
+      <p class="sql-failure1 display">
+        The test database failed
+      </p>
+      <p class="sql-success2 display">
+        The test to encrypt the database was successful
+      </p>
+      <p class="sql-failure2 display">
+        The test to encrypt the database failed
+      </p>
+      <p class="sql-success3 display">
+        The test encrypted database was successful
+      </p>
+      <p class="sql-failure3 display">
+        The test encrypted database failed
+      </p>
+      <p class="sql-success4 display">
+        The test wrong password was successful
+      </p>
+      <p class="sql-failure4 display">
+        The test wrong password failed
+      </p>
+      <p class="sql-success5 display">
+        The test new password was successful
+      </p>
+      <p class="sql-failure5 display">
+        The test new password failed
+      </p>
+      <p class="sql-success6 display">
+        The test new password database was successful
+      </p>
+      <p class="sql-failure6 display">
+        The test new password database failed
+      </p>
+      <p class="sql-allsuccess display">
+        The set of tests was successful
+      </p>
+      <p class="sql-allfailure display">
+        The set of tests failed
+      </p>
+    
+    </ion-card>
+  </div>
+</ion-content>

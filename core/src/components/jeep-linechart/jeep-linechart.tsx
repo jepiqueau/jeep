@@ -1040,9 +1040,11 @@ import { getBoundingClientRect } from '../../utils/common';
             )
         } else {
             return (
-              <div id="div-error-message">
-                <p id="p-error-message">{this.status.message}</p>
-              </div>        
+              <Host>
+                <div id="div-error-message">
+                  <p id="p-error-message">{this.status.message}</p>
+                </div>        
+              </Host>
             )      
         }
     }

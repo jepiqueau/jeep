@@ -1,3 +1,17 @@
+## 0.0.3-2 (2020-02-13)
+
+### Chores
+* Angular: update to 8.2.14
+
+### Bug Fixes
+
+* Flipimages remove ViewEncapsulation
+* fix HTMLPrint remove ViewEncapsulation
+
+### New Features
+
+* Ionic5/Angular9Apps have been added (first trial)
+
 ## 0.0.2 (2020-02-05)
 
 ### Chores

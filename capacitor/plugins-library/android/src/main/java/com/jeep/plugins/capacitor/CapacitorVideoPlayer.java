@@ -9,20 +9,31 @@ import com.getcapacitor.PluginMethod;
 import java.io.File;
 
 import android.content.pm.ApplicationInfo;
+import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
 import android.net.Uri;
 import android.content.Context;
+
+import android.app.UiModeManager;
+import android.os.Build;
+import android.content.res.Configuration;
+
 
 @NativePlugin(permissionRequestCode = CapacitorVideoPlayer.RequestCodes.Video)
 public class CapacitorVideoPlayer extends Plugin {
     private static final String TAG = "CapacitorVideoPlayer";
     private Context context;
     private String videoPath;
+    private Boolean isTV;
+
 
     @PluginMethod()
     public void initPlayer(PluginCall call) {
         context = getContext();
+        // Check if running on a TV Device
+        isTV = isDeviceTV(context);
+        Log.d(TAG,"**** isTV "+isTV+ " ****");
 
         String mode = call.getString("mode");
         if(mode == null) {
@@ -48,10 +59,12 @@ public class CapacitorVideoPlayer extends Plugin {
             Log.v(TAG,"calculated url: "+url);
         }
         Log.v(TAG,"videoPath: "+ videoPath);
-        Uri uri = Uri.parse(videoPath);
-        Log.v(TAG,"display uri: "+uri);
         Intent intent = new Intent(getActivity(), VideoPlayerActivity.class);
-        intent.putExtra("videoUri",uri);
+        Bundle extras = new Bundle();
+        extras.putString("videoPath",videoPath);
+        extras.putBoolean("isTV",isTV);
+        intent.putExtras(extras);
+
         startActivityForResult(call, intent, RequestCodes.Video);
         saveCall(call);
     }
@@ -75,5 +88,13 @@ public class CapacitorVideoPlayer extends Plugin {
 
     public interface RequestCodes {
         int Video = 10001;
+    }
+    public boolean isDeviceTV(Context context) {
+        //Since Android TV is only API 21+ that is the only time we will compare configurations
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            UiModeManager uiManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+            return uiManager != null && uiManager.getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION;
+        }
+        return false;
     }
 }

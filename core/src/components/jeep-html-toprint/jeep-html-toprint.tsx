@@ -78,7 +78,7 @@ export class JeepHtmlToprint {
   //* Internal Variable Definitions *
   //*********************************
   window: Window;
-  _element: any ;
+//  _element: any ;
   _menu: any;
   _error:string =null;
   _toprint: string;
@@ -101,7 +101,7 @@ export class JeepHtmlToprint {
 
   private async _init(): Promise<void> {
     this.window = window;
-    this._element = this.el.shadowRoot;
+//    this._element = this.el.shadowRoot;
     this.parseSlotStyleProp(this.slotstyle ? this.slotstyle : null);
     return;
   }

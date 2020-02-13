@@ -89,7 +89,7 @@ export const createAnimation = (el:Element,anim:Anim): Element => {
     return animEl;
 }
 export function createColumnLabel(svg:Element,colbb:ClientRect,label:string,index:number,
-    color:string,pt:Point,options:SVGOptions) {
+    color:string,pt:Point,borderBB:ClientRect,options:SVGOptions) {
     let opt: SVGOptions = getSVGOptions(options);
     //measure the label text size  
     let textEl: Element = createSVGElement ("text",svg);
@@ -102,9 +102,11 @@ export function createColumnLabel(svg:Element,colbb:ClientRect,label:string,inde
     // create a group
     let gEl: Element = createSVGElement ("g",svg);               
     gEl.setAttributeNS(null,'id',"columnchart-label-value");
+    // text dimensions
     let rwidth: number = bb.width + 10;
     let rheight: number = bb.height + 10;
-    let xpos: number = index > 1 ? colbb.left + Math.floor(0.1*colbb.width) - rwidth : colbb.left + colbb.width - Math.floor(0.1*colbb.width);
+//    let xpos: number = index > 1 ? colbb.left + Math.floor(0.1*colbb.width) - rwidth : colbb.left + colbb.width - Math.floor(0.1*colbb.width);
+    let xpos: number = index > 1 ? colbb.right - borderBB.left - Math.floor(0.1*colbb.width) - rwidth : colbb.left - borderBB.left + Math.floor(0.1*colbb.width);
     let ypos: number = Math.floor(pt.y - rheight - 15);
     let rectEl: Element = createSVGElement ("rect",gEl);
     rectEl.setAttributeNS(null,'x',xpos.toString());

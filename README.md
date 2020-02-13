@@ -34,6 +34,10 @@ Applications will come in future releases.
  - [test-angular-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicAngularApps/test-angular-component-lib)
 
 
+#### @Ionic5/Angular9 app
+ - [test-angular-component-lib] (https://github.com/jepiqueau/jeep/tree/master/Ionic5Angular9Apps/test-angular-component-lib)
+
+
 #### @Ionic/React app
 
  - [test-react-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicReactApps/test-react-component-lib)
@@ -56,6 +60,10 @@ Applications will come in future releases.
  - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
 
  - [angular-sqlite-app-starter] (https://github.com/jepiqueau/angular-sqlite-app-starter)
+
+#### @Ionic5/Angular9 app
+ - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/Ionic5Angular9Apps/test-angular-plugin-lib)
+
 
 #### Ionic/React Application
 

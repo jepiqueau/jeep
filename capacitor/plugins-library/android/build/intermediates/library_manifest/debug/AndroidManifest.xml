@@ -13,7 +13,7 @@
     <application>
         <activity
             android:name="com.jeep.plugins.capacitor.VideoPlayerActivity"
-            android:configChanges="orientation|screenSize" >
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|navigation" >
         </activity>
     </application>
 

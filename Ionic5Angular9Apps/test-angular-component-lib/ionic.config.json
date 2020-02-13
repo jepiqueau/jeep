@@ -1,0 +1,7 @@
+{
+  "name": "test-angular-component-lib",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

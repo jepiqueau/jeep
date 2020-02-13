@@ -161,6 +161,7 @@ export class JeepFlipimages {
     },false);
   }
   async componentDidLoad() {
+    this._element = this.el.shadowRoot;
     if(this._flipElements != null)
     {
       this._getImageDim();
@@ -173,7 +174,6 @@ export class JeepFlipimages {
   private async _init(): Promise<void> {
     this._document = this._window.document;
     this._root = this._document.documentElement;
-    this._element = this.el.shadowRoot;
     // reading properties
     this.parseTypeProp(this.type ? this.type : "horizontal");
     this.parseFpaddingProp(this.fpadding ? this.fpadding : "0");

@@ -1,0 +1,8 @@
+{
+  "appId": "com.jeep.app.ionic.angular",
+  "appName": "testangularcomponentlib",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

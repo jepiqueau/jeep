@@ -1,4 +1,4 @@
-import { h, Component, Prop, Method, Element, State, Watch } from '@stencil/core';
+import { h, Component, Host, Prop, Method, Element, State, Watch } from '@stencil/core';
 import { Rect, Point } from '../../global/interfaces/geom';
 import { Variables }  from '../../global/interfaces/jeep-columnchart';
 import { Status, SVGOptions, AxisLength, Anim, DataPoint, DataSet }  from '../../global/interfaces/charts';
@@ -826,7 +826,7 @@ export class JeepColumnchart {
       fill: this._prop.lbColor,
       anchor: "middle"
     };
-    createColumnLabel(this.svg,colbb,label,index,color,pt,opt);
+    createColumnLabel(this.svg,colbb,label,index,color,pt,this.borderBB,opt);
 
   }
   _handleTouchUp(evt) {
@@ -860,20 +860,24 @@ export class JeepColumnchart {
     if(this.status.status === 200) {
       let viewBox: string = `0 0 ${this.w_width.toString()} ${this.w_height.toString()}`
       return (
-        <div id="div-columnchart-container">
-          <div id="div-columnchart-chart">
-            <svg id="svg-columnchart" width={this.w_width.toString()} height={this.w_height.toString()} viewBox={viewBox}>
-                <rect id="svg-border-rect" class="border-rect hidden" x="0" y="0" width={this.w_width.toString()} height={this.w_height.toString()} stroke={this._prop.bdColor} stroke-width={this._prop.bdWidth} fill="none" fill-opacity="0">
-                </rect>
-            </svg>
+        <Host>
+          <div id="div-columnchart-container">
+            <div id="div-columnchart-chart">
+              <svg id="svg-columnchart" width={this.w_width.toString()} height={this.w_height.toString()} viewBox={viewBox}>
+                  <rect id="svg-border-rect" class="border-rect hidden" x="0" y="0" width={this.w_width.toString()} height={this.w_height.toString()} stroke={this._prop.bdColor} stroke-width={this._prop.bdWidth} fill="none" fill-opacity="0">
+                  </rect>
+              </svg>
+            </div>
           </div>
-        </div>
+        </Host>
       );
     } else {
       return (
-        <div id="div-error-message">
-          <p id="p-error-message">{this.status.message}</p>
-        </div>        
+        <Host>
+          <div id="div-error-message">
+            <p id="p-error-message">{this.status.message}</p>
+          </div>        
+        </Host>
       )      
     }
   }
