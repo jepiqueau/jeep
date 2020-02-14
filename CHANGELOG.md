@@ -1,3 +1,14 @@
+## 0.0.3-3 (2020-02-14)
+
+### Bug Fixes
+
+* fix Ionic5Angular9Apps Electron for test-angular-plugin-lib App
+
+### New Features
+
+* Ionic5/Angular9Apps test-angular-plugin-lib Dark Mode
+
+
 ## 0.0.3-2 (2020-02-13)
 
 ### Chores
