@@ -628,7 +628,7 @@ export class HomePage {
       sqlcmd = `
       BEGIN TRANSACTION;
       DELETE FROM users;
-      INSERT INTO users (name,email,age) VALUES ("Whiteley","Whiteley.com",30);
+      INSERT INTO users (name,email,age) VALUES ("Whiteley","Whiteley;Bill.com",30);
       INSERT INTO users (name,email,age) VALUES ("Jones","Jones.com",44);
       COMMIT TRANSACTION;
       `;

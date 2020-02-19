@@ -1,3 +1,10 @@
+## 0.0.3-2 (2020-02-16)
+
+### Bug Fixes
+
+* fix issue#3 on Android capacitor-sqlite plugin
+
+
 ## 0.0.3-1 (2020-02-09)
 
 ### Added Features

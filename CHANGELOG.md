@@ -1,3 +1,14 @@
+## 0.0.3-4 (2020-02-19)
+
+### New Features
+
+* Ionic5ReactApps test-react-component-lib 
+
+* react-datastoragesqlite-app to demonstrate the use of ```capacitor-data-storage-sqlite``` plugin in a pure React App
+
+* link to angular-data-storage-sqlite-app-starter
+
+
 ## 0.0.3-3 (2020-02-14)
 
 ### Bug Fixes

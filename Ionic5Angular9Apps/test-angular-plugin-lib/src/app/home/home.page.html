@@ -10,10 +10,8 @@
   <div class="ion-padding">
     The world is your oyster.
     <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-    <ion-button id="dark" (click)="enableDarkTheme(true)" expand="block">Dark Theme</ion-button>
-    <ion-button id="light" (click)="enableDarkTheme(false)" expand="block">Light Theme</ion-button>
     <ion-button (click)="testVideoPlayerPlugin()" expand="block">Test Fullscreen Video</ion-button>
-    <ion-button *ngIf="bPlatform" id="embedded" routerLink="/embedded" routerDirection="forward" expand="block">Test Embedded Videos</ion-button>
+    <ion-button *ngIf="bPlatform" id="embedded" [href]="'./embedded'" routerDirection="forward" expand="block">Test Embedded Videos</ion-button>
     <ion-button (click)="testStoragePlugin()" expand="block">Test Storage</ion-button>
     <ion-button (click)="testStoragePluginWithWrapper()" expand="block">Test Storage With Wrapper</ion-button>
     <ion-button *ngIf="sbPlatform" (click)="testSQLitePlugin()" expand="block">Test SQLite</ion-button>

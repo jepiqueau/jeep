@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { setStorage,setVideoPlayer,setSQLite } from '../../utils/util';
 import { StorageAPIWrapper } from '../../utils/storageAPIWrapper';
-import { DarkModeService } from '../services/darkmode.service';
 
 const videoFrom:string = "http";
 /*  comment line above and uncomment line below
@@ -29,15 +28,7 @@ export class HomePage {
   private _cardSQLite: HTMLIonCardElement;
 
 
-  constructor(private darkMode: DarkModeService) {
-    if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
-      console.log('🎉 Dark mode is supported');
-    }
-  }
-
-  /***************************************
-   *        Lifecycle Methods            *
-   ***************************************/
+  constructor() {}
 
   async ngAfterViewInit() {
     // setup the video player
@@ -73,21 +64,6 @@ export class HomePage {
     this._cardStorage = document.querySelector('.card-storage');
     this._cardSQLite = document.querySelector('.card-sqlite');
   }
-
-  /***************************************
-   *         Private Methods             *
-   ***************************************/
-
-  /**
-   * Switch Off and On Dark Theme
-   * @param mode boolean
-   */ 
-  enableDarkTheme(mode:boolean) {
-    this.darkMode.enableDarkTheme(mode);
-  }
-  /**
-   *  Test the video player capacitor plugin
-   */
   async testVideoPlayerPlugin() {
     this._cardStorage.style.display = "contents";
     this._cardSQLite.style.display = "contents";
@@ -98,9 +74,6 @@ export class HomePage {
     document.addEventListener('jeepCapVideoPlayerEnded', (e:CustomEvent) => { console.log('Event jeepCapVideoPlayerEnded ', e.detail)}, false);
     const res:any  = await this._videoPlayer.initPlayer({mode:"fullscreen",url:this._url});
   }
-  /**
-   *  Test the data storage sqlite capacitor plugin
-   */
   async testStoragePlugin() {
     this._cardStorage.style.display = "initial";
     this._cardSQLite.style.display = "contents";
@@ -141,10 +114,6 @@ export class HomePage {
     }
   }
 
-  /**
-   *  Test the data storage sqlite capacitor plugin 
-   *  using a wrapper to adhere to the Storage API 
-   */
   async testStoragePluginWithWrapper() {
     this._cardStorage.style.display = "initial";
     this._cardSQLite.style.display = "contents";
@@ -196,9 +165,6 @@ export class HomePage {
     }
   }
 
-  /**
-   *  Create a default store 
-   */
   async testFirstStore(): Promise<boolean> {
     //populate some data
     //string
@@ -578,11 +544,6 @@ export class HomePage {
     console.log("*** end testNewEncryptedFourthStore *** ",ret);
     return ret
   }
-
-  /**
-   *  Test the SQLite Database capacitor plugin 
-   */
-
   async testSQLitePlugin() {
     console.log("***** testSQLITE Started")
     this._cardStorage.style.display = "contents";
@@ -667,7 +628,7 @@ export class HomePage {
       sqlcmd = `
       BEGIN TRANSACTION;
       DELETE FROM users;
-      INSERT INTO users (name,email,age) VALUES ("Whiteley","Whiteley.com",30);
+      INSERT INTO users (name,email,age) VALUES ("Whiteley","Whiteley;Bill.com",30);
       INSERT INTO users (name,email,age) VALUES ("Jones","Jones.com",44);
       COMMIT TRANSACTION;
       `;

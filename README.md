@@ -42,6 +42,10 @@ Applications will come in future releases.
 
  - [test-react-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicReactApps/test-react-component-lib)
 
+#### @Ionic5/React app
+
+ - [test-react-component-lib] (https://github.com/jepiqueau/jeep/tree/master/Ionic5ReactApps/test-react-component-lib)
+
 #### Vue app
 
 #### React app
@@ -61,6 +65,8 @@ Applications will come in future releases.
 
  - [angular-sqlite-app-starter] (https://github.com/jepiqueau/angular-sqlite-app-starter)
 
+ - [angular-data-storage-sqlite-app-starter] (https://github.com/jepiqueau/angular-data-storage-sqlite-app-starter)
+
 #### @Ionic5/Angular9 app
  - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/Ionic5Angular9Apps/test-angular-plugin-lib)
 
@@ -68,6 +74,11 @@ Applications will come in future releases.
 #### Ionic/React Application
 
  - [react-sqlite-app-starter] (https://github.com/jepiqueau/react-sqlite-app-starter)
+
+
+#### React app
+
+ - [react-datastoragesqlite-app] (https://github.com/jepiqueau/jeep/tree/master/ReactApps/react-datastoragesqlite-app)
 
 
 #### PWA app

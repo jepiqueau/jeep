@@ -17,7 +17,7 @@ export const setVideoPlayer = async (): Promise<any>=> {
   if (info.platform === "ios" || info.platform === "android") {
     return {plugin:CapacitorVideoPlayer, platform:info.platform};
   }  else {
-    return {plugin:PluginsLibrary.CapacitorVideoPlayer, platform:info.platform};     
+    return {plugin:PluginsLibrary.CapacitorVideoPlayer, platform:"web"};     
   } 
 }
 export const setSQLite = async (): Promise<any>=> {

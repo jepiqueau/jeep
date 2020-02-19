@@ -115,13 +115,17 @@ public class CapacitorSQLite extends Plugin {
             call.reject("Must provide raw SQL statements");
             return;
         }
-        String[] sqlCmdArray = statements.split("\n");
-        StringBuilder builder = new StringBuilder();
-        for(String s : sqlCmdArray) {
-            builder.append(s.trim());
+        // split for each statement
+        String[] sqlCmdArray = statements.split(";\n");
+        // split for a single statement on multilines
+        for (int i = 0; i < sqlCmdArray.length; i++) {
+            String[] array = sqlCmdArray[i].split("\n");
+            StringBuilder builder = new StringBuilder();
+            for(String s : array) {
+                builder.append(s.trim());
+            }
+            sqlCmdArray[i] = builder.toString();
         }
-        String str = builder.toString();
-        sqlCmdArray = str.split(";");
         if(sqlCmdArray[sqlCmdArray.length-1] == "") {
             sqlCmdArray = Arrays.copyOf(sqlCmdArray, sqlCmdArray.length-1);
         }
