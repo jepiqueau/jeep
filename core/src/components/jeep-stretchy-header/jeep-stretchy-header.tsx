@@ -17,7 +17,7 @@ export class JeepStretchyHeader {
   /**
    * The Header Height
    */
-  @Prop() headerheight: string = "20%";
+  @Prop() headerheight: string = "150px";
 
   /**
    * The Header Background Linear Gtradient if any and Url
@@ -25,7 +25,7 @@ export class JeepStretchyHeader {
    *  url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg)"
    *
    */
-  @Prop() headerbackground: string = "url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg)";
+  @Prop() headerbackground: string = "url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg)";
   
   /**
    * The blur effect
@@ -49,7 +49,7 @@ export class JeepStretchyHeader {
   //*****************************
   @Watch('headerheight')
   async parseHeaderHeight(newValue: string) {
-    this._heightIni = newValue ? await getValueFromCss(newValue,'y') : await getValueFromCss("20%",'y');
+    this._heightIni = newValue ? await getValueFromCss(newValue,'y') : await getValueFromCss("150px",'y');
     const headHeight = cssVar(this.el,"--jeep-stretchy-header-height",`${this._heightIni}px`);
     this._height = this._heightIni;
     this.innerHeadHeight = headHeight;
@@ -58,7 +58,9 @@ export class JeepStretchyHeader {
 
   @Watch('headerbackground')
   parseHeaderBackground(newValue: string) {
-    this.innerUrl = newValue ? newValue : "url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg)";
+    const url = newValue ? newValue : "url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/lake-sunset-twilight.jpeg)";
+    const backUrl = cssVar(this.el,"--jeep-stretchy-header-image",`${url}`);
+    this.innerUrl = backUrl;
   }
 
   @Watch('headerbackgroundblur')
@@ -102,7 +104,6 @@ export class JeepStretchyHeader {
   private _window: Window | any;
   private _document: Document | any;
   private _root:Element | any;
-  private _element: any;
   private _header: HTMLDivElement;
   private _mouseStart: boolean = false;
   private _ptStart:Point = {} as Point;
@@ -128,12 +129,13 @@ export class JeepStretchyHeader {
     await this.init();
   }
   async componentDidLoad() {
-    this._header = this._element.querySelector('.stretchy-header');
-    this._header.style.setProperty('height',this.innerHeadHeight);
-    this._headerBackground = this._element.querySelector('.stretchy-header-background');
-    this._headerBackground.style.setProperty("background-image",this.innerUrl);
+    this._header = this.el.shadowRoot.querySelector('.stretchy-header');
+//    this._header.style.setProperty('height',this.innerHeadHeight);
+    this._headerBackground = this.el.shadowRoot.querySelector('.stretchy-header-background');
+//    this._headerBackground.style.setProperty("background-image",this.innerUrl);
     this._ionHeader = this.el.querySelector('ion-header');
     this._ionToolbar = this._ionHeader.querySelector('ion-toolbar');
+
     this._ionContent = this.el.parentNode.querySelector('ion-content');
     if(this._ionHeader) await this._setHeader();
     if(this._ionToolbar) await this._setToolbar();
@@ -150,7 +152,6 @@ export class JeepStretchyHeader {
   private async _init(): Promise<void> {
     this._document = this._window.document;
     this._root = this._document.documentElement;
-    this._element = this.el.shadowRoot;
     this.parseHeaderHeight(this.headerheight ? this.headerheight : "20%");
     this.parseHeaderBackground(this.headerbackground ? this.headerbackground : "url(https://ununsplash.imgix.net/photo-1421091242698-34f6ad7fc088?fit=crop&fm=jpg&h=650&q=75&w=950)");
     this.parseBlur(this.headerbackgroundblur ? this.headerbackgroundblur : false);

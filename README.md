@@ -1,3 +1,5 @@
+[![GitHub version](https://badge.fury.io/gh/jepiqueau%2Fjeep.svg)](https://badge.fury.io/gh/jepiqueau%2Fjeep)
+
 # Jeep
 
 `Jeep` is an open source development repository including:

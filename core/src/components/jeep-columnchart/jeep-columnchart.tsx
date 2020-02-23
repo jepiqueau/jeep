@@ -857,10 +857,10 @@ export class JeepColumnchart {
   }  
 
   render() {
+    let toRender: any[] = [];
     if(this.status.status === 200) {
       let viewBox: string = `0 0 ${this.w_width.toString()} ${this.w_height.toString()}`
-      return (
-        <Host>
+      toRender = [...toRender,
           <div id="div-columnchart-container">
             <div id="div-columnchart-chart">
               <svg id="svg-columnchart" width={this.w_width.toString()} height={this.w_height.toString()} viewBox={viewBox}>
@@ -869,17 +869,17 @@ export class JeepColumnchart {
               </svg>
             </div>
           </div>
-        </Host>
-      );
+      ];
     } else {
-      return (
-        <Host>
-          <div id="div-error-message">
-            <p id="p-error-message">{this.status.message}</p>
-          </div>        
-        </Host>
-      )      
+      toRender = [...toRender,
+        <div id="div-error-message">
+          <p id="p-error-message">{this.status.message}</p>
+        </div>        
+      ];
     }
+    return (
+      <Host>{toRender}</Host>
+    )      
   }
 }
 

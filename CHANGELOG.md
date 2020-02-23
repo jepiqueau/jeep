@@ -1,3 +1,18 @@
+## 0.0.3-6 (2020-02-23)
+
+### Chores
+* @stencil/core: update to 1.8.9 
+
+### Bug Fixes
+
+* refactor components and tests to easy the update to 1.9+
+
+## 0.0.3-5 (2020-02-21)
+
+### Bug Fixes
+
+* fix issue#4 on Web capacitordata-storage-sqlite plugin
+
 ## 0.0.3-4 (2020-02-19)
 
 ### New Features

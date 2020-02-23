@@ -61,7 +61,7 @@ export class JeepPagination {
     @State() visibility: string = 'visible';
     @State() nbItems: number =0;
     @State() activeIndex: number = 0;
-    @State() initialIndex: number = 0;
+//    @State() initialIndex: number = 0;
 
 
     //*********************
@@ -159,21 +159,22 @@ export class JeepPagination {
     }
     private _setPaginationBullets(nbItems:number): Array<JSX.Element> {
         let bullets:JSX.Element[] = [];
-        this.initialIndex = this.activeIndex - this._delta;
+        let initIndex  = this.activeIndex - this._delta;
         const classname: string = `pagination-bullet pagination-bullet-${this.innerDirection}`;
 
         for(let i:number = 0; i < this.innerNDisplay; i++) {
             let appliedClass: string = classname;
-            if(this.initialIndex + i < 0) { 
+            if(initIndex + i < 0) { 
                 appliedClass = `${classname} hidden-bullet`;
-            } else if(this.initialIndex + i === this.activeIndex) {
+            } else if(initIndex + i === this.activeIndex) {
                 appliedClass = `${classname} active-bullet`;
-            } else if ( this.initialIndex + i > nbItems -1) {
+            } else if ( initIndex + i > nbItems -1) {
                 appliedClass = `${classname} hidden-bullet`;
             }
             bullets = [...bullets,
-                <span class={appliedClass} onClick={ () => this._handleClick(this.initialIndex + i)}></span>];      
+                <span class={appliedClass} onClick={ () => this._handleClick(initIndex + i)}></span>];      
         }
+//        this.initialIndex = initIndex;
         return bullets;
     }
     render() {

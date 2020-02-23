@@ -47,14 +47,15 @@ export class CapacitorDataStorageSqliteWeb extends WebPlugin implements Capacito
   async set(options: capDataStorageOptions): Promise<capDataStorageResult> {
     let ret: boolean;
     let key:string = options.key;
-    if (key == null) {
-      return Promise.reject("Must provide key");
+    if (key == null || typeof key != "string") {
+      return Promise.reject("Must provide key as string");
     }
+
     let value: string = options.value;
-    if (value == null) {
-      return Promise.reject("Must provide value");
+    if (value == null || typeof value != "string") {
+      return Promise.reject("Must provide value as string");
     }
-    let data:Data = new Data();
+  let data:Data = new Data();
     data.name = key;
     data.value = value;
     ret = await this.mDb.set(data);
@@ -64,8 +65,8 @@ export class CapacitorDataStorageSqliteWeb extends WebPlugin implements Capacito
   async get(options: capDataStorageOptions): Promise<capDataStorageResult> {
     let ret:  string;
     let key:string = options.key;
-    if (key == null) {
-      return Promise.reject("Must provide key");
+    if (key == null || typeof key != "string") {
+      return Promise.reject("Must provide key as string");
     }
     let data: Data = await this.mDb.get(key);
     ret = data != null ? data.value : null;
@@ -75,8 +76,8 @@ export class CapacitorDataStorageSqliteWeb extends WebPlugin implements Capacito
   async remove(options: capDataStorageOptions): Promise<capDataStorageResult> {
     let ret: boolean;
     let key:string = options.key;
-    if (key == null) {
-      return Promise.reject("Must provide key");
+    if (key == null || typeof key != "string") {
+      return Promise.reject("Must provide key as string");
     }
     ret = await this.mDb.remove(key);
     return Promise.resolve({result:ret});
@@ -91,8 +92,8 @@ export class CapacitorDataStorageSqliteWeb extends WebPlugin implements Capacito
   async iskey(options: capDataStorageOptions): Promise<capDataStorageResult> {
     let ret: boolean;
     let key:string = options.key;
-    if (key == null) {
-      return Promise.reject("Must provide key");
+    if (key == null || typeof key != "string") {
+      return Promise.reject("Must provide key as string");
     }
     ret = await this.mDb.iskey(key);
     return Promise.resolve({result:ret});

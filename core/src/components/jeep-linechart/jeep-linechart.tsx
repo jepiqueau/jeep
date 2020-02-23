@@ -1024,28 +1024,28 @@ import { getBoundingClientRect } from '../../utils/common';
   //* Rendering JSX Element *
   //*************************
     render () {
+        let toRender: any[] = [];
         if(this.status.status === 200) {
             let viewBox: string = `0 0 ${this.w_width.toString()} ${this.w_height.toString()}`
-            return (
-              <Host>
-              <div id="div-linechart-container">
-                <div id="div-linechart-chart">
-                  <svg id="svg-linechart" width={this.w_width.toString()} height={this.w_height.toString()} viewBox={viewBox}>
-                      <rect id="svg-border-rect" class="border-rect hidden" x="0" y="0" width={this.w_width.toString()} height={this.w_height.toString()} stroke={this._prop.bdColor} stroke-width={this._prop.bdWidth} fill="none" fill-opacity="0">
-                      </rect>
-                  </svg>
+            toRender = [...toRender,
+                <div id="div-linechart-container">
+                  <div id="div-linechart-chart">
+                    <svg id="svg-linechart" width={this.w_width.toString()} height={this.w_height.toString()} viewBox={viewBox}>
+                        <rect id="svg-border-rect" class="border-rect hidden" x="0" y="0" width={this.w_width.toString()} height={this.w_height.toString()} stroke={this._prop.bdColor} stroke-width={this._prop.bdWidth} fill="none" fill-opacity="0">
+                        </rect>
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              </Host>
-            )
+            ];
         } else {
-            return (
-              <Host>
-                <div id="div-error-message">
-                  <p id="p-error-message">{this.status.message}</p>
-                </div>        
-              </Host>
-            )      
+            toRender = [...toRender,
+              <div id="div-error-message">
+                <p id="p-error-message">{this.status.message}</p>
+              </div>        
+            ];
         }
+        return (
+        <Host>{toRender}</Host>
+        )      
     }
 };  

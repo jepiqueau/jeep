@@ -1,3 +1,18 @@
+## 0.0.3-4 (2020-02-23)
+
+### Bug Fixes
+
+* update README
+
+## 0.0.3-3 (2020-02-23)
+
+### Chores
+* @stencil/core: update to 1.8.9 
+
+### Bug Fixes
+
+* refactor components and tests to easy the update to 1.9+
+
 ## 0.0.3-2 (2020-02-13)
 
 ### Bug Fixes

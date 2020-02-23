@@ -29,9 +29,10 @@ describe('jeep-html-toprint', () => {
     await page.waitForChanges();
     expect(root).toEqualHtml(`<jeep-html-toprint>
       <mock:shadow-root>
-        <div id="error-div">
-          Error: slot name toprint doesn't exist
-        </div>
+          <div id="error-div">
+            Error: slot name toprint doesn't exist
+          </div>
+          <slot name="toprint"></slot>
         </mock:shadow-root>
     </jeep-html-toprint>`);
   });
@@ -42,9 +43,11 @@ describe('jeep-html-toprint', () => {
     await page.waitForChanges();
     await root.load();
     await page.waitForChanges();
-    
     expect(root).toEqualHtml(`<jeep-html-toprint>
       <mock:shadow-root>
+        <div id="error-div" style="display: none;">
+          Error: slot name toprint doesn't exist
+        </div>
         <slot name="toprint"></slot>
       </mock:shadow-root>
       <div slot="toprint">
@@ -78,6 +81,9 @@ describe('jeep-html-toprint', () => {
     
     expect(root).toEqualHtml(`<jeep-html-toprint>
       <mock:shadow-root>
+        <div id="error-div" style="display: none;">
+          Error: slot name toprint doesn't exist
+        </div>
         <slot name="toprint"></slot>
       </mock:shadow-root>
       <div slot="toprint">

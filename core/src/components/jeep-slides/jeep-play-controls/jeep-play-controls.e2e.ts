@@ -1,5 +1,4 @@
 import { newE2EPage, E2EPage, E2EElement  } from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
 
 describe('jeep-play-controls', () => {
 

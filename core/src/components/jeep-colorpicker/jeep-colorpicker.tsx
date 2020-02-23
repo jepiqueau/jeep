@@ -1,5 +1,5 @@
 import {  h, Component, Host, Prop, Element, Watch, State, Event, EventEmitter, Method, Listen} from '@stencil/core';
-import {  Color }  from '../../global/interfaces//color';
+import {  Color }  from '../../global/interfaces/color';
 import { CloseData} from '../../global/interfaces/jeep-colorpicker';
 import { JsxElement } from 'typescript';
 

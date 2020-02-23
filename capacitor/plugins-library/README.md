@@ -3,29 +3,32 @@
 Jeep Capacitor Plugins Library is a library of Capacitor Plugins including:
 
 
- - [capacitor-video-player](https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/VideoPlayer.md)
+ - [capacitor-video-player] (https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/VideoPlayer.md)
 
- - [capacitor-data-storage-sqlite](https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/DataStorage.md)
+ - [capacitor-data-storage-sqlite] (https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/DataStorage.md)
 
- - [capacitor-sqlite](https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/DatabaseSQLite.md)
+ - [capacitor-sqlite] (https://github.com/jepiqueau/jeep/blob/master/capacitor/plugins-library/docs/DatabaseSQLite.md)
 
 
 
 ## Ionic/Angular Application
- - [test-angular-plugin-lib](https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
- - [angular-sqlite-app-starter](https://github.com/jepiqueau/angular-sqlite-app-starter)
+ - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/IonicAngularApps/test-angular-plugin-lib)
+ - [angular-sqlite-app-starter] (https://github.com/jepiqueau/angular-sqlite-app-starter)
 
 ### Ionic5/Angular9 app
  - [test-angular-plugin-lib] (https://github.com/jepiqueau/jeep/blob/master/Ionic5Angular9Apps/test-angular-plugin-lib)
 
 
 ## Ionic/React Application
- - [react-sqlite-app-starter](https://github.com/jepiqueau/react-sqlite-app-starter)
+ - [react-sqlite-app-starter] (https://github.com/jepiqueau/react-sqlite-app-starter)
 
 
 ## PWA Application
- - [pwa-test-capacitor-plugins](https://github.com/jepiqueau/jeep/blob/master/capacitor/testApps/pwa-test-capacitor-plugins)
+ - [pwa-test-capacitor-plugins] (https://github.com/jepiqueau/jeep/blob/master/capacitor/testApps/pwa-test-capacitor-plugins)
 
+## React Application
+ - [react-datastoragesqlite-app] (https://github.com/jepiqueau/jeep/blob/master/ReactApps/react-datastoragesqlite-app)
+ 
 
 ## Using this library
 

@@ -25,9 +25,6 @@ describe('jeep-linechart', () => {
     rootInstance = null;
   });
 
-  it('builds', () => {
-    expect(new JeepLinechart()).toBeTruthy();
-  });
   it('should return error when no data property given', async () => {
     expect(root).toEqualHtml(`<jeep-linechart style="--top: 0; --left: 0; --width: 800px; --height: 600px; --backgroundcolor: #ffffff;">
       <mock:shadow-root>

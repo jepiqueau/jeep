@@ -16,10 +16,6 @@ export class JeepHtmlToprint {
    * The style for elements in slot
    */
   @Prop() slotstyle: string;
-  /**
-   * A toggle to re-render in case of a ion-menu
-   */
-  @State() toggle: boolean = false;
 
   @State() innerSlotStyle: string = null;
 
@@ -80,8 +76,8 @@ export class JeepHtmlToprint {
   window: Window;
 //  _element: any ;
   _menu: any;
-  _error:string =null;
   _toprint: string;
+  _error: string = null;
 
   //*******************************
   //* Component Lifecycle Methods *
@@ -103,6 +99,11 @@ export class JeepHtmlToprint {
     this.window = window;
 //    this._element = this.el.shadowRoot;
     this.parseSlotStyleProp(this.slotstyle ? this.slotstyle : null);
+    // check if there is a ion-menu and dismiss it
+    this._menu = document.querySelector('ion-menu');
+    if(this._menu !== null) {
+      this._menu.setAttribute('disabled','true');
+    }
     return;
   }
 
@@ -113,17 +114,14 @@ export class JeepHtmlToprint {
         return (item.slot && item.slot === 'toprint') || item.outerHTML.indexOf('slot="toprint"') !== -1 ? item: null});
       this._error = slotDivEl && slotDivEl.length > 0 ? null : "Error: slot name toprint doesn't exist";
       if(this._error === null ) {
+        const erEl: HTMLDivElement = this.el.shadowRoot.querySelector('#error-div');
+        erEl.style.setProperty('display','none');
         slotDivEl[0].innerHTML = this.innerSlotStyle !== null ? this.innerSlotStyle + slotDivEl[0].innerHTML : slotDivEl[0].innerHTML;
-        this._menu = document.querySelector('ion-menu');
-        if(this._menu !== null) {
-          this._menu.setAttribute('disabled','true');
-        }
         this.printPageReady.emit();    
       }
     } else {
       this._error = "Error: slot name toprint doesn't exist";
     }
-    this.toggle = true;
     return;
   }
 
@@ -132,19 +130,24 @@ export class JeepHtmlToprint {
   //*************************
 
   render() {
-      if (this._error !== null) {
-        return (
-          <Host>
-          <div id="error-div">{this._error}</div>
-          </Host>
-          );
-      } else {
-        return (
-          <Host>
-          <slot name='toprint'></slot>
-          </Host>
-        );
-      }
+    /*
+    let toRender: any[] = [];
+    if (this._error !== null) {
+      toRender = [...toRender,
+        <div id="error-div">{this._error}</div>
+      ];
+    } else {
+      toRender = [...toRender,
+        <slot name='toprint'></slot>
+      ];
+    }
+    */
+    return (
+      <Host>
+        <div id="error-div">Error: slot name toprint doesn't exist</div> 
+        <slot name='toprint'></slot>
+      </Host>
+    );
   }
 
 }

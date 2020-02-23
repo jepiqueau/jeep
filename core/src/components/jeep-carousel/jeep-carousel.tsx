@@ -1,4 +1,4 @@
-import { h, Component, Element, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
+import { h, Component, Element, Host, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
 
 @Component({
   tag: 'jeep-carousel',
@@ -678,6 +678,7 @@ export class JeepCarousel {
   }
 
   render() {
+    let toRender: any[] = [];
     if(this.innerData && this.innerData.length > 0) {
       // swiper-container elements
       let swiperContent: any[] = [];
@@ -761,8 +762,7 @@ export class JeepCarousel {
           </div>
         ];
       }
-
-      return [
+      toRender = [...toRender,
         <style>{this.innerStyle}</style>,
         <div class="container">
           { this.innerRtl
@@ -781,12 +781,16 @@ export class JeepCarousel {
           :
             null
           }
-        </div>  
+        </div>
       ];
     } else {
-      return [
+      toRender = [...toRender,
         <div id='fake-card'></div>
       ];
     }
+    return (
+      <Host>{toRender}</Host>  
+    );
+
   }
 }

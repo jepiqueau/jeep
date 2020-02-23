@@ -1,5 +1,4 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
-import { StyleTagOptions } from 'puppeteer';
 
 describe('jeep-svgmorph', () => {
   it('renders', async () => {

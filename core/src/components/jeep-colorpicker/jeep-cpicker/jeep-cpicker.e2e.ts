@@ -19,6 +19,7 @@ describe('jeep-cpicker', () => {
     expect(cmp.getAttribute('color')).toEqual("#ff0000");
     expect(cmp.getAttribute('opacity')).toEqual("1.000");
   });
+
   it('should work without parameters', async () => {
     expect(cmp).toEqualHtml(`
       <jeep-cpicker class="hydrated" color="#ff0000" opacity="1.000">
@@ -699,5 +700,6 @@ describe('jeep-cpicker overall', () => {
     expect(states.hueHandlerY).toBeCloseTo(25.92);
     expect(states.opaHandlerY).toBeCloseTo(25.92);
   });
+
 });
 

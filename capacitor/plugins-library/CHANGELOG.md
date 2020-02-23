@@ -1,3 +1,13 @@
+## 0.0.3-3 (2020-02-21)
+
+### Bug Fixes
+
+* fix issue#4 on Web capacitordata-storage-sqlite plugin
+
+### Added Features
+
+* add a React app demonstrating the use of capacitor-data-storage-sqlite
+
 ## 0.0.3-2 (2020-02-16)
 
 ### Bug Fixes

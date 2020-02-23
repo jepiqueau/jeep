@@ -1,5 +1,5 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
+import { EventSpy } from '@stencil/core/testing';
 import { StyleTagOptions, Viewport } from 'puppeteer';
 
 describe('jeep-colorpicker', () => {
@@ -10,7 +10,7 @@ describe('jeep-colorpicker', () => {
     await page.setContent('<jeep-colorpicker></jeep-colorpicker>');
     cmp = await page.find('jeep-colorpicker');
   });
-  afterEach(() => {
+  afterEach(async () => {
     page = null;
     cmp = null;
   });
@@ -71,15 +71,12 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Color]">
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Okay,Cancel]"></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('buttons')).toEqual("[Okay,Cancel]");
+
   });
   it('renders changes to the buttons [Color,Valid] properties', async () => {
     cmp.setProperty('buttons', '[Color,Valid]');
@@ -87,15 +84,12 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Color,Valid]">
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Valid,Cancel]"></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('buttons')).toEqual("[Valid,Cancel]");
+
   });
   it('renders changes to the buttons [Color,Valid,Dismiss] properties', async () => {
     cmp.setProperty('buttons', '[Color,Valid,Dismiss]');
@@ -103,15 +97,11 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Color,Valid,Dismiss]">
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Valid,Dismiss]"></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('buttons')).toEqual("[Valid,Dismiss]");
   });
   it('renders changes to the hidebuttons properties', async () => {
     cmp.setProperty('hidebuttons', true);
@@ -119,15 +109,11 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1" hidebuttons>
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1" hidebuttons></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('hidebuttons')).toBeTruthy();
   });
   it('renders changes to the hideheader properties', async () => {
     cmp.setProperty('hideheader', true);
@@ -135,15 +121,13 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1" hideheader>
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1"  buttons="[Okay,Cancel]" hideheader></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('buttons')).toEqual("[Okay,Cancel]");
+    expect(await pickEl.getProperty('hideheader')).toBeTruthy();
+
   });
   it('renders changes to the hideopacity properties when opacity not given', async () => {
     cmp.setProperty('hideopacity', true);
@@ -151,16 +135,14 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1" hideopacity>
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1"  buttons="[Okay,Cancel]" hideopacity></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('buttons')).toEqual("[Okay,Cancel]");
+    expect(await pickEl.getProperty('hideopacity')).toBeTruthy();
   });
+
   it('renders changes to the hideopacity properties when opacity is given', async () => {
     cmp.setProperty('opacity', "0.45");
     cmp.setProperty('hideopacity', true);
@@ -168,16 +150,15 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="0.45" hideopacity>
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1"  buttons="[Okay,Cancel]" hideopacity></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
+    expect(await pickEl.getProperty('color')).toEqual("#ff0000");
+    expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(await pickEl.getProperty('buttons')).toEqual("[Okay,Cancel]");
+    expect(await pickEl.getProperty('hideopacity')).toBeTruthy();
+
   });
+
   it('should display colorpicker-button when initiates', async () => {
     const butEl: E2EElement = await page.find('jeep-colorpicker >>> .colorpicker-button');
     expect(butEl).toBeTruthy();
@@ -193,16 +174,6 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
     expect(pickEl).toBeTruthy();
-    expect(cmp).toEqualHtml(`
-      <jeep-colorpicker class="hydrated" color="#ff0000" opacity="1">
-        <mock:shadow-root>
-          <div class="colorpicker-container">
-            <jeep-cpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Okay,Cancel]"></jeep-cpicker>
-          </div>
-        </mock:shadow-root>
-      </jeep-colorpicker>
-    `);
-    expect(cmp.innerHTML).toEqualHtml(``);
     expect(cmp.shadowRoot).toEqualHtml(`
       <div class="colorpicker-container">
         <jeep-cpicker class="hydrated" color="#ff0000" opacity="1" buttons="[Okay,Cancel]"></jeep-cpicker>
@@ -263,6 +234,8 @@ describe('jeep-colorpicker', () => {
     await page.waitForChanges();
     await cmp.callMethod('open');
     await page.waitForChanges();
+    const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
+    expect(pickEl).toBeTruthy();
     expect(openCpickerSpy).toHaveReceivedEventTimes(1);
   });
   it('should fire "jeepColorpickerClose" event when calling close method', async () => {
@@ -350,6 +323,12 @@ describe('jeep-colorpicker overall', () => {
     const button: E2EElement = await page.find('jeep-colorpicker >>> .colorpicker-button');
     button.click();
     await page.waitForChanges();
+    const cmp = await page.find('jeep-colorpicker');
+    expect(cmp).toEqualHtml(`<jeep-colorpicker class="hydrated" color="#17bb17" opacity="0.525">
+    <mock:shadow-root><div class="colorpicker-container">
+    <jeep-cpicker buttons="[Okay,Cancel]" class="hydrated" color="#17bb17" opacity="0.525"></jeep-cpicker>
+    </div></mock:shadow-root></jeep-colorpicker>`);
+    
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
     expect(await pickEl.getProperty('color')).toEqual("#17bb17");
     expect(await pickEl.getProperty('opacity')).toEqual("0.525");
@@ -409,10 +388,10 @@ describe('jeep-colorpicker overall', () => {
     const button: E2EElement = await page.find('jeep-colorpicker >>> .colorpicker-button');
     button.click();
     await page.waitForChanges();
-    expect(openCpickerSpy).toHaveReceivedEventTimes(1);
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
     expect(await pickEl.getProperty('color')).toEqual("#ff0000");
     expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(openCpickerSpy).toHaveReceivedEventTimes(1);
     const rect:any = await getBoundingClientRect('jeep-colorpicker','jeep-cpicker','.cpicker-wrapper'); 
     expect(rect.top).toEqual(64);
     expect(rect.left).toEqual(36);
@@ -462,10 +441,10 @@ describe('jeep-colorpicker overall', () => {
     const button: E2EElement = await page.find('jeep-colorpicker >>> .colorpicker-button');
     button.click();
     await page.waitForChanges();
-    expect(openCpickerSpy).toHaveReceivedEventTimes(1);
     const pickEl: E2EElement = await page.find('jeep-colorpicker >>> jeep-cpicker');
     expect(await pickEl.getProperty('color')).toEqual("#ff0000");
     expect(await pickEl.getProperty('opacity')).toEqual("1");
+    expect(openCpickerSpy).toHaveReceivedEventTimes(1);
     const rect:any = await getBoundingClientRect('jeep-colorpicker','jeep-cpicker','.cpicker-wrapper'); 
     expect(rect.top).toEqual(64);
     expect(rect.left).toEqual(36);

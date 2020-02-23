@@ -1,4 +1,4 @@
-import { h, Component, Element, State, Prop, Method, Watch } from '@stencil/core';
+import { h, Component, Host, Element, State, Prop, Method, Watch } from '@stencil/core';
 import { CubicBezier}  from '../../global/interfaces/svggeom';
 import { cubicBezierfromPath, alignPathSegments } from '../../utils/svgelements'
 import { StateProperties } from '../../global/interfaces/jeep-svgmorph';
@@ -369,8 +369,9 @@ export class JeepSvgmorph {
   //*************************
 
   render() {
+    let toRender: any[] = [];
     if(this.isSVG) {
-      return (
+      toRender = [...toRender,
           <div id="morph-container">
             <div id="morph-svg-container">
               <svg id="morph-svg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -382,13 +383,16 @@ export class JeepSvgmorph {
                   </path>
               </svg>
             </div>
-        </div>
-      );
+          </div>
+      ];
     } else {
-      return (
+      toRender = [...toRender,
         <div id="fake-container">
-        </div>   
-      );
+        </div> 
+      ]
     }
+    return (
+      <Host>{toRender}</Host>  
+    );
   }
 }

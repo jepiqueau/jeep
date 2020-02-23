@@ -1,9 +1,16 @@
 
 :host {
   display: block;
+  --jeep-stretchy-header-image:url(https://raw.githubusercontent.com/jepiqueau/jeep/master/assets/images/italy-mountains.jpeg);
+  --jeep-stretchy-header-height: 150px;
+}
+
+.stretchy-header {
+  height: var(--jeep-stretchy-header-height);
 }
 
 .stretchy-header-background {
+  background-image: var(--jeep-stretchy-header-image);
   background-size: cover;
   background-position: center;
   height: 100%;

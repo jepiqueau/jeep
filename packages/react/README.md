@@ -1,3 +1,6 @@
+[![npm version](https://img.shields.io/npm/v/@jeepq/react/latest.svg)](https://www.npmjs.com/package/@jeepq/react)
+[![license](https://img.shields.io/npm/l/@jeepq/react.svg)](https://github.com/jepiqueau/jeep/blob/master/packages/react/LICENSE)
+
 # Jeep React Component Library
 
 This is a library of React Web Component built on top of the Jeep Stencil Components library.

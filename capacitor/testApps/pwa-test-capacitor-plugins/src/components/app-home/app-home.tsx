@@ -58,10 +58,11 @@ export class AppHome {
       result = await storage.get({ key: "session1" });
       let ret1a = false;
       if (result.value === null) ret1a = true;
+      console.log("** ret1 ret1a ",ret1, ret1a)
     // json 
       let data:any = {'a':20,'b':'Hello World','c':{'c1':40,'c2':'cool'}}
-      await storage.set({key:'testJson',value:JSON.stringify(data)})
-      result = await storage.get({key:"testJson"})
+      await storage.set({key:'testJson',value:JSON.stringify(data)});
+      result = await storage.get({key:"testJson"});
       console.log("Get Data : " + result.value);
       let ret2: boolean = false;
       if (result.value === JSON.stringify(data)) ret2 = true;
@@ -72,7 +73,9 @@ export class AppHome {
       console.log("Get Data : " + result.value);
       let ret3: boolean = false;
       if (result.value === data1.toString()) ret3 = true;
+      console.log("** ret3 ",ret3)
       if (ret1 && ret1a && ret2 && ret3) retpopulate = true;
+      console.log("** retpopulate ",retpopulate)
       if (retpopulate) {
         document.querySelector('.populate').classList.remove('hidden');
       }

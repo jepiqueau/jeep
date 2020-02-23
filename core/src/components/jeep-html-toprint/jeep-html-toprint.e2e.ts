@@ -1,5 +1,5 @@
 import { newE2EPage, E2EPage, E2EElement} from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
+import { EventSpy } from '@stencil/core/testing';
 
 describe('jeep-html-toprint', () => {
   it('renders', async () => {
@@ -12,6 +12,20 @@ describe('jeep-html-toprint', () => {
   it('Should return error when slot toprint not defined', async () => {
     const page: E2EPage = await newE2EPage();
     await page.setContent('<jeep-html-toprint><p>Hello, World!</p></jeep-html-toprint>');
+    await page.waitForChanges();
+    const cmp: E2EElement = await page.find('jeep-html-toprint');
+    expect(cmp).toEqualHtml(`<jeep-html-toprint class="hydrated">
+    <mock:shadow-root>
+      <div id="error-div">
+        Error: slot name toprint doesn't exist
+      </div>
+      <slot name="toprint"></slot>
+    </mock:shadow-root>
+      <p>
+        Hello, World!
+      </p>
+    </jeep-html-toprint>`);
+
     const slotEl: E2EElement = await page.find('jeep-html-toprint >>> #error-div');
     expect(slotEl.textContent).toEqual(`Error: slot name toprint doesn't exist`);
 
@@ -20,8 +34,6 @@ describe('jeep-html-toprint', () => {
   it('Should return error when slot name attribute != "toprint" when slot defined', async () => {
     const page: E2EPage = await newE2EPage();
     await page.setContent('<jeep-html-toprint><div slot="end"><p>Hello, World!</p></div></jeep-html-toprint>');
-    const slotEl: E2EElement = await page.find('jeep-html-toprint >>> slot');
-    expect(slotEl).toBeNull();
     const errorEl: E2EElement = await page.find('jeep-html-toprint >>> #error-div');
     expect(errorEl.textContent).toEqual(`Error: slot name toprint doesn't exist`);
 

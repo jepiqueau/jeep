@@ -67,11 +67,7 @@ const oriCBz1:string = "M 250,100 C 256.67,143.33 263.33,186.67 270,230 C 313.33
 
 
 describe('jeep-svgmorph', () => {
-  it('should build', () => {
-    expect(new JeepSvgmorph()).toBeTruthy();
-  });
 
-  describe('rendering', () => {
     let page: any;
     let root: any;
     let rootInstance: any;
@@ -599,5 +595,5 @@ describe('jeep-svgmorph', () => {
       expect(alPaths[0].cBz).toEqual(nPath1);
       expect(alPaths[1].cBz).toEqual(nPath2);
     });
-  });
+
 });
