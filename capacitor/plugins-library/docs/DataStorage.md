@@ -47,7 +47,7 @@ Get the value of a given key from the store
 
 Type: `Promise<{value:string}>`
 
-### `isKey({key:"foo"}) => Promise<{result:boolean}>`
+### `iskey({key:"foo"}) => Promise<{result:boolean}>`
 
 Check if a given key exists in the store
 
