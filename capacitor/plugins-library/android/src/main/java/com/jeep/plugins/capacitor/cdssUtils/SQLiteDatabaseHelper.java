@@ -98,6 +98,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
                encryptDataBase(secret);
            } catch (Exception e) {
                Log.d(TAG, "InitializeSQLCipher: Error while encrypting the database");
+               database = null;
            } finally {
                databaseFile = context.getDatabasePath(dbName);
                database = SQLiteDatabase.openOrCreateDatabase(databaseFile, secret, null);
@@ -149,6 +150,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             Log.d(TAG, "Error: execSQL failed: ",e);
+            return Integer.valueOf(-1);
         } finally {
             return dbChanges();
         }
@@ -173,6 +175,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             Log.d(TAG, "Error: runSQL failed: ",e);
+            return Integer.valueOf(-1);
         } finally {
             return dbChanges();
         }
@@ -227,7 +230,10 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
                         } while (c.moveToNext());
                     }
                 } catch (Exception e) {
-                    Log.d(TAG, "keysvalues: Error while trying to get all keys/values from storage database");
+                    Log.d(TAG, "Error: Error while creating the resulting cursor");
+                    c.close();
+                    return new JSArray();
+
                 } finally {
                     if (c != null && !c.isClosed()) {
                         c.close();
@@ -240,6 +246,8 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             Log.d(TAG, "Error: querySQL failed: ",e);
+            return new JSArray();
+
         } finally {
             return retArray;
         }
@@ -255,6 +263,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             database.close();
         } catch (Exception e) {
             Log.d(TAG, "Error: closeDB failed: ",e);
+            return false;
         } finally {
             isOpen = false;
             ret = true;
@@ -298,6 +307,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             Log.d(TAG, "Error: dropAllTables failed: ",e);
+            return false;
         } finally {
             ret = true;
         }

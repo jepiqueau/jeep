@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'JeepqCapacitor'
-  s.version = '0.0.3-3'
+  s.version = '0.0.3'
   s.summary = 'Capacitor Plugins Library'
   s.license = 'MIT'
   s.homepage = 'https://github.com/jepiqueau/jeep.git'

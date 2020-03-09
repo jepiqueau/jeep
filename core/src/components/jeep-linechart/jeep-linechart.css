@@ -32,7 +32,7 @@
     top: 0;
     left: 0;
     margin: 0 auto;
-    width: 100%;
+    width: var(--width);
     height:60px;
     line-height:60px;
     text-align:left;

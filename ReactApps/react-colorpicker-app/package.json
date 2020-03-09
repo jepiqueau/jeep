@@ -1,12 +1,12 @@
 {
   "name": "react-colorpicker-app",
-  "version": "0.0.3-4",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
-    "@jeepq/react": "0.0.3-4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "^3.3.0"
+    "@jeepq/react": "0.0.3",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "^3.4.0"
   },
   "keywords": [
     "React",

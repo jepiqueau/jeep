@@ -87,3 +87,7 @@ Applications will come in future releases.
 
  - [pwa-test-capacitor-plugins] (https://github.com/jepiqueau/jeep/tree/master/capacitor/testApps/pwa-test-capacitor-plugins)
 
+
+#### Python Django Flask Jinja2 app
+
+- [python-django-flask-jinja2-ionic-app] (https://github.com/jepiqueau/python-django-flask-jinja2-ionic-app)

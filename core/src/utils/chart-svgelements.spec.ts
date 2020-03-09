@@ -2,9 +2,10 @@ import { Rect, Point } from '../global/interfaces/geom';
 import { SVGOptions, DataSet, AxisLength, NearestPoint, DataPoint }  from '../global/interfaces/charts';
 import { axisMaxArrayAttribute, axisMinArrayAttribute, axisMaxArrayLabel , axisRange,
         axisNiceNumber, axisGetNumber, maxLegend, axisConvertX, axisConvertY,
-        scalarDistance, getTotalLength, getNearest, getSVGOptions} from './chart-svgelements';
+        scalarDistance, getTotalLength, getNearest, getSVGOptions, checkDataSetsValidity} from './chart-svgelements';
 
 describe('svgelements', () => {
+
     describe('SVGOptions-utils', () => {
         it('should return the default SVGOptions', () => {
             let opt:SVGOptions = getSVGOptions();
@@ -576,5 +577,148 @@ describe('svgelements', () => {
             expect(near.point.y).toBeCloseTo(124.9);            
         });
     });
+    describe('dataSets validity', () => {
 
+        it('should return error when key not in ["x","label","y"]', () => {
+            var axisType = ['x','y'];
+            var data1: Array<any> = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { x: '2012-01-01', y: 450 },
+                    { v: '2012-01-02', y: 414 },
+                    { x: '2012-01-03', y: 520 },
+                ] 
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent key in dataPoints key in [" + axisType + "]");
+            data1 = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { x: '2012-01-01', y: 450 },
+                    { x: '2012-01-02', y: 414 },
+                    { x: '2012-01-03', z: 520 },
+                ] 
+            }];
+            dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent key in dataPoints key in [" + axisType + "]");
+            axisType = ['label','y'];
+            data1 = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { label: '2012-01-01', y: 450 },
+                    { x: '2012-01-02', y: 414 },
+                    { label: '2012-01-03', y: 520 },
+                ] 
+            }];
+            dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent key in dataPoints key in [" + axisType + "]");
+            axisType = ['x','y'];
+            data1 = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { label: '2012-01-01', y: 450 },
+                    { label: '2012-01-02', y: 414 },
+                    { label: '2012-01-03', y: 520 },
+                ] 
+            }];
+            dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent key in dataPoints key in [" + axisType + "]");
+
+        });
+        it('should return error when key "x" or "label" are not of consistent type', () => {
+            var axisType = ['x','y'];
+            var data1: Array<any> = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { x: '2012-01-01', y: 450 },
+                    { x: 1, y: 414 },
+                    { x: '2012-01-03', y: 520 },
+                ] 
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent " + axisType[0] + " type in dataPoints");
+
+            data1 = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { x: 1, y: 450 },
+                    { x: 5, y: 414 },
+                    { x: "10", y: 520 },
+                ] 
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent " + axisType[0] + " type in dataPoints");
+            axisType = ['label','y'];
+            data1 = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { label: '2012-01-01', y: 450 },
+                    { label: 1, y: 414 },
+                    { label: '2012-01-03', y: 520 },
+                ] 
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("Non consistent " + axisType[0] + " type in dataPoints");
+        });
+        it('should return error when "label" is not of type string', () => {
+            var axisType = ['label','y'];
+            var data1: Array<any> = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { label: 1, y: 450 },
+                    { label: 3, y: 414 },
+                    { label: 5, y: 520 },
+                ] 
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("DataPoints label must be of type string");
+        });
+        it('should return error when DataSet DataPoints "label" not the same length', () => {
+            var axisType = ['label','y'];
+            var data1: Array<any> = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { label: '2012-01-01', y: 450 },
+                    { label: '2012-01-02', y: 414 },
+                    { label: '2012-01-03', y: 520 },
+                ]
+            }, {
+                color: '#ffff00',
+                dataPoints: [
+                    { label: '2012-01-02', y: 414 },
+                ]
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("DataSet DataPoints having 'label' or 'x' of type string must be of same length");
+        });
+        it('should return error when DataSet DataPoints "x" of type string not the same length', () => {
+            var axisType = ['x','y'];
+            var data1: Array<any> = [{
+                color: '#ff0000',
+                dataPoints: [
+                    { x: '2012-01-01', y: 450 },
+                ]
+            }, {
+                color: '#ffff00',
+                dataPoints: [
+                    { x: '2012-01-01', y: 450 },
+                    { x: '2012-01-02', y: 414 },
+                    { x: '2012-01-03', y: 520 },
+                ]
+            }];
+            var dataSets = checkDataSetsValidity(data1,axisType);
+            expect(dataSets.dataSets).toBeNull();
+            expect(dataSets.message).toEqual("DataSet DataPoints having 'label' or 'x' of type string must be of same length");
+        });
+
+    });
 });

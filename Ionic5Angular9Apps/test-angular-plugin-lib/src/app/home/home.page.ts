@@ -203,7 +203,12 @@ export class HomePage {
       console.log("Get Data : " + result.value);
       let ret3: boolean = false;
       if (result.value === data1.toString()) ret3 = true;
-      if (ret1 && ret2 && ret3) retpopulate = true;
+      // getting a value of a non existing key
+      result = await this._storage.get({key:"foo"})
+      console.log("Get Data : " + result.value);
+      let ret4: boolean = false;
+      if(result.value === null) ret4 = true;
+      if (ret1 && ret2 && ret3 && ret4) retpopulate = true;
       if (retpopulate) document.querySelector('.populate').classList.remove('display');
       console.log(" before isKey testNumber ") 
       result = await this._storage.iskey({key:"testNumber"})
@@ -582,6 +587,7 @@ export class HomePage {
     let retQuery2: boolean = false;
     let retQuery3: boolean = false;
     let retQuery4: boolean = false;
+    let retQuery5: boolean = false;
     let retRun1: boolean = false;
     let retRun2: boolean = false;
     let retClose: boolean = false;
@@ -658,13 +664,15 @@ export class HomePage {
       retQuery1 = retSelect.values.length === 2 ? true : false;
       const row1: any = retSelect.values[0];
       console.log("row1 users ",JSON.stringify(row1))
-      const resQueryRow1:boolean = (row1.id === 1 && row1.name === "Whiteley" && row1.email === "Whiteley.com")  ? true : false;
+      const resQueryRow1:boolean = (row1.id === 1 && row1.name === "Whiteley" && row1.email === "Whiteley;Bill.com")  ? true : false;
       const row2: any = retSelect.values[1];
       console.log("row2 users ",JSON.stringify(row2))
       const resQueryRow2:boolean = (row2.id === 2 && row2.name === "Jones" && row2.email === "Jones.com")  ? true : false;
       console.log("retQuery1 resQueryRow1 resQueryRow2 ",retQuery1,resQueryRow1,resQueryRow2)
       if (retQuery1 && resQueryRow1 && resQueryRow2) {
         document.querySelector('.query1').classList.remove('display');        
+      } else {
+        retQuery1 = false;
       }
       // Select all Messages
       sqlcmd = "SELECT * FROM messages";
@@ -680,7 +688,18 @@ export class HomePage {
       console.log("retQuery2 resQueryMRow1 resQueryMRow2 ",retQuery2,resQueryMRow1,resQueryMRow2)
       if (retQuery2 && resQueryMRow1 && resQueryMRow2) {
         document.querySelector('.query2').classList.remove('display');        
+      } else {
+        retQuery2 = false;
       }
+      // Select from non existing table
+      sqlcmd = "SELECT * FROM foo";
+      var retFoo1: any = await this._sqlite.query({statement:sqlcmd,values:[]});
+      if(retFoo1.values.length === 0 ) retQuery5 = true;
+      if (retQuery5) {
+        document.querySelector('.query5').classList.remove('display');        
+      }
+
+
       // Insert a new User with SQL and Values
 
       sqlcmd = "INSERT INTO users (name,email,age) VALUES (?,?,?)";
@@ -727,7 +746,7 @@ export class HomePage {
       const res = await this._sqlite.close({database:"testsqlite"});
       if(res.result) retClose = true;
       if(!retExecute1 || !retExecute2 || !retExecute3 || !retQuery1 || !retRun1 || 
-        !retRun2 || !retQuery2 || !retQuery3 || !retQuery4 || !retClose) {
+        !retRun2 || !retQuery2 || !retQuery3 || !retQuery4 || !retQuery5 || !retClose) {
         document.querySelector('.sql-failure1').classList.remove('display');
       } else {
         console.log("***** End testDatabase *****")

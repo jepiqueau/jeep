@@ -4,79 +4,88 @@ It is then available only for IOS and Android platforms.
 Databases can be or not encrypted using SQLCipher module. 
 
 
+If an error occurs, since release 0.0.3 
+
+- For all methods, a message containing the error message will be returned
+
+- For execute and run commands, -1 will be returned in changes
+  
+- For query command, an empty array will be returned in values
+
+
 ## Methods available
 
-### `open({database:"fooDB"}) => Promise<{result:boolean}>`
+### `open({database:"fooDB"}) => Promise<{result:boolean,message:string}>`
 
 Open a database, 
 the plugin add a suffix "SQLite" and an extension ".db" to the name given ie (fooDBSQLite.db)
 
 #### Returns
 
-Type: `Promise<{result:boolean}>`
+Type: `Promise<{result:boolean,message:string}>`
 
-### `close({database:"fooDB"}) => Promise<{result:boolean}>`
+### `close({database:"fooDB"}) => Promise<{result:boolean,message:string}>`
 
 Close a database
 
 #### Returns
 
-Type: `Promise<{result:boolean}>`
+Type: `Promise<{result:boolean,message:string}>`
 
 
-### `execute({statements:"fooStatements"}) => Promise<{changes:number}>`
+### `execute({statements:"fooStatements"}) => Promise<{changes:number,message:string}>`
 
 Execute a batch of raw SQL statements
 
 #### Returns
 
-Type: `Promise<{changes:number}>`
+Type: `Promise<{changes:number,message:string}>`
 
-### `run({statement:"fooStatement"}) => Promise<{changes:number}>`
+### `run({statement:"fooStatement"}) => Promise<{changes:number,message:string}>`
 
 Run a SQL statement
 
 #### Returns
 
-Type: `Promise<{changes:number}>`
+Type: `Promise<{changes:number,message:string}>`
 
 
-### `run({statement:"fooStatement VALUES (?,?,?)",values:[1,"foo1","foo2"]}) => Promise<{changes:number}>`
+### `run({statement:"fooStatement VALUES (?,?,?)",values:[1,"foo1","foo2"]}) => Promise<{changes:number,message:string}>`
 
 Run a SQL statement with given values
 
 #### Returns
 
-Type: `Promise<{changes:number}>`
+Type: `Promise<{changes:number,message:string}>`
 
-### `query({statement:"fooStatement"}) => Promise<{changes:number}>`
+### `query({statement:"fooStatement"}) => Promise<{values:Array<any>,message:string}>`
 
 Query a SELECT SQL statement
 
 #### Returns
 
-Type: `Promise<{changes:number}>`
+Type: `Promise<{values:Array<any>,message:string}>`
 
 
-### `query({statement:"fooStatement VALUES (?)",values:["foo1"]}) => Promise<{changes:number}>`
+### `query({statement:"fooStatement VALUES (?)",values:["foo1"]}) => Promise<{values:Array<any>,message:string}>`
 
 Query a SELECT SQL statement with given values
 
 #### Returns
 
-Type: `Promise<{changes:number}>`
+Type: `Promise<{values:Array<any>,message:string}>`
 
-### `deleteDatabase({database:"fooDB"}) => Promise<{result:boolean}>`
+### `deleteDatabase({database:"fooDB"}) => Promise<{result:boolean,message:string}>`
 
 Delete a database
 
 #### Returns
 
-Type: `Promise<{result:boolean}>`
+Type: `Promise<{result:boolean,message:string}>`
 
 ## Methods available for encrypted database in IOS and Android
 
-### `openStore({database:"fooDB",encrypted:true,mode:"encryption"}) => Promise<{result:boolean}>`
+### `openStore({database:"fooDB",encrypted:true,mode:"encryption"}) => Promise<{result:boolean,message:string}>`
 
 Encrypt an existing store with a secret key and open the store with given database name.
 
@@ -87,23 +96,23 @@ and update the default values before building your app.
 
 #### Returns
 
-Type: `Promise<{result:boolean}>`
+Type: `Promise<{result:boolean,message:string}>`
 
-### `openStore({database:"fooDB",encrypted:true,mode:"secret"}) => Promise<{result:boolean}>`
+### `openStore({database:"fooDB",encrypted:true,mode:"secret"}) => Promise<{result:boolean,message:string}>`
 
 Open an encrypted store with given database and table names and secret key.
 
 #### Returns
 
-Type: `Promise<{result:boolean}>`
+Type: `Promise<{result:boolean,message:string}>`
 
-### `openStore({database:"fooDB",encrypted:true,mode:"newsecret"}) => Promise<{result:boolean}>`
+### `openStore({database:"fooDB",encrypted:true,mode:"newsecret"}) => Promise<{result:boolean,message:string}>`
 
 Modify the secret key with the newsecret key of an encrypted store and open it with given database and table names and newsecret key.
 
 #### Returns
 
-Type: `Promise<{result:boolean}>`
+Type: `Promise<{result:boolean,message:string}>`
 
 
 ## Using the Plugin in your App

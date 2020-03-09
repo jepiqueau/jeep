@@ -1,7 +1,8 @@
 {
   "name": "ionic-react-colorpicker",
-  "version": "0.0.3-4",
+  "version": "0.0.3",
   "description": "Ionic/React App demonstrating the use of @jeepq/react",
+  "homepage": "/",
   "keywords": [
     "jeep",
     "ionic/react",
@@ -12,19 +13,19 @@
   "dependencies": {
     "@ionic/react": "^4.11.10",
     "@ionic/react-router": "^4.11.10",
-    "@jeepq/react": "0.0.3-4",
+    "@jeepq/react": "0.0.3",
     "@types/jest": "24.0.21",
     "@types/node": "12.12.3",
-    "@types/react": "^16.9.17",
+    "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.4",
     "@types/react-router": "^5.1.4",
     "@types/react-router-dom": "^4.3.1",
     "ionicons": "^4.6.3",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.4.0",
     "typescript": "3.6.3"
   },
   "scripts": {
@@ -52,6 +53,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jepiqueau/jeep/issues"
-  },
-  "homepage": "https://github.com/jepiqueau/jeep#readme"
+  }
 }

@@ -284,6 +284,5 @@ describe('svgelements', () => {
         expect(textEl.getAttribute('y')).toEqual("72.5");
     });
     
-  
 });
 

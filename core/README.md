@@ -62,12 +62,20 @@ This is a library of Stencil Web Components including
 Go to the different application examples
 
 #### @Ionic/Angular app
+
 - [test-angular-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicAngularApps/test-angular-component-lib)
 
+#### @Ionic5/Angular9 app
+
+ - [test-angular-component-lib] (https://github.com/jepiqueau/jeep/tree/master/Ionic5Angular9Apps/test-angular-component-lib)
 
 #### @Ionic/React app
 
 - [test-react-component-lib] (https://github.com/jepiqueau/jeep/tree/master/IonicReactApps/test-react-component-lib)
+
+#### @Ionic5/React app
+
+ - [test-react-component-lib] (https://github.com/jepiqueau/jeep/tree/master/Ionic5ReactApps/test-react-component-lib)
 
 #### Vue app
 
@@ -78,3 +86,7 @@ Go to the different application examples
 #### PWA app
 
 - [Jeep Viewme App] (https://github.com/jepiqueau/jeep/tree/master/pwa-components-viewme)
+
+#### Python Django Flask Jinja2 app
+
+- [python-django-flask-jinja2-ionic-app] (https://github.com/jepiqueau/python-django-flask-jinja2-ionic-app)

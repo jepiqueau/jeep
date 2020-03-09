@@ -65,3 +65,8 @@ export interface SVGOptions {
     strokeDashoffset?: string;
     viewbox?: string;
 }
+
+export interface DataSets {
+    dataSets?: Array<DataSet>;
+    message?: string;
+}

@@ -41,7 +41,8 @@ describe('jeep-linechart', () => {
   });
 
   it('should return error when no data given', async () => {
-    root.data = JSON.stringify({});
+
+  root.data = JSON.stringify({});
     await page.waitForChanges(); 
     expect(root).toEqualHtml(`<jeep-linechart 
       data=${root.data}
@@ -109,14 +110,14 @@ describe('jeep-linechart', () => {
       <mock:shadow-root>
         <div id="div-error-message">
           <p id="p-error-message">
-          Error: no x data in dataset: 0 of data property
+          Error: no 'x' or 'label' data in dataset: 0 of data property
           </p>
         </div>
       </mock:shadow-root>
     </jeep-linechart>`);
     const status = await root.getStatus();
     expect(status.status).toEqual(400);
-    expect(status.message).toEqual("Error: no x data in dataset: 0 of data property");      
+    expect(status.message).toEqual("Error: no 'x' or 'label' data in dataset: 0 of data property");      
   });
 
   it('should return status 200 when dataPoints given in data', async () => {
@@ -747,5 +748,6 @@ describe('functions', () => {
       expect(spyContainerSize).toHaveBeenCalled();
       expect(spyRenderChart).toHaveBeenCalled();
   });
+
 });
 

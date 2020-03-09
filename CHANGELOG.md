@@ -1,3 +1,22 @@
+## 0.0.3 (2020-03-09)
+
+### Chores
+* @ionic/angular: update to 5.0.4
+* @ionic/react: update to 5.0.4
+* angular: update to 9.0.5
+* react: update to 16.13.0
+
+### Added Features
+
+* update line-chart to accept One point, label or x
+
+### Bug Fixes
+
+* fix issue#7 on Android and IOS capacitor-sqlite plugin by adding a return message containing the error message. 
+In case of failure in 
+ - the Execute or Run commands the changes returned value will be equal to -1
+ - the Query command the values will returned an empty array
+
 ## 0.0.3-6 (2020-02-23)
 
 ### Chores

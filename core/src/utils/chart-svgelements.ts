@@ -1,5 +1,5 @@
 import { Point, Rect } from '../global/interfaces/geom';
-import { Legend, NearestPoint, AxisLength, DataPoint, DataSet, SVGOptions, Anim } from '../global/interfaces/charts';
+import { Legend, NearestPoint, AxisLength, DataPoint, DataSet, DataSets, SVGOptions, Anim } from '../global/interfaces/charts';
 import { getBoundingClientRect } from './common'; 
 const xmlns:string = "http://www.w3.org/2000/svg";
 
@@ -59,6 +59,22 @@ export const updateRect = (svg:Element,id:string,rect:Rect): Element => {
     rectEl.setAttributeNS (null, "width", rect.width.toString());
     rectEl.setAttributeNS (null, "height", rect.height.toString());
     return rectEl;
+}
+export const createCircle = (g:Element,pos:Point,radius:number,options?:any): Element => {
+    let opt: SVGOptions = getSVGOptions(options);
+    let circleEl:Element = createSVGElement('circle',g);
+    circleEl.setAttributeNS (null, "cx", pos.x.toString());
+    circleEl.setAttributeNS (null, "cy", pos.y.toString());
+    circleEl.setAttributeNS (null, "r", radius.toString());
+    elementSVGOptions(opt,circleEl);
+    return circleEl;
+}
+export const updateCircle = (svg:Element,id:string,pos:Point, radius:number): Element => {
+    let circleEl:Element = svg.querySelector('#'+id);
+    circleEl.setAttributeNS (null, "cx", pos.x.toString());
+    circleEl.setAttributeNS (null, "cy", pos.y.toString());
+    circleEl.setAttributeNS (null, "r", radius.toString());
+    return circleEl;
 }
 export const createPolyline = (g:Element,points:string,options?:any): Element => {
     let opt: SVGOptions = getSVGOptions(options);
@@ -387,13 +403,22 @@ export const axisRange = (arr:Array<DataSet>, axis:string,_interval?:number, _ze
     const zero: boolean = _zero ? _zero : false;
     let lenAxis:AxisLength = {} as AxisLength;
     if(axis === "label" && arr[0].dataPoints[0].label) {
-        lenAxis.label = axisMaxArrayLabel(arr,"label").label;
+        if(arr.length > 1 || arr[0].dataPoints.length > 1) {
+            lenAxis.label = axisMaxArrayLabel(arr,"label").label;
+        } else {
+            lenAxis.label = arr[0].dataPoints[0].label;
+        }
         lenAxis.type = 'string';
         if(interval != 0) lenAxis.interval = interval;
     } else if (axis === "x" && typeof arr[0].dataPoints[0].x === 'string') {
-        lenAxis.label = axisMaxArrayLabel(arr,"x").x;
+        if(arr.length > 1 || arr[0].dataPoints.length > 1) {
+            lenAxis.label = axisMaxArrayLabel(arr,"x").x;
+        } else {
+            lenAxis.label = arr[0].dataPoints[0].x;
+        }
         lenAxis.type = 'string';
         if(interval != 0) lenAxis.interval = interval;
+
     } else if ((axis === "x" && typeof arr[0].dataPoints[0].x === 'number') || axis ==="y") {
         let maxAxis: number;
         let minAxis: number;
@@ -403,8 +428,13 @@ export const axisRange = (arr:Array<DataSet>, axis:string,_interval?:number, _ze
             minAxis = axisMinArrayAttribute(arr,axis).y;
         }
         if(axis === "x"){
-            maxAxis = axisMaxArrayAttribute(arr,axis).x;
-            minAxis = axisMinArrayAttribute(arr,axis).x; 
+            if(arr.length > 1 || arr[0].dataPoints.length > 1) {
+                maxAxis = axisMaxArrayAttribute(arr,axis).x;
+                minAxis = axisMinArrayAttribute(arr,axis).x;
+            } else {
+                maxAxis = arr[0].dataPoints[0].x + interval / 2;
+                minAxis = arr[0].dataPoints[0].x - interval / 2;
+            }
         }
         if( maxAxis > 0 && minAxis >=0) {
             lenAxis.top = axisGetNumber(maxAxis,interval,false,false);
@@ -472,8 +502,109 @@ export const getTotalLength = (arr:Array<Point>): number => {
     }
     return length;
 }
-         
+/*
+export const numberOfXlines = (arr:Array<DataSet>,type:string): InfoDataSets => {
+    let retValue: InfoDataSets = {};
+    let maxPoints: number  = null;
+    let nDataSet: number = null;
+    let onePoints: Array<{
+        nDataSet?: number;
+        indexOnePoint?: number; 
+    }> = []; 
 
+    for (let i:number = 0;i<arr.length;i++){
+        if (arr[i].dataPoints.length === 1 ) onePoints.push({'nDataSet': i});
+        if (!maxPoints || arr[i].dataPoints.length > maxPoints) {
+            maxPoints = arr[i].dataPoints.length;
+            nDataSet = i;
+        }
+    }
+    retValue.maxPoints = maxPoints;
+    retValue.nDataSet = nDataSet;
+    retValue.type = type;
+    retValue.onePoints = onePoints;
+    return retValue;
+}
+*/      
+export const checkDataSetsValidity = (arr: Array<DataSet>, axisType: Array<string>): DataSets  => {
+    let retValue: DataSets = {"dataSets": null,message:null};
+    const type = typeof arr[0].dataPoints[0][axisType[0]];
+    const curType:any = {"type":type,"axType":axisType[0]};
+
+    // dataPoints should be in ['label','x','y']
+    for (let i:number = 0;i<arr.length;i++) {
+        const tArr: Array<boolean> = arr[i].dataPoints.map(item => {return Object.keys(item).every(v=>axisType.indexOf(v) !== -1);},axisType);
+        if( tArr.indexOf(false) != -1) {
+            retValue = {"dataSets": null,
+            "message":"Non consistent key in dataPoints key in [" + axisType + "]"};
+            break;
+        }
+    }
+    if(retValue.message != null) return retValue;
+    // 'x' or 'label' should be of consistent type
+    for (let i:number = 0;i<arr.length;i++) {
+        const typeArray: Array<boolean> = arr[i].dataPoints.map(item => {return typeof item[curType.axType] === curType.type ? true : false;},curType);
+        if( typeArray.indexOf(false) != -1) {
+            retValue = {"dataSets": null,
+            "message":"Non consistent " + axisType[0] + " type in dataPoints"};
+            break;
+        }
+    }
+    if(retValue.message != null) return retValue;
+    // 'label' should be of type string
+    if(axisType[0] === 'label' && type != 'string') retValue = {"dataSets": null,
+    "message":"DataPoints label must be of type string"};
+    if(retValue.message != null) return retValue;
+
+    // type string multiple lines must have dataPoints of same length
+    if(type === 'string') {
+        const length: number = arr[0].dataPoints.length;
+        const lArr: Array<boolean> = arr.map(item => { return item.dataPoints.length === length ? true : false;},length);
+        if( lArr.indexOf(false) != -1) {
+            retValue = {"dataSets": null,
+            "message":"DataSet DataPoints having 'label' or 'x' of type string must be of same length"};
+        }
+        if(retValue.message != null) return retValue;
+    }
+
+    // 'x' type string or label
+
+/*    let info: InfoDataSets = numberOfXlines(arr,type);
+    // for dataSets of type string with different lengths the x given 
+    // should be contained in the x of the maximum length dataSets 
+    if(type === 'string') {
+        let maxString: Array<String> = arr[info.nDataSet].dataPoints.map(item => {return item.x;});
+
+        if(info.onePoints.length > 0) {
+            for (let i:number = 0;i<info.onePoints.length;i++) {
+                info.onePoints[i].indexOnePoint = maxString.indexOf(arr[info.onePoints[i].nDataSet].dataPoints[0].x);
+            }
+            let check: Array<number> = info.onePoints.map(item => {return item.indexOnePoint;});
+
+            if(check.indexOf(-1) === -1) {
+                // Ok
+                retValue = {"dataSets": arr,"infoDataSet": info};
+            } 
+        } else {
+            let checkB: Array<Boolean> = [];
+            for (let i:number = 1;i<arr.length;i++) {
+                let line: Array<String> = arr[i].dataPoints.map(item => {return item.x;});
+                checkB.push(JSON.stringify(maxString)==JSON.stringify(line));
+            }
+            if( checkB.indexOf(false) === -1 ) {
+                // Ok
+                retValue = {"dataSets": arr,"infoDataSet": info};
+            }
+        }
+    }
+    if(type === 'number') {
+        retValue = {"dataSets": arr};
+    }
+   
+    retValue = {"dataSets": arr};
+    */ 
+    return {"dataSets": arr};
+}
 
 
           

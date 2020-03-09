@@ -1,8 +1,18 @@
+## 0.0.3 (2020-02-26)
+
+### Bug Fixes
+
+* fix issue#7 on Android and IOS capacitor-sqlite plugin by adding a return message containing the error message. 
+In case of failure in 
+ - the Execute or Run commands the changes returned value will be equal to -1
+ - the Query command the values will returned an empty array
+
+
 ## 0.0.3-3 (2020-02-21)
 
 ### Bug Fixes
 
-* fix issue#4 on Web capacitordata-storage-sqlite plugin
+* fix issue#4 on Web capacitor-data-storage-sqlite plugin
 
 ### Added Features
 

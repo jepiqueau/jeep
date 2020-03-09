@@ -22,6 +22,8 @@ import java.util.List;
 
 @NativePlugin()
 public class CapacitorSQLite extends Plugin {
+    private static final String TAG = "CapacitorSQLite";
+
     private SQLiteDatabaseHelper mDb;
     private GlobalSQLite globalData = new GlobalSQLite();
 
@@ -51,6 +53,7 @@ public class CapacitorSQLite extends Plugin {
 
         dbName = call.getString("database");
         if (dbName == null) {
+            retResult(call,false,"Open command failed: Must provide a database name");
             call.reject("Must provide a database name");
             return;
         }
@@ -60,9 +63,8 @@ public class CapacitorSQLite extends Plugin {
             if (!inMode.equals("no-encryption") && !inMode.equals("encryption") &&
                     !inMode.equals("secret") && !inMode.equals("newsecret") &&
                     !inMode.equals("wrongsecret")) {
-                ret.put("result", false);
-                ret.put("message", "OpenStore: Error inMode must be in ['encryption','secret','newsecret']");
-                call.resolve(ret);
+                retResult(call,false,
+                 "Open command failed: Error inMode must be in ['encryption','secret','newsecret']");
             }
             if (inMode.equals("encryption")  || inMode.equals("secret")) {
                 secret = globalData.secret;
@@ -87,9 +89,10 @@ public class CapacitorSQLite extends Plugin {
         mDb = new SQLiteDatabaseHelper(context,dbName+"SQLite.db",encrypted,
                 inMode,secret,newsecret,1);
         if (!mDb.isOpen) {
-            ret.put("result", false);
+            retResult(call,false,"Open command failed: Database " + dbName +
+                    "SQLite.db not opened");
         } else {
-            ret.put("result", true);
+            retResult(call,true,null);
         }
         call.resolve(ret);
     }
@@ -100,19 +103,23 @@ public class CapacitorSQLite extends Plugin {
 
         dbName = call.getString("database");
         if (dbName == null) {
-            call.reject("Must provide a database name");
+            retResult(call,false,"Close command failed: Must provide a database name");
             return;
         }
         boolean res = mDb.closeDB(dbName+"SQLite.db");
         mDb = null;
-        ret.put("result", res);
-        call.resolve(ret);
+        if (res) {
+            retResult(call,true,null);
+        } else {
+            retResult(call,false,"Close command failed");
+        }
     }
     @PluginMethod()
     public void execute(PluginCall call) {
         String statements = call.getString("statements");
         if (statements == null) {
-            call.reject("Must provide raw SQL statements");
+            retChanges(call,-1,"Execute command failed : Must provide raw SQL statements");
+          call.reject("Must provide raw SQL statements");
             return;
         }
         // split for each statement
@@ -130,9 +137,11 @@ public class CapacitorSQLite extends Plugin {
             sqlCmdArray = Arrays.copyOf(sqlCmdArray, sqlCmdArray.length-1);
         }
         int res = mDb.execSQL(sqlCmdArray);
-        JSObject ret = new JSObject();
-        ret.put("changes",res);
-        call.resolve(ret);
+        if (res == -1) {
+            retChanges(call, res, "Execute command failed");
+        } else {
+            retChanges(call, res, null);
+        }
     }
     @PluginMethod()
     public void run(PluginCall call) throws JSONException {
@@ -156,9 +165,11 @@ public class CapacitorSQLite extends Plugin {
         } else {
             res = mDb.runSQL(statement,null);
         }
-        JSObject ret = new JSObject();
-        ret.put("changes",res);
-        call.resolve(ret);
+        if (res == -1) {
+            retChanges(call, res, "Run command failed");
+        } else {
+            retChanges(call, res, null);
+        }
     }
     @PluginMethod()
     public void query(PluginCall call) throws JSONException {
@@ -182,35 +193,53 @@ public class CapacitorSQLite extends Plugin {
         } else {
             res = mDb.querySQL(statement,new ArrayList<String>());
         }
-        JSObject ret = new JSObject();
-        ret.put("values",res);
-        call.resolve(ret);
+
+        if (res.length() > 0) {
+            retValues(call, res, null);
+        } else {
+            retValues(call, res, "Query command failed");
+        }
     }
     @PluginMethod()
     public void deleteDatabase(PluginCall call) {
         String dbName = null;
         dbName = call.getString("database");
         if (dbName == null) {
-            call.reject("Must provide a database name");
+            retResult(call,false,"DeleteDatabase command failed: Must provide a database name");
             return;
         }
-        JSObject ret = new JSObject();
 
         if(mDb != null) {
             boolean res = mDb.deleteDB(dbName + "SQLite.db");
-            ret.put("result",res);
+            retResult(call,true,null);
         } else {
             context.deleteDatabase(dbName + "SQLite.db");
             context.deleteFile(dbName + "SQLite.db");
             File databaseFile = context.getDatabasePath(dbName + "SQLite.db");
             if (databaseFile.exists()) {
-                ret.put("result",false);
+                retResult(call,false,"DeleteDatabase command failed");
             } else {
-                ret.put("result",true);
+                retResult(call,true,null);
             }
 
-
         }
+    }
+    private void retResult(PluginCall call, Boolean res, String message) {
+        JSObject ret = new JSObject();
+        ret.put("result", res);
+        if(message != null) ret.put("message",message);
+        call.resolve(ret);
+    }
+    private void retChanges(PluginCall call, Integer res, String message) {
+        JSObject ret = new JSObject();
+        ret.put("changes", res);
+        if(message != null) ret.put("message",message);
+        call.resolve(ret);
+    }
+    private void retValues(PluginCall call, JSArray res, String message) {
+        JSObject ret = new JSObject();
+        ret.put("values", res);
+        if(message != null) ret.put("message",message);
         call.resolve(ret);
     }
 

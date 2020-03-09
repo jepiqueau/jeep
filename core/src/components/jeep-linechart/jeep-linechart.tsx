@@ -1,12 +1,12 @@
 import { h, Component, Host, Prop, Method, Element, State, Watch } from '@stencil/core';
 import { Rect, Point } from '../../global/interfaces/geom';
 import { Variables }  from '../../global/interfaces/jeep-linechart';
-import { Status, SVGOptions, DataSet, AxisLength, Legend, Anim, NearestPoint }  from '../../global/interfaces/charts';
+import { Status, SVGOptions, DataSet, DataSets, AxisLength, Legend, Anim, NearestPoint }  from '../../global/interfaces/charts';
 import { debounce, getDim, convertCSSNumber, convertCSSBoolean, getCssPropertyFromString }  from '../../utils/common';
 import { windowSize } from '../../utils/windowutils';
-import { createSVGElement, createMarker, createText, updateText, textScale,
+import { createSVGElement, createMarker, createText, updateText, textScale, checkDataSetsValidity,
     createLine, updateLine, axisRange, axisConvertY, measureLegend, createLegendLines,
-    removeChilds, axisConvertX, createPolyline, updatePolyline, createAnimation,
+    removeChilds, axisConvertX, createPolyline, updatePolyline, createCircle, updateCircle, createAnimation,
     getTotalLength, createLineLabel, getNearest} from '../../utils/chart-svgelements';
 import { getBoundingClientRect } from '../../utils/common';
   
@@ -103,22 +103,25 @@ import { getBoundingClientRect } from '../../utils/common';
             this._legendThicknesses.push(dataSet.lineThickness);
             this._legendColors.push(dataSet.color);
             if(dataSet.name !== null) this._legendNames.push(dataSet.name);
-            if(!dataSet.dataPoints[0].x){
+            // check if 'x' or 'label' in dataPoints
+            const dataSetKeys = Object.keys(dataSet.dataPoints[0]);
+            if(dataSetKeys.indexOf('label') == -1 && dataSetKeys.indexOf('x') ==-1) {
               dataSets = null;
-              status = {status:400, message:"Error: no x data in dataset: " + i + " of data property" }            
-            } else if(!dataSet.dataPoints[0].y){
+              status = {status:400, message:"Error: no 'x' or 'label' data in dataset: " + i + " of data property" };           
+            } else if(dataSetKeys.indexOf('y') === -1){
                 dataSets = null;
-                status = {status:400, message:"Error: no y data in dataset: " + i + " of data property" }            
+                status = {status:400, message:"Error: no y data in dataset: " + i + " of data property" };            
             } else {
               if(i === 0) {
-                if(dataSet.dataPoints[0].x) this._axisType.push("x"); 
-                if(dataSet.dataPoints[0].y) this._axisType.push("y"); 
+                if(dataSetKeys.indexOf('label') != -1) this._axisType.push("label");
+                if(dataSetKeys.indexOf('x') != -1) this._axisType.push("x"); 
+                this._axisType.push("y"); 
               }     
               dataSets.push(dataSet);  
             }
           } else {
             dataSets = null;
-            status = {status:400, message:"Error: no dataPoints object in dataset: " + i + " of data property" }            
+            status = {status:400, message:"Error: no dataPoints object in dataset: " + i + " of data property" };            
           }
         }
         if(status.status === 200 && dataSets && dataSets.length > 1 && dataSets.length !== this._legendNames.length) {
@@ -127,13 +130,21 @@ import { getBoundingClientRect } from '../../utils/common';
         } 
       } else { 
         dataSets = null;
-        status = {status:400, message:"Error: no data provided"}      
+        status = {status:400, message:"Error: no data provided"};      
       }
     } else {
       dataSets = null;
-      status = {status:400, message:"Error: no data property"}      
+      status = {status:400, message:"Error: no data property"};      
+    }
+    if(status.status === 200) {
+      // check the dataSets 'x' or 'label' validity
+      const retSets: DataSets = checkDataSetsValidity(dataSets,this._axisType);
+      dataSets = retSets.dataSets;
+      if(dataSets === null) status = {status:400, message: "Error: " +retSets.message};      
     }
     this.status = status; 
+    this._label = this.status.status === 200 && this._axisType[0] === 'label' ? true : false;
+
     this.innerData = this.status.status === 200 ? [...dataSets] : null;
 
   }
@@ -226,12 +237,14 @@ import { getBoundingClientRect } from '../../utils/common';
     _dataColor: boolean;
     _label: boolean;
     _labelRotate: boolean;
+    _x_type:string;
     _x_axy:number;
     _y_axy:number;
     _lenY:AxisLength;
     _lenX:AxisLength;
     _nXlines: number;
     _nYlines: number;
+    _nXlinesDataSet: number;
     _xInterval: number;
     _yaxis:Rect;
     _xaxis:Rect;
@@ -273,12 +286,6 @@ import { getBoundingClientRect } from '../../utils/common';
         this._yaxis = {} as Rect;
         this._xaxis = {} as Rect;
         this._legendRect = {} as Rect;
-        let filteredAxisX: Array<string> = [];
-        filteredAxisX = this._axisType.filter(element => element === "label") as Array<string>   
-        this._label = false;
-        if(filteredAxisX[0]=== "label") {
-          this._label = true;
-        }
         this._showTarget = 0;
         this._mouseStart = false;
         this._xmlns = "http://www.w3.org/2000/svg";
@@ -637,7 +644,7 @@ import { getBoundingClientRect } from '../../utils/common';
           let labx: string;
           if(this._lenX.type === 'string') {
             let x_inter: number = typeof this._lenX.interval != "undefined" ? this._lenX.interval : 1;
-            labx = this.innerData[0].dataPoints[i * x_inter].x;
+            labx = this.innerData[0].dataPoints[i * x_inter][this._axisType[0]];
           } else {
             labx = s.toString();
           }        
@@ -837,7 +844,7 @@ import { getBoundingClientRect } from '../../utils/common';
             if(this._lenX.interval && this._lenX.type === 'number') {
               pt.x = axisConvertX(this._xaxis,this._lenX,this.innerData[l].dataPoints[i].x);
             } else {
-              pt.x = this._xaxis.left + x;
+                pt.x = this._xaxis.left + x;
             }
             viewPt.push(pt);
             let scale = this.innerData[l].markerSize / 10;
@@ -849,21 +856,33 @@ import { getBoundingClientRect } from '../../utils/common';
             }
             x += this._xInterval;
           }
-          opt.strokeLinejoin = 'round';
-          opt.strokeLinecap = 'round';
-          opt.strokeMiterlimit = '10';
           let length: number = getTotalLength(viewPt);
-          if(!this._update) {
-            plEl = createPolyline(g,points,opt);
+          if(length > 0 ) {
+            opt.strokeLinejoin = 'round';
+            opt.strokeLinecap = 'round';
+            opt.strokeMiterlimit = '10';
+            if(!this._update) {
+              plEl = createPolyline(g,points,opt);
+            } else {
+              plEl = updatePolyline(this.svg,opt.id,points);
+            } 
+            if(this.innerAnimation) {
+              plEl.setAttributeNS (null, "stroke-dasharray", length.toString() + ',' + length.toString());
+              plEl.setAttributeNS (null, "stroke-dashoffset", length.toString());
+              this._setAnimation(plEl,length.toString(),this._prop.animDuration);
+            }
           } else {
-            plEl = updatePolyline(this.svg,opt.id,points);
-          } 
-          if(this.innerAnimation) {
-            plEl.setAttributeNS (null, "stroke-dasharray", length.toString() + ',' + length.toString());
-            plEl.setAttributeNS (null, "stroke-dashoffset", length.toString());
-            this._setAnimation(plEl,length.toString(),this._prop.animDuration);
+            opt.strokeWidth = "2";
+            opt.fill = opt.stroke;
+            opt.fillOpacity = "0.75"; 
+            if(!this._update) {
+              plEl = createCircle(g,viewPt[0],5,opt);
+            } else {
+              plEl = updateCircle(this.svg,opt.id,viewPt[0],5);
+            } 
+
           }
-        this._Points.push(viewPt);
+          this._Points.push(viewPt);
         }
     }
     _setAnimation(el:Element,length:string,duration:string): void {
@@ -983,7 +1002,8 @@ import { getBoundingClientRect } from '../../utils/common';
     this._highlightMarker(marker,false);
     let label: string;
     if(typeof data.x === 'number') label = data.x.toString();
-    if(typeof data.x === 'string') label = data.x;
+    if(this._label) label = data.label;
+    if(!this._label && typeof data.x === 'string') label = data.x;
     label = label + " : " + data.y.toString();
     let ft:number = 1.2*parseFloat(this._prop.ftLbSize.split('px')[0]);
     let opt:SVGOptions = {

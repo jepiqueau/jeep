@@ -1,3 +1,9 @@
+## 0.0.3 (2020-03-09)
+
+### Added Features
+
+* update line-chart to accept One point, label or x
+
 ## 0.0.3-4 (2020-02-23)
 
 ### Bug Fixes

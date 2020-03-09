@@ -1,7 +1,7 @@
 {
   "name": "@jeepq/react",
   "sideEffects": false,
-  "version": "0.0.3-4",
+  "version": "0.0.3",
   "description": "React specific wrapper for @jeepq/core",
   "keywords": [
     "jeep",
@@ -28,13 +28,13 @@
     "@types/node": "12.12.3",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "@jeepq/core": "0.0.3-4"
+    "@jeepq/core": "0.0.3"
   },
   "peerDependencies": {
     "react": "^16.12.0",
