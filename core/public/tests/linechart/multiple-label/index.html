@@ -8,13 +8,18 @@
   <meta name="theme-color" content="#16161d">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.10/dist/ionic/ionic.esm.js"></script>
-  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.10/dist/ionic/ionic.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/@ionic/core@4.11.10/css/ionic.bundle.css" rel="stylesheet">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@ionic/core@latest/css/ionic.bundle.css" rel="stylesheet">
 
   <script nomodule src="/build/jeep.js"></script>
   <script type="module" src="/build/jeep.esm.js"></script>   
   <style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+
     :root {
         --chart-width: 100%;
         --chart-height: 400px;
@@ -122,3 +127,6 @@
     </ion-app>
 </body>
 </html>
+<!-- 
+
+-->

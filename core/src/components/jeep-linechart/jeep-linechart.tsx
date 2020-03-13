@@ -1,4 +1,4 @@
-import { h, Component, Host, Prop, Method, Element, State, Watch } from '@stencil/core';
+import { h, Component, Host, Prop, Method, Element, State, Watch, Event, EventEmitter } from '@stencil/core';
 import { Rect, Point } from '../../global/interfaces/geom';
 import { Variables }  from '../../global/interfaces/jeep-linechart';
 import { Status, SVGOptions, DataSet, DataSets, AxisLength, Legend, Anim, NearestPoint }  from '../../global/interfaces/charts';
@@ -149,8 +149,25 @@ import { getBoundingClientRect } from '../../utils/common';
 
   }
   @Watch('cstyle')
-  parseStyleProp(newValue: string) {
-    this.innerStyle = newValue ? newValue : null;
+  async parseStyleProp(newValue: string) {
+    const cstyle = newValue ? newValue : null; 
+    if(cstyle !=null) {
+      const propInstance:any = await getCssPropertyFromString(cstyle);
+      if(propInstance != null) {
+        this._prop.leftPlot =  propInstance.left ? propInstance.left : this._prop.leftPlot;           
+        this._prop.topPlot =  propInstance.top ? propInstance.top : this._prop.topPlot;          
+        this._prop.widthPlot =  propInstance.width ? propInstance.width : this._prop.widthPlot;           
+        this._prop.heightPlot =  propInstance.height ? propInstance.height : this._prop.heightPlot;
+        this._prop.bgColor = propInstance.backgroundcolor ? propInstance.backgroundcolor : this._prop.bgColor;       
+      }
+    } 
+    if(this.status && this.status.status === 200){
+      this._wSize = await this.getWindowSize();
+      this._setContainerSize();
+      this._update = true;
+      this._renderChart();
+    }
+    this.innerStyle = cstyle;
   }
   @Watch('animation')
   parseAnimationProp(newValue: boolean) {
@@ -182,6 +199,12 @@ import { getBoundingClientRect } from '../../utils/common';
   @State() w_width: number;
   @State() w_height: number;
   @State() toggle: boolean = false;
+
+  //*********************
+  //* Event Definitions *
+  //*********************
+
+  @Event({eventName:'jeepLinechartReady'}) readyLinechart: EventEmitter;
 
   //**********************
   //* Method Definitions *
@@ -257,13 +280,13 @@ import { getBoundingClientRect } from '../../utils/common';
   //* Component Lifecycle Methods *
   //*******************************
 
-    async componentWillLoad() {
+  async componentWillLoad() {
     this.window = window;
+    this._element = this.el.shadowRoot;
     this._prop = {} as Variables;
     await this._init();
     }
     componentDidLoad() {
-        this._element = this.el.shadowRoot;
         if(this.status.status === 200){
             this._renderChart();
         }        
@@ -298,7 +321,6 @@ import { getBoundingClientRect } from '../../utils/common';
         this.parseYTitleProp(this.ytitle ? this.ytitle : null);
         this.parseAnimationProp(this.animation ? this.animation : false);
         this.parseBorderProp(this.cborder ? this.cborder : false);
-        this.parseStyleProp(this.cstyle ? this.cstyle : null);
         this.parseDelayProp(this.delay ? this.delay : "100");
         // reading global css properties
         this._prop.topPlot = this._prop.topPlot ? this._prop.topPlot : this._setPropertyValue('--chart-top',this.window.getComputedStyle(this.root).getPropertyValue('--chart-top'));
@@ -330,20 +352,13 @@ import { getBoundingClientRect } from '../../utils/common';
         this._prop.ftLgSize = this._setPropertyValue('--chart-legend-font-size',this.window.getComputedStyle(this.root).getPropertyValue('--chart-legend-font-size'));
         this._prop.bdColor = this._setPropertyValue('--chart-border-color',this.window.getComputedStyle(this.root).getPropertyValue('--chart-border-color'));
         this._prop.bdWidth = this._setPropertyValue('--chart-border-width',this.window.getComputedStyle(this.root).getPropertyValue('--chart-border-width'));
-        // reading instance css properties if any
-        if(this.innerStyle !=null) {
-          const propInstance:any = await getCssPropertyFromString(this.innerStyle);
-          if(propInstance != null) {
-            this._prop.leftPlot =  propInstance.left ? propInstance.left : this._prop.leftPlot;           
-            this._prop.topPlot =  propInstance.top ? propInstance.top : this._prop.topPlot;          
-            this._prop.widthPlot =  propInstance.width ? propInstance.width : this._prop.widthPlot;           
-            this._prop.heightPlot =  propInstance.height ? propInstance.height : this._prop.heightPlot;
-            this._prop.bgColor = propInstance.backgroundcolor ? propInstance.backgroundcolor : this._prop.bgColor;       
-          }
-        } 
+
+        await this.parseStyleProp(this.cstyle ? this.cstyle : null);
         // reading data          
         this.parseDataProp(this.data ? this.data : null);
+
         // get window size and set the container size
+        // reading instance css properties if any
         this._wSize = await this.getWindowSize();
         this._setContainerSize();
     }
@@ -1020,7 +1035,7 @@ import { getBoundingClientRect } from '../../utils/common';
   /* ---- Deal with rendering  */
                     
     async _renderChart() {
-        this.container = this._element.querySelector('#div-linechart-container')
+      this.container = this._element.querySelector('#div-linechart-container')
         this.chart = this._element.querySelector('#div-linechart-chart');
         this.svg = this._element.querySelector('#svg-linechart');
         this.borderEl = this.svg.querySelector('#svg-border-rect');    
@@ -1037,6 +1052,7 @@ import { getBoundingClientRect } from '../../utils/common';
             if(this.innerTitle != null && this.innerTitle.length > 0) this._createTitle();
             this._createAxis();
             this._createLine();
+            this.readyLinechart.emit();
         }
     }
 

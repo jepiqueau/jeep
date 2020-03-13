@@ -308,6 +308,13 @@
 | `ytitle`    | `ytitle`    |             | `string`  | `undefined` |
 
 
+## Events
+
+| Event                | Description | Type               |
+| -------------------- | ----------- | ------------------ |
+| `jeepLinechartReady` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `getCssProperties() => Promise<Variables>`

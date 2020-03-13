@@ -1,3 +1,9 @@
+## 0.0.4-1 (2020-03-11)
+
+### Bug Fixes
+
+* fix render when cstyle property updated in line-chart
+
 ## 0.0.3 (2020-03-09)
 
 ### Added Features

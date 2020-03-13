@@ -116,7 +116,7 @@ class UtilsSQLite {
         if (declaredType != nil) {
             var declaredType = String(cString:declaredType!).uppercased()
 
-            if let index = declaredType.index(of: "(" ) {
+            if let index = declaredType.firstIndex(of: "(" ) {
                 declaredType = String(declaredType[..<index])
             }
 

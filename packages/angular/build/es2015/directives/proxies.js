@@ -448,6 +448,7 @@ let JeepLinechart = class JeepLinechart {
         this.z = z;
         c.detach();
         this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepLinechartReady']);
     }
 };
 JeepLinechart.decorators = [
@@ -465,6 +466,8 @@ JeepLinechart = tslib_1.__decorate([
 ], JeepLinechart);
 export { JeepLinechart };
 if (false) {
+    /** @type {?} */
+    JeepLinechart.prototype.jeepLinechartReady;
     /**
      * @type {?}
      * @protected

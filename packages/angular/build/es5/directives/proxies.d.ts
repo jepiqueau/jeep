@@ -92,6 +92,7 @@ export declare interface JeepLinechart extends Components.JeepLinechart {
 }
 export declare class JeepLinechart {
     protected z: NgZone;
+    jeepLinechartReady: EventEmitter<CustomEvent>;
     protected el: HTMLElement;
     constructor(c: ChangeDetectorRef, r: ElementRef, z: NgZone);
 }

@@ -1,6 +1,6 @@
 {
   "name": "@jeepq/capacitor",
-  "version": "0.0.3",
+  "version": "0.0.4-1",
   "description": "Capacitor Plugins Library",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -14,12 +14,12 @@
   "author": "Jean Pierre Quéau",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "^1.5.0",
+    "@capacitor/core": "^1.5.1",
     "jeep-localforage": "^1.7.5-4"
   },
   "devDependencies": {
-    "@capacitor/android": "^1.5.0",
-    "@capacitor/ios": "^1.5.0",
+    "@capacitor/android": "^1.5.1",
+    "@capacitor/ios": "^1.5.1",
     "typescript": "^3.2.4"
   },
   "files": [

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stencil Starter App</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#16161d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@ionic/core@latest/css/ionic.bundle.css" rel="stylesheet">
+
+  <script nomodule src="/build/jeep.js"></script>
+  <script type="module" src="/build/jeep.esm.js"></script>   
+  <style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+    :root {
+        --chart-width: 100%;
+        --chart-height: 400px;
+        --chart-top: 0px;
+        --chart-left: 0px;
+        --chart-background-color: #ffffff;
+        --chart-axis-color: #000000;   
+        --chart-font-family: Verdana;  
+        --chart-label-font-size: 10px;
+        --chart-title-color: #000000;
+        --chart-title-font-size: 25px;
+        --chart-subtitle-color: #000000;
+        --chart-subtitle-font-size: 20px;
+        --chart-axis-title-color: #000000;
+        --chart-axis-title-font-size: 15px;
+        --chart-line-color: #4ba96e;
+        --chart-label-color:#000000;
+        --chart-tick-x-length: 5px;
+        --chart-tick-y-length: 4px;
+        --chart-grid-x: false;
+        --chart-animation-duration: 1s;
+        --chart-legend-font-size: 12px;
+        --chart-legend-top: true;
+        --chart-border-color: #000000;
+        --chart-border-width: 4;   
+    }
+    .div-linechart {
+      width: 100%;
+      height: auto;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+  <script type="module">
+    import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/index.esm.js';
+    window.menuController = menuController;
+  </script>
+</head>
+<body style="margin: 0px; font-family: sans-serif; overflow: hidden; position: fixed;">
+  <ion-app>
+    <ion-split-pane content-id="main-content" when="md"
+      style="--side-min-width:150px;--side-max-width:20%;">
+      <ion-menu side="start" content-id="main-content">
+        <ion-header>
+          <ion-toolbar translucent>
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+        </ion-content>
+      </ion-menu>
+
+      <ion-router-outlet id="main-content">                
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Inbox</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-button expand="block" onclick="openMenu()">Open Menu</ion-button>
+          <div class="div-linechart">
+            <jeep-linechart class="newlinechart hidden" ctitle="Basic Line Chart" subtitle="test sub-title" xtitle="test for x axis" ytitle="test for y axis" 
+            data='[{
+              "color": "#425cef",
+              "name": "Line 1",
+              "lineThickness": 2,
+              "dataPoints":[
+                { "x": 20, "y": 414 },
+                { "x": 30, "y": 520 },
+                { "x": 40, "y": 460 },
+                { "x": 75, "y": 360 },
+                { "x": 97.2, "y": 500 },
+                { "x": 120, "y": 300 },
+                { "x": 140, "y": 480 }
+                ]
+              },
+              {
+                "color": "#efd543",
+                "name": "Line 2",
+                "lineThickness": 2,
+                "dataPoints":[
+                  { "x": 14, "y": 250 },
+                  { "x": 20, "y": 514 },
+                  { "x": 30, "y": 270 },
+                  { "x": 40, "y": 320 },
+                  { "x": 50, "y": 210 },
+                  { "x": 60, "y": 300 },
+                  { "x": 70, "y": 340 },
+                  { "x": 80, "y": 500 },
+                  { "x": 90, "y": 280 },
+                  { "x": 100, "y": 520 },
+                  { "x": 110, "y": 380 },
+                  { "x": 120, "y": 410 }]
+              }      
+            ]'
+            animation cborder>
+            </jeep-linechart>
+          </div>
+        </ion-content>
+      </ion-router-outlet>
+    </ion-split-pane> 
+  </ion-app>
+  <script>
+    const root = document.documentElement;
+    const lineChart = document.querySelector('.newlinechart');
+    lineChart.addEventListener('jeepLinechartReady',() => {
+      console.log('jeepLinechartReady')
+//      const lineChart = document.querySelector('.newlinechart');
+      var wWidth = window.innerWidth;
+
+      if (wWidth >= 1200) {
+        if( !lineChart.classList.contains('hidden')) lineChart.classList.toggle('hidden');
+        lineChart.cstyle = cstyle="--height:350px;--width:70%;--top:30px;--left:5%;";
+      } else {
+        if( !lineChart.classList.contains('hidden')) lineChart.classList.toggle('hidden');
+        lineChart.cstyle = cstyle="--height:350px;--width:90%;--top:30px;--left:5%;";
+      }
+      if( lineChart.classList.contains('hidden')) lineChart.classList.toggle('hidden');
+    },false);
+
+    async function openMenu() {
+      await menuController.open();
+    }
+  </script>
+</body>
+</html>
+
+<!--          cstyle="--height:350px;--width:90%;--top:30px;--left:5%;" --> 

@@ -887,6 +887,7 @@ declare namespace LocalJSX {
     'ctitle'?: string;
     'data'?: string;
     'delay'?: string;
+    'onJeepLinechartReady'?: (event: CustomEvent<any>) => void;
     'subtitle'?: string;
     'xtitle'?: string;
     'ytitle'?: string;

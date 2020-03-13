@@ -1,7 +1,7 @@
 {
   "name": "pwa-test-capacitor-plugins",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.4-1",
   "description": "pwa-test-capacitor-plugins",
   "author": "Jean Pierre Quéau",
   "license": "MIT",
@@ -17,10 +17,10 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@ionic/core": "^4.11.10",
-    "@jeepq/capacitor": "0.0.3-3"
+    "@ionic/core": "^5.0.5",
+    "@jeepq/capacitor": "0.0.4-1"
   },
   "devDependencies": {
-    "@stencil/core": "^1.8.7"
+    "@stencil/core": "^1.8.9"
   }
 }

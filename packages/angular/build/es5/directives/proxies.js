@@ -419,6 +419,7 @@ var JeepLinechart = /** @class */ (function () {
         this.z = z;
         c.detach();
         this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ['jeepLinechartReady']);
     }
     JeepLinechart.decorators = [
         { type: Component, args: [{ selector: 'jeep-linechart', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['animation', 'cborder', 'cstyle', 'ctitle', 'data', 'delay', 'subtitle', 'xtitle', 'ytitle'] },] },
@@ -437,6 +438,8 @@ var JeepLinechart = /** @class */ (function () {
 }());
 export { JeepLinechart };
 if (false) {
+    /** @type {?} */
+    JeepLinechart.prototype.jeepLinechartReady;
     /**
      * @type {?}
      * @protected

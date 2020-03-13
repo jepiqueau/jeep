@@ -1,3 +1,17 @@
+## 0.0.4-1 (2020-03-13)
+
+### Chores
+
+* @capacitor/cli: update to 1.5.1 
+* @capacitor/core: update to 1.5.1 
+* @capacitor/ios: update to 1.5.1 
+* @capacitor/android: update to 1.5.1 
+
+### Bug Fixes
+
+* fix render when cstyle property updated in line-chart
+
+
 ## 0.0.3 (2020-03-09)
 
 ### Chores
