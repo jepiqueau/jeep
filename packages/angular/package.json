@@ -40,7 +40,7 @@
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
     "@angular/compiler-cli": "~8.2.14",
-    "@angular/core": "~8.2.14",
+    "@angular/core": "~11.0.5",
     "@angular/forms": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
@@ -60,7 +60,7 @@
   "peerDependencies": {
     "@angular-devkit/core": "~8.3.20",
     "@angular-devkit/schematics": "~8.3.20",
-    "@angular/core": "~8.2.14",
+    "@angular/core": "~11.0.5",
     "@angular/common": "~8.2.14",
     "@angular/forms": "~8.2.14",
     "@angular/router": "~8.2.14",
