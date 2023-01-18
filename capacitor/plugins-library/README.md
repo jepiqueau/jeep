@@ -1,8 +1,8 @@
 # Jeep Capacitor Plugins Library
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!                                                                                               !!!!
-!!!! CAUTION THIS PLUGINS LIBRARY IS NOT MAINTAINED ANYMORE                                        !!!!
+ - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ - !!!!                                                                                               !!!!
+ - !!!! CAUTION THIS PLUGINS LIBRARY IS NOT MAINTAINED ANYMORE                                        !!!!
 !!!!                                                                                               !!!!
 !!!! GO TO INDIVIDUAL PLUGIN                                                                       !!!!
 !!!!                                                                                               !!!!
