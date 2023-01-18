@@ -1,6 +1,6 @@
 # Jeep Capacitor Plugins Library
 
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
 <p></p>
 <p>CAUTION THIS PLUGINS LIBRARY IS NOT MAINTAINED ANYMORE</p>
 <p>GO TO INDIVIDUAL PLUGIN</p>
@@ -9,7 +9,7 @@
 <p> - [capacitor-data-storage-sqlite](https://github.com/jepiqueau/capacitor-data-storage-sqlite)</p>
 <p> - [@capacitor-community/sqlite](https://github.com/capacitor-community/sqlite)</p>
 <p></p>
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
 <p>!</p>
 
 Jeep Capacitor Plugins Library is a library of Capacitor Plugins including:
