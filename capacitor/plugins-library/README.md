@@ -5,9 +5,9 @@ CAUTION THIS PLUGINS LIBRARY IS NOT MAINTAINED ANYMORE
 
 GO TO INDIVIDUAL PLUGIN
 
-- [capacitor-video-player] (https://github.com/jepiqueau/capacitor-video-player)
-- [capacitor-data-storage-sqlite] (https://github.com/jepiqueau/capacitor-data-storage-sqlite)
-- [@capacitor-community/sqlite] (https://github.com/capacitor-community/sqlite)
+- [capacitor-video-player](https://github.com/jepiqueau/capacitor-video-player)
+- [capacitor-data-storage-sqlite](https://github.com/jepiqueau/capacitor-data-storage-sqlite)
+- [@capacitor-community/sqlite](https://github.com/capacitor-community/sqlite)
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
